@@ -1,0 +1,2 @@
+id	class	method	parent	flags	annotations	visibility	non-primitive-return	path
+1	org.example.Main	main(java.lang.String[])	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/example/Main.java
