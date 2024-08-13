@@ -1,2 +1,0 @@
-kind	class	method	param	index	uri	reason	annotation	rootClass	rootMethod
-FIELD	org.example.Main	null	foo	null	/Users/nima/Developer/annotator-run/src/main/java/org/example/Main.java	FIELD_NO_INIT	nullable	org.example.Main	null

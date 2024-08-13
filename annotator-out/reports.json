@@ -1,1 +1,0 @@
-{"REPORTS":[{"PATH":/Users/nima/Developer/annotator-run/src/main/java/org/example/Main.java,"VARIABLES":["foo"],"LOCAL EFFECT":0,"CLASS":"org.example.Main","TREE":[],"FINISHED":true,"KIND":"FIELD","OVERALL EFFECT":0,"Upper Bound EFFECT":0,"Lower Bound EFFECT":0}]}
