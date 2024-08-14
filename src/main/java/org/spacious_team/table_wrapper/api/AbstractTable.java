@@ -37,6 +37,7 @@ import java.util.function.Function;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
 @Slf4j
 @ToString(of = {"tableName"})
@@ -59,7 +60,7 @@ public abstract class AbstractTable<R extends ReportPageRow> implements Table {
     /**
      * @param tableRange only first and last row numbers matters
      */
-    @SuppressWarnings("unused")
+    
     protected AbstractTable(AbstractReportPage<R> reportPage,
                             String tableName,
                             TableCellRange tableRange,
@@ -81,7 +82,7 @@ public abstract class AbstractTable<R extends ReportPageRow> implements Table {
                         getColumnIndices(this.headerDescription).max().orElse(tableRange.getLastColumn()));
     }
 
-    @SuppressWarnings("unused")
+    
     protected AbstractTable(AbstractTable<R> table, int appendDataRowsToTop, int appendDataRowsToBottom) {
         this.reportPage = table.reportPage;
         this.tableName = table.tableName;
@@ -236,19 +237,19 @@ public abstract class AbstractTable<R extends ReportPageRow> implements Table {
         return reportPage.getRow(i);
     }
 
-    @Override
+    @Nullable @Override
     public TableRow findRow(Object value) {
         TableCellAddress address = reportPage.find(value);
         return getMutableTableRow(address);
     }
 
-    @Override
+    @Nullable @Override
     public TableRow findRowByPrefix(String prefix) {
         TableCellAddress address = reportPage.findByPrefix(prefix);
         return getMutableTableRow(address);
     }
 
-    private MutableTableRow<R> getMutableTableRow(TableCellAddress address) {
+    @Nullable private MutableTableRow<R> getMutableTableRow(TableCellAddress address) {
         if (tableRange.contains(address)) {
             MutableTableRow<R> tableRow = new MutableTableRow<>(this, getCellDataAccessObject());
             tableRow.setRow(getRow(address.getRow()));

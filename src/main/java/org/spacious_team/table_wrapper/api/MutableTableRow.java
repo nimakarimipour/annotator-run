@@ -26,6 +26,7 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Iterator;
+import javax.annotation.Nullable;
 
 /**
  * Mutable implementation. Used by {@link AbstractTable#iterator()} and {@link AbstractTable#stream()} to eliminate
@@ -119,7 +120,7 @@ class MutableTableRow<T extends ReportPageRow> implements TableRow {
      * Cloned  object is safe use everywhere, this object should be used oly inside of one iteration
      * of {@link Table#iterator()} or {@link Table#stream()}
      */
-    @SuppressWarnings("unchecked")
+    
     public MutableTableRow<T> clone() {
         try {
             return (MutableTableRow<T>) super.clone();

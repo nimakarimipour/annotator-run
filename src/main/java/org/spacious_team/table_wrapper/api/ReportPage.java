@@ -21,8 +21,9 @@ package org.spacious_team.table_wrapper.api;
 import java.util.function.Predicate;
 
 import static org.spacious_team.table_wrapper.api.ReportPageHelper.getCellStringValueIgnoreCasePrefixPredicate;
+import javax.annotation.Nullable;
 
-@SuppressWarnings("unused")
+
 public interface ReportPage {
 
     /**
@@ -160,7 +161,7 @@ public interface ReportPage {
     /**
      * For vertical table of key-value records (table with two columns), search and return value for requested key.
      */
-    default Object getNextColumnValue(String firstColumnValuePrefix) {
+    @Nullable default Object getNextColumnValue(String firstColumnValuePrefix) {
         TableCellAddress address = findByPrefix(firstColumnValuePrefix);
         for (TableCell cell : getRow(address.getRow())) {
             if (cell != null && cell.getColumnIndex() > address.getColumn()) {
