@@ -40,13 +40,13 @@ class ContentStreamRequestHandler extends RequestHandler {
     this.context = context;
   }
 
-  @Override public boolean canHandleRequest(@NonNull Request data) {
+  @Override public boolean canHandleRequest( Request data) {
     Uri uri = data.uri;
     return uri != null && SCHEME_CONTENT.equals(uri.getScheme());
   }
 
   @Override
-  public void load(@NonNull Picasso picasso, @NonNull Request request, @NonNull Callback callback) {
+  public void load( Picasso picasso,  Request request,  Callback callback) {
     boolean signaledCallback = false;
     try {
       Uri requestUri = checkNotNull(request.uri, "request.uri == null");

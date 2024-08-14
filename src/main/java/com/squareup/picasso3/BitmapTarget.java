@@ -37,7 +37,7 @@ public interface BitmapTarget {
    * <p>
    * <strong>Note:</strong> You must not recycle the bitmap.
    */
-  void onBitmapLoaded(@NonNull Bitmap bitmap, @NonNull LoadedFrom from);
+  void onBitmapLoaded( Bitmap bitmap,  LoadedFrom from);
 
   /**
    * Callback indicating the image could not be successfully loaded.
@@ -46,7 +46,7 @@ public interface BitmapTarget {
    * specified via {@link RequestCreator#error(android.graphics.drawable.Drawable)}
    * or {@link RequestCreator#error(int)}.
    */
-  void onBitmapFailed(@NonNull Exception e, @Nullable Drawable errorDrawable);
+  void onBitmapFailed( Exception e,  @Nullable Drawable errorDrawable);
 
   /**
    * Callback invoked right before your request is submitted.
@@ -55,5 +55,5 @@ public interface BitmapTarget {
    * specified via {@link RequestCreator#placeholder(android.graphics.drawable.Drawable)}
    * or {@link RequestCreator#placeholder(int)}.
    */
-  void onPrepareLoad(@Nullable Drawable placeHolderDrawable);
+  void onPrepareLoad( @Nullable Drawable placeHolderDrawable);
 }

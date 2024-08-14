@@ -36,7 +36,7 @@ final class MatrixTransformation implements Transformation {
     this.data = data;
   }
 
-  @NonNull @Override public RequestHandler.Result transform(@NonNull RequestHandler.Result source) {
+   @Override public RequestHandler.Result transform( RequestHandler.Result source) {
     Bitmap bitmap = source.getBitmap();
     if (bitmap == null) {
       return source;
@@ -47,7 +47,7 @@ final class MatrixTransformation implements Transformation {
     return new RequestHandler.Result(bitmap, source.getLoadedFrom(), source.getExifRotation());
   }
 
-  @NonNull @Override public String key() {
+   @Override public String key() {
     return "matrixTransformation()";
   }
 

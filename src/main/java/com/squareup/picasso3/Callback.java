@@ -20,14 +20,14 @@ import android.support.annotation.NonNull;
 public interface Callback {
   void onSuccess();
 
-  void onError(@NonNull Throwable t);
+  void onError( Throwable t);
 
   class EmptyCallback implements Callback {
 
     @Override public void onSuccess() {
     }
 
-    @Override public void onError(@NonNull Throwable t) {
+    @Override public void onError( Throwable t) {
     }
   }
 }

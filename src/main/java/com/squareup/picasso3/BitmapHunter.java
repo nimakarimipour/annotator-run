@@ -53,12 +53,12 @@ class BitmapHunter implements Runnable {
   private static final AtomicInteger SEQUENCE_GENERATOR = new AtomicInteger();
 
   private static final RequestHandler ERRORING_HANDLER = new RequestHandler() {
-    @Override public boolean canHandleRequest(@NonNull Request data) {
+    @Override public boolean canHandleRequest( Request data) {
       return true;
     }
 
-    @Override public void load(@NonNull Picasso picasso, @NonNull Request request,
-        @NonNull Callback callback) {
+    @Override public void load( Picasso picasso,  Request request,
+         Callback callback) {
       callback.onError(new IllegalStateException("Unrecognized type of request: " + request));
     }
   };
@@ -72,11 +72,11 @@ class BitmapHunter implements Runnable {
   Request data;
   final RequestHandler requestHandler;
 
-  @Nullable Action action;
-  @Nullable List<Action> actions;
-  @Nullable Result result;
-  @Nullable Future<?> future;
-  @Nullable Exception exception;
+   @Nullable Action action;
+   @Nullable List<Action> actions;
+   @Nullable Result result;
+   @Nullable Future<?> future;
+   @Nullable Exception exception;
   int retryCount;
   Priority priority;
 
@@ -156,12 +156,12 @@ class BitmapHunter implements Runnable {
     final CountDownLatch latch = new CountDownLatch(1);
     try {
       requestHandler.load(picasso, data, new RequestHandler.Callback() {
-        @Override public void onSuccess(@Nullable Result result) {
+        @Override public void onSuccess( Result result) {
           resultReference.set(result);
           latch.countDown();
         }
 
-        @Override public void onError(@NonNull Throwable t) {
+        @Override public void onError( Throwable t) {
           exceptionReference.set(t);
           latch.countDown();
         }
@@ -307,7 +307,7 @@ class BitmapHunter implements Runnable {
     return future != null && future.isCancelled();
   }
 
-  boolean shouldRetry(boolean airplaneMode, @Nullable NetworkInfo info) {
+  boolean shouldRetry(boolean airplaneMode,  @Nullable NetworkInfo info) {
     boolean hasRetries = retryCount > 0;
     if (!hasRetries) {
       return false;
@@ -320,7 +320,7 @@ class BitmapHunter implements Runnable {
     return requestHandler.supportsReplay();
   }
 
-  @Nullable Result getResult() {
+   @Nullable Result getResult() {
     return result;
   }
 
@@ -332,7 +332,7 @@ class BitmapHunter implements Runnable {
     return data;
   }
 
-  @Nullable Action getAction() {
+   @Nullable Action getAction() {
     return action;
   }
 
@@ -340,11 +340,11 @@ class BitmapHunter implements Runnable {
     return picasso;
   }
 
-  @Nullable List<Action> getActions() {
+   @Nullable List<Action> getActions() {
     return actions;
   }
 
-  @Nullable Exception getException() {
+   @Nullable Exception getException() {
     return exception;
   }
 

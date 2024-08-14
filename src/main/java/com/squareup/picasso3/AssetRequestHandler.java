@@ -41,7 +41,7 @@ class AssetRequestHandler extends RequestHandler {
     this.context = context;
   }
 
-  @Override public boolean canHandleRequest(@NonNull Request data) {
+  @Override public boolean canHandleRequest( Request data) {
     Uri uri = data.uri;
     return uri != null
         && SCHEME_FILE.equals(uri.getScheme())
@@ -50,7 +50,7 @@ class AssetRequestHandler extends RequestHandler {
   }
 
   @Override
-  public void load(@NonNull Picasso picasso, @NonNull Request request, @NonNull Callback callback) {
+  public void load( Picasso picasso,  Request request,  Callback callback) {
     initializeIfFirstTime();
 
     boolean signaledCallback = false;

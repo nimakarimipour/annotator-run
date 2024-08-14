@@ -97,7 +97,7 @@ final class Utils {
     // No instances.
   }
 
-  public static @NonNull <T> T checkNotNull(@Nullable T value, @Nullable String message) {
+  public static  <T> T checkNotNull( @Nullable T value,  String message) {
     if (value == null) {
       throw new NullPointerException(message);
     }
@@ -144,7 +144,7 @@ final class Utils {
     log(owner, verb, logId, "");
   }
 
-  static void log(String owner, String verb, String logId, @Nullable String extras) {
+  static void log(String owner, String verb, String logId,  @Nullable String extras) {
     if (extras == null) {
       extras = "";
     }
@@ -275,7 +275,7 @@ final class Utils {
   }
 
   static class PicassoThreadFactory implements ThreadFactory {
-    @Override public Thread newThread(@NonNull Runnable r) {
+    @Override public Thread newThread( Runnable r) {
       return new PicassoThread(r);
     }
   }

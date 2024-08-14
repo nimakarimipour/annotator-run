@@ -1100,11 +1100,11 @@ public final class BitmapHunterTest {
       this.exception = exception;
     }
 
-    @Override public boolean canHandleRequest(@NonNull Request data) {
+    @Override public boolean canHandleRequest( Request data) {
       return true;
     }
 
-    @Override public void load(@NonNull Picasso picasso, @NonNull Request request, @NonNull Callback callback) {
+    @Override public void load( Picasso picasso,  Request request,  Callback callback) {
       if (exception != null) {
         callback.onError(exception);
       } else {
@@ -1129,17 +1129,17 @@ public final class BitmapHunterTest {
       super(null, null);
     }
 
-    @Override public void load(@NonNull Picasso picasso, @NonNull Request request, @NonNull Callback callback) {
+    @Override public void load( Picasso picasso,  Request request,  Callback callback) {
       callback.onError(new OutOfMemoryError());
     }
   }
 
   private class CustomRequestHandler extends RequestHandler {
-    @Override public boolean canHandleRequest(@NonNull Request data) {
+    @Override public boolean canHandleRequest( Request data) {
         return CUSTOM_URI.getScheme().equals(data.uri.getScheme());
     }
 
-    @Override public void load(@NonNull Picasso picasso, @NonNull Request request, @NonNull Callback callback) {
+    @Override public void load( Picasso picasso,  Request request,  Callback callback) {
       callback.onSuccess(new Result(bitmap, MEMORY));
     }
   }

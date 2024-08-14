@@ -42,7 +42,7 @@ final class NetworkRequestHandler extends RequestHandler {
     this.stats = stats;
   }
 
-  @Override public boolean canHandleRequest(@NonNull Request data) {
+  @Override public boolean canHandleRequest( Request data) {
     Uri uri = data.uri;
     if (uri == null) return false;
 
@@ -50,7 +50,7 @@ final class NetworkRequestHandler extends RequestHandler {
     return (SCHEME_HTTP.equals(scheme) || SCHEME_HTTPS.equals(scheme));
   }
 
-  @Override public void load(@NonNull Picasso picasso, @NonNull final Request request, @NonNull
+  @Override public void load( Picasso picasso,  final Request request, 
   final Callback callback) {
     okhttp3.Request callRequest = createRequest(request);
     callFactory.newCall(callRequest).enqueue(new okhttp3.Callback() {
@@ -95,7 +95,7 @@ final class NetworkRequestHandler extends RequestHandler {
     return 2;
   }
 
-  @Override boolean shouldRetry(boolean airplaneMode, @Nullable NetworkInfo info) {
+  @Override boolean shouldRetry(boolean airplaneMode,  @Nullable NetworkInfo info) {
     return info == null || info.isConnected();
   }
 

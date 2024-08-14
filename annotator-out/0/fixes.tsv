@@ -1,0 +1,2 @@
+kind	class	method	param	index	uri	reason	annotation	rootClass	rootMethod
+PARAMETER	com.squareup.picasso3.Picasso	Picasso(android.content.Context,com.squareup.picasso3.Dispatcher,okhttp3.Call.Factory,okhttp3.Cache,com.squareup.picasso3.PlatformLruCache,com.squareup.picasso3.Picasso.Listener,java.util.List,java.util.List,com.squareup.picasso3.Stats,android.graphics.Bitmap.Config,boolean,boolean)	defaultBitmapConfig	9	/Users/nima/Desktop/annotator-run/src/main/java/com/squareup/picasso3/Picasso.java	PASS_NULLABLE	nullable	com.squareup.picasso3.Picasso$Builder	build()
