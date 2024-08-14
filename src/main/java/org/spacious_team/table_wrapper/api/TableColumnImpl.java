@@ -20,7 +20,6 @@ package org.spacious_team.table_wrapper.api;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.checkerframework.checker.nullness.qual.Nullable;
 
 import java.util.Arrays;
 
@@ -30,7 +29,6 @@ public class TableColumnImpl implements TableColumn {
     private final String[] words;
 
     public static TableColumn of(String... words) {
-        //noinspection ConstantConditions
         if (words.length == 0 || (words.length == 1 && (words[0] == null || words[0].isEmpty()))) {
             return LEFTMOST_COLUMN;
         }
@@ -46,10 +44,9 @@ public class TableColumnImpl implements TableColumn {
     public int getColumnIndex(int firstColumnForSearch, ReportPageRow... headerRows) {
         for (ReportPageRow header : headerRows) {
             next_cell:
-            for (@SuppressWarnings("NullableProblems") @Nullable TableCell cell : header) {
-                @Nullable Object value;
-                if ((cell != null) && (cell.getColumnIndex() >= firstColumnForSearch) &&
-                        (((value = cell.getValue()) != null) && (value instanceof String))) {
+            for (TableCell cell : header) {
+                Object value;
+                if (cell != null && cell.getColumnIndex() >= firstColumnForSearch && ((value = cell.getValue()) instanceof String)) {
                     String colName = value.toString().toLowerCase();
                     for (String word : words) {
                         if (!containsWord(colName, word)) {
@@ -63,7 +60,7 @@ public class TableColumnImpl implements TableColumn {
         throw new RuntimeException("Не обнаружен заголовок таблицы, включающий слова: " + String.join(", ", words));
     }
 
-    private boolean containsWord(String text, @Nullable String word) {
-        return word != null && text.matches("(^|(.|\\n)*\\b|(.|\\n)*\\s)" + word + "(\\b(.|\\n)*|\\s(.|\\n)*|$)");
+    private boolean containsWord(String text, String word) {
+        return text.matches("(^|(.|\\n)*\\b|(.|\\n)*\\s)" + word + "(\\b(.|\\n)*|\\s(.|\\n)*|$)");
     }
 }

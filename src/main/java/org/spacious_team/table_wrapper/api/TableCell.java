@@ -18,7 +18,6 @@
 
 package org.spacious_team.table_wrapper.api;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -31,7 +30,6 @@ public interface TableCell {
      */
     int getColumnIndex();
 
-    @Nullable
     Object getValue();
 
     /**
@@ -72,8 +70,7 @@ public interface TableCell {
     /**
      * @return return cell value or defaultValue if the cell is missing or the type does not match the expected
      */
-    @Nullable
-    default Object getValueOrDefault(@Nullable Object defaultValue) {
+    default Object getValueOrDefault(Object defaultValue) {
         try {
             return getValue();
         } catch (Exception e) {

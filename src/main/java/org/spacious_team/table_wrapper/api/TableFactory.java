@@ -20,8 +20,6 @@ package org.spacious_team.table_wrapper.api;
 
 import java.util.function.Predicate;
 
-import static java.util.Objects.requireNonNull;
-
 public interface TableFactory {
 
     boolean canHandle(ReportPage reportPage);
@@ -128,14 +126,8 @@ public interface TableFactory {
         if (!range.equals(TableCellRange.EMPTY_RANGE)) {
             TableCellAddress tableNameCell =
                     reportPage.find(range.getFirstRow(), range.getFirstRow() + 1, tableNameFinder);
-            if (!tableNameCell.equals(TableCellAddress.NOT_FOUND)) {
-                try {
-                    @SuppressWarnings({"nullness", "ConstantConditions"})
-                    TableCell cell = requireNonNull(reportPage.getCell(tableNameCell));
-                    tableName = cell.getStringValue();
-                } catch (Exception ignore) {
-                }
-            }
+            tableName = tableNameCell.equals(TableCellAddress.NOT_FOUND) ? "<not found>" :
+                    reportPage.getCell(tableNameCell).getStringValue();
         }
         return create(reportPage, tableName, range, headerDescription, headersRowCount);
     }
@@ -156,14 +148,8 @@ public interface TableFactory {
         if (!range.equals(TableCellRange.EMPTY_RANGE)) {
             TableCellAddress tableNameCell =
                     reportPage.find(range.getFirstRow(), range.getFirstRow() + 1, tableNameFinder);
-            if (!tableNameCell.equals(TableCellAddress.NOT_FOUND)) {
-                try {
-                    @SuppressWarnings({"nullness", "ConstantConditions"})
-                    TableCell cell = requireNonNull(reportPage.getCell(tableNameCell));
-                    tableName = cell.getStringValue();
-                } catch (Exception ignore) {
-                }
-            }
+            tableName = tableNameCell.equals(TableCellAddress.NOT_FOUND) ? "<not found>" :
+                    reportPage.getCell(tableNameCell).getStringValue();
         }
         return create(reportPage, tableName, range, headerDescription, headersRowCount);
     }

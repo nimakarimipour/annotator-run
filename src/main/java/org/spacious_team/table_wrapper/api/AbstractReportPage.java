@@ -18,14 +18,11 @@
 
 package org.spacious_team.table_wrapper.api;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * {@link ReportPage} with specified {@link ReportPageRow}
  */
 public abstract class AbstractReportPage<T extends ReportPageRow> implements ReportPage {
 
-    @Nullable
     @Override
     public abstract T getRow(int i);
 

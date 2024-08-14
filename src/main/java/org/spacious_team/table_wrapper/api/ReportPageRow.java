@@ -18,15 +18,12 @@
 
 package org.spacious_team.table_wrapper.api;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
-
 public interface ReportPageRow extends Iterable<TableCell> {
 
     /**
      * @param i zero-based cell number
-     * @return cell ot null if cell does not exist
+     * @return cell ot null if cell does not exists
      */
-    @Nullable
     TableCell getCell(int i);
 
     /**
@@ -35,7 +32,7 @@ public interface ReportPageRow extends Iterable<TableCell> {
     int getRowNum();
 
     /**
-     * Zero-based cell number or -1 if row doesn't contain cells
+     * Zero-based cell number
      */
     int getFirstCellNum();
 
