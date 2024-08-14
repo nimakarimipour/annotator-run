@@ -45,13 +45,13 @@ class MutableTableRow<T extends ReportPageRow> implements TableRow {
     @Setter(AccessLevel.PACKAGE)
     private volatile T row;
 
-    @Nullable
-    public TableCell getCell(TableColumnDescription column) {
+    
+    @Nullable public TableCell getCell(TableColumnDescription column) {
         return getCell(getCellIndex(column));
     }
 
-    @Nullable
-    @Override
+    
+    @Nullable @Override
     public TableCell getCell(int i) {
         return row.getCell(i);
     }
@@ -81,8 +81,8 @@ class MutableTableRow<T extends ReportPageRow> implements TableRow {
         return row.iterator();
     }
 
-    @Nullable
-    public Object getCellValue(TableColumnDescription column) {
+    
+    @Nullable public Object getCellValue(TableColumnDescription column) {
         return dao.getValue(row, getCellIndex(column));
     }
 
@@ -115,7 +115,7 @@ class MutableTableRow<T extends ReportPageRow> implements TableRow {
     }
 
     private Integer getCellIndex(TableColumnDescription column) {
-        @Nullable Integer cellIndex = table.getHeaderDescription()
+         Integer cellIndex = table.getHeaderDescription()
                 .get(column.getColumn());
         return requireNonNull(cellIndex, "Cell not found");
     }
@@ -126,7 +126,7 @@ class MutableTableRow<T extends ReportPageRow> implements TableRow {
      * Cloned  object is safe use everywhere, this object should be used oly inside of one iteration
      * of {@link Table#iterator()} or {@link Table#stream()}
      */
-    @SuppressWarnings("unchecked")
+    
     public MutableTableRow<T> clone() {
         try {
             return (MutableTableRow<T>) super.clone();

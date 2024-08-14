@@ -130,7 +130,7 @@ public interface TableFactory {
                     reportPage.find(range.getFirstRow(), range.getFirstRow() + 1, tableNameFinder);
             if (!tableNameCell.equals(TableCellAddress.NOT_FOUND)) {
                 try {
-                    @SuppressWarnings({"nullness", "ConstantConditions"})
+                    
                     TableCell cell = requireNonNull(reportPage.getCell(tableNameCell));
                     tableName = cell.getStringValue();
                 } catch (Exception ignore) {
@@ -158,7 +158,7 @@ public interface TableFactory {
                     reportPage.find(range.getFirstRow(), range.getFirstRow() + 1, tableNameFinder);
             if (!tableNameCell.equals(TableCellAddress.NOT_FOUND)) {
                 try {
-                    @SuppressWarnings({"nullness", "ConstantConditions"})
+                    
                     TableCell cell = requireNonNull(reportPage.getCell(tableNameCell));
                     tableName = cell.getStringValue();
                 } catch (Exception ignore) {

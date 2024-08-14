@@ -62,7 +62,7 @@ public abstract class AbstractTable<R extends ReportPageRow> implements Table {
     /**
      * @param tableRange only first and last row numbers matters
      */
-    @SuppressWarnings("unused")
+    
     protected AbstractTable(AbstractReportPage<R> reportPage,
                             String tableName,
                             TableCellRange tableRange,
@@ -84,7 +84,7 @@ public abstract class AbstractTable<R extends ReportPageRow> implements Table {
                         getColumnIndices(this.headerDescription).max().orElse(tableRange.getLastColumn()));
     }
 
-    @SuppressWarnings("unused")
+    
     protected AbstractTable(AbstractTable<R> table, int appendDataRowsToTop, int appendDataRowsToBottom) {
         this.reportPage = table.reportPage;
         this.tableName = table.tableName;
@@ -109,12 +109,12 @@ public abstract class AbstractTable<R extends ReportPageRow> implements Table {
         Map<TableColumn, Integer> columnIndices = new HashMap<>();
         ReportPageRow[] headerRows = new ReportPageRow[headersRowCount];
         for (int i = 0; i < headersRowCount; i++) {
-            @Nullable ReportPageRow row = reportPage.getRow(tableRange.getFirstRow() + 1 + i);
-            @SuppressWarnings({"nullness"})
+             ReportPageRow row = reportPage.getRow(tableRange.getFirstRow() + 1 + i);
+            
             ReportPageRow notNullRow = requireNonNull(row, "Header row is absent");
             headerRows[i] = notNullRow;
         }
-        @SuppressWarnings("nullness")
+        
         TableColumn[] columns = Arrays.stream(headerDescription.getEnumConstants())
                 .map(TableColumnDescription::getColumn)
                 .toArray(TableColumn[]::new);
@@ -131,29 +131,29 @@ public abstract class AbstractTable<R extends ReportPageRow> implements Table {
                 .filter(i -> i != TableColumn.NOCOLUMN_INDEX);
     }
 
-    public <T> List<T> getData(Object report, Function<TableRow, @Nullable T> rowExtractor) {
+    public <T> List<T> getData(Object report, Function<TableRow,  T> rowExtractor) {
         return getDataCollection(report, (row, data) -> {
-            @Nullable T result = rowExtractor.apply(row);
+             T result = rowExtractor.apply(row);
             if (result != null) {
                 data.add(result);
             }
         });
     }
 
-    public <T> List<T> getDataCollection(Object report, Function<TableRow, @Nullable Collection<T>> rowExtractor) {
+    public <T> List<T> getDataCollection(Object report, Function<TableRow,  Collection<T>> rowExtractor) {
         return getDataCollection(report, (row, data) -> {
-            @Nullable Collection<T> result = rowExtractor.apply(row);
+             Collection<T> result = rowExtractor.apply(row);
             if (result != null) {
                 data.addAll(result);
             }
         });
     }
 
-    public <T> List<T> getDataCollection(Object report, Function<TableRow, @Nullable Collection<T>> rowExtractor,
+    public <T> List<T> getDataCollection(Object report, Function<TableRow,  Collection<T>> rowExtractor,
                                          BiPredicate<T, T> equalityChecker,
-                                         BiFunction<T, T, @Nullable Collection<T>> mergeDuplicates) {
+                                         BiFunction<T, T,  Collection<T>> mergeDuplicates) {
         return getDataCollection(report, (row, data) -> {
-            @Nullable Collection<T> result = rowExtractor.apply(row);
+             Collection<T> result = rowExtractor.apply(row);
             if (result != null) {
                 for (T r : result) {
                     addWithEqualityChecker(r, data, equalityChecker, mergeDuplicates);
@@ -164,7 +164,7 @@ public abstract class AbstractTable<R extends ReportPageRow> implements Table {
 
     private <T> List<T> getDataCollection(Object report, BiConsumer<TableRow, Collection<T>> rowHandler) {
         List<T> data = new ArrayList<>();
-        for (@SuppressWarnings("NullableProblems") @Nullable TableRow row : this) {
+        for (  TableRow row : this) {
             if (row != null) {
                 try {
                     rowHandler.accept(row, data);
@@ -180,8 +180,8 @@ public abstract class AbstractTable<R extends ReportPageRow> implements Table {
     public static <T> void addWithEqualityChecker(T element,
                                                   Collection<T> collection,
                                                   BiPredicate<T, T> equalityChecker,
-                                                  BiFunction<T, T, @Nullable Collection<T>> duplicatesMerger) {
-        @Nullable T equalsObject = null;
+                                                  BiFunction<T, T,  Collection<T>> duplicatesMerger) {
+         T equalsObject = null;
         for (T e : collection) {
             if (equalityChecker.test(e, element)) {
                 equalsObject = e;
@@ -190,7 +190,7 @@ public abstract class AbstractTable<R extends ReportPageRow> implements Table {
         }
         if (equalsObject != null) {
             collection.remove(equalsObject);
-            @Nullable Collection<T> mergedCollection = duplicatesMerger.apply(equalsObject, element);
+             Collection<T> mergedCollection = duplicatesMerger.apply(equalsObject, element);
             if (mergedCollection != null) {
                 collection.addAll(mergedCollection);
             }
@@ -233,7 +233,7 @@ public abstract class AbstractTable<R extends ReportPageRow> implements Table {
         @Override
         public TableRow next() {
             int rowNum;
-            @Nullable R row;
+             R row;
             do {
                 rowNum = tableRange.getFirstRow() + (i++);
                 row = getRow(rowNum);
@@ -246,31 +246,31 @@ public abstract class AbstractTable<R extends ReportPageRow> implements Table {
         }
     }
 
-    @Nullable
+    
     @Override
     public R getRow(int i) {
         return reportPage.getRow(i);
     }
 
-    @Nullable
-    @Override
+    
+    @Nullable @Override
     public TableRow findRow(Object value) {
         TableCellAddress address = reportPage.find(value);
         return getMutableTableRow(address);
     }
 
-    @Nullable
-    @Override
+    
+    @Nullable @Override
     public TableRow findRowByPrefix(String prefix) {
         TableCellAddress address = reportPage.findByPrefix(prefix);
         return getMutableTableRow(address);
     }
 
-    @Nullable
-    private MutableTableRow<R> getMutableTableRow(TableCellAddress address) {
+    
+    @Nullable private MutableTableRow<R> getMutableTableRow(TableCellAddress address) {
         if (tableRange.contains(address)) {
             MutableTableRow<R> tableRow = new MutableTableRow<>(this, getCellDataAccessObject());
-            @SuppressWarnings({"nullness", "ConstantConditions"})
+            
             R row = requireNonNull(getRow(address.getRow()), "Row is empty");
             tableRow.setRow(row);
             return tableRow;
