@@ -74,7 +74,7 @@ tasks.withType(JavaCompile) {
         check("NullAway", CheckSeverity.ERROR)
         check("AnnotatorScanner", CheckSeverity.ERROR)
         check("AnnotLocator", CheckSeverity.ERROR)
-        option("NullAway:AnnotatedPackages", "com.namelessmc.java_api")
+        option("NullAway:AnnotatedPackages", "org.spacious_team.table_wrapper.api")
         option("NullAway:SerializeFixMetadata", "true")
         option("NullAway:FixSerializationConfigPath", nullaway_path)
         option("AnnotatorScanner:ConfigPath",  scanner_path)
