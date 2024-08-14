@@ -46,8 +46,8 @@ public class TableColumnImpl implements TableColumn {
     public int getColumnIndex(int firstColumnForSearch, ReportPageRow... headerRows) {
         for (ReportPageRow header : headerRows) {
             next_cell:
-            for (@SuppressWarnings("NullableProblems") @Nullable TableCell cell : header) {
-                @Nullable Object value;
+            for (@SuppressWarnings("NullableProblems")  TableCell cell : header) {
+                 Object value;
                 if ((cell != null) && (cell.getColumnIndex() >= firstColumnForSearch) &&
                         (((value = cell.getValue()) != null) && (value instanceof String))) {
                     String colName = value.toString().toLowerCase();
@@ -63,7 +63,7 @@ public class TableColumnImpl implements TableColumn {
         throw new RuntimeException("Не обнаружен заголовок таблицы, включающий слова: " + String.join(", ", words));
     }
 
-    private boolean containsWord(String text, @Nullable String word) {
+    private boolean containsWord(String text,  String word) {
         return word != null && text.matches("(^|(.|\\n)*\\b|(.|\\n)*\\s)" + word + "(\\b(.|\\n)*|\\s(.|\\n)*|$)");
     }
 }

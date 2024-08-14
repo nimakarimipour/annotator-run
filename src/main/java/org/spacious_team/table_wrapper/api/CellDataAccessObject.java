@@ -38,10 +38,10 @@ public interface CellDataAccessObject<C, R extends ReportPageRow> {
     Pattern spacePattern = Pattern.compile("\\s");
     String NO_CELL_VALUE_EXCEPTION_MESSAGE = "Cell doesn't contains value";
 
-    @Nullable
+    
     C getCell(R row, Integer cellIndex);
 
-    @Nullable
+    
     Object getValue(C cell);
 
     /**
@@ -55,7 +55,7 @@ public interface CellDataAccessObject<C, R extends ReportPageRow> {
      * @throws RuntimeException if method can't extract long value
      */
     default long getLongValue(C cell) {
-        @Nullable Object value = getValue(cell);
+         Object value = getValue(cell);
         if (value instanceof Number) {
             return ((Number) value).longValue();
         } else if (value != null) {
@@ -69,7 +69,7 @@ public interface CellDataAccessObject<C, R extends ReportPageRow> {
      * @throws RuntimeException if method can't extract Double value
      */
     default double getDoubleValue(C cell) {
-        @Nullable Object value = getValue(cell);
+         Object value = getValue(cell);
         if (value instanceof Number) {
             return ((Number) value).doubleValue();
         } else if (value != null) {
@@ -125,9 +125,9 @@ public interface CellDataAccessObject<C, R extends ReportPageRow> {
                 .toLocalDateTime();
     }
 
-    @Nullable
-    default Object getValue(R row, Integer cellIndex) {
-        @Nullable C cell = getCell(row, cellIndex);
+    
+    @Nullable default Object getValue(R row, Integer cellIndex) {
+         C cell = getCell(row, cellIndex);
         return (cell == null) ? null : getValue(cell);
     }
 

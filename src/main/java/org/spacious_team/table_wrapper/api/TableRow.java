@@ -31,14 +31,14 @@ public interface TableRow extends ReportPageRow, Cloneable {
 
     Table getTable();
 
-    @Nullable
-    TableCell getCell(TableColumnDescription column);
+    
+    @Nullable TableCell getCell(TableColumnDescription column);
 
     /**
      * Returns cell's native value
      */
-    @Nullable
-    Object getCellValue(TableColumnDescription column);
+    
+    @Nullable Object getCellValue(TableColumnDescription column);
 
     /**
      * @throws RuntimeException if method can't extract int value
@@ -78,8 +78,8 @@ public interface TableRow extends ReportPageRow, Cloneable {
     /**
      * @return return cell value or defaultValue if the cell is missing or the type does not match the expected
      */
-    @Nullable
-    default Object getCellValueOrDefault(TableColumnDescription column, @Nullable Object defaultValue) {
+    
+    @Nullable default Object getCellValueOrDefault(TableColumnDescription column,  Object defaultValue) {
         try {
             return getCellValue(column);
         } catch (Exception e) {
