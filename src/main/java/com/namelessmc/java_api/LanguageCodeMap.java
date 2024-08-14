@@ -34,7 +34,7 @@ public class LanguageCodeMap {
 		NAMELESS_TO_POSIX.put("Chinese(Simplified)", "zh_CN");
 	}
 
-	static @Nullable String getLanguagePosix(final @NonNull String language) {
+	@Nullable static  String getLanguagePosix(final  String language) {
 		return NAMELESS_TO_POSIX.get(language);
 	}
 

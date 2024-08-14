@@ -13,12 +13,12 @@ import java.util.stream.StreamSupport;
 public class Website implements LanguageEntity {
 
 
-	private final @NonNull String version;
-	private final @Nullable Update update;
-	private final @NonNull String@NonNull[] modules;
-	private final @NonNull String language;
+	private final  String version;
+	@Nullable private final  Update update;
+	private final  String[] modules;
+	private final  String language;
 
-	Website(final @NonNull JsonObject json) {
+	Website(final  JsonObject json) {
 		Objects.requireNonNull(json, "Provided json object is null");
 
 		this.version = json.get("nameless_version").getAsString();
@@ -44,27 +44,27 @@ public class Website implements LanguageEntity {
 		this.language = json.get("language").getAsString();
 	}
 
-	public @NonNull String getVersion() {
+	public  String getVersion() {
 		return this.version;
 	}
 
-	public @NonNull NamelessVersion getParsedVersion() throws UnknownNamelessVersionException {
+	public  NamelessVersion getParsedVersion() throws UnknownNamelessVersionException {
 		return NamelessVersion.parse(this.version);
 	}
 
 	/**
 	 * @return Information about an update, or empty if no update is available.
 	 */
-	public @NonNull Optional<@NonNull Update> getUpdate() {
+	public  Optional< Update> getUpdate() {
 		return Optional.ofNullable(this.update);
 	}
 
-	public @NonNull String@NonNull [] getModules() {
+	public  String [] getModules() {
 		return this.modules;
 	}
 
 	@Override
-	public @NonNull String getLanguage() {
+	public  String getLanguage() {
 		return this.language;
 	}
 
@@ -72,17 +72,17 @@ public class Website implements LanguageEntity {
 	 * Get POSIX code for website language (uses lookup table)
 	 * @return Language code or null if the website's language does not exist in our lookup table
 	 */
-	@Override
-	public @Nullable String getLanguagePosix() {
+	@Nullable @Override
+	public  String getLanguagePosix() {
 		return LanguageCodeMap.getLanguagePosix(this.language);
 	}
 
 	public static class Update {
 
 		private final boolean isUrgent;
-		private final @NonNull String version;
+		private final  String version;
 
-		Update(final boolean isUrgent, final @NonNull String version) {
+		Update(final boolean isUrgent, final  String version) {
 			this.isUrgent = isUrgent;
 			this.version = version;
 		}
@@ -92,7 +92,7 @@ public class Website implements LanguageEntity {
 		}
 
 
-		public @NonNull String getVersion() {
+		public  String getVersion() {
 			return this.version;
 		}
 
