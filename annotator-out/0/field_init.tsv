@@ -1,4 +1,1 @@
 kind	class	method	param	index	uri	field
-METHOD	com.namelessmc.java_api.NamelessUser	getId()	null	null	/home/nima/Developer/nullness-benchmarks/annotator-run/src/main/java/com/namelessmc/java_api/NamelessUser.java	id
-METHOD	com.namelessmc.java_api.FilteredUserListBuilder	all()	null	null	/home/nima/Developer/nullness-benchmarks/annotator-run/src/main/java/com/namelessmc/java_api/FilteredUserListBuilder.java	operator
-METHOD	com.namelessmc.java_api.FilteredUserListBuilder	any()	null	null	/home/nima/Developer/nullness-benchmarks/annotator-run/src/main/java/com/namelessmc/java_api/FilteredUserListBuilder.java	operator
