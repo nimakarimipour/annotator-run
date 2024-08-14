@@ -66,6 +66,8 @@ def nullaway_path = projectDir.absolutePath + "/annotator-out/nullaway.xml"
 import net.ltgt.gradle.errorprone.CheckSeverity
 tasks.withType(JavaCompile) {
     options.errorprone {
+        // disable all checks
+        options.errorprone.disableAllChecks = true
         check("NullAway", CheckSeverity.ERROR)
         check("AnnotatorScanner", CheckSeverity.ERROR)
         option("NullAway:AnnotatedPackages", "com.squareup.picasso3")
