@@ -1,0 +1,2 @@
+kind	class	method	param	index	uri	reason	annotation	rootClass	rootMethod
+FIELD	de.zuellich.meal_planner.algorithms.NullParser	null	object	null	/home/nima/Developer/nullness-benchmarks/annotator-run/src/main/java/de/zuellich/meal_planner/algorithms/NullParser.java	FIELD_NO_INIT	nullable	de.zuellich.meal_planner.algorithms.NullParser	null
