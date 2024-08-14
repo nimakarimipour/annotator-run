@@ -1,6 +1,7 @@
 package de.zuellich.meal_planner.pinterest.datatypes;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.annotation.Nullable;
 
 /**
  * A helper POJO to handle the board result wrapped in data. Jackson configuration doesn't seem so
@@ -8,10 +9,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class BoardRequest {
 
-  @JsonProperty(value = "data")
+  @Nullable @JsonProperty(value = "data")
   private Board board;
 
-  public Board getBoard() {
+  @Nullable public Board getBoard() {
     return board;
   }
 

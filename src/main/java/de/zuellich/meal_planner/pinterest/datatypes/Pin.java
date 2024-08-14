@@ -5,21 +5,22 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 /** */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Pin {
 
   /** Pinterest's unique identifier for this pin. */
-  private String id;
+  @Nullable private String id;
 
   /** The URL to the pinned page. */
-  @JsonProperty("original_link")
+  @Nullable @JsonProperty("original_link")
   private String originalLink;
 
-  private String note;
+  @Nullable private String note;
 
-  private String name;
+  @Nullable private String name;
 
   public Pin() {}
 
@@ -42,7 +43,7 @@ public class Pin {
     this.name = name;
   }
 
-  public String getId() {
+  @Nullable public String getId() {
     return id;
   }
 
@@ -77,7 +78,7 @@ public class Pin {
     return "Pin{" + "id='" + id + '\'' + ", originalLink='" + originalLink + '\'' + '}';
   }
 
-  public String getNote() {
+  @Nullable public String getNote() {
     return note;
   }
 
@@ -85,7 +86,7 @@ public class Pin {
     this.note = note;
   }
 
-  public String getName() {
+  @Nullable public String getName() {
     return name;
   }
 

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.client.OAuth2RestOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
+import javax.annotation.Nullable;
 
 /** A service to call the Pinterest Board API. */
 @Service
@@ -31,7 +32,7 @@ public class BoardService implements IBoardService {
     this.restTemplate = restTemplate;
   }
 
-  @Override
+  @Nullable @Override
   @Cacheable("boards")
   public List<Board> getBoards() {
     try {
@@ -45,7 +46,7 @@ public class BoardService implements IBoardService {
 
   @Override
   @Cacheable("pins")
-  public List<Pin> getPins(String boardId) {
+  public List<Pin> getPins(@Nullable String boardId) {
     List<Pin> result = new ArrayList<>();
 
     String cursor = null;
