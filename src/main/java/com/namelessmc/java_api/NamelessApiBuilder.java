@@ -18,16 +18,16 @@ public class NamelessApiBuilder {
 	private static final String DEFAULT_USER_AGENT = "Nameless-Java-API";
 	private static final int DEFAULT_RESPONSE_SIZE_LIMIT = 32*1024*1024;
 
-	private final @NotNull URL apiUrl;
-	private final @NotNull String apiKey;
+	private final  URL apiUrl;
+	private final  String apiKey;
 
-	private final @NotNull GsonBuilder gsonBuilder;
-	private @Nullable ApiLogger debugLogger = null;
-	private final @NotNull Methanol.Builder httpClientBuilder;
+	private final  GsonBuilder gsonBuilder;
+	@Nullable private  ApiLogger debugLogger = null;
+	private final  Methanol.Builder httpClientBuilder;
 	private int responseSizeLimit = DEFAULT_RESPONSE_SIZE_LIMIT;
 
-	NamelessApiBuilder(final @NotNull URL apiUrl,
-					   final @NotNull String apiKey) {
+	NamelessApiBuilder(final  URL apiUrl,
+					   final  String apiKey) {
 		try {
 			this.apiUrl = apiUrl.toString().endsWith("/") ? apiUrl : new URL(apiUrl + "/");
 		} catch (MalformedURLException e) {
@@ -47,12 +47,12 @@ public class NamelessApiBuilder {
 				.autoAcceptEncoding(true);
 	}
 
-	public @NotNull NamelessApiBuilder userAgent(@NotNull final String userAgent) {
+	public  NamelessApiBuilder userAgent( final String userAgent) {
 		this.httpClientBuilder.userAgent(userAgent);
 		return this;
 	}
 
-	public @NotNull NamelessApiBuilder debug(final boolean debug) {
+	public  NamelessApiBuilder debug(final boolean debug) {
 		if (debug) {
 			return this.withStdErrDebugLogging();
 		} else {
@@ -62,108 +62,108 @@ public class NamelessApiBuilder {
 	}
 
 	@Deprecated
-	public @NotNull NamelessApiBuilder withStdErrDebugLogging() {
+	public  NamelessApiBuilder withStdErrDebugLogging() {
 		this.debugLogger = PrintStreamLogger.DEFAULT_INSTANCE;
 		return this;
 	}
 
-	public @NotNull NamelessApiBuilder stdErrDebugLogger() {
+	public  NamelessApiBuilder stdErrDebugLogger() {
 		this.debugLogger = PrintStreamLogger.DEFAULT_INSTANCE;
 		return this;
 	}
 
 	@Deprecated
-	public @NotNull NamelessApiBuilder withSlf4jDebugLogging() {
+	public  NamelessApiBuilder withSlf4jDebugLogging() {
 		this.debugLogger = Slf4jLogger.DEFAULT_INSTANCE;
 		return this;
 	}
 
-	public @NotNull NamelessApiBuilder slf4jDebugLogger() {
+	public  NamelessApiBuilder slf4jDebugLogger() {
 		this.debugLogger = Slf4jLogger.DEFAULT_INSTANCE;
 		return this;
 	}
 
 	@Deprecated
-	public @NotNull NamelessApiBuilder withCustomDebugLogger(final @Nullable ApiLogger debugLogger) {
+	public  NamelessApiBuilder withCustomDebugLogger(final  ApiLogger debugLogger) {
 		this.debugLogger = debugLogger;
 		return this;
 	}
 
-	public @NotNull NamelessApiBuilder customDebugLogger(final @Nullable ApiLogger debugLogger) {
+	public  NamelessApiBuilder customDebugLogger(final  ApiLogger debugLogger) {
 		this.debugLogger = debugLogger;
 		return this;
 	}
 
 	@Deprecated
-	public @NotNull NamelessApiBuilder withTimeoutMillis(final int timeout) {
+	public  NamelessApiBuilder withTimeoutMillis(final int timeout) {
 		return this.withTimeout(Duration.ofMillis(timeout));
 	}
 
 	@Deprecated
-	public @NotNull NamelessApiBuilder withTimeout(final @NotNull Duration timeout) {
+	public  NamelessApiBuilder withTimeout(final  Duration timeout) {
 		this.httpClientBuilder.readTimeout(timeout)
 				.requestTimeout(timeout)
 				.connectTimeout(timeout);
 		return this;
 	}
 
-	public @NotNull NamelessApiBuilder timeout(final @NotNull Duration timeout) {
+	public  NamelessApiBuilder timeout(final  Duration timeout) {
 		this.httpClientBuilder.readTimeout(timeout)
 				.requestTimeout(timeout)
 				.connectTimeout(timeout);
 		return this;
 	}
 
-	public @NotNull NamelessApiBuilder withProxy(ProxySelector proxy) {
+	public  NamelessApiBuilder withProxy(ProxySelector proxy) {
 		this.httpClientBuilder.proxy(proxy);
 		return this;
 	}
 
 	@Deprecated
-	public @NotNull NamelessApiBuilder proxy(ProxySelector proxy) {
+	public  NamelessApiBuilder proxy(ProxySelector proxy) {
 		this.httpClientBuilder.proxy(proxy);
 		return this;
 	}
 
 	@Deprecated
-	public @NotNull NamelessApiBuilder withAuthenticator(Authenticator authenticator) {
+	public  NamelessApiBuilder withAuthenticator(Authenticator authenticator) {
 		this.httpClientBuilder.authenticator(authenticator);
 		return this;
 	}
 
-	public @NotNull NamelessApiBuilder authenticator(Authenticator authenticator) {
+	public  NamelessApiBuilder authenticator(Authenticator authenticator) {
 		this.httpClientBuilder.authenticator(authenticator);
 		return this;
 	}
 
 	@Deprecated
-	public @NotNull NamelessApiBuilder withPrettyJson() {
+	public  NamelessApiBuilder withPrettyJson() {
 		gsonBuilder.setPrettyPrinting();
 		return this;
 	}
 
-	public @NotNull NamelessApiBuilder pettyJsonRequests() {
+	public  NamelessApiBuilder pettyJsonRequests() {
 		gsonBuilder.setPrettyPrinting();
 		return this;
 	}
 
 	@Deprecated
-	public @NotNull NamelessApiBuilder withResponseSizeLimit(int responseSizeLimitBytes) {
+	public  NamelessApiBuilder withResponseSizeLimit(int responseSizeLimitBytes) {
 		this.responseSizeLimit = responseSizeLimitBytes;
 		return this;
 	}
 
-	public @NotNull NamelessApiBuilder responseSizeLimit(int responseSizeLimitBytes) {
+	public  NamelessApiBuilder responseSizeLimit(int responseSizeLimitBytes) {
 		this.responseSizeLimit = responseSizeLimitBytes;
 		return this;
 	}
 
-	public @NotNull NamelessApiBuilder executor(final @NotNull Executor executor) {
+	public  NamelessApiBuilder executor(final  Executor executor) {
 		this.httpClientBuilder.executor(executor);
 		return this;
 	}
 
-	public @NotNull NamelessAPI build() {
+	public  NamelessAPI build() {
 		return new NamelessAPI(
 				new RequestHandler(
 						this.apiUrl,

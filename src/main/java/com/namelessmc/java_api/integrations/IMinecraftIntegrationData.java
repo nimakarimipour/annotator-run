@@ -6,6 +6,6 @@ import java.util.UUID;
 
 public interface IMinecraftIntegrationData {
 
-	@NotNull UUID getUniqueId();
+	 UUID getUniqueId();
 
 }

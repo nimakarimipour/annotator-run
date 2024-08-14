@@ -9,12 +9,12 @@ import java.util.Objects;
 public class Group implements Comparable<Group> {
 
 	private final int id;
-	@NotNull
+	
 	private final String name;
 	private final int order;
 	private final boolean staff;
 
-	Group(@NotNull final JsonObject group) {
+	Group( final JsonObject group) {
 		this.id = group.get("id").getAsInt();
 		this.name = group.get("name").getAsString();
 		this.order = group.get("order").getAsInt();
@@ -25,7 +25,7 @@ public class Group implements Comparable<Group> {
 		return this.id;
 	}
 
-	@NotNull
+	
 	public String getName() {
 		return this.name;
 	}

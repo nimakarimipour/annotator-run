@@ -16,11 +16,11 @@ import java.util.UUID;
 
 public class FilteredUserListBuilder {
 
-	private final @NotNull NamelessAPI api;
-	private @Nullable Map<UserFilter<?>, Object> filters;
-	private @NotNull String operator = "AND";
+	private final  NamelessAPI api;
+	@Nullable private  Map<UserFilter<?>, Object> filters;
+	private  String operator = "AND";
 
-	FilteredUserListBuilder(@NotNull NamelessAPI api) {
+	FilteredUserListBuilder( NamelessAPI api) {
 		this.api = api;
 	}
 

@@ -5,8 +5,8 @@ import org.jetbrains.annotations.Nullable;
 
 public interface LanguageEntity {
 
-	@NotNull String getLanguage() throws NamelessException;
+	 String getLanguage() throws NamelessException;
 
-	@Nullable String getLanguagePosix() throws NamelessException;
+	 @Nullable String getLanguagePosix() throws NamelessException;
 
 }

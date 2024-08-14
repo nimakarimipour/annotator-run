@@ -30,16 +30,16 @@ import java.util.stream.Collectors;
 
 public class RequestHandler {
 
-	private final @NotNull URL apiUrl;
-	private final @NotNull Methanol httpClient;
-	private final @Nullable ApiLogger debugLogger;
-	private final @NotNull Gson gson;
+	private final  URL apiUrl;
+	private final  Methanol httpClient;
+	@Nullable private final  ApiLogger debugLogger;
+	private final  Gson gson;
 	private final int responseLengthLimit;
 
-	RequestHandler(final @NotNull URL apiUrl,
-				   final @NotNull Methanol httpClient,
-				   final @NotNull Gson gson,
-				   final @Nullable ApiLogger debugLogger,
+	RequestHandler(final  URL apiUrl,
+				   final  Methanol httpClient,
+				   final  Gson gson,
+				   @Nullable final  ApiLogger debugLogger,
 				   final int responseLengthLimit) {
 		this.apiUrl = Objects.requireNonNull(apiUrl, "API URL is null");
 		this.httpClient = Objects.requireNonNull(httpClient, "http client is null");
@@ -48,13 +48,13 @@ public class RequestHandler {
 		this.responseLengthLimit = responseLengthLimit;
 	}
 
-	public @NotNull JsonObject post(final @NotNull String route,
-									final @NotNull JsonObject postData) throws NamelessException {
+	public  JsonObject post(final  String route,
+									final  JsonObject postData) throws NamelessException {
 		return makeConnection(route, postData);
 	}
 
-	public @NotNull JsonObject get(final @NotNull String route,
-								   final @NotNull Object @NotNull... parameters) throws NamelessException {
+	public  JsonObject get(final  String route,
+								   final  Object ... parameters) throws NamelessException {
 		final StringBuilder urlBuilder = new StringBuilder(route);
 
 		if (parameters.length > 0) {
@@ -81,15 +81,15 @@ public class RequestHandler {
 		return makeConnection(urlBuilder.toString(), null);
 	}
 
-	private void debug(final @NotNull String message,
-					   final @NotNull Supplier<Object[]> argsSupplier) {
+	private void debug(final  String message,
+					   final  Supplier<Object[]> argsSupplier) {
 		if (this.debugLogger != null) {
 			this.debugLogger.log(String.format(message, argsSupplier.get()));
 		}
 	}
 
-	private @NotNull JsonObject makeConnection(final @NotNull String route,
-											   final @Nullable JsonObject postBody) throws NamelessException {
+	private  JsonObject makeConnection(final  String route,
+											   @Nullable final  JsonObject postBody) throws NamelessException {
 		Preconditions.checkArgument(!route.startsWith("/"), "Route must not start with a slash");
 		final MutableRequest request = MutableRequest.create(URI.create(this.apiUrl.toString() + route));
 
@@ -115,7 +115,7 @@ public class RequestHandler {
 			statusCode = httpResponse.statusCode();
 			responseBody = getBodyAsString(httpResponse);
 		} catch (final IOException e) {
-			final @Nullable String exceptionMessage = e.getMessage();
+			final  String exceptionMessage = e.getMessage();
 			final StringBuilder message = new StringBuilder("Network connection error (not a Nameless issue).");
 			if (exceptionMessage != null &&
 					exceptionMessage.contains("unable to find valid certification path to requested target")) {
@@ -178,7 +178,7 @@ public class RequestHandler {
 		}
 
 		if (json.get("error").getAsBoolean()) {
-			@Nullable String meta = null;
+			 String meta = null;
 			if (json.has("meta") && !json.get("meta").isJsonNull()) {
 				meta = json.get("meta").toString();
 			}
@@ -199,7 +199,7 @@ public class RequestHandler {
 		}
 	}
 
-	private static @NotNull String regularAsciiOnly(@NotNull String message) {
+	private static  String regularAsciiOnly( String message) {
 		char[] chars = message.toCharArray();
 		for (int i = 0; i < chars.length; i++) {
 			char c = chars[i];

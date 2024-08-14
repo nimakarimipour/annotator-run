@@ -7,18 +7,18 @@ import java.util.Objects;
 public class CustomProfileField {
 
 	private final int id;
-	private final @NotNull String name;
-	private final @NotNull CustomProfileFieldType type;
+	private final  String name;
+	private final  CustomProfileFieldType type;
 	private final boolean isPublic;
 	private final boolean isRequired;
-	private final @NotNull String description;
+	private final  String description;
 
 	CustomProfileField(final int id,
-					   final @NotNull String name,
-					   final @NotNull CustomProfileFieldType type,
+					   final  String name,
+					   final  CustomProfileFieldType type,
 					   final boolean isPublic,
 					   final boolean isRequired,
-					   final @NotNull String description) {
+					   final  String description) {
 		this.id = id;
 		this.name = name;
 		this.type = type;
@@ -31,11 +31,11 @@ public class CustomProfileField {
 		return id;
 	}
 
-	public @NotNull String getName() {
+	public  String getName() {
 		return name;
 	}
 
-	public @NotNull CustomProfileFieldType getType() {
+	public  CustomProfileFieldType getType() {
 		return type;
 	}
 
@@ -47,7 +47,7 @@ public class CustomProfileField {
 		return isRequired;
 	}
 
-	public @NotNull String getDescription() {
+	public  String getDescription() {
 		return description;
 	}
 
