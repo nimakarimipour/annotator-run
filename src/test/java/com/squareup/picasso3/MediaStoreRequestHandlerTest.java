@@ -52,7 +52,7 @@ public class MediaStoreRequestHandlerTest {
         assertBitmapsEqual(result.getBitmap(), bitmap);
       }
 
-      @Override public void onError(@NonNull Throwable t) {
+      @Override public void onError( Throwable t) {
         fail(t.getMessage());
       }
     });
@@ -69,7 +69,7 @@ public class MediaStoreRequestHandlerTest {
         assertBitmapsEqual(result.getBitmap(), bitmap);
       }
 
-      @Override public void onError(@NonNull Throwable t) {
+      @Override public void onError( Throwable t) {
         fail(t.getMessage());
       }
     });

@@ -63,7 +63,7 @@ public final class StatsSnapshot {
   }
 
   /** Prints out this {@link StatsSnapshot} into log. */
-  @SuppressWarnings("UnusedDeclaration") public void dump() {
+   public void dump() {
     Buffer buffer = new Buffer();
     try {
       dump(buffer);
@@ -74,7 +74,7 @@ public final class StatsSnapshot {
   }
 
   /** Writes this {@link StatsSnapshot} to the provided {@link BufferedSink}. */
-  public void dump(@NonNull BufferedSink sink) throws IOException {
+  public void dump( BufferedSink sink) throws IOException {
     sink.writeUtf8("===============BEGIN PICASSO STATS ===============");
     sink.writeUtf8("\n");
     sink.writeUtf8("Memory Cache Stats");
@@ -129,7 +129,7 @@ public final class StatsSnapshot {
     sink.writeUtf8("\n");
   }
 
-  @Nullable
+  
   @Override public String toString() {
     return "StatsSnapshot{"
         + "maxSize="

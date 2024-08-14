@@ -1,0 +1,3 @@
+message_type	message	enc_class	enc_member	offset	path	target_kind	target_class	target_method	target_param	target_index	target_path
+DEREFERENCE_NULLABLE	dereferenced expression result is @Nullable	com.squareup.picasso3.BitmapHunter	hunt()	7161	/Users/nima/Desktop/annotator-run/src/main/java/com/squareup/picasso3/BitmapHunter.java	null	null	null	null	null	null
+ASSIGN_FIELD_NULLABLE	assigning @Nullable expression to @NonNull field	com.squareup.picasso3.RequestCreator	RequestCreator()	3250	/Users/nima/Desktop/annotator-run/src/main/java/com/squareup/picasso3/RequestCreator.java	FIELD	com.squareup.picasso3.RequestCreator	null	picasso	null	/Users/nima/Desktop/annotator-run/src/main/java/com/squareup/picasso3/RequestCreator.java

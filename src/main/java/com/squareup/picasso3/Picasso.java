@@ -70,8 +70,8 @@ public class Picasso implements LifecycleObserver {
      * Invoked when an image has failed to load. This is useful for reporting image failures to a
      * remote analytics service, for example.
      */
-    void onImageLoadFailed(@NonNull Picasso picasso, @NonNull Uri uri,
-        @NonNull Exception exception);
+    void onImageLoadFailed( Picasso picasso,  Uri uri,
+         Exception exception);
   }
 
   /**
@@ -87,7 +87,7 @@ public class Picasso implements LifecycleObserver {
      *
      * @return The original request or a new request to replace it. Must not be null.
      */
-    @NonNull Request transformRequest(@NonNull Request request);
+     Request transformRequest( Request request);
   }
 
   /**
@@ -111,7 +111,7 @@ public class Picasso implements LifecycleObserver {
           break;
         }
         case REQUEST_BATCH_RESUME:
-          @SuppressWarnings("unchecked") List<Action> batch = (List<Action>) msg.obj;
+           List<Action> batch = (List<Action>) msg.obj;
           //noinspection ForLoopReplaceableByForEach
           for (int i = 0, n = batch.size(); i < n; i++) {
             Action action = batch.get(i);
@@ -124,18 +124,18 @@ public class Picasso implements LifecycleObserver {
     }
   };
 
-  @Nullable private final Listener listener;
+   @Nullable private final Listener listener;
   private final List<RequestTransformer> requestTransformers;
   private final List<RequestHandler> requestHandlers;
 
   final Context context;
   final Dispatcher dispatcher;
-  private final @Nullable okhttp3.Cache closeableCache;
+  @Nullable private final  okhttp3.Cache closeableCache;
   final PlatformLruCache cache;
   final Stats stats;
   final Map<Object, Action> targetToAction;
   final Map<ImageView, DeferredRequestCreator> targetToDeferredRequestCreator;
-  @Nullable final Bitmap.Config defaultBitmapConfig;
+   @Nullable final Bitmap.Config defaultBitmapConfig;
 
   boolean indicatorsEnabled;
   volatile boolean loggingEnabled;
@@ -143,9 +143,9 @@ public class Picasso implements LifecycleObserver {
   boolean shutdown;
 
   Picasso(Context context, Dispatcher dispatcher, Call.Factory callFactory,
-      @Nullable okhttp3.Cache closeableCache, PlatformLruCache cache, @Nullable Listener listener,
+       @Nullable okhttp3.Cache closeableCache, PlatformLruCache cache,  @Nullable Listener listener,
       List<RequestTransformer> requestTransformers, List<RequestHandler> extraRequestHandlers,
-      Stats stats, @Nullable Bitmap.Config defaultBitmapConfig, boolean indicatorsEnabled,
+      Stats stats,  @Nullable Bitmap.Config defaultBitmapConfig, boolean indicatorsEnabled,
       boolean loggingEnabled) {
     this.context = context;
     this.dispatcher = dispatcher;
@@ -201,14 +201,14 @@ public class Picasso implements LifecycleObserver {
   }
 
   /** Cancel any existing requests for the specified target {@link ImageView}. */
-  public void cancelRequest(@NonNull ImageView view) {
+  public void cancelRequest( ImageView view) {
     // checkMain() is called from cancelExistingRequest()
     checkNotNull(view, "view == null");
     cancelExistingRequest(view);
   }
 
   /** Cancel any existing requests for the specified {@link BitmapTarget} instance. */
-  public void cancelRequest(@NonNull BitmapTarget target) {
+  public void cancelRequest( BitmapTarget target) {
     // checkMain() is called from cancelExistingRequest()
     checkNotNull(target, "target == null");
     cancelExistingRequest(target);
@@ -218,7 +218,7 @@ public class Picasso implements LifecycleObserver {
    * Cancel any existing requests for the specified {@link RemoteViews} target with the given {@code
    * viewId}.
    */
-  public void cancelRequest(@NonNull RemoteViews remoteViews, @IdRes int viewId) {
+  public void cancelRequest( RemoteViews remoteViews, @IdRes int viewId) {
     // checkMain() is called from cancelExistingRequest()
     checkNotNull(remoteViews, "remoteViews == null");
     cancelExistingRequest(new RemoteViewsAction.RemoteViewsTarget(remoteViews, viewId));
@@ -230,7 +230,7 @@ public class Picasso implements LifecycleObserver {
    *
    * @see RequestCreator#tag(Object)
    */
-  public void cancelTag(@NonNull Object tag) {
+  public void cancelTag( Object tag) {
     checkMain();
     checkNotNull(tag, "tag == null");
 
@@ -284,7 +284,7 @@ public class Picasso implements LifecycleObserver {
    * @see #resumeTag(Object)
    * @see RequestCreator#tag(Object)
    */
-  public void pauseTag(@NonNull Object tag) {
+  public void pauseTag( Object tag) {
     checkNotNull(tag, "tag == null");
     dispatcher.dispatchPauseTag(tag);
   }
@@ -319,7 +319,7 @@ public class Picasso implements LifecycleObserver {
    * @see #pauseTag(Object)
    * @see RequestCreator#tag(Object)
    */
-  public void resumeTag(@NonNull Object tag) {
+  public void resumeTag( Object tag) {
     checkNotNull(tag, "tag == null");
     dispatcher.dispatchResumeTag(tag);
   }
@@ -334,8 +334,8 @@ public class Picasso implements LifecycleObserver {
    * @see #load(String)
    * @see #load(int)
    */
-  @NonNull
-  public RequestCreator load(@Nullable Uri uri) {
+  
+  public RequestCreator load( Uri uri) {
     return new RequestCreator(this, uri, 0);
   }
 
@@ -354,8 +354,8 @@ public class Picasso implements LifecycleObserver {
    * @see #load(File)
    * @see #load(int)
    */
-  @NonNull
-  public RequestCreator load(@Nullable String path) {
+  
+  public RequestCreator load( String path) {
     if (path == null) {
       return new RequestCreator(this, null, 0);
     }
@@ -378,8 +378,8 @@ public class Picasso implements LifecycleObserver {
    * @see #load(String)
    * @see #load(int)
    */
-  @NonNull
-  public RequestCreator load(@Nullable File file) {
+  
+  public RequestCreator load( File file) {
     if (file == null) {
       return new RequestCreator(this, null, 0);
     }
@@ -393,7 +393,7 @@ public class Picasso implements LifecycleObserver {
    * @see #load(String)
    * @see #load(File)
    */
-  @NonNull
+  
   public RequestCreator load(@DrawableRes int resourceId) {
     if (resourceId == 0) {
       throw new IllegalArgumentException("Resource ID must not be zero.");
@@ -414,7 +414,7 @@ public class Picasso implements LifecycleObserver {
    * @see #invalidate(String)
    * @see #invalidate(File)
    */
-  public void invalidate(@Nullable Uri uri) {
+  public void invalidate( Uri uri) {
     if (uri != null) {
       cache.clearKeyUri(uri.toString());
     }
@@ -427,7 +427,7 @@ public class Picasso implements LifecycleObserver {
    * @see #invalidate(Uri)
    * @see #invalidate(File)
    */
-  public void invalidate(@Nullable String path) {
+  public void invalidate( String path) {
     if (path != null) {
       invalidate(Uri.parse(path));
     }
@@ -439,18 +439,18 @@ public class Picasso implements LifecycleObserver {
    * @see #invalidate(Uri)
    * @see #invalidate(String)
    */
-  public void invalidate(@NonNull File file) {
+  public void invalidate( File file) {
     checkNotNull(file, "file == null");
     invalidate(Uri.fromFile(file));
   }
 
   /** Toggle whether to display debug indicators on images. */
-  @SuppressWarnings("UnusedDeclaration") public void setIndicatorsEnabled(boolean enabled) {
+   public void setIndicatorsEnabled(boolean enabled) {
     indicatorsEnabled = enabled;
   }
 
   /** {@code true} if debug indicators should are displayed on images. */
-  @SuppressWarnings("UnusedDeclaration") public boolean getIndicatorsEnabled() {
+   public boolean getIndicatorsEnabled() {
     return indicatorsEnabled;
   }
 
@@ -460,7 +460,7 @@ public class Picasso implements LifecycleObserver {
    * <b>WARNING:</b> Enabling this will result in excessive object allocation. This should be only
    * be used for debugging Picasso behavior. Do NOT pass {@code BuildConfig.DEBUG}.
    */
-  @SuppressWarnings("UnusedDeclaration") // Public API.
+   // Public API.
   public void setLoggingEnabled(boolean enabled) {
     loggingEnabled = enabled;
   }
@@ -476,8 +476,8 @@ public class Picasso implements LifecycleObserver {
    * <b>NOTE:</b> The snapshot may not always be completely up-to-date if requests are still in
    * progress.
    */
-  @NonNull
-  @SuppressWarnings("UnusedDeclaration") public StatsSnapshot getSnapshot() {
+  
+   public StatsSnapshot getSnapshot() {
     return stats.createSnapshot();
   }
 
@@ -544,7 +544,7 @@ public class Picasso implements LifecycleObserver {
     dispatcher.dispatchSubmit(action);
   }
 
-  @Nullable Bitmap quickMemoryCacheCheck(String key) {
+   @Nullable Bitmap quickMemoryCacheCheck(String key) {
     Bitmap cached = cache.get(key);
     if (cached != null) {
       stats.dispatchCacheHit();
@@ -607,8 +607,8 @@ public class Picasso implements LifecycleObserver {
     }
   }
 
-  private void deliverAction(@Nullable RequestHandler.Result result, Action action,
-      @Nullable Exception e) {
+  private void deliverAction( @Nullable RequestHandler.Result result, Action action,
+       @Nullable Exception e) {
     if (action.isCancelled()) {
       return;
     }
@@ -647,22 +647,22 @@ public class Picasso implements LifecycleObserver {
   }
 
   /** Fluent API for creating {@link Picasso} instances. */
-  @SuppressWarnings("UnusedDeclaration") // Public API.
+   // Public API.
   public static class Builder {
     private final Context context;
-    @Nullable private Call.Factory callFactory;
-    @Nullable private ExecutorService service;
-    @Nullable private PlatformLruCache cache;
-    @Nullable private Listener listener;
+     @Nullable private Call.Factory callFactory;
+     @Nullable private ExecutorService service;
+     @Nullable private PlatformLruCache cache;
+     @Nullable private Listener listener;
     private final List<RequestTransformer> requestTransformers = new ArrayList<>();
     private final List<RequestHandler> requestHandlers = new ArrayList<>();
-    @Nullable private Bitmap.Config defaultBitmapConfig;
+     @Nullable private Bitmap.Config defaultBitmapConfig;
 
     private boolean indicatorsEnabled;
     private boolean loggingEnabled;
 
     /** Start building a new {@link Picasso} instance. */
-    public Builder(@NonNull Context context) {
+    public Builder( Context context) {
       checkNotNull(context, "context == null");
       this.context = context.getApplicationContext();
     }
@@ -671,8 +671,8 @@ public class Picasso implements LifecycleObserver {
      * Specify the default {@link Bitmap.Config} used when decoding images. This can be overridden
      * on a per-request basis using {@link RequestCreator#config(Bitmap.Config) config(..)}.
      */
-    @NonNull
-    public Builder defaultBitmapConfig(@NonNull Bitmap.Config bitmapConfig) {
+    
+    public Builder defaultBitmapConfig( Bitmap.Config bitmapConfig) {
       checkNotNull(bitmapConfig, "bitmapConfig == null");
       this.defaultBitmapConfig = bitmapConfig;
       return this;
@@ -683,8 +683,8 @@ public class Picasso implements LifecycleObserver {
      * <p>
      * Note: Calling {@link #callFactory} overwrites this value.
      */
-    @NonNull
-    public Builder client(@NonNull OkHttpClient client) {
+    
+    public Builder client( OkHttpClient client) {
       checkNotNull(client, "client == null");
       callFactory = client;
       return this;
@@ -695,8 +695,8 @@ public class Picasso implements LifecycleObserver {
      * <p>
      * Note: Calling {@link #client} overwrites this value.
      */
-    @NonNull
-    public Builder callFactory(@NonNull Call.Factory factory) {
+    
+    public Builder callFactory( Call.Factory factory) {
       checkNotNull(factory, "factory == null");
       callFactory = factory;
       return this;
@@ -707,8 +707,8 @@ public class Picasso implements LifecycleObserver {
      * <p>
      * Note: Calling {@link Picasso#shutdown() shutdown()} will not shutdown supplied executors.
      */
-    @NonNull
-    public Builder executor(@NonNull ExecutorService executorService) {
+    
+    public Builder executor( ExecutorService executorService) {
       checkNotNull(executorService, "executorService == null");
       if (this.service != null) {
         throw new IllegalStateException("Executor service already set.");
@@ -721,7 +721,7 @@ public class Picasso implements LifecycleObserver {
      * Specify the memory cache size in bytes to use for the most recent images.
      * A size of 0 disables in-memory caching.
      */
-    @NonNull
+    
     public Builder withCacheSize(int maxByteCount) {
       if (maxByteCount < 0) {
         throw new IllegalArgumentException("maxByteCount < 0: " + maxByteCount);
@@ -731,8 +731,8 @@ public class Picasso implements LifecycleObserver {
     }
 
     /** Specify a listener for interesting events. */
-    @NonNull
-    public Builder listener(@NonNull Listener listener) {
+    
+    public Builder listener( Listener listener) {
       checkNotNull(listener, "listener == null");
       if (this.listener != null) {
         throw new IllegalStateException("Listener already set.");
@@ -742,8 +742,8 @@ public class Picasso implements LifecycleObserver {
     }
 
     /** Add a transformer that observes and potentially modify all incoming requests. */
-    @NonNull
-    public Builder addRequestTransformer(@NonNull RequestTransformer transformer) {
+    
+    public Builder addRequestTransformer( RequestTransformer transformer) {
       checkNotNull(transformer, "transformer == null");
       if (requestTransformers.contains(transformer)) {
         throw new IllegalStateException("Transformer already set.");
@@ -753,8 +753,8 @@ public class Picasso implements LifecycleObserver {
     }
 
     /** Register a {@link RequestHandler}. */
-    @NonNull
-    public Builder addRequestHandler(@NonNull RequestHandler requestHandler) {
+    
+    public Builder addRequestHandler( RequestHandler requestHandler) {
       checkNotNull(requestHandler, "requestHandler == null");
       if (requestHandlers.contains(requestHandler)) {
         throw new IllegalStateException("RequestHandler already registered.");
@@ -764,7 +764,7 @@ public class Picasso implements LifecycleObserver {
     }
 
     /** Toggle whether to display debug indicators on images. */
-    @NonNull
+    
     public Builder indicatorsEnabled(boolean enabled) {
       this.indicatorsEnabled = enabled;
       return this;
@@ -776,14 +776,14 @@ public class Picasso implements LifecycleObserver {
      * <b>WARNING:</b> Enabling this will result in excessive object allocation. This should be only
      * be used for debugging purposes. Do NOT pass {@code BuildConfig.DEBUG}.
      */
-    @NonNull
+    
     public Builder loggingEnabled(boolean enabled) {
       this.loggingEnabled = enabled;
       return this;
     }
 
     /** Create the {@link Picasso} instance. */
-    @NonNull
+    
     public Picasso build() {
       Context context = this.context;
 

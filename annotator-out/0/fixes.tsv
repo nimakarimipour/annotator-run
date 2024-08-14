@@ -1,0 +1,2 @@
+kind	class	method	param	index	uri	reason	annotation	rootClass	rootMethod
+FIELD	com.squareup.picasso3.RequestCreator	null	picasso	null	/Users/nima/Desktop/annotator-run/src/main/java/com/squareup/picasso3/RequestCreator.java	ASSIGN_FIELD_NULLABLE	nullable	com.squareup.picasso3.RequestCreator	RequestCreator()

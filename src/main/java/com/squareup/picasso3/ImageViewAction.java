@@ -25,10 +25,10 @@ import static com.squareup.picasso3.Utils.checkNotNull;
 
 class ImageViewAction extends Action<ImageView> {
 
-  @Nullable Callback callback;
+   @Nullable Callback callback;
 
   ImageViewAction(Picasso picasso, Target<ImageView> target, Request data,
-      @Nullable Callback callback) {
+       @Nullable Callback callback) {
     super(picasso, target, data);
     this.callback = callback;
   }

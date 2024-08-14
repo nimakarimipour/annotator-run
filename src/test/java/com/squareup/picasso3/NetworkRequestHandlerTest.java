@@ -88,7 +88,7 @@ public class NetworkRequestHandlerTest {
         }
       }
 
-      @Override public void onError(@NonNull Throwable t) {
+      @Override public void onError( Throwable t) {
         throw new AssertionError(t);
       }
     });
@@ -145,7 +145,7 @@ public class NetworkRequestHandlerTest {
         latch.countDown();
       }
 
-      @Override public void onError(@NonNull Throwable t) {
+      @Override public void onError( Throwable t) {
         throw new AssertionError(t);
       }
     });
@@ -174,7 +174,7 @@ public class NetworkRequestHandlerTest {
         throw new AssertionError();
       }
 
-      @Override public void onError(@NonNull Throwable t) {
+      @Override public void onError( Throwable t) {
         verifyZeroInteractions(stats);
         assertTrue(closed.get());
         latch.countDown();
@@ -196,7 +196,7 @@ public class NetworkRequestHandlerTest {
         latch.countDown();
       }
 
-      @Override public void onError(@NonNull Throwable t) {
+      @Override public void onError( Throwable t) {
         throw new AssertionError(t);
       }
     });

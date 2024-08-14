@@ -108,7 +108,7 @@ public final class SourceBufferingInputStreamTest {
       this.upstream = upstream;
     }
 
-    @Override public long read(@NonNull Buffer sink, long byteCount) throws IOException {
+    @Override public long read( Buffer sink, long byteCount) throws IOException {
       if (byteCount > 0) {
         return upstream.read(sink, 1);
       }

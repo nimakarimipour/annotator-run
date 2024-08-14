@@ -16,7 +16,7 @@
 package com.squareup.picasso3;
 
 /** Designates the policy to use when dealing with memory cache. */
-@SuppressWarnings("PointlessBitwiseExpression")
+
 public enum MemoryPolicy {
 
   /** Skips memory cache lookup when processing a request. */

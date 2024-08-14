@@ -36,12 +36,12 @@ final class PlatformLruCache {
     };
   }
 
-  @Nullable public Bitmap get(@NonNull String key) {
+   @Nullable public Bitmap get( String key) {
     BitmapAndSize bitmapAndSize = cache.get(key);
     return bitmapAndSize != null ? bitmapAndSize.bitmap : null;
   }
 
-  void set(@NonNull String key, @NonNull Bitmap bitmap) {
+  void set( String key,  Bitmap bitmap) {
     if (key == null || bitmap == null) {
       throw new NullPointerException("key == null || bitmap == null");
     }

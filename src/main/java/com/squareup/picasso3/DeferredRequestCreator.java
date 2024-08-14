@@ -26,9 +26,9 @@ import android.widget.ImageView;
 class DeferredRequestCreator implements OnPreDrawListener, OnAttachStateChangeListener {
   private final RequestCreator creator;
   @VisibleForTesting final ImageView target;
-  @VisibleForTesting @Nullable Callback callback;
+  @Nullable @VisibleForTesting  Callback callback;
 
-  DeferredRequestCreator(RequestCreator creator, ImageView target, @Nullable Callback callback) {
+  DeferredRequestCreator(RequestCreator creator, ImageView target,  @Nullable Callback callback) {
     this.creator = creator;
     this.target = target;
     this.callback = callback;
@@ -84,7 +84,7 @@ class DeferredRequestCreator implements OnPreDrawListener, OnAttachStateChangeLi
     }
   }
 
-  @Nullable Object getTag() {
+   @Nullable Object getTag() {
     return creator.getTag();
   }
 }
