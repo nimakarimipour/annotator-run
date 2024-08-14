@@ -1,1 +1,1 @@
-./gradlew compileJava
+./gradlew compileDebugJavaWithJavac
