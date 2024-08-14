@@ -65,27 +65,27 @@ public abstract class RequestHandler {
    */
   public static final class Result {
     private final Picasso.LoadedFrom loadedFrom;
-    @Nullable private final Bitmap bitmap;
-    @Nullable private final Drawable drawable;
+     @Nullable private final Bitmap bitmap;
+     @Nullable private final Drawable drawable;
     private final int exifRotation;
 
-    public Result(@NonNull Bitmap bitmap, @NonNull Picasso.LoadedFrom loadedFrom) {
+    public Result( Bitmap bitmap,  Picasso.LoadedFrom loadedFrom) {
       this(checkNotNull(bitmap, "bitmap == null"), null, loadedFrom, 0);
     }
 
-    public Result(@NonNull Bitmap bitmap, @NonNull Picasso.LoadedFrom loadedFrom,
+    public Result( Bitmap bitmap,  Picasso.LoadedFrom loadedFrom,
         int exifRotation) {
       this(checkNotNull(bitmap, "bitmap == null"), null, loadedFrom, exifRotation);
     }
 
-    public Result(@NonNull Drawable drawable, @NonNull Picasso.LoadedFrom loadedFrom) {
+    public Result( Drawable drawable,  Picasso.LoadedFrom loadedFrom) {
       this(null, checkNotNull(drawable, "drawable == null"), loadedFrom, 0);
     }
 
     private Result(
-        @Nullable Bitmap bitmap,
-        @Nullable Drawable drawable,
-        @NonNull Picasso.LoadedFrom loadedFrom,
+         @Nullable Bitmap bitmap,
+         @Nullable Drawable drawable,
+         Picasso.LoadedFrom loadedFrom,
         int exifRotation) {
       this.bitmap = bitmap;
       this.drawable = drawable;
@@ -97,7 +97,7 @@ public abstract class RequestHandler {
      * The loaded {@link Bitmap}.
      * Mutually exclusive with {@link #getDrawable()}.
      */
-    @Nullable public Bitmap getBitmap() {
+     public Bitmap getBitmap() {
       return bitmap;
     }
 
@@ -105,7 +105,7 @@ public abstract class RequestHandler {
      * The loaded {@link Drawable}.
      * Mutually exclusive with {@link #getBitmap()}.
      */
-    @Nullable public Drawable getDrawable() {
+     @Nullable public Drawable getDrawable() {
       return drawable;
     }
 
@@ -113,7 +113,7 @@ public abstract class RequestHandler {
      * Returns the resulting {@link Picasso.LoadedFrom} generated from a
      * {@link #load(Picasso, Request, Callback)} call.
      */
-    @NonNull public Picasso.LoadedFrom getLoadedFrom() {
+     public Picasso.LoadedFrom getLoadedFrom() {
       return loadedFrom;
     }
 
@@ -127,28 +127,28 @@ public abstract class RequestHandler {
   }
 
   public interface Callback {
-    void onSuccess(@Nullable Result result);
+    void onSuccess( Result result);
 
-    void onError(@NonNull Throwable t);
+    void onError( Throwable t);
   }
 
   /**
    * Whether or not this {@link RequestHandler} can handle a request with the given {@link Request}.
    */
-  public abstract boolean canHandleRequest(@NonNull Request data);
+  public abstract boolean canHandleRequest( Request data);
 
   /**
    * Loads an image for the given {@link Request}.
    * @param request the data from which the image should be resolved.
    */
-  public abstract void load(@NonNull Picasso picasso, @NonNull Request request,
-      @NonNull Callback callback) throws IOException;
+  public abstract void load( Picasso picasso,  Request request,
+       Callback callback) throws IOException;
 
   int getRetryCount() {
     return 0;
   }
 
-  boolean shouldRetry(boolean airplaneMode, @Nullable NetworkInfo info) {
+  boolean shouldRetry(boolean airplaneMode,  @Nullable NetworkInfo info) {
     return false;
   }
 
@@ -218,7 +218,7 @@ public abstract class RequestHandler {
    * about the supplied request in order to do the decoding efficiently (such as through leveraging
    * {@code inSampleSize}).
    */
-  static Bitmap decodeStream(Source source, Request request) throws IOException {
+  static Bitmap decodeStream(@Nullable Source source, Request request) throws IOException {
     BufferedSource bufferedSource = Okio.buffer(source);
 
     if (Build.VERSION.SDK_INT >= 28) {
@@ -304,8 +304,8 @@ public abstract class RequestHandler {
       throws IOException {
     return ImageDecoder.decodeBitmap(imageSource, new ImageDecoder.OnHeaderDecodedListener() {
       @Override
-      public void onHeaderDecoded(@NonNull ImageDecoder imageDecoder,
-          @NonNull ImageDecoder.ImageInfo imageInfo, @NonNull ImageDecoder.Source source) {
+      public void onHeaderDecoded( ImageDecoder imageDecoder,
+           ImageDecoder.ImageInfo imageInfo,  ImageDecoder.Source source) {
         if (request.hasSize()) {
           imageDecoder.setTargetSize(request.targetWidth, request.targetHeight);
         }

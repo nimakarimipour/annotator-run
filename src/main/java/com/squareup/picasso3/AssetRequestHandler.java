@@ -26,6 +26,7 @@ import okio.Source;
 
 import static android.content.ContentResolver.SCHEME_FILE;
 import static com.squareup.picasso3.Picasso.LoadedFrom.DISK;
+import javax.annotation.Nullable;
 
 class AssetRequestHandler extends RequestHandler {
   private static final String ANDROID_ASSET = "android_asset";
@@ -34,20 +35,20 @@ class AssetRequestHandler extends RequestHandler {
 
   private final Context context;
   private final Object lock = new Object();
-  private volatile AssetManager assetManager;
+  @Nullable private volatile AssetManager assetManager;
 
   AssetRequestHandler(Context context) {
     this.context = context;
   }
 
-  @Override public boolean canHandleRequest(@NonNull Request data) {
+  @Override public boolean canHandleRequest( Request data) {
     Uri uri = data.uri;
     return (SCHEME_FILE.equals(uri.getScheme())
         && !uri.getPathSegments().isEmpty() && ANDROID_ASSET.equals(uri.getPathSegments().get(0)));
   }
 
   @Override
-  public void load(@NonNull Picasso picasso, @NonNull Request request, @NonNull Callback callback) {
+  public void load( Picasso picasso,  Request request,  Callback callback) {
     if (assetManager == null) {
       synchronized (lock) {
         if (assetManager == null) {

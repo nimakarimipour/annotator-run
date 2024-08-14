@@ -31,12 +31,12 @@ public final class ResourceDrawableRequestHandler extends RequestHandler {
     this.loader = loader;
   }
 
-  @Override public boolean canHandleRequest(@NonNull Request data) {
+  @Override public boolean canHandleRequest( Request data) {
     return data.resourceId != 0 && isXmlResource(context.getResources(), data.resourceId);
   }
 
   @Override
-  public void load(@NonNull Picasso picasso, @NonNull Request request, @NonNull Callback callback) {
+  public void load( Picasso picasso,  Request request,  Callback callback) {
     Drawable drawable = loader.load(request.resourceId);
     if (drawable == null) {
       callback.onError(new IllegalArgumentException(
@@ -46,14 +46,14 @@ public final class ResourceDrawableRequestHandler extends RequestHandler {
     }
   }
 
-  @NonNull
-  public static ResourceDrawableRequestHandler create(@NonNull Context context,
-      @NonNull DrawableLoader loader) {
+  
+  public static ResourceDrawableRequestHandler create( Context context,
+       DrawableLoader loader) {
     return new ResourceDrawableRequestHandler(context, loader);
   }
 
-  @NonNull
-  public static ResourceDrawableRequestHandler create(@NonNull final Context context) {
+  
+  public static ResourceDrawableRequestHandler create( final Context context) {
     return create(context, new DrawableLoader() {
       @Override public Drawable load(int resId) {
         return ContextCompat.getDrawable(context, resId);

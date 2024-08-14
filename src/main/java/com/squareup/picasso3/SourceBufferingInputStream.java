@@ -59,7 +59,7 @@ final class SourceBufferingInputStream extends InputStream {
     return value;
   }
 
-  @Override public int read(@NonNull byte[] b, int off, int len) throws IOException {
+  @Override public int read( byte[] b, int off, int len) throws IOException {
     if (off < 0 || len < 0 || len > b.length - off) {
       throw new IndexOutOfBoundsException();
     } else if (len == 0) {

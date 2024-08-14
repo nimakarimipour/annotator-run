@@ -20,5 +20,5 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 
 public interface DrawableLoader {
-  @Nullable Drawable load(@DrawableRes int resId);
+   Drawable load(@DrawableRes int resId);
 }

@@ -29,7 +29,7 @@ class ResourceRequestHandler extends RequestHandler {
     this.context = context;
   }
 
-  @Override public boolean canHandleRequest(@NonNull Request data) {
+  @Override public boolean canHandleRequest( Request data) {
     if (data.resourceId != 0 && !isXmlResource(context.getResources(), data.resourceId)) {
       return true;
     }
@@ -37,7 +37,7 @@ class ResourceRequestHandler extends RequestHandler {
   }
 
   @Override
-  public void load(@NonNull Picasso picasso, @NonNull Request request, @NonNull Callback callback) {
+  public void load( Picasso picasso,  Request request,  Callback callback) {
     boolean signaledCallback = false;
     try {
       Bitmap bitmap = decodeResource(context, request);

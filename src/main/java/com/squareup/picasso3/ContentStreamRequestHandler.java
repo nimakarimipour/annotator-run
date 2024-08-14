@@ -30,6 +30,7 @@ import static android.content.ContentResolver.SCHEME_CONTENT;
 import static android.support.media.ExifInterface.ORIENTATION_NORMAL;
 import static android.support.media.ExifInterface.TAG_ORIENTATION;
 import static com.squareup.picasso3.Picasso.LoadedFrom.DISK;
+import javax.annotation.Nullable;
 
 class ContentStreamRequestHandler extends RequestHandler {
   final Context context;
@@ -38,12 +39,12 @@ class ContentStreamRequestHandler extends RequestHandler {
     this.context = context;
   }
 
-  @Override public boolean canHandleRequest(@NonNull Request data) {
+  @Override public boolean canHandleRequest( Request data) {
     return SCHEME_CONTENT.equals(data.uri.getScheme());
   }
 
   @Override
-  public void load(@NonNull Picasso picasso, @NonNull Request request, @NonNull Callback callback) {
+  public void load( Picasso picasso,  Request request,  Callback callback) {
     boolean signaledCallback = false;
     try {
       Source source = getSource(request);
@@ -62,7 +63,7 @@ class ContentStreamRequestHandler extends RequestHandler {
     }
   }
 
-  Source getSource(Request request) throws FileNotFoundException {
+  @Nullable Source getSource(Request request) throws FileNotFoundException {
     ContentResolver contentResolver = context.getContentResolver();
     InputStream inputStream = contentResolver.openInputStream(request.uri);
     return inputStream == null ? null : Okio.source(inputStream);
