@@ -12,12 +12,12 @@ import java.util.stream.StreamSupport;
 public class Announcement {
 
 	private final int id;
-	private final @NonNull String header;
-	private final @NonNull String message;
-	private final @NonNull Set<@NonNull String> displayPages;
-	private final int @NonNull[] displayGroups;
+	private final  String header;
+	private final  String message;
+	private final  Set< String> displayPages;
+	private final int [] displayGroups;
 
-	Announcement(@NonNull JsonObject announcementJson) {
+	Announcement( JsonObject announcementJson) {
 		this.id = announcementJson.get("id").getAsInt();
 		this.header = announcementJson.get("header").getAsString();
 		this.message = announcementJson.get("message").getAsString();
@@ -35,24 +35,24 @@ public class Announcement {
 		return id;
 	}
 
-	public @NonNull String getHeader() {
+	public  String getHeader() {
 		return this.header;
 	}
 
-	public @NonNull String getMessage() {
+	public  String getMessage() {
 		return this.message;
 	}
 
 	@Deprecated
-	public @NonNull String getContent() {
+	public  String getContent() {
 		return this.message;
 	}
 
-	public @NonNull Set<@NonNull String> getDisplayPages() {
+	public  Set< String> getDisplayPages() {
 		return this.displayPages;
 	}
 
-	public int @NonNull[] getDisplayGroupIds() {
+	public int [] getDisplayGroupIds() {
 		return this.displayGroups;
 	}
 

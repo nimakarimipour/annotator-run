@@ -51,9 +51,9 @@ public class ApiError extends NamelessException {
 	private static final long serialVersionUID = 3093028909912281912L;
 
 	private final int code;
-	private final @Nullable String meta;
+	@Nullable private final  String meta;
 
-	public ApiError(final int code, final @Nullable String meta) {
+	public ApiError(final int code, @Nullable final  String meta) {
 		super("An unexpected API error occurred with error code " + code + " and " + (meta == null ? "no meta" : "meta " + meta));
 		this.code = code;
 		this.meta = meta;
@@ -63,7 +63,7 @@ public class ApiError extends NamelessException {
 		return this.code;
 	}
 
-	public @NonNull Optional<@NonNull String> getMeta() {
+	public  Optional< String> getMeta() {
 		return Optional.ofNullable(meta);
 	}
 

@@ -1,2 +1,1 @@
 message_type	message	enc_class	enc_member	offset	path	target_kind	target_class	target_method	target_param	target_index	target_path
-RETURN_NULLABLE	returning @Nullable expression from method with @NonNull return type	com.namelessmc.java_api.NamelessUser	getLanguagePosix()	6651	/home/nima/Developer/nullness-benchmarks/annotator-run/src/main/java/com/namelessmc/java_api/NamelessUser.java	METHOD	com.namelessmc.java_api.NamelessUser	getLanguagePosix()	null	null	/home/nima/Developer/nullness-benchmarks/annotator-run/src/main/java/com/namelessmc/java_api/NamelessUser.java
