@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class IngredientUnitLookup {
 
-  @Nullable private static IngredientUnitLookup instance = null;
+   @Nullable private static IngredientUnitLookup instance = null;
 
   private Map<String, IngredientUnit> byShorthand;
   private Map<String, IngredientUnit> byPlural;

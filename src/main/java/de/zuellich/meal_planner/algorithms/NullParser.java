@@ -2,11 +2,12 @@ package de.zuellich.meal_planner.algorithms;
 
 import de.zuellich.meal_planner.datatypes.Recipe;
 import de.zuellich.meal_planner.datatypes.RecipeFormat;
+import javax.annotation.Nullable;
 
 /** */
 public class NullParser implements RecipeParser {
 
-  Object object;
+  @Nullable Object object;
 
   @Override
   public Recipe parse(String source) {
