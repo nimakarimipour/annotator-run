@@ -1,6 +1,6 @@
 package com.namelessmc.java_api;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Generic exception thrown by many methods in the Nameless API
@@ -9,15 +9,15 @@ public class NamelessException extends Exception {
 
 	private static final long serialVersionUID = -3698433855091611529L;
 
-	public NamelessException(final @NonNull String message) {
+	public NamelessException(@NotNull final String message) {
 		super(message);
 	}
 
-	public NamelessException(final @NonNull String message, final @NonNull Throwable cause) {
+	public NamelessException(@NotNull final String message, @NotNull final Throwable cause) {
 		super(message, cause);
 	}
 
-	public NamelessException(final @NonNull Throwable cause) {
+	public NamelessException(@NotNull final Throwable cause) {
 		super(cause);
 	}
 

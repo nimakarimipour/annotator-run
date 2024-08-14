@@ -1,7 +1,7 @@
 package com.namelessmc.java_api;
 
 import com.namelessmc.java_api.exception.UnknownNamelessVersionException;
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
@@ -23,18 +23,14 @@ public enum NamelessVersion {
 			V2_0_0_PR_13
 	);
 
-	private final @NonNull String name;
-	private final @NonNull String friendlyName;
+	private final @NotNull String name;
+	private final @NotNull String friendlyName;
 	private final int major;
 	private final int minor;
 	private final boolean isBeta;
 
 	@SuppressWarnings("SameParameterValue")
-	NamelessVersion(final @NonNull String name,
-					final @NonNull String friendlyName,
-					final int major,
-					final int minor,
-					final boolean isBeta) {
+	NamelessVersion(@NotNull final String name, @NotNull String friendlyName, final int major, final int minor, final boolean isBeta) {
 		this.name = name;
 		this.friendlyName = friendlyName;
 		this.major = major;
@@ -42,11 +38,11 @@ public enum NamelessVersion {
 		this.isBeta = isBeta;
 	}
 
-	public @NonNull String getName() {
+	public @NotNull String getName() {
 		return this.name;
 	}
 
-	public @NonNull String getFriendlyName() {
+	public @NotNull String getFriendlyName() {
 		return this.friendlyName;
 	}
 
@@ -78,7 +74,7 @@ public enum NamelessVersion {
 		}
 	}
 
-	public static @NonNull NamelessVersion parse(final @NonNull String versionName) throws UnknownNamelessVersionException {
+	public static @NotNull NamelessVersion parse(@NotNull final String versionName) throws UnknownNamelessVersionException {
 		Objects.requireNonNull(versionName, "Version name is null");
 		final NamelessVersion version = BY_NAME.get(versionName);
 		if (version == null) {

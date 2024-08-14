@@ -2,21 +2,21 @@ package com.namelessmc.java_api.integrations;
 
 import com.google.gson.JsonObject;
 import com.namelessmc.java_api.NamelessAPI;
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
 public class DetailedMinecraftIntegrationData extends DetailedIntegrationData implements IMinecraftIntegrationData {
 
-	private final @NonNull UUID uuid;
+	private final @NotNull UUID uuid;
 
-	public DetailedMinecraftIntegrationData(final @NonNull JsonObject json) {
+	public DetailedMinecraftIntegrationData(@NotNull JsonObject json) {
 		super(json);
 		this.uuid = NamelessAPI.websiteUuidToJavaUuid(this.getIdentifier());
 	}
 
 	@Override
-	public @NonNull UUID getUniqueId() {
+	public @NotNull UUID getUniqueId() {
 		return this.uuid;
 	}
 }

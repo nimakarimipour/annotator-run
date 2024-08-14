@@ -2,7 +2,7 @@ package com.namelessmc.java_api;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.Set;
@@ -12,12 +12,12 @@ import java.util.stream.StreamSupport;
 public class Announcement {
 
 	private final int id;
-	private final @NonNull String header;
-	private final @NonNull String message;
-	private final @NonNull Set<@NonNull String> displayPages;
-	private final int @NonNull[] displayGroups;
+	private final @NotNull String header;
+	private final @NotNull String message;
+	private final @NotNull Set<@NotNull String> displayPages;
+	private final int @NotNull[] displayGroups;
 
-	Announcement(@NonNull JsonObject announcementJson) {
+	Announcement(@NotNull JsonObject announcementJson) {
 		this.id = announcementJson.get("id").getAsInt();
 		this.header = announcementJson.get("header").getAsString();
 		this.message = announcementJson.get("message").getAsString();
@@ -35,24 +35,24 @@ public class Announcement {
 		return id;
 	}
 
-	public @NonNull String getHeader() {
+	public @NotNull String getHeader() {
 		return this.header;
 	}
 
-	public @NonNull String getMessage() {
+	public @NotNull String getMessage() {
 		return this.message;
 	}
 
 	@Deprecated
-	public @NonNull String getContent() {
+	public @NotNull String getContent() {
 		return this.message;
 	}
 
-	public @NonNull Set<@NonNull String> getDisplayPages() {
+	public @NotNull Set<@NotNull String> getDisplayPages() {
 		return this.displayPages;
 	}
 
-	public int @NonNull[] getDisplayGroupIds() {
+	public int @NotNull[] getDisplayGroupIds() {
 		return this.displayGroups;
 	}
 

@@ -1,11 +1,11 @@
 package com.namelessmc.java_api.integrations;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
 public interface IMinecraftIntegrationData {
 
-	@NonNull UUID getUniqueId();
+	@NotNull UUID getUniqueId();
 
 }

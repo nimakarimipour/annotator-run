@@ -1,11 +1,11 @@
 package com.namelessmc.java_api;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public interface LanguageEntity {
 
-	@NonNull String getLanguage() throws NamelessException;
+	@NotNull String getLanguage() throws NamelessException;
 
 	@Nullable String getLanguagePosix() throws NamelessException;
 
