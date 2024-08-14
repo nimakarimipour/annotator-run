@@ -1,7 +1,4 @@
 kind	class	method	param	index	uri	field
-METHOD	de.zuellich.meal_planner.datatypes.Recipe	setName(java.lang.String)	null	null	/home/nima/Developer/nullness-benchmarks/annotator-run/src/main/java/de/zuellich/meal_planner/datatypes/Recipe.java	name
-METHOD	de.zuellich.meal_planner.datatypes.Recipe	setIngredients(java.util.List)	null	null	/home/nima/Developer/nullness-benchmarks/annotator-run/src/main/java/de/zuellich/meal_planner/datatypes/Recipe.java	ingredients
-METHOD	de.zuellich.meal_planner.datatypes.Recipe	setSource(java.lang.String)	null	null	/home/nima/Developer/nullness-benchmarks/annotator-run/src/main/java/de/zuellich/meal_planner/datatypes/Recipe.java	source
-METHOD	de.zuellich.meal_planner.algorithms.IngredientUnitLookup	setupLookupTable()	null	null	/home/nima/Developer/nullness-benchmarks/annotator-run/src/main/java/de/zuellich/meal_planner/algorithms/IngredientUnitLookup.java	byShorthand
-METHOD	de.zuellich.meal_planner.algorithms.IngredientUnitLookup	setupLookupTable()	null	null	/home/nima/Developer/nullness-benchmarks/annotator-run/src/main/java/de/zuellich/meal_planner/algorithms/IngredientUnitLookup.java	byPlural
-METHOD	de.zuellich.meal_planner.algorithms.IngredientUnitLookup	setupLookupTable()	null	null	/home/nima/Developer/nullness-benchmarks/annotator-run/src/main/java/de/zuellich/meal_planner/algorithms/IngredientUnitLookup.java	bySingular
+METHOD	com.namelessmc.java_api.NamelessUser	getId()	null	null	/home/nima/Developer/nullness-benchmarks/annotator-run/src/main/java/com/namelessmc/java_api/NamelessUser.java	id
+METHOD	com.namelessmc.java_api.FilteredUserListBuilder	all()	null	null	/home/nima/Developer/nullness-benchmarks/annotator-run/src/main/java/com/namelessmc/java_api/FilteredUserListBuilder.java	operator
+METHOD	com.namelessmc.java_api.FilteredUserListBuilder	any()	null	null	/home/nima/Developer/nullness-benchmarks/annotator-run/src/main/java/com/namelessmc/java_api/FilteredUserListBuilder.java	operator
