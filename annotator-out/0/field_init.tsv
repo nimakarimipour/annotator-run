@@ -1,0 +1,5 @@
+kind	class	method	param	index	uri	field
+METHOD	com.squareup.picasso3.BitmapHunter	hunt()	null	null	/Users/nima/Desktop/annotator-run/src/main/java/com/squareup/picasso3/BitmapHunter.java	data
+METHOD	com.squareup.picasso3.Request$Builder	priority(com.squareup.picasso3.Picasso.Priority)	null	null	/Users/nima/Desktop/annotator-run/src/main/java/com/squareup/picasso3/Request.java	priority
+METHOD	com.squareup.picasso3.Request$Builder	build()	null	null	/Users/nima/Desktop/annotator-run/src/main/java/com/squareup/picasso3/Request.java	priority
+METHOD	com.squareup.picasso3.SourceBufferingInputStream	reset()	null	null	/Users/nima/Desktop/annotator-run/src/main/java/com/squareup/picasso3/SourceBufferingInputStream.java	markPosition

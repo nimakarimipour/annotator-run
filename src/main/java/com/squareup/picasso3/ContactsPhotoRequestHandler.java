@@ -30,6 +30,7 @@ import okio.Source;
 import static android.content.ContentResolver.SCHEME_CONTENT;
 import static android.provider.ContactsContract.Contacts.openContactPhotoInputStream;
 import static com.squareup.picasso3.Picasso.LoadedFrom.DISK;
+import javax.annotation.Nullable;
 
 class ContactsPhotoRequestHandler extends RequestHandler {
   /** A lookup uri (e.g. content://com.android.contacts/contacts/lookup/3570i61d948d30808e537) */
@@ -61,7 +62,7 @@ class ContactsPhotoRequestHandler extends RequestHandler {
     this.context = context;
   }
 
-  @Override public boolean canHandleRequest(@NonNull Request data) {
+  @Override public boolean canHandleRequest( Request data) {
     final Uri uri = data.uri;
     return (SCHEME_CONTENT.equals(uri.getScheme())
         && ContactsContract.Contacts.CONTENT_URI.getHost().equals(uri.getHost())
@@ -69,7 +70,7 @@ class ContactsPhotoRequestHandler extends RequestHandler {
   }
 
   @Override
-  public void load(@NonNull Picasso picasso, @NonNull Request request, @NonNull Callback callback) {
+  public void load( Picasso picasso,  Request request,  Callback callback) {
     boolean signaledCallback = false;
     try {
       Source source = getSource(request);
@@ -89,7 +90,7 @@ class ContactsPhotoRequestHandler extends RequestHandler {
     }
   }
 
-  private Source getSource(Request data) throws IOException {
+  @Nullable private Source getSource(Request data) throws IOException {
     ContentResolver contentResolver = context.getContentResolver();
     Uri uri = data.uri;
     InputStream is;

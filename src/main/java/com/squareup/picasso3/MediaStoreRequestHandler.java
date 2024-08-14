@@ -46,14 +46,14 @@ class MediaStoreRequestHandler extends ContentStreamRequestHandler {
     super(context);
   }
 
-  @Override public boolean canHandleRequest(@NonNull Request data) {
+  @Override public boolean canHandleRequest( Request data) {
     final Uri uri = data.uri;
     return (SCHEME_CONTENT.equals(uri.getScheme())
             && MediaStore.AUTHORITY.equals(uri.getAuthority()));
   }
 
   @Override
-  public void load(@NonNull Picasso picasso, @NonNull Request request, @NonNull Callback callback) {
+  public void load( Picasso picasso,  Request request,  Callback callback) {
     boolean signaledCallback = false;
     try {
       ContentResolver contentResolver = context.getContentResolver();
