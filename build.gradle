@@ -68,6 +68,7 @@ tasks.withType(JavaCompile) {
     options.errorprone {
         check("NullAway", CheckSeverity.ERROR)
         check("AnnotatorScanner", CheckSeverity.ERROR)
+        check("AnnotLocator", CheckSeverity.ERROR)
         option("NullAway:AnnotatedPackages", "com.squareup.picasso3")
         option("NullAway:SerializeFixMetadata", "true")
         option("NullAway:FixSerializationConfigPath", nullaway_path)
