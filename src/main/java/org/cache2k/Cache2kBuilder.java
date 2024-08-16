@@ -128,10 +128,10 @@ public class Cache2kBuilder<K, V>
     return cb;
   }
 
-  private @Nullable CacheType<K> keyType;
-  private @Nullable CacheType<V> valueType;
-  private @Nullable Cache2kConfig<K, V> config = null;
-  private @Nullable CacheManager manager = null;
+  @Nullable private  CacheType<K> keyType;
+  @Nullable private  CacheType<V> valueType;
+  @Nullable private  Cache2kConfig<K, V> config = null;
+  @Nullable private  CacheManager manager = null;
 
   private Cache2kBuilder(Cache2kConfig<K, V> cfg) {
     withConfig(cfg);
@@ -165,7 +165,7 @@ public class Cache2kBuilder<K, V>
     }
   }
 
-  private Cache2kBuilder(@Nullable CacheType<K> keyType, @Nullable CacheType<V> valueType) {
+  private Cache2kBuilder( @Nullable CacheType<K> keyType,  @Nullable CacheType<V> valueType) {
     this.keyType = keyType;
     this.valueType = valueType;
   }

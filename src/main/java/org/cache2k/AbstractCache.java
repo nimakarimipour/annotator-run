@@ -43,7 +43,7 @@ public class AbstractCache<K, V> implements Cache<K, V> {
   }
 
   @Override
-  public @Nullable V get(K key) {
+  public  V get(K key) {
     throw new UnsupportedOperationException();
   }
 

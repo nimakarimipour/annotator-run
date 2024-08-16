@@ -72,8 +72,8 @@ public abstract class ToggleFeature implements SingleFeature {
   /**
    * Returns the feature instance, if present.
    */
-  @SuppressWarnings("unchecked")
-  public static <T extends ToggleFeature> @Nullable T extract(Cache2kBuilder<?, ?> builder,
+  @Nullable @SuppressWarnings("unchecked")
+  public static <T extends ToggleFeature>  T extract(Cache2kBuilder<?, ?> builder,
                                                               Class<T> featureType) {
     Iterator<Feature> it = builder.config().getFeatures().iterator();
     while (it.hasNext()) {

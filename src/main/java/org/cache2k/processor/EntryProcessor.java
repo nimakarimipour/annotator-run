@@ -83,6 +83,6 @@ public interface EntryProcessor<K, V, R> {
    *         {@link EntryProcessingException}.
    *         If an exception happens, the cache content will not be altered.
    */
-  @Nullable R process(MutableCacheEntry<K, V> entry) throws Exception;
+   R process(MutableCacheEntry<K, V> entry) throws Exception;
 
 }
