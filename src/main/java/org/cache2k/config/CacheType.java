@@ -86,7 +86,7 @@ public interface CacheType<T> {
   }
 
   /** Class type if not an array. */
-  @Nullable Class<T> getType();
+   @Nullable Class<T> getType();
 
   /**
    * The type has generic type parameters and the concrete types are known.
@@ -103,10 +103,10 @@ public interface CacheType<T> {
   boolean isArray();
 
   /** The component type in case of an array */
-  @Nullable CacheType<?> getComponentType();
+   @Nullable CacheType<?> getComponentType();
 
   /** Known type arguments, if the type is a parametrized type. */
-  @Nullable CacheType<?>[] getTypeArguments();
+   @Nullable CacheType<?>[] getTypeArguments();
 
   /** Java language compatible type name */
   String getTypeName();

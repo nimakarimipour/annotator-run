@@ -66,22 +66,9 @@ public interface MutableCacheEntry<K, V> extends CacheEntry<K, V> {
    */
   @Override
   @SuppressWarnings({"NullAway", "nullness"})
-  @Nullable V getValue();
+   V getValue();
 
-  default @Nullable V getValueOrNull() { return getValue(); }
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p>If a loader is present and the entry is not yet loaded or expired, a
-   * load is triggered.
-   *
-   * @throws RestartException If the information is not yet available and the cache
-   *                          needs to do an operation to supply it. After completion,
-   *                          the entry processor will be executed again.
-   */
-  @Override
-  @Nullable Throwable getException();
+  default  V getValueOrNull() { return getValue(); }
 
   /**
    * {@inheritDoc}
@@ -94,7 +81,20 @@ public interface MutableCacheEntry<K, V> extends CacheEntry<K, V> {
    *                          the entry processor will be executed again.
    */
   @Override
-  @Nullable LoadExceptionInfo<K, V> getExceptionInfo();
+   Throwable getException();
+
+  /**
+   * {@inheritDoc}
+   *
+   * <p>If a loader is present and the entry is not yet loaded or expired, a
+   * load is triggered.
+   *
+   * @throws RestartException If the information is not yet available and the cache
+   *                          needs to do an operation to supply it. After completion,
+   *                          the entry processor will be executed again.
+   */
+  @Override
+   LoadExceptionInfo<K, V> getExceptionInfo();
 
   /**
    * {@code True} if a mapping exists in the cache, never invokes the loader.

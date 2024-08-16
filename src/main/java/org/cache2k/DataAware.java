@@ -31,4 +31,4 @@ import org.checkerframework.checker.nullness.qual.NonNull;
  * @param <K> non null type for the cache key
  * @param <V> non null type for the cache value
  */
-public interface DataAware<@NonNull K, @NonNull V> { }
+public interface DataAware< K,  V> { }

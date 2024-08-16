@@ -16,31 +16,31 @@ id	class	method	parent	flags	annotations	visibility	non-primitive-return	path
 15	org.cache2k.operation.CacheInfo	getCreatedTime()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/operation/CacheInfo.java
 16	org.cache2k.operation.CacheInfo	getClearedTime()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/operation/CacheInfo.java
 17	org.cache2k.Cache	getName()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
-18	org.cache2k.Cache	get(K)	19	[false]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
-20	org.cache2k.Cache	getEntry(K)	0	[false]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
-21	org.cache2k.Cache	peek(K)	0	[false]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
-22	org.cache2k.Cache	peekEntry(K)	0	[false]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
+18	org.cache2k.Cache	get(K)	19	[false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
+20	org.cache2k.Cache	getEntry(K)	0	[false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
+21	org.cache2k.Cache	peek(K)	0	[false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
+22	org.cache2k.Cache	peekEntry(K)	0	[false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 23	org.cache2k.Cache	containsKey(K)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 24	org.cache2k.Cache	put(K,V)	25	[false, false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 26	org.cache2k.Cache	computeIfAbsent(K,java.util.concurrent.Callable)	0	[false, false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 27	org.cache2k.Cache	putIfAbsent(K,V)	0	[false, false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
-28	org.cache2k.Cache	peekAndReplace(K,V)	0	[false, false]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
+28	org.cache2k.Cache	peekAndReplace(K,V)	0	[false, false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 29	org.cache2k.Cache	replace(K,V)	0	[false, false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 30	org.cache2k.Cache	replaceIfEquals(K,V,V)	0	[false, false, false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
-31	org.cache2k.Cache	peekAndRemove(K)	0	[false]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
+31	org.cache2k.Cache	peekAndRemove(K)	0	[false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 32	org.cache2k.Cache	containsAndRemove(K)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 33	org.cache2k.Cache	remove(K)	34	[false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 35	org.cache2k.Cache	removeIfEquals(K,V)	0	[false, false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 36	org.cache2k.Cache	removeAll(java.lang.Iterable)	37	[false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
-38	org.cache2k.Cache	peekAndPut(K,V)	0	[false, false]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
+38	org.cache2k.Cache	peekAndPut(K,V)	0	[false, false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 39	org.cache2k.Cache	expireAt(K,long)	0	[false, false]	java.lang.Deprecated	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 40	org.cache2k.Cache	loadAll(java.lang.Iterable,org.cache2k.CacheOperationCompletionListener)	0	[false, false]	java.lang.Deprecated	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 41	org.cache2k.Cache	reloadAll(java.lang.Iterable,org.cache2k.CacheOperationCompletionListener)	0	[false, false]	java.lang.Deprecated	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 42	org.cache2k.Cache	loadAll(java.lang.Iterable)	0	[false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 43	org.cache2k.Cache	reloadAll(java.lang.Iterable)	0	[false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
-44	org.cache2k.Cache	invoke(K,org.cache2k.processor.EntryProcessor)	0	[false, false]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
+44	org.cache2k.Cache	invoke(K,org.cache2k.processor.EntryProcessor)	0	[false, false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 45	org.cache2k.Cache	mutate(K,org.cache2k.processor.EntryMutator)	0	[false, false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
-46	org.cache2k.Cache$1	process(org.cache2k.processor.MutableCacheEntry)	47	[false]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
+46	org.cache2k.Cache$1	process(org.cache2k.processor.MutableCacheEntry)	47	[false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 48	org.cache2k.Cache	invokeAll(java.lang.Iterable,org.cache2k.processor.EntryProcessor)	0	[false, false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 49	org.cache2k.Cache	mutateAll(java.lang.Iterable,org.cache2k.processor.EntryMutator)	0	[false, false]	java.lang.SuppressWarnings	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
 50	org.cache2k.Cache	getAll(java.lang.Iterable)	51	[false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java
@@ -61,14 +61,14 @@ id	class	method	parent	flags	annotations	visibility	non-primitive-return	path
 34	org.cache2k.KeyValueStore	remove(K)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/KeyValueStore.java
 37	org.cache2k.KeyValueStore	removeAll(java.lang.Iterable)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/KeyValueStore.java
 51	org.cache2k.AdvancedKeyValueSource	getAll(java.lang.Iterable)	0	[false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AdvancedKeyValueSource.java
-19	org.cache2k.KeyValueSource	get(K)	0	[false]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/KeyValueSource.java
+19	org.cache2k.KeyValueSource	get(K)	0	[false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/KeyValueSource.java
 67	org.cache2k.CacheEntry	getKey()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/CacheEntry.java
 68	org.cache2k.CacheEntry	getValue()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/CacheEntry.java
-69	org.cache2k.CacheEntry	getException()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/CacheEntry.java
-70	org.cache2k.CacheEntry	getExceptionInfo()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/CacheEntry.java
+69	org.cache2k.CacheEntry	getException()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/CacheEntry.java
+70	org.cache2k.CacheEntry	getExceptionInfo()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/CacheEntry.java
 71	org.cache2k.CacheOperationCompletionListener	onCompleted()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/CacheOperationCompletionListener.java
 72	org.cache2k.CacheOperationCompletionListener	onException(java.lang.Throwable)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/CacheOperationCompletionListener.java
-47	org.cache2k.processor.EntryProcessor	process(org.cache2k.processor.MutableCacheEntry)	0	[false]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/processor/EntryProcessor.java
+47	org.cache2k.processor.EntryProcessor	process(org.cache2k.processor.MutableCacheEntry)	0	[false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/processor/EntryProcessor.java
 73	org.cache2k.processor.EntryMutator	mutate(org.cache2k.processor.MutableCacheEntry)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/processor/EntryMutator.java
 74	org.cache2k.processor.EntryProcessingResult	getResult()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/processor/EntryProcessingResult.java
 75	org.cache2k.processor.EntryProcessingResult	getException()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/processor/EntryProcessingResult.java
@@ -104,25 +104,25 @@ id	class	method	parent	flags	annotations	visibility	non-primitive-return	path
 105	org.cache2k.spi.Cache2kCoreProvider	getVersion()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/spi/Cache2kCoreProvider.java
 106	org.cache2k.config.Cache2kConfig	of(java.lang.Class,java.lang.Class)	0	[false, false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 107	org.cache2k.config.Cache2kConfig	of(org.cache2k.config.CacheType,org.cache2k.config.CacheType)	0	[false, false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-108	org.cache2k.config.Cache2kConfig	getName()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-109	org.cache2k.config.Cache2kConfig	setName(java.lang.String)	0	[true]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+108	org.cache2k.config.Cache2kConfig	getName()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+109	org.cache2k.config.Cache2kConfig	setName(java.lang.String)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 110	org.cache2k.config.Cache2kConfig	isNameWasGenerated()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 111	org.cache2k.config.Cache2kConfig	setNameWasGenerated(boolean)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 112	org.cache2k.config.Cache2kConfig	getEntryCapacity()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 113	org.cache2k.config.Cache2kConfig	setEntryCapacity(long)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 114	org.cache2k.config.Cache2kConfig	isRefreshAhead()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 115	org.cache2k.config.Cache2kConfig	setRefreshAhead(boolean)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-116	org.cache2k.config.Cache2kConfig	getKeyType()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+116	org.cache2k.config.Cache2kConfig	getKeyType()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 117	org.cache2k.config.Cache2kConfig	checkNull(java.lang.Object)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-118	org.cache2k.config.Cache2kConfig	setKeyType(org.cache2k.config.CacheType)	0	[true]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-119	org.cache2k.config.Cache2kConfig	getValueType()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-120	org.cache2k.config.Cache2kConfig	setValueType(org.cache2k.config.CacheType)	0	[true]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-121	org.cache2k.config.Cache2kConfig	getExpireAfterWrite()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-122	org.cache2k.config.Cache2kConfig	setExpireAfterWrite(java.time.Duration)	0	[true]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+118	org.cache2k.config.Cache2kConfig	setKeyType(org.cache2k.config.CacheType)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+119	org.cache2k.config.Cache2kConfig	getValueType()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+120	org.cache2k.config.Cache2kConfig	setValueType(org.cache2k.config.CacheType)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+121	org.cache2k.config.Cache2kConfig	getExpireAfterWrite()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+122	org.cache2k.config.Cache2kConfig	setExpireAfterWrite(java.time.Duration)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 123	org.cache2k.config.Cache2kConfig	isEternal()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 124	org.cache2k.config.Cache2kConfig	setEternal(boolean)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-125	org.cache2k.config.Cache2kConfig	getTimerLag()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-126	org.cache2k.config.Cache2kConfig	setTimerLag(java.time.Duration)	0	[true]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+125	org.cache2k.config.Cache2kConfig	getTimerLag()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+126	org.cache2k.config.Cache2kConfig	setTimerLag(java.time.Duration)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 127	org.cache2k.config.Cache2kConfig	isKeepDataAfterExpired()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 128	org.cache2k.config.Cache2kConfig	getMaximumWeight()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 129	org.cache2k.config.Cache2kConfig	setMaximumWeight(long)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
@@ -133,59 +133,59 @@ id	class	method	parent	flags	annotations	visibility	non-primitive-return	path
 134	org.cache2k.config.Cache2kConfig	setExternalConfigurationPresent(boolean)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 135	org.cache2k.config.Cache2kConfig	getSections()	136	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 137	org.cache2k.config.Cache2kConfig	setSections(java.util.Collection)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-138	org.cache2k.config.Cache2kConfig	getLoader()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-139	org.cache2k.config.Cache2kConfig	setLoader(org.cache2k.config.CustomizationSupplier)	0	[true]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-140	org.cache2k.config.Cache2kConfig	getAdvancedLoader()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-141	org.cache2k.config.Cache2kConfig	setAdvancedLoader(org.cache2k.config.CustomizationSupplier)	0	[true]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-142	org.cache2k.config.Cache2kConfig	getAsyncLoader()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-143	org.cache2k.config.Cache2kConfig	setAsyncLoader(org.cache2k.config.CustomizationSupplier)	0	[true]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+138	org.cache2k.config.Cache2kConfig	getLoader()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+139	org.cache2k.config.Cache2kConfig	setLoader(org.cache2k.config.CustomizationSupplier)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+140	org.cache2k.config.Cache2kConfig	getAdvancedLoader()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+141	org.cache2k.config.Cache2kConfig	setAdvancedLoader(org.cache2k.config.CustomizationSupplier)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+142	org.cache2k.config.Cache2kConfig	getAsyncLoader()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+143	org.cache2k.config.Cache2kConfig	setAsyncLoader(org.cache2k.config.CustomizationSupplier)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 144	org.cache2k.config.Cache2kConfig	getLoaderThreadCount()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 145	org.cache2k.config.Cache2kConfig	setLoaderThreadCount(int)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-146	org.cache2k.config.Cache2kConfig	getExpiryPolicy()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-147	org.cache2k.config.Cache2kConfig	setExpiryPolicy(org.cache2k.config.CustomizationSupplier)	0	[true]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-148	org.cache2k.config.Cache2kConfig	getWriter()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-149	org.cache2k.config.Cache2kConfig	setWriter(org.cache2k.config.CustomizationSupplier)	0	[true]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+146	org.cache2k.config.Cache2kConfig	getExpiryPolicy()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+147	org.cache2k.config.Cache2kConfig	setExpiryPolicy(org.cache2k.config.CustomizationSupplier)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+148	org.cache2k.config.Cache2kConfig	getWriter()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+149	org.cache2k.config.Cache2kConfig	setWriter(org.cache2k.config.CustomizationSupplier)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 150	org.cache2k.config.Cache2kConfig	isStoreByReference()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 151	org.cache2k.config.Cache2kConfig	setStoreByReference(boolean)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-152	org.cache2k.config.Cache2kConfig	getExceptionPropagator()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-153	org.cache2k.config.Cache2kConfig	setExceptionPropagator(org.cache2k.config.CustomizationSupplier)	0	[true]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-154	org.cache2k.config.Cache2kConfig	getListeners()	0	[]	org.checkerframework.checker.nullness.qual.NonNull	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+152	org.cache2k.config.Cache2kConfig	getExceptionPropagator()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+153	org.cache2k.config.Cache2kConfig	setExceptionPropagator(org.cache2k.config.CustomizationSupplier)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+154	org.cache2k.config.Cache2kConfig	getListeners()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 155	org.cache2k.config.Cache2kConfig	hasListeners()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 156	org.cache2k.config.Cache2kConfig	setListeners(java.util.Collection)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-157	org.cache2k.config.Cache2kConfig	getAsyncListeners()	0	[]	org.checkerframework.checker.nullness.qual.NonNull	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+157	org.cache2k.config.Cache2kConfig	getAsyncListeners()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 158	org.cache2k.config.Cache2kConfig	hasAsyncListeners()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 159	org.cache2k.config.Cache2kConfig	setAsyncListeners(java.util.Collection)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-160	org.cache2k.config.Cache2kConfig	getLifecycleListeners()	0	[]	org.checkerframework.checker.nullness.qual.NonNull	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+160	org.cache2k.config.Cache2kConfig	getLifecycleListeners()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 161	org.cache2k.config.Cache2kConfig	hasLifecycleListeners()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 162	org.cache2k.config.Cache2kConfig	setLifecycleListeners(java.util.Collection)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-163	org.cache2k.config.Cache2kConfig	getFeatures()	0	[]	org.checkerframework.checker.nullness.qual.NonNull	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+163	org.cache2k.config.Cache2kConfig	getFeatures()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 164	org.cache2k.config.Cache2kConfig	hasFeatures()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 165	org.cache2k.config.Cache2kConfig	setFeatures(java.util.Set)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-166	org.cache2k.config.Cache2kConfig	getResiliencePolicy()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-167	org.cache2k.config.Cache2kConfig	setResiliencePolicy(org.cache2k.config.CustomizationSupplier)	0	[true]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+166	org.cache2k.config.Cache2kConfig	getResiliencePolicy()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+167	org.cache2k.config.Cache2kConfig	setResiliencePolicy(org.cache2k.config.CustomizationSupplier)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 168	org.cache2k.config.Cache2kConfig	isStrictEviction()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 169	org.cache2k.config.Cache2kConfig	setStrictEviction(boolean)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 170	org.cache2k.config.Cache2kConfig	isPermitNullValues()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 171	org.cache2k.config.Cache2kConfig	setPermitNullValues(boolean)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 172	org.cache2k.config.Cache2kConfig	isDisableStatistics()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 173	org.cache2k.config.Cache2kConfig	setDisableStatistics(boolean)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-174	org.cache2k.config.Cache2kConfig	getLoaderExecutor()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-175	org.cache2k.config.Cache2kConfig	setLoaderExecutor(org.cache2k.config.CustomizationSupplier)	0	[true]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+174	org.cache2k.config.Cache2kConfig	getLoaderExecutor()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+175	org.cache2k.config.Cache2kConfig	setLoaderExecutor(org.cache2k.config.CustomizationSupplier)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 176	org.cache2k.config.Cache2kConfig	isRecordModificationTime()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 177	org.cache2k.config.Cache2kConfig	setRecordModificationTime(boolean)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-178	org.cache2k.config.Cache2kConfig	getRefreshExecutor()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-179	org.cache2k.config.Cache2kConfig	setRefreshExecutor(org.cache2k.config.CustomizationSupplier)	0	[true]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-180	org.cache2k.config.Cache2kConfig	getExecutor()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-181	org.cache2k.config.Cache2kConfig	setExecutor(org.cache2k.config.CustomizationSupplier)	0	[true]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-182	org.cache2k.config.Cache2kConfig	getAsyncListenerExecutor()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-183	org.cache2k.config.Cache2kConfig	setAsyncListenerExecutor(org.cache2k.config.CustomizationSupplier)	0	[true]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-184	org.cache2k.config.Cache2kConfig	getWeigher()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-185	org.cache2k.config.Cache2kConfig	setWeigher(org.cache2k.config.CustomizationSupplier)	0	[true]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+178	org.cache2k.config.Cache2kConfig	getRefreshExecutor()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+179	org.cache2k.config.Cache2kConfig	setRefreshExecutor(org.cache2k.config.CustomizationSupplier)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+180	org.cache2k.config.Cache2kConfig	getExecutor()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+181	org.cache2k.config.Cache2kConfig	setExecutor(org.cache2k.config.CustomizationSupplier)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+182	org.cache2k.config.Cache2kConfig	getAsyncListenerExecutor()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+183	org.cache2k.config.Cache2kConfig	setAsyncListenerExecutor(org.cache2k.config.CustomizationSupplier)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+184	org.cache2k.config.Cache2kConfig	getWeigher()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+185	org.cache2k.config.Cache2kConfig	setWeigher(org.cache2k.config.CustomizationSupplier)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 186	org.cache2k.config.Cache2kConfig	isBoostConcurrency()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 187	org.cache2k.config.Cache2kConfig	setBoostConcurrency(boolean)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 188	org.cache2k.config.Cache2kConfig	isDisableMonitoring()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 189	org.cache2k.config.Cache2kConfig	setDisableMonitoring(boolean)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
-190	org.cache2k.config.Cache2kConfig	durationCheckAndSanitize(java.time.Duration)	0	[true]	org.checkerframework.checker.nullness.qual.Nullable	private	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
+190	org.cache2k.config.Cache2kConfig	durationCheckAndSanitize(java.time.Duration)	0	[false]		private	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 191	org.cache2k.config.Cache2kConfig	builder()	192	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kConfig.java
 192	org.cache2k.config.ConfigBean	builder()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/ConfigBean.java
 136	org.cache2k.config.ConfigWithSections	getSections()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/ConfigWithSections.java
@@ -194,7 +194,7 @@ id	class	method	parent	flags	annotations	visibility	non-primitive-return	path
 195	org.cache2k.Cache2kBuilder	of(org.cache2k.config.Cache2kConfig)	0	[false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache2kBuilder.java
 196	org.cache2k.Cache2kBuilder	Cache2kBuilder(org.cache2k.config.Cache2kConfig)	0	[false]		private	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache2kBuilder.java
 197	org.cache2k.Cache2kBuilder	Cache2kBuilder()	0	[]	java.lang.SuppressWarnings	protected	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache2kBuilder.java
-198	org.cache2k.Cache2kBuilder	Cache2kBuilder(org.cache2k.config.CacheType,org.cache2k.config.CacheType)	0	[true, true]		private	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache2kBuilder.java
+198	org.cache2k.Cache2kBuilder	Cache2kBuilder(org.cache2k.config.CacheType,org.cache2k.config.CacheType)	0	[false, false]		private	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache2kBuilder.java
 199	org.cache2k.Cache2kBuilder	withConfig(org.cache2k.config.Cache2kConfig)	0	[false]		private	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache2kBuilder.java
 200	org.cache2k.Cache2kBuilder	cfg()	0	[]	java.lang.SuppressWarnings	private	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache2kBuilder.java
 201	org.cache2k.Cache2kBuilder	manager(org.cache2k.CacheManager)	0	[false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache2kBuilder.java
@@ -274,14 +274,14 @@ id	class	method	parent	flags	annotations	visibility	non-primitive-return	path
 288	org.cache2k.config.ConfigBuilder	config()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/ConfigBuilder.java
 291	org.cache2k.config.CacheType	of(java.lang.Class)	0	[false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheType.java
 292	org.cache2k.config.CacheType	of(java.lang.reflect.Type)	0	[false]	java.lang.SuppressWarnings	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheType.java
-293	org.cache2k.config.CacheType	getType()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheType.java
+293	org.cache2k.config.CacheType	getType()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheType.java
 294	org.cache2k.config.CacheType	hasTypeArguments()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheType.java
 295	org.cache2k.config.CacheType	isArray()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheType.java
-296	org.cache2k.config.CacheType	getComponentType()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheType.java
-297	org.cache2k.config.CacheType	getTypeArguments()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheType.java
+296	org.cache2k.config.CacheType	getComponentType()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheType.java
+297	org.cache2k.config.CacheType	getTypeArguments()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheType.java
 298	org.cache2k.config.CacheType	getTypeName()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheType.java
 299	org.cache2k.config.CustomizationSupplier	supply(org.cache2k.config.CacheBuildContext)	0	[false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationSupplier.java
-300	org.cache2k.expiry.ExpiryPolicy	calculateExpiryTime(K,V,long,org.cache2k.CacheEntry)	0	[false, false, false, true]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/expiry/ExpiryPolicy.java
+300	org.cache2k.expiry.ExpiryPolicy	calculateExpiryTime(K,V,long,org.cache2k.CacheEntry)	0	[false, false, false, false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/expiry/ExpiryPolicy.java
 301	org.cache2k.io.ResiliencePolicy$1	suppressExceptionUntil(java.lang.Object,org.cache2k.io.LoadExceptionInfo,org.cache2k.CacheEntry)	302	[false, false, false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/io/ResiliencePolicy.java
 303	org.cache2k.io.ResiliencePolicy$1	retryLoadAfter(java.lang.Object,org.cache2k.io.LoadExceptionInfo)	304	[false, false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/io/ResiliencePolicy.java
 305	org.cache2k.io.ResiliencePolicy	disabledPolicy()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/io/ResiliencePolicy.java
@@ -291,7 +291,7 @@ id	class	method	parent	flags	annotations	visibility	non-primitive-return	path
 307	org.cache2k.io.CacheLoader	load(K)	0	[false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/io/CacheLoader.java
 308	org.cache2k.io.CacheWriter	write(K,V)	0	[false, false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/io/CacheWriter.java
 309	org.cache2k.io.CacheWriter	delete(K)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/io/CacheWriter.java
-310	org.cache2k.io.AdvancedCacheLoader	load(K,long,org.cache2k.CacheEntry)	0	[false, false, true]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/io/AdvancedCacheLoader.java
+310	org.cache2k.io.AdvancedCacheLoader	load(K,long,org.cache2k.CacheEntry)	0	[false, false, false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/io/AdvancedCacheLoader.java
 235	org.cache2k.io.AsyncCacheLoader	load(K,org.cache2k.io.AsyncCacheLoader.Context,org.cache2k.io.AsyncCacheLoader.Callback)	0	[false, false, false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/io/AsyncCacheLoader.java
 311	org.cache2k.io.AsyncCacheLoader$Context	getStartTime()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/io/AsyncCacheLoader.java
 312	org.cache2k.io.AsyncCacheLoader$Context	getKey()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/io/AsyncCacheLoader.java
@@ -310,7 +310,7 @@ id	class	method	parent	flags	annotations	visibility	non-primitive-return	path
 329	org.cache2k.config.Feature	enlist(org.cache2k.config.CacheBuildContext)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Feature.java
 330	org.cache2k.config.SectionContainer	add(org.cache2k.config.ConfigSection)	331	[false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/SectionContainer.java
 332	org.cache2k.config.SectionContainer	getSection(java.lang.Class,T)	0	[false, false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/SectionContainer.java
-333	org.cache2k.config.SectionContainer	getSection(java.lang.Class)	0	[false]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/SectionContainer.java
+333	org.cache2k.config.SectionContainer	getSection(java.lang.Class)	0	[false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/SectionContainer.java
 334	org.cache2k.config.SectionContainer	iterator()	335	[]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/SectionContainer.java
 336	org.cache2k.config.SectionContainer	size()	337	[]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/SectionContainer.java
 338	org.cache2k.config.SectionContainer	toString()	339	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/SectionContainer.java
@@ -332,7 +332,7 @@ id	class	method	parent	flags	annotations	visibility	non-primitive-return	path
 355	org.cache2k.integration.ExceptionPropagator	propagateException(K,org.cache2k.integration.ExceptionInformation)	0	[false, false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/integration/ExceptionPropagator.java
 356	org.cache2k.config.CustomizationReferenceSupplier	CustomizationReferenceSupplier(T)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationReferenceSupplier.java
 357	org.cache2k.config.CustomizationReferenceSupplier	supply(org.cache2k.config.CacheBuildContext)	299	[false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationReferenceSupplier.java
-358	org.cache2k.config.CustomizationReferenceSupplier	equals(java.lang.Object)	359	[true]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationReferenceSupplier.java
+358	org.cache2k.config.CustomizationReferenceSupplier	equals(java.lang.Object)	359	[false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationReferenceSupplier.java
 360	org.cache2k.config.CustomizationReferenceSupplier	hashCode()	361	[]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationReferenceSupplier.java
 362	org.cache2k.integration.AsyncCacheLoader	load(K,org.cache2k.integration.AsyncCacheLoader.Context,org.cache2k.integration.AsyncCacheLoader.Callback)	0	[false, false, false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/integration/AsyncCacheLoader.java
 237	org.cache2k.integration.AsyncCacheLoader$Context	getLoadStartTime()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/integration/AsyncCacheLoader.java
@@ -344,18 +344,18 @@ id	class	method	parent	flags	annotations	visibility	non-primitive-return	path
 249	org.cache2k.integration.AsyncCacheLoader$Callback	onLoadFailure(java.lang.Throwable)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/integration/AsyncCacheLoader.java
 363	org.cache2k.integration.LoadDetail	LoadDetail(java.lang.Object)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/integration/LoadDetail.java
 364	org.cache2k.integration.LoadDetail	getValue()	0	[]	java.lang.SuppressWarnings	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/integration/LoadDetail.java
-365	org.cache2k.integration.LoadDetail	getNextInChain()	0	[]	java.lang.SuppressWarnings,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/integration/LoadDetail.java
+365	org.cache2k.integration.LoadDetail	getNextInChain()	0	[]	java.lang.SuppressWarnings	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/integration/LoadDetail.java
 366	org.cache2k.event.CacheClosedListener	onCacheClosed(org.cache2k.Cache)	0	[false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/event/CacheClosedListener.java
 367	org.cache2k.config.ToggleFeature	enable(org.cache2k.Cache2kBuilder,java.lang.Class)	0	[false, false]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/ToggleFeature.java
 368	org.cache2k.config.ToggleFeature	disable(org.cache2k.Cache2kBuilder,java.lang.Class)	0	[false, false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/ToggleFeature.java
-369	org.cache2k.config.ToggleFeature	extract(org.cache2k.Cache2kBuilder,java.lang.Class)	0	[false, false]	java.lang.SuppressWarnings,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/ToggleFeature.java
+369	org.cache2k.config.ToggleFeature	extract(org.cache2k.Cache2kBuilder,java.lang.Class)	0	[false, false]	java.lang.SuppressWarnings	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/ToggleFeature.java
 370	org.cache2k.config.ToggleFeature	isEnabled(org.cache2k.Cache2kBuilder,java.lang.Class)	0	[false, false]	java.lang.SuppressWarnings	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/ToggleFeature.java
 371	org.cache2k.config.ToggleFeature	enlist(org.cache2k.config.CacheBuildContext)	329	[false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/ToggleFeature.java
 372	org.cache2k.config.ToggleFeature	doEnlist(org.cache2k.config.CacheBuildContext)	0	[false]		protected	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/ToggleFeature.java
 373	org.cache2k.config.ToggleFeature	isEnabled()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/ToggleFeature.java
 374	org.cache2k.config.ToggleFeature	setEnabled(boolean)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/ToggleFeature.java
 375	org.cache2k.config.ToggleFeature	setEnable(boolean)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/ToggleFeature.java
-376	org.cache2k.config.ToggleFeature	equals(java.lang.Object)	359	[true]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/ToggleFeature.java
+376	org.cache2k.config.ToggleFeature	equals(java.lang.Object)	359	[false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/ToggleFeature.java
 377	org.cache2k.config.ToggleFeature	hashCode()	361	[]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/ToggleFeature.java
 378	org.cache2k.config.ToggleFeature	toString()	64	[]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/ToggleFeature.java
 379	org.cache2k.config.WithSection	getConfigClass()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/WithSection.java
@@ -365,10 +365,10 @@ id	class	method	parent	flags	annotations	visibility	non-primitive-return	path
 226	org.cache2k.integration.ExceptionInformation	getSinceTime()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/integration/ExceptionInformation.java
 228	org.cache2k.integration.ExceptionInformation	getLoadTime()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/integration/ExceptionInformation.java
 230	org.cache2k.integration.ExceptionInformation	getUntil()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/integration/ExceptionInformation.java
-380	org.cache2k.processor.MutableCacheEntry	getValue()	68	[]	java.lang.Override,java.lang.SuppressWarnings,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/processor/MutableCacheEntry.java
-381	org.cache2k.processor.MutableCacheEntry	getValueOrNull()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/processor/MutableCacheEntry.java
-382	org.cache2k.processor.MutableCacheEntry	getException()	69	[]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/processor/MutableCacheEntry.java
-383	org.cache2k.processor.MutableCacheEntry	getExceptionInfo()	70	[]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/processor/MutableCacheEntry.java
+380	org.cache2k.processor.MutableCacheEntry	getValue()	68	[]	java.lang.Override,java.lang.SuppressWarnings	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/processor/MutableCacheEntry.java
+381	org.cache2k.processor.MutableCacheEntry	getValueOrNull()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/processor/MutableCacheEntry.java
+382	org.cache2k.processor.MutableCacheEntry	getException()	69	[]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/processor/MutableCacheEntry.java
+383	org.cache2k.processor.MutableCacheEntry	getExceptionInfo()	70	[]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/processor/MutableCacheEntry.java
 384	org.cache2k.processor.MutableCacheEntry	exists()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/processor/MutableCacheEntry.java
 385	org.cache2k.processor.MutableCacheEntry	getStartTime()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/processor/MutableCacheEntry.java
 386	org.cache2k.processor.MutableCacheEntry	lock()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/processor/MutableCacheEntry.java
@@ -414,18 +414,18 @@ id	class	method	parent	flags	annotations	visibility	non-primitive-return	path
 426	org.cache2k.CacheException	CacheException(java.lang.String,java.lang.Throwable)	0	[false, false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/CacheException.java
 427	org.cache2k.CacheException	CacheException(java.lang.Throwable)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/CacheException.java
 428	org.cache2k.config.CacheTypeCapture	CacheTypeCapture()	0	[]		protected	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
-429	org.cache2k.config.CacheTypeCapture	getComponentType()	296	[]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
-430	org.cache2k.config.CacheTypeCapture	getType()	293	[]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
-431	org.cache2k.config.CacheTypeCapture	getTypeArguments()	297	[]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
+429	org.cache2k.config.CacheTypeCapture	getComponentType()	296	[]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
+430	org.cache2k.config.CacheTypeCapture	getType()	293	[]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
+431	org.cache2k.config.CacheTypeCapture	getTypeArguments()	297	[]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
 432	org.cache2k.config.CacheTypeCapture	getTypeName()	298	[]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
 433	org.cache2k.config.CacheTypeCapture	hasTypeArguments()	294	[]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
 434	org.cache2k.config.CacheTypeCapture	isArray()	295	[]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
 435	org.cache2k.config.CacheTypeCapture	equals(java.lang.Object)	359	[false]	java.lang.SuppressWarnings,java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
 436	org.cache2k.config.CacheTypeCapture	hashCode()	361	[]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
 437	org.cache2k.config.CacheTypeCapture	toString()	64	[]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
-438	org.cache2k.config.CacheTypeCapture$BaseType	getComponentType()	296	[]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
-439	org.cache2k.config.CacheTypeCapture$BaseType	getType()	293	[]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
-440	org.cache2k.config.CacheTypeCapture$BaseType	getTypeArguments()	297	[]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
+438	org.cache2k.config.CacheTypeCapture$BaseType	getComponentType()	296	[]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
+439	org.cache2k.config.CacheTypeCapture$BaseType	getType()	293	[]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
+440	org.cache2k.config.CacheTypeCapture$BaseType	getTypeArguments()	297	[]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
 441	org.cache2k.config.CacheTypeCapture$BaseType	hasTypeArguments()	294	[]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
 442	org.cache2k.config.CacheTypeCapture$BaseType	isArray()	295	[]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
 443	org.cache2k.config.CacheTypeCapture$BaseType	toString()	64	[]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
@@ -453,20 +453,20 @@ id	class	method	parent	flags	annotations	visibility	non-primitive-return	path
 465	org.cache2k.config.CacheTypeCapture	arrayToString(org.cache2k.config.CacheType[])	0	[false]		package	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheTypeCapture.java
 466	org.cache2k.config.CustomizationSupplierByClassName	CustomizationSupplierByClassName()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationSupplierByClassName.java
 467	org.cache2k.config.CustomizationSupplierByClassName	CustomizationSupplierByClassName(java.lang.String)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationSupplierByClassName.java
-468	org.cache2k.config.CustomizationSupplierByClassName	getClassName()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationSupplierByClassName.java
+468	org.cache2k.config.CustomizationSupplierByClassName	getClassName()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationSupplierByClassName.java
 469	org.cache2k.config.CustomizationSupplierByClassName	setClassName(java.lang.String)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationSupplierByClassName.java
-470	org.cache2k.config.CustomizationSupplierByClassName	checkNull(java.lang.String)	0	[true]		private	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationSupplierByClassName.java
+470	org.cache2k.config.CustomizationSupplierByClassName	checkNull(java.lang.String)	0	[false]		private	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationSupplierByClassName.java
 471	org.cache2k.config.CustomizationSupplierByClassName	validate()	472	[]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationSupplierByClassName.java
 473	org.cache2k.config.CustomizationSupplierByClassName	builder()	192	[]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationSupplierByClassName.java
 474	org.cache2k.config.CustomizationSupplierByClassName	supply(org.cache2k.config.CacheBuildContext)	299	[false]	java.lang.SuppressWarnings,java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationSupplierByClassName.java
-475	org.cache2k.config.CustomizationSupplierByClassName	equals(java.lang.Object)	359	[true]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationSupplierByClassName.java
+475	org.cache2k.config.CustomizationSupplierByClassName	equals(java.lang.Object)	359	[false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationSupplierByClassName.java
 476	org.cache2k.config.CustomizationSupplierByClassName	hashCode()	361	[]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CustomizationSupplierByClassName.java
 472	org.cache2k.config.ValidatingConfigBean	validate()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/ValidatingConfigBean.java
 477	org.cache2k.config.Cache2kManagerConfig	isIgnoreMissingCacheConfiguration()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kManagerConfig.java
 478	org.cache2k.config.Cache2kManagerConfig	setIgnoreMissingCacheConfiguration(boolean)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kManagerConfig.java
-479	org.cache2k.config.Cache2kManagerConfig	getDefaultManagerName()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kManagerConfig.java
+479	org.cache2k.config.Cache2kManagerConfig	getDefaultManagerName()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kManagerConfig.java
 480	org.cache2k.config.Cache2kManagerConfig	setDefaultManagerName(java.lang.String)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kManagerConfig.java
-481	org.cache2k.config.Cache2kManagerConfig	getVersion()	0	[]	org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kManagerConfig.java
+481	org.cache2k.config.Cache2kManagerConfig	getVersion()	0	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kManagerConfig.java
 482	org.cache2k.config.Cache2kManagerConfig	setVersion(java.lang.String)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kManagerConfig.java
 483	org.cache2k.config.Cache2kManagerConfig	isSkipCheckOnStartup()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kManagerConfig.java
 484	org.cache2k.config.Cache2kManagerConfig	setSkipCheckOnStartup(boolean)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/Cache2kManagerConfig.java
@@ -478,7 +478,7 @@ id	class	method	parent	flags	annotations	visibility	non-primitive-return	path
 490	org.cache2k.config.DefaultCustomizationCollection	iterator()	335	[]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/DefaultCustomizationCollection.java
 491	org.cache2k.config.DefaultCustomizationCollection	add(org.cache2k.config.CustomizationSupplier)	319	[false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/DefaultCustomizationCollection.java
 492	org.cache2k.config.DefaultCustomizationCollection	toString()	339	[]		public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/DefaultCustomizationCollection.java
-493	org.cache2k.integration.AdvancedCacheLoader	load(K,long,org.cache2k.CacheEntry)	310	[false, false, true]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/integration/AdvancedCacheLoader.java
+493	org.cache2k.integration.AdvancedCacheLoader	load(K,long,org.cache2k.CacheEntry)	310	[false, false, false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/integration/AdvancedCacheLoader.java
 494	org.cache2k.integration.RefreshedTimeWrapper	RefreshedTimeWrapper(java.lang.Object,long)	0	[false, false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/integration/RefreshedTimeWrapper.java
 495	org.cache2k.integration.RefreshedTimeWrapper	getRefreshTime()	0	[]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/integration/RefreshedTimeWrapper.java
 496	org.cache2k.integration.CacheLoaderException	CacheLoaderException(java.lang.String)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/integration/CacheLoaderException.java
@@ -498,7 +498,7 @@ id	class	method	parent	flags	annotations	visibility	non-primitive-return	path
 510	org.cache2k.io.CacheWriterException	CacheWriterException(java.lang.Throwable)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/io/CacheWriterException.java
 511	org.cache2k.processor.EntryProcessingException	EntryProcessingException(java.lang.Throwable)	0	[false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/processor/EntryProcessingException.java
 512	org.cache2k.AbstractCache	getName()	17	[]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AbstractCache.java
-513	org.cache2k.AbstractCache	get(K)	18	[false]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AbstractCache.java
+513	org.cache2k.AbstractCache	get(K)	18	[false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AbstractCache.java
 514	org.cache2k.AbstractCache	getEntry(K)	20	[false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AbstractCache.java
 515	org.cache2k.AbstractCache	peek(K)	21	[false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AbstractCache.java
 516	org.cache2k.AbstractCache	peekEntry(K)	22	[false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AbstractCache.java
@@ -506,10 +506,10 @@ id	class	method	parent	flags	annotations	visibility	non-primitive-return	path
 518	org.cache2k.AbstractCache	put(K,V)	24	[false, false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AbstractCache.java
 519	org.cache2k.AbstractCache	computeIfAbsent(K,java.util.concurrent.Callable)	26	[false, false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AbstractCache.java
 520	org.cache2k.AbstractCache	putIfAbsent(K,V)	27	[false, false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AbstractCache.java
-521	org.cache2k.AbstractCache	peekAndReplace(K,V)	28	[false, false]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AbstractCache.java
+521	org.cache2k.AbstractCache	peekAndReplace(K,V)	28	[false, false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AbstractCache.java
 522	org.cache2k.AbstractCache	replace(K,V)	29	[false, false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AbstractCache.java
 523	org.cache2k.AbstractCache	replaceIfEquals(K,V,V)	30	[false, false, false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AbstractCache.java
-524	org.cache2k.AbstractCache	peekAndRemove(K)	31	[false]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AbstractCache.java
+524	org.cache2k.AbstractCache	peekAndRemove(K)	31	[false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AbstractCache.java
 525	org.cache2k.AbstractCache	containsAndRemove(K)	32	[false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AbstractCache.java
 526	org.cache2k.AbstractCache	remove(K)	33	[false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AbstractCache.java
 527	org.cache2k.AbstractCache	removeIfEquals(K,V)	35	[false, false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/AbstractCache.java
@@ -550,23 +550,23 @@ id	class	method	parent	flags	annotations	visibility	non-primitive-return	path
 562	org.cache2k.event.CacheEntryExpiredListener	onEntryExpired(org.cache2k.Cache,org.cache2k.CacheEntry)	0	[false, false]		public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/event/CacheEntryExpiredListener.java
 563	org.cache2k.ForwardingCache	delegate()	0	[]		protected	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
 564	org.cache2k.ForwardingCache	getName()	17	[]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
-565	org.cache2k.ForwardingCache	get(K)	18	[false]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
-566	org.cache2k.ForwardingCache	getEntry(K)	20	[false]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
-567	org.cache2k.ForwardingCache	peek(K)	21	[false]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
-568	org.cache2k.ForwardingCache	peekEntry(K)	22	[false]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
+565	org.cache2k.ForwardingCache	get(K)	18	[false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
+566	org.cache2k.ForwardingCache	getEntry(K)	20	[false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
+567	org.cache2k.ForwardingCache	peek(K)	21	[false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
+568	org.cache2k.ForwardingCache	peekEntry(K)	22	[false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
 569	org.cache2k.ForwardingCache	containsKey(K)	23	[false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
 570	org.cache2k.ForwardingCache	put(K,V)	24	[false, false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
 571	org.cache2k.ForwardingCache	computeIfAbsent(K,java.util.concurrent.Callable)	26	[false, false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
 572	org.cache2k.ForwardingCache	putIfAbsent(K,V)	27	[false, false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
-573	org.cache2k.ForwardingCache	peekAndReplace(K,V)	28	[false, false]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
+573	org.cache2k.ForwardingCache	peekAndReplace(K,V)	28	[false, false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
 574	org.cache2k.ForwardingCache	replace(K,V)	29	[false, false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
 575	org.cache2k.ForwardingCache	replaceIfEquals(K,V,V)	30	[false, false, false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
-576	org.cache2k.ForwardingCache	peekAndRemove(K)	31	[false]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
+576	org.cache2k.ForwardingCache	peekAndRemove(K)	31	[false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
 577	org.cache2k.ForwardingCache	containsAndRemove(K)	32	[false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
 578	org.cache2k.ForwardingCache	remove(K)	33	[false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
 579	org.cache2k.ForwardingCache	removeIfEquals(K,V)	35	[false, false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
 580	org.cache2k.ForwardingCache	removeAll(java.lang.Iterable)	36	[false]	java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
-581	org.cache2k.ForwardingCache	peekAndPut(K,V)	38	[false, false]	java.lang.Override,org.checkerframework.checker.nullness.qual.Nullable	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
+581	org.cache2k.ForwardingCache	peekAndPut(K,V)	38	[false, false]	java.lang.Override	public	true	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
 582	org.cache2k.ForwardingCache	expireAt(K,long)	39	[false, false]	java.lang.SuppressWarnings,java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
 583	org.cache2k.ForwardingCache	loadAll(java.lang.Iterable,org.cache2k.CacheOperationCompletionListener)	40	[false, false]	java.lang.SuppressWarnings,java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java
 584	org.cache2k.ForwardingCache	reloadAll(java.lang.Iterable,org.cache2k.CacheOperationCompletionListener)	41	[false, false]	java.lang.SuppressWarnings,java.lang.Override	public	false	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java

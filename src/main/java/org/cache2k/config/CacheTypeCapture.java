@@ -52,18 +52,18 @@ public class CacheTypeCapture<T> implements CacheType<T> {
 
   protected CacheTypeCapture() { }
 
-  @Override
-  public @Nullable CacheType<?> getComponentType() {
+  @Nullable @Override
+  public  CacheType<?> getComponentType() {
     return descriptor.getComponentType();
   }
 
-  @Override
-  public @Nullable Class<T> getType() {
+  @Nullable @Override
+  public  Class<T> getType() {
     return descriptor.getType();
   }
 
-  @Override
-  public @Nullable CacheType<?>[] getTypeArguments() {
+  @Nullable @Override
+  public  CacheType<?>[] getTypeArguments() {
     return descriptor.getTypeArguments();
   }
 
@@ -98,20 +98,20 @@ public class CacheTypeCapture<T> implements CacheType<T> {
     return descriptor.toString();
   }
 
-  private abstract static class BaseType<@Nullable T> implements CacheType<T> {
+  private abstract static class BaseType< T> implements CacheType<T> {
 
-    @Override
-    public @Nullable CacheType<?> getComponentType() {
+    @Nullable @Override
+    public  CacheType<?> getComponentType() {
       return null;
     }
 
-    @Override
-    @Nullable public Class<T> getType() {
+    @Nullable @Override
+     public Class<T> getType() {
       return null;
     }
 
-    @Override
-    public @Nullable CacheType<?>[] getTypeArguments() {
+    @Nullable @Override
+    public  CacheType<?>[] getTypeArguments() {
       return null;
     }
 
