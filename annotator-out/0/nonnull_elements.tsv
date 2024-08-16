@@ -1,1 +1,2 @@
 kind	class	method	param	index	uri
+METHOD	org.cache2k.Cache	invokeAll(java.lang.Iterable,org.cache2k.processor.EntryProcessor)	null	null	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/Cache.java

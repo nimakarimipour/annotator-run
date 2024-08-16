@@ -20,9 +20,7 @@ package org.cache2k;
  * #L%
  */
 
-import org.cache2k.processor.EntryMutator;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.cache2k.annotation.Nullable;
 import org.cache2k.processor.EntryProcessingResult;
 import org.cache2k.processor.EntryProcessor;
 
@@ -37,7 +35,7 @@ import java.util.concurrent.ConcurrentMap;
  *
  * @author Jens Wilke
  */
-public class AbstractCache<@NonNull K, @NonNull V> implements Cache<K, V> {
+public class AbstractCache<K, V> implements Cache<K, V> {
 
   @Override
   public String getName() {
@@ -85,7 +83,7 @@ public class AbstractCache<@NonNull K, @NonNull V> implements Cache<K, V> {
   }
 
   @Override
-  public @Nullable V peekAndReplace(K key, V value) {
+  public V peekAndReplace(K key, V value) {
     throw new UnsupportedOperationException();
   }
 
@@ -100,7 +98,7 @@ public class AbstractCache<@NonNull K, @NonNull V> implements Cache<K, V> {
   }
 
   @Override
-  public @Nullable V peekAndRemove(K key) {
+  public V peekAndRemove(K key) {
     throw new UnsupportedOperationException();
   }
 
@@ -158,23 +156,13 @@ public class AbstractCache<@NonNull K, @NonNull V> implements Cache<K, V> {
   }
 
   @Override
-  public <@Nullable R> R invoke(K key, EntryProcessor<K, V, R> processor) {
+  public <R> R invoke(K key, EntryProcessor<K, V, R> processor) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public <@Nullable R> Map<K, EntryProcessingResult<R>> invokeAll(
+  public <R> Map<K, EntryProcessingResult<R>> invokeAll(
     Iterable<? extends K> keys, EntryProcessor<K, V, R> entryProcessor) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public void mutate(K key, EntryMutator<K, V> mutator) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public void mutateAll(Iterable<? extends K> keys, EntryMutator<K, V> mutator) {
     throw new UnsupportedOperationException();
   }
 

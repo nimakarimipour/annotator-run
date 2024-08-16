@@ -42,7 +42,7 @@ import org.cache2k.CacheEntry;
  * @author Jens Wilke
  * @since 2
  */
-public interface LoadExceptionInfo<K, V> extends CacheEntry<K, V> {
+public interface LoadExceptionInfo<K> extends CacheEntry<K, Void> {
 
   /**
    * The key of the entry.
@@ -56,7 +56,7 @@ public interface LoadExceptionInfo<K, V> extends CacheEntry<K, V> {
    * Inherited from {@link CacheEntry}
    */
   @Override
-  default V getValue() {
+  default Void getValue() {
     throw generateExceptionToPropagate();
   }
 
@@ -71,7 +71,7 @@ public interface LoadExceptionInfo<K, V> extends CacheEntry<K, V> {
    * Returns ourselves. Useful because this implements {@link CacheEntry}
    */
   @Override
-  default LoadExceptionInfo<K, V> getExceptionInfo() { return this; }
+  default LoadExceptionInfo<K> getExceptionInfo() { return this; }
 
   /**
    * Generate the exception to propagate with the exception propagator
@@ -83,7 +83,7 @@ public interface LoadExceptionInfo<K, V> extends CacheEntry<K, V> {
   /**
    * The exception propagator in effect.
    */
-  ExceptionPropagator<K, V> getExceptionPropagator();
+  ExceptionPropagator getExceptionPropagator();
 
   /**
    * Number of retry attempts to load the value for the requested key.

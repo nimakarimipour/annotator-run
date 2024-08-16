@@ -21,7 +21,7 @@ package org.cache2k.processor;
  */
 
 import org.cache2k.CacheEntry;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.cache2k.annotation.Nullable;
 import org.cache2k.io.CacheLoader;
 import org.cache2k.io.CacheLoaderException;
 import org.cache2k.io.LoadExceptionInfo;
@@ -65,10 +65,8 @@ public interface MutableCacheEntry<K, V> extends CacheEntry<K, V> {
    * @see CacheLoader
    */
   @Override
-  @SuppressWarnings({"NullAway", "nullness"})
+  @SuppressWarnings("NullAway")
   @Nullable V getValue();
-
-  default @Nullable V getValueOrNull() { return getValue(); }
 
   /**
    * {@inheritDoc}
@@ -94,7 +92,7 @@ public interface MutableCacheEntry<K, V> extends CacheEntry<K, V> {
    *                          the entry processor will be executed again.
    */
   @Override
-  @Nullable LoadExceptionInfo<K, V> getExceptionInfo();
+  @Nullable LoadExceptionInfo<K> getExceptionInfo();
 
   /**
    * {@code True} if a mapping exists in the cache, never invokes the loader.

@@ -20,8 +20,7 @@ package org.cache2k;
  * #L%
  */
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.cache2k.annotation.Nullable;
 import org.cache2k.config.Cache2kConfig;
 import org.cache2k.config.CacheType;
 import org.cache2k.config.ConfigBean;
@@ -93,9 +92,8 @@ import static org.cache2k.config.Cache2kConfig.checkNull;
  * @author Jens Wilke
  * @since 1.0
  */
-@SuppressWarnings("nullness")
 public class Cache2kBuilder<K, V>
-  implements ConfigBuilder<Cache2kBuilder<K, V>, Cache2kConfig<K, V>>, DataAware<K, V> {
+  implements ConfigBuilder<Cache2kBuilder<K, V>, Cache2kConfig<K, V>> {
 
   private static final String MSG_NO_TYPES =
     "Use Cache2kBuilder.forUnknownTypes(), to construct a builder with no key and value types";
@@ -438,9 +436,9 @@ public class Cache2kBuilder<K, V>
   public final Cache2kBuilder<K, V> exceptionPropagator(
     final org.cache2k.integration.ExceptionPropagator<K> ep) {
     checkNull(ep);
-    ExceptionPropagator<K, V> newPropagator = new ExceptionPropagator<K, V>() {
+    ExceptionPropagator<K> newPropagator = new ExceptionPropagator<K>() {
       @Override
-      public RuntimeException propagateException(LoadExceptionInfo<K, V> newInfo) {
+      public RuntimeException propagateException(LoadExceptionInfo<K> newInfo) {
         org.cache2k.integration.ExceptionInformation oldInfo =
           new org.cache2k.integration.ExceptionInformation() {
           @Override
@@ -484,7 +482,7 @@ public class Cache2kBuilder<K, V>
    * Sets customization for propagating loader exceptions. By default loader exceptions
    * are wrapped into a {@link CacheLoaderException}.
    */
-  public final Cache2kBuilder<K, V> exceptionPropagator(ExceptionPropagator<K, V> ep) {
+  public final Cache2kBuilder<K, V> exceptionPropagator(ExceptionPropagator<K> ep) {
     cfg().setExceptionPropagator(wrapCustomizationInstance(ep));
     return this;
   }

@@ -1,2 +1,4 @@
 REGION_CLASS	REGION_MEMBER	USED_MEMBER	USED_CLASS	SOURCE_TYPE
 org.cache2k.operation.CacheInfo	of(org.cache2k.Cache)	class	org.cache2k.operation.CacheInfo	SOURCE
+org.cache2k.Cache	mutate(K,org.cache2k.processor.EntryMutator)	this	org.cache2k.Cache	SOURCE
+org.cache2k.Cache	mutateAll(java.lang.Iterable,org.cache2k.processor.EntryMutator)	this	org.cache2k.Cache	SOURCE
