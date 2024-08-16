@@ -23,6 +23,7 @@ package org.cache2k.config;
 import org.cache2k.Cache2kBuilder;
 
 import java.util.Iterator;
+import javax.annotation.Nullable;
 
 /**
  * Base class for a cache feature that can be enabled or disables and
@@ -71,8 +72,8 @@ public abstract class ToggleFeature implements SingleFeature {
   /**
    * Returns the feature instance, if present.
    */
-  @SuppressWarnings("unchecked")
-  public static <T extends ToggleFeature> T extract(Cache2kBuilder<?, ?> builder,
+  
+  @Nullable public static <T extends ToggleFeature> T extract(Cache2kBuilder<?, ?> builder,
                                                     Class<T> featureType) {
     Iterator<Feature> it = builder.config().getFeatures().iterator();
     while (it.hasNext()) {
@@ -88,7 +89,7 @@ public abstract class ToggleFeature implements SingleFeature {
    * Returns true if the feature is enabled. Meaning, the feature instance is present
    * and enabled.
    */
-  @SuppressWarnings("unchecked")
+  
   public static boolean isEnabled(Cache2kBuilder<?, ?> builder,
                                   Class<? extends ToggleFeature> featureType) {
     ToggleFeature f = extract(builder, featureType);

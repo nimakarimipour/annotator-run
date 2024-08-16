@@ -108,7 +108,7 @@ import java.util.concurrent.TimeUnit;
  * @see <a href="https://cache2k.org>cache2k homepage</a>
  * @see <a href="https://cache2k.org/docs/latest/user-guide.html">cache2k User Guide</a>
  */
-@SuppressWarnings("UnusedDeclaration")
+
 public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
 
   /**
