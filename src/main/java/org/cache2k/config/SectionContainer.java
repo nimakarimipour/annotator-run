@@ -26,7 +26,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import javax.annotation.Nullable;
 
 /**
  * Container for configuration objects. The container preserves the order of the sections
@@ -64,7 +63,7 @@ public class SectionContainer extends AbstractCollection<ConfigSection>
     return section != null ? sectionType.cast(section) : defaultFallback;
   }
 
-  @Nullable public <T extends ConfigSection> T getSection(Class<T> sectionType) {
+  public <T extends ConfigSection> T getSection(Class<T> sectionType) {
     ConfigSection section = class2section.get(sectionType);
     return sectionType.cast(section);
   }

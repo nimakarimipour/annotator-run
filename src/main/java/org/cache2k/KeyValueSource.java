@@ -36,6 +36,6 @@ public interface KeyValueSource<K, V> {
    *
    * @see Cache#get(Object)
    */
-   V get(K key);
+  @Nullable V get(K key);
 
 }

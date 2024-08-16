@@ -35,7 +35,7 @@ public abstract class LoadDetail<V> {
     value = valueOrWrapper;
   }
 
-  
+  @SuppressWarnings("unchecked")
   public V getValue() {
     if (value instanceof LoadDetail) {
       return ((LoadDetail<V>) value).getValue();
@@ -43,8 +43,8 @@ public abstract class LoadDetail<V> {
     return (V) value;
   }
 
-  
-  @Nullable public  LoadDetail<V> getNextInChain() {
+  @SuppressWarnings("unchecked")
+  public @Nullable LoadDetail<V> getNextInChain() {
     if (value instanceof LoadDetail) {
       return ((LoadDetail<V>) value);
     }

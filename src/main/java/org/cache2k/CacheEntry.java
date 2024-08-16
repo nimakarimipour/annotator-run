@@ -73,7 +73,7 @@ public interface CacheEntry<K, V> {
    * happened or it was suppressed. If {@code null} then {@link #getValue}
    * returns a value and does not throw an exception.
    */
-  @Nullable default  Throwable getException() {
+  default @Nullable Throwable getException() {
     LoadExceptionInfo<K> info = getExceptionInfo();
     return info != null ? info.getException() : null;
   }
@@ -83,6 +83,6 @@ public interface CacheEntry<K, V> {
    * if no exception happened or it was suppressed. If {@code null}
    * then {@link #getValue} returns a value and does not throw an exception.
    */
-   LoadExceptionInfo<K> getExceptionInfo();
+  @Nullable LoadExceptionInfo<K> getExceptionInfo();
 
 }

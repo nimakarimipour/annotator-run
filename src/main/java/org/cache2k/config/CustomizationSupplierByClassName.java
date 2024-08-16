@@ -31,7 +31,7 @@ import org.cache2k.annotation.Nullable;
 public final class CustomizationSupplierByClassName<T>
   implements CustomizationSupplier<T>, ValidatingConfigBean {
 
-  @Nullable private  String className;
+  private @Nullable String className;
 
   /**
    * Default constructor for beans.
@@ -52,7 +52,7 @@ public final class CustomizationSupplierByClassName<T>
     this.className = className;
   }
 
-  @Nullable public  String getClassName() {
+  public @Nullable String getClassName() {
     return className;
   }
 
@@ -72,7 +72,7 @@ public final class CustomizationSupplierByClassName<T>
     throw new UnsupportedOperationException();
   }
 
-  
+  @SuppressWarnings("unchecked")
   @Override
   public T supply(CacheBuildContext<?, ?> ctx) {
     try {
