@@ -65,8 +65,8 @@ public interface MutableCacheEntry<K, V> extends CacheEntry<K, V> {
    * @see CacheLoader
    */
   @Override
-  @SuppressWarnings("NullAway")
-  @Nullable V getValue();
+  
+   V getValue();
 
   /**
    * {@inheritDoc}
@@ -79,7 +79,7 @@ public interface MutableCacheEntry<K, V> extends CacheEntry<K, V> {
    *                          the entry processor will be executed again.
    */
   @Override
-  @Nullable Throwable getException();
+   Throwable getException();
 
   /**
    * {@inheritDoc}
@@ -92,7 +92,7 @@ public interface MutableCacheEntry<K, V> extends CacheEntry<K, V> {
    *                          the entry processor will be executed again.
    */
   @Override
-  @Nullable LoadExceptionInfo<K> getExceptionInfo();
+   LoadExceptionInfo<K> getExceptionInfo();
 
   /**
    * {@code True} if a mapping exists in the cache, never invokes the loader.

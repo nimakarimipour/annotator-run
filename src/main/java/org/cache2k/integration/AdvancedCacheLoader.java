@@ -51,6 +51,6 @@ public abstract class AdvancedCacheLoader<K, V>
    *                   wrapped and rethrown via a {@link CacheLoaderException}
    */
   @Override
-  public abstract V load(K key, long startTime, @Nullable CacheEntry<K, V> currentEntry) throws Exception;
+  public abstract V load(K key, long startTime,  CacheEntry<K, V> currentEntry) throws Exception;
 
 }
