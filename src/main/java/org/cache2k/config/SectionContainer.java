@@ -64,8 +64,7 @@ public class SectionContainer extends AbstractCollection<ConfigSection>
   }
 
   public <T extends ConfigSection> T getSection(Class<T> sectionType) {
-    ConfigSection section = class2section.get(sectionType);
-    return sectionType.cast(section);
+    return getSection(sectionType, null);
   }
 
   @Override

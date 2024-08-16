@@ -20,8 +20,6 @@ package org.cache2k.integration;
  * #L%
  */
 
-import org.cache2k.annotation.Nullable;
-
 /**
  * @author Jens Wilke
  * @deprecated to be removed in version 2.2
@@ -44,7 +42,7 @@ public abstract class LoadDetail<V> {
   }
 
   @SuppressWarnings("unchecked")
-  public @Nullable LoadDetail<V> getNextInChain() {
+  public LoadDetail<V> getNextInChain() {
     if (value instanceof LoadDetail) {
       return ((LoadDetail<V>) value);
     }

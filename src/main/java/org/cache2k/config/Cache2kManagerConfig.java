@@ -20,8 +20,6 @@ package org.cache2k.config;
  * #L%
  */
 
-import org.cache2k.annotation.Nullable;
-
 /**
  * Configuration options for a cache manager. The options can only be changed if a
  * XML file is provided. This bean is in the API artifact for documentation purposes.
@@ -31,8 +29,8 @@ import org.cache2k.annotation.Nullable;
 public class Cache2kManagerConfig
   implements ConfigBean<Cache2kManagerConfig, Cache2kManagerConfig.Builder> {
 
-  private @Nullable String version = null;
-  private @Nullable String defaultManagerName = null;
+  private String version = null;
+  private String defaultManagerName = null;
   private boolean ignoreMissingCacheConfiguration = false;
   private boolean skipCheckOnStartup = false;
   private boolean ignoreAnonymousCache = false;
@@ -48,7 +46,7 @@ public class Cache2kManagerConfig
     ignoreMissingCacheConfiguration = f;
   }
 
-  public @Nullable String getDefaultManagerName() {
+  public String getDefaultManagerName() {
     return defaultManagerName;
   }
 
@@ -59,7 +57,7 @@ public class Cache2kManagerConfig
     defaultManagerName = v;
   }
 
-  public @Nullable String getVersion() {
+  public String getVersion() {
     return version;
   }
 
@@ -105,7 +103,7 @@ public class Cache2kManagerConfig
   public static class Builder implements ConfigBuilder<Builder, Cache2kManagerConfig> {
     @Override
     public Cache2kManagerConfig config() {
-      throw new UnsupportedOperationException();
+      return null;
     }
   }
 }

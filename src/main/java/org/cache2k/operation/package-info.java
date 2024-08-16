@@ -3,7 +3,6 @@
  *
  * @author Jens Wilke
  */
-@NonNullIsDefault
 package org.cache2k.operation;
 
 /*
@@ -25,5 +24,3 @@ package org.cache2k.operation;
  * limitations under the License.
  * #L%
  */
-
-import org.cache2k.annotation.NonNullIsDefault;

@@ -21,7 +21,6 @@ package org.cache2k.event;
  */
 
 import org.cache2k.Cache;
-import org.cache2k.annotation.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -39,8 +38,6 @@ public interface CacheClosedListener extends CacheLifecycleListener {
    * @param cache The cache that is closed. The cache object can be used
    *              to retrieve the name and the associated manager.
    *              No operations are allowed.
-   * @return {@code null} or a CompletableFuture, if this method uses async
-   *         processing
    */
   CompletableFuture<Void> onCacheClosed(Cache<?, ?> cache);
 

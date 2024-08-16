@@ -30,15 +30,6 @@ import java.util.concurrent.CompletableFuture;
  */
 public interface CacheCreatedListener extends CacheLifecycleListener {
 
-  /**
-   * A new cache has been created.
-   *
-   * @param ctx The build context of the cache. The listener may read
-   *            but not modify its configuration parameters.
-   * @return {@code null} or a CompletableFuture, if this method uses async
-   *         processing
-   */
-  <K, V> CompletableFuture<Void> onCacheCreated(Cache<K, V> cache,
-                                                CacheBuildContext<K, V> ctx);
+  <K, V> CompletableFuture<Void> onCacheCreated(Cache<K, V> cache, CacheBuildContext<K, V> ctx);
 
 }

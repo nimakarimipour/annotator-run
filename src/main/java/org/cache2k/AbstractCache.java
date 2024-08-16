@@ -20,7 +20,6 @@ package org.cache2k;
  * #L%
  */
 
-import org.cache2k.annotation.Nullable;
 import org.cache2k.processor.EntryProcessingResult;
 import org.cache2k.processor.EntryProcessor;
 
@@ -43,7 +42,7 @@ public class AbstractCache<K, V> implements Cache<K, V> {
   }
 
   @Override
-  public @Nullable V get(K key) {
+  public V get(K key) {
     throw new UnsupportedOperationException();
   }
 
@@ -127,19 +126,16 @@ public class AbstractCache<K, V> implements Cache<K, V> {
     throw new UnsupportedOperationException();
   }
 
-  @SuppressWarnings("deprecation")
   @Override
   public void expireAt(K key, long millis) {
     throw new UnsupportedOperationException();
   }
 
-  @SuppressWarnings("deprecation")
   @Override
   public void loadAll(Iterable<? extends K> keys, CacheOperationCompletionListener listener) {
     throw new UnsupportedOperationException();
   }
 
-  @SuppressWarnings("deprecation")
   @Override
   public void reloadAll(Iterable<? extends K> keys, CacheOperationCompletionListener listener) {
     throw new UnsupportedOperationException();
@@ -156,7 +152,7 @@ public class AbstractCache<K, V> implements Cache<K, V> {
   }
 
   @Override
-  public <R> R invoke(K key, EntryProcessor<K, V, R> processor) {
+  public <R> R invoke(K key, EntryProcessor<K, V, R> entryProcessor) {
     throw new UnsupportedOperationException();
   }
 
@@ -223,11 +219,6 @@ public class AbstractCache<K, V> implements Cache<K, V> {
 
   @Override
   public <X> X requestInterface(Class<X> type) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public String toString() {
     throw new UnsupportedOperationException();
   }
 

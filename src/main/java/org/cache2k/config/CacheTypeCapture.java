@@ -21,7 +21,6 @@ package org.cache2k.config;
  */
 
 import org.cache2k.Cache2kBuilder;
-import org.cache2k.annotation.Nullable;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.Arrays;
@@ -52,17 +51,17 @@ public class CacheTypeCapture<T> implements CacheType<T> {
   protected CacheTypeCapture() { }
 
   @Override
-  public @Nullable CacheType<?> getComponentType() {
+  public CacheType<?> getComponentType() {
     return descriptor.getComponentType();
   }
 
   @Override
-  public @Nullable Class<T> getType() {
+  public Class<T> getType() {
     return descriptor.getType();
   }
 
   @Override
-  public @Nullable CacheType<?>[] getTypeArguments() {
+  public CacheType<?>[] getTypeArguments() {
     return descriptor.getTypeArguments();
   }
 
@@ -100,17 +99,17 @@ public class CacheTypeCapture<T> implements CacheType<T> {
   private abstract static class BaseType<T> implements CacheType<T> {
 
     @Override
-    public @Nullable CacheType<?> getComponentType() {
+    public CacheType<?> getComponentType() {
       return null;
     }
 
     @Override
-    @Nullable public Class<T> getType() {
+    public Class<T> getType() {
       return null;
     }
 
     @Override
-    public @Nullable CacheType<?>[] getTypeArguments() {
+    public CacheType<?>[] getTypeArguments() {
       return null;
     }
 
@@ -203,8 +202,7 @@ public class CacheTypeCapture<T> implements CacheType<T> {
       return componentType;
     }
 
-    @SuppressWarnings("NullAway")
-    private static int countDimensions(CacheType<?> td) {
+    static int countDimensions(CacheType<?> td) {
       int cnt = 0;
       while (td.isArray()) {
         td = td.getComponentType();
@@ -213,7 +211,6 @@ public class CacheTypeCapture<T> implements CacheType<T> {
       return cnt;
     }
 
-    @SuppressWarnings("NullAway")
     static Class<?> finalPrimitiveType(CacheType<?> td) {
       while (td.isArray()) {
         td = td.getComponentType();

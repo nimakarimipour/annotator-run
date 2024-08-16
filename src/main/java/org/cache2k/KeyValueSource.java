@@ -20,8 +20,6 @@ package org.cache2k;
  * #L%
  */
 
-import org.cache2k.annotation.Nullable;
-
 /**
  * Reduced interface to return a value selected by a key object. Cache users
  * of a read-through cache may choose this simple interface for requesting data
@@ -36,6 +34,6 @@ public interface KeyValueSource<K, V> {
    *
    * @see Cache#get(Object)
    */
-  @Nullable V get(K key);
+  V get(K key);
 
 }

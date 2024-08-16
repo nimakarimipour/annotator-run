@@ -20,8 +20,6 @@ package org.cache2k.config;
  * #L%
  */
 
-import org.cache2k.annotation.Nullable;
-
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -85,7 +83,7 @@ public interface CacheType<T> {
   }
 
   /** Class type if not an array. */
-  @Nullable Class<T> getType();
+  Class<T> getType();
 
   /**
    * The type has generic type parameters and the concrete types are known.
@@ -102,10 +100,10 @@ public interface CacheType<T> {
   boolean isArray();
 
   /** The component type in case of an array */
-  @Nullable CacheType<?> getComponentType();
+  CacheType<?> getComponentType();
 
   /** Known type arguments, if the type is a parametrized type. */
-  @Nullable CacheType<?>[] getTypeArguments();
+  CacheType<?>[] getTypeArguments();
 
   /** Java language compatible type name */
   String getTypeName();
