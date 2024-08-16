@@ -13,12 +13,12 @@
 plugins {
     id "java"
     id "net.ltgt.errorprone" version "2.0.2"
-    id 'org.checkerframework' version '0.6.43'
+    // id 'org.checkerframework' version '0.6.43'
 }
 
 // apply plugin: 'com.android.application'
 
-apply plugin: 'org.checkerframework'
+// apply plugin: 'org.checkerframework'
 
 
 // android {
@@ -54,14 +54,14 @@ dependencies {
     compileOnly "org.checkerframework:checker-qual:3.43.0"
 
     // ErrorProne and NullAway
-    // errorprone "com.uber.nullaway:nullaway:0.10.20"
+    errorprone "com.uber.nullaway:nullaway:0.10.20"
     errorprone "edu.ucr.cs.riple.annot-util:AnnotLocator:0.1"
     errorprone "edu.ucr.cs.riple.annotator:annotator-scanner:1.3.14"
     errorprone "com.google.errorprone:error_prone_core:2.29.2"
     compileOnly "com.google.code.findbugs:jsr305:3.0.2"
     compileOnly "com.uber.nullaway:nullaway-annotations:0.10.20"
 
-    checkerFramework 'org.checkerframework:checker:3.43.0'
+    // checkerFramework 'org.checkerframework:checker:3.43.0'
 }
 
 def scanner_path = projectDir.absolutePath + "/annotator-out/scanner.xml"
@@ -71,20 +71,20 @@ import net.ltgt.gradle.errorprone.CheckSeverity
 tasks.withType(JavaCompile) {
     options.errorprone.disableAllChecks = true
     options.errorprone {
-        // check("NullAway", CheckSeverity.OFF)
+        check("NullAway", CheckSeverity.ERROR)
         check("AnnotatorScanner", CheckSeverity.ERROR)
         check("AnnotLocator", CheckSeverity.ERROR)
-        // option("NullAway:AnnotatedPackages", "com.squareup.picasso3")
-        // option("NullAway:SerializeFixMetadata", "true")
-        // option("NullAway:FixSerializationConfigPath", nullaway_path)
+        option("NullAway:AnnotatedPackages", "org.cache2k")
+        option("NullAway:SerializeFixMetadata", "true")
+        option("NullAway:FixSerializationConfigPath", nullaway_path)
         option("AnnotatorScanner:ConfigPath",  scanner_path)
     }
     // Set max errors to 10000
     options.compilerArgs += ["-Xmaxerrs", "10000"]    
 }
 
-checkerFramework {
-  checkers = [
-    'org.checkerframework.checker.nullness.NullnessChecker',
-  ]
-}
+// checkerFramework {
+//   checkers = [
+//     'org.checkerframework.checker.nullness.NullnessChecker',
+//   ]
+// }
