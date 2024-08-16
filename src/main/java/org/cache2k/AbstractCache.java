@@ -43,7 +43,7 @@ public class AbstractCache<K, V> implements Cache<K, V> {
   }
 
   @Override
-  public @Nullable V get(K key) {
+  public  V get(K key) {
     throw new UnsupportedOperationException();
   }
 
@@ -127,19 +127,19 @@ public class AbstractCache<K, V> implements Cache<K, V> {
     throw new UnsupportedOperationException();
   }
 
-  @SuppressWarnings("deprecation")
+  
   @Override
   public void expireAt(K key, long millis) {
     throw new UnsupportedOperationException();
   }
 
-  @SuppressWarnings("deprecation")
+  
   @Override
   public void loadAll(Iterable<? extends K> keys, CacheOperationCompletionListener listener) {
     throw new UnsupportedOperationException();
   }
 
-  @SuppressWarnings("deprecation")
+  
   @Override
   public void reloadAll(Iterable<? extends K> keys, CacheOperationCompletionListener listener) {
     throw new UnsupportedOperationException();
