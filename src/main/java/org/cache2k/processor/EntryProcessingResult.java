@@ -20,8 +20,6 @@ package org.cache2k.processor;
  * #L%
  */
 
-import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * Result tuple for {@code Cache.invokeAll()}.
  *
@@ -29,7 +27,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  * @see org.cache2k.Cache#invokeAll
  * @author Jens Wilke
  */
-public interface EntryProcessingResult<@Nullable R> {
+public interface EntryProcessingResult<R> {
 
   /**
    * Result of entry processing.

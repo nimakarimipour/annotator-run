@@ -20,7 +20,7 @@ package org.cache2k.config;
  * #L%
  */
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.cache2k.annotation.Nullable;
 
 /**
  * Creates a new instance of the customization based on the class name and the class loader
@@ -46,7 +46,9 @@ public final class CustomizationSupplierByClassName<T>
    *                  a default constructor. Not null.
    */
   public CustomizationSupplierByClassName(String className) {
-    checkNull(className);
+    if (className == null) {
+      throw new NullPointerException("className");
+    }
     this.className = className;
   }
 
@@ -58,16 +60,11 @@ public final class CustomizationSupplierByClassName<T>
     className = v;
   }
 
-  private String checkNull(@Nullable String className) {
+  @Override
+  public void validate() {
     if (className == null) {
       throw new IllegalArgumentException("className not set");
     }
-    return className;
-  }
-
-  @Override
-  public void validate() {
-    checkNull(className);
   }
 
   @Override
@@ -80,14 +77,14 @@ public final class CustomizationSupplierByClassName<T>
   public T supply(CacheBuildContext<?, ?> ctx) {
     try {
       return (T) ctx.getCacheManager().getClassLoader()
-        .loadClass(checkNull(className)).getConstructor().newInstance();
+        .loadClass(className).getConstructor().newInstance();
     } catch (Exception e) {
       throw new LinkageError("error loading customization class", e);
     }
   }
 
   @Override
-  public boolean equals(@Nullable Object other) {
+  public boolean equals(Object other) {
     if (this == other) return true;
     if (!(other instanceof CustomizationSupplierByClassName)) return false;
     CustomizationSupplierByClassName<?> that = (CustomizationSupplierByClassName<?>) other;

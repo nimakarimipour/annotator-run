@@ -20,8 +20,7 @@ package org.cache2k;
  * #L%
  */
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.cache2k.annotation.Nullable;
 import org.cache2k.processor.EntryMutator;
 import org.cache2k.processor.EntryProcessingResult;
 import org.cache2k.processor.EntryProcessor;
@@ -91,7 +90,7 @@ public abstract class ForwardingCache<K, V> implements Cache<K, V> {
   }
 
   @Override
-  public @Nullable V peekAndReplace(K key, V value) {
+  public V peekAndReplace(K key, V value) {
     return delegate().peekAndReplace(key, value);
   }
 
@@ -164,7 +163,7 @@ public abstract class ForwardingCache<K, V> implements Cache<K, V> {
   }
 
   @Override
-  public <@Nullable R> R invoke(K key, EntryProcessor<K, V, R> processor) {
+  public <R> R invoke(K key, EntryProcessor<K, V, R> processor) {
     return delegate().invoke(key, processor);
   }
 
@@ -174,7 +173,7 @@ public abstract class ForwardingCache<K, V> implements Cache<K, V> {
   }
 
   @Override
-  public <@Nullable R> Map<K, EntryProcessingResult<R>> invokeAll(
+  public <R> Map<K, EntryProcessingResult<R>> invokeAll(
     Iterable<? extends K> keys, EntryProcessor<K, V, R> entryProcessor) {
     return delegate().invokeAll(keys, entryProcessor);
   }

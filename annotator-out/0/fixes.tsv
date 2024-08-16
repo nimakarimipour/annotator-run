@@ -1,1 +1,3 @@
 kind	class	method	param	index	uri	reason	annotation	rootClass	rootMethod
+METHOD	org.cache2k.config.SectionContainer	getSection(java.lang.Class)	null	null	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/SectionContainer.java	RETURN_NULLABLE	nullable	org.cache2k.config.SectionContainer	getSection(java.lang.Class)
+METHOD	org.cache2k.ForwardingCache	invoke(K,org.cache2k.processor.EntryProcessor)	null	null	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java	RETURN_NULLABLE	nullable	org.cache2k.ForwardingCache	invoke(K,org.cache2k.processor.EntryProcessor)

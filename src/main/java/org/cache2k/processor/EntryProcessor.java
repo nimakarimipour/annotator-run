@@ -20,9 +20,7 @@ package org.cache2k.processor;
  * #L%
  */
 
-import org.cache2k.DataAware;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.cache2k.annotation.Nullable;
 
 /**
  * An invokable function to perform an atomic operation on a cache entry. The entry
@@ -67,7 +65,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  * @see org.cache2k.Cache#invokeAll
  */
 @FunctionalInterface
-public interface EntryProcessor<K, V, @Nullable R> extends DataAware<K, V> {
+public interface EntryProcessor<K, V, R> {
 
   /**
    * Examines or mutates an entry.
