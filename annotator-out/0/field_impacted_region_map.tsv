@@ -1,0 +1,2 @@
+REGION_CLASS	REGION_MEMBER	USED_MEMBER	USED_CLASS	SOURCE_TYPE
+org.cache2k.operation.CacheInfo	of(org.cache2k.Cache)	class	org.cache2k.operation.CacheInfo	SOURCE

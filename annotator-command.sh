@@ -1,1 +1,1 @@
-./gradlew compileDebugJavaWithJavac
+./gradlew compileJava --rerun-tasks

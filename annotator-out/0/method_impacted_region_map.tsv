@@ -1,0 +1,7 @@
+REGION_CLASS	REGION_MEMBER	USED_MEMBER	USED_CLASS	SOURCE_TYPE
+org.cache2k.operation.CacheInfo	of(org.cache2k.Cache)	requestInterface(java.lang.Class)	org.cache2k.Cache	SOURCE
+org.cache2k.Cache	mutate(K,org.cache2k.processor.EntryMutator)	invoke(K,org.cache2k.processor.EntryProcessor)	org.cache2k.Cache	SOURCE
+org.cache2k.Cache$1	process(org.cache2k.processor.MutableCacheEntry)	mutate(org.cache2k.processor.MutableCacheEntry)	org.cache2k.processor.EntryMutator	SOURCE
+org.cache2k.Cache	mutateAll(java.lang.Iterable,org.cache2k.processor.EntryMutator)	invokeAll(java.lang.Iterable,org.cache2k.processor.EntryProcessor)	org.cache2k.Cache	SOURCE
+org.cache2k.Cache	mutateAll(java.lang.Iterable,org.cache2k.processor.EntryMutator)	process(org.cache2k.processor.MutableCacheEntry)	org.cache2k.processor.EntryProcessor	SOURCE
+org.cache2k.Cache	mutateAll(java.lang.Iterable,org.cache2k.processor.EntryMutator)	mutate(org.cache2k.processor.MutableCacheEntry)	org.cache2k.processor.EntryMutator	SOURCE
