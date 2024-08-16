@@ -44,7 +44,7 @@ import java.util.Arrays;
  */
 public class CacheTypeCapture<T> implements CacheType<T> {
 
-  @SuppressWarnings("unchecked")
+  
   private final CacheType<T> descriptor =
     (CacheType<T>) CacheType.of(
       ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0]);
@@ -52,17 +52,17 @@ public class CacheTypeCapture<T> implements CacheType<T> {
   protected CacheTypeCapture() { }
 
   @Override
-  public @Nullable CacheType<?> getComponentType() {
+  public  CacheType<?> getComponentType() {
     return descriptor.getComponentType();
   }
 
-  @Override
-  public @Nullable Class<T> getType() {
+  @Nullable @Override
+  public  Class<T> getType() {
     return descriptor.getType();
   }
 
-  @Override
-  public @Nullable CacheType<?>[] getTypeArguments() {
+  @Nullable @Override
+  public  CacheType<?>[] getTypeArguments() {
     return descriptor.getTypeArguments();
   }
 
@@ -81,7 +81,7 @@ public class CacheTypeCapture<T> implements CacheType<T> {
     return descriptor.isArray();
   }
 
-  @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
+  
   @Override
   public boolean equals(Object o) {
     return descriptor.equals(o);
@@ -99,18 +99,18 @@ public class CacheTypeCapture<T> implements CacheType<T> {
 
   private abstract static class BaseType<T> implements CacheType<T> {
 
-    @Override
-    public @Nullable CacheType<?> getComponentType() {
+    @Nullable @Override
+    public  CacheType<?> getComponentType() {
       return null;
     }
 
-    @Override
-    @Nullable public Class<T> getType() {
+    @Nullable @Override
+     public Class<T> getType() {
       return null;
     }
 
-    @Override
-    public @Nullable CacheType<?>[] getTypeArguments() {
+    @Nullable @Override
+    public  CacheType<?>[] getTypeArguments() {
       return null;
     }
 
@@ -203,7 +203,7 @@ public class CacheTypeCapture<T> implements CacheType<T> {
       return componentType;
     }
 
-    @SuppressWarnings("NullAway")
+    
     private static int countDimensions(CacheType<?> td) {
       int cnt = 0;
       while (td.isArray()) {
@@ -213,8 +213,8 @@ public class CacheTypeCapture<T> implements CacheType<T> {
       return cnt;
     }
 
-    @SuppressWarnings("NullAway")
-    static Class<?> finalPrimitiveType(CacheType<?> td) {
+    
+    @Nullable static Class<?> finalPrimitiveType(CacheType<?> td) {
       while (td.isArray()) {
         td = td.getComponentType();
       }
