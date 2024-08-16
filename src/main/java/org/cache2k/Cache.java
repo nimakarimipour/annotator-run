@@ -147,7 +147,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
    * @throws CacheLoaderException if the loading produced an exception .
    */
   @Override
-  @Nullable V get(K key);
+   V get(K key);
 
   /**
    * Returns an entry that contains the cache value associated with the given key.
@@ -175,7 +175,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
    * @return An entry representing the cache mapping. Multiple calls for the same key may
    *          return different instances of the entry object.
    */
-  @Nullable CacheEntry<K, V> getEntry(K key);
+   CacheEntry<K, V> getEntry(K key);
 
   /**
    * Returns the value associated to the given key.
@@ -199,7 +199,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
    *         prevents it from being stored in this cache
    * @throws CacheLoaderException if the loading produced an exception .
    */
-  @Nullable V peek(K key);
+   V peek(K key);
 
   /**
    * Returns an entry that contains the cache value associated with the given key.
@@ -222,7 +222,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
    * @return An entry representing the cache mapping. Multiple calls for the same key may
    *          return different instances of the entry object.
    */
-  @Nullable CacheEntry<K, V> peekEntry(K key);
+   CacheEntry<K, V> peekEntry(K key);
 
   /**
    * Returns {@code true}, if there is a mapping for the specified key.
@@ -472,7 +472,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
    *         the cache. This check is optional depending on the cache
    *         configuration.
    */
-  @Nullable V peekAndRemove(K key);
+   V peekAndRemove(K key);
 
   /**
    * Removes the mapping for a key from the cache and returns {@code true} if it
@@ -580,7 +580,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
    * @throws IllegalArgumentException if some property of the specified key
    *         or value prevents it from being stored in this cache.
    */
-  @Nullable V peekAndPut(K key, V value);
+   V peekAndPut(K key, V value);
 
   /**
    * Updates an existing not expired mapping to expire at the given point in time.
@@ -707,7 +707,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
    * @see EntryProcessor
    * @see org.cache2k.processor.MutableCacheEntry
    */
-  <R> @Nullable R invoke(K key, EntryProcessor<K, V, R> processor);
+  <R>  R invoke(K key, EntryProcessor<K, V, R> processor);
 
   /**
    * Invoke a user defined operation on a cache entry.
@@ -745,7 +745,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, Closeable {
    * @see EntryProcessor
    * @see org.cache2k.processor.MutableCacheEntry
    */
-  <R> Map<@NonNull K, @NonNull EntryProcessingResult<R>> invokeAll(
+  <R> Map< K,  EntryProcessingResult<R>> invokeAll(
     Iterable<? extends K> keys, EntryProcessor<K, V, R> entryProcessor);
 
   /**

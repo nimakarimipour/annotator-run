@@ -43,8 +43,8 @@ public abstract class LoadDetail<V> {
     return (V) value;
   }
 
-  @SuppressWarnings("unchecked")
-  public @Nullable LoadDetail<V> getNextInChain() {
+  @Nullable @SuppressWarnings("unchecked")
+  public  LoadDetail<V> getNextInChain() {
     if (value instanceof LoadDetail) {
       return ((LoadDetail<V>) value);
     }
