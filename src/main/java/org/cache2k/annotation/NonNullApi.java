@@ -40,7 +40,7 @@ import java.lang.annotation.Target;
  * <p>This uses the {@code @TypeQualifierDefault} from JSR305, which is also recognized by
  * Kotlin. Unfortunately Kotlin does not support the {@code @DefaultQualifiers} annotation from
  * the checker framework. For best tooling support we annotate the packages with both
- * annotations. An alternative would be to annotate @NonNull instead of having the default
+ * annotations. An alternative would be to annotate  instead of having the default
  * convention Non-null except locals (NNEL).
  *
  * @author Jens Wilke
@@ -53,7 +53,7 @@ import java.lang.annotation.Target;
 @Target(value = {ElementType.PACKAGE, ElementType.TYPE})
 @Retention(value = RetentionPolicy.CLASS)
 @Documented
-@Nonnull
+
 @TypeQualifierDefault(value = {ElementType.METHOD, ElementType.PARAMETER})
 @UnderMigration(status = MigrationStatus.STRICT)
 public @interface NonNullApi { }

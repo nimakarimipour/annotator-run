@@ -93,7 +93,7 @@ import static org.cache2k.config.Cache2kConfig.checkNull;
  * @author Jens Wilke
  * @since 1.0
  */
-@SuppressWarnings("nullness")
+
 public class Cache2kBuilder<K, V>
   implements ConfigBuilder<Cache2kBuilder<K, V>, Cache2kConfig<K, V>>, DataAware<K, V> {
 
@@ -105,7 +105,7 @@ public class Cache2kBuilder<K, V>
    * or to set the type information later via the builder methods {@link #keyType} or
    * {@link #valueType}.
    */
-  @SuppressWarnings({"unchecked", "rawtypes"})
+  
   public static Cache2kBuilder<Object, Object> forUnknownTypes() {
     return new Cache2kBuilder(null, null);
   }
@@ -130,10 +130,10 @@ public class Cache2kBuilder<K, V>
     return cb;
   }
 
-  private @Nullable CacheType<K> keyType;
-  private @Nullable CacheType<V> valueType;
-  private @Nullable Cache2kConfig<K, V> config = null;
-  private @Nullable CacheManager manager = null;
+  @Nullable private  CacheType<K> keyType;
+  @Nullable private  CacheType<V> valueType;
+  @Nullable private  Cache2kConfig<K, V> config = null;
+  @Nullable private  CacheManager manager = null;
 
   private Cache2kBuilder(Cache2kConfig<K, V> cfg) {
     withConfig(cfg);
@@ -152,7 +152,7 @@ public class Cache2kBuilder<K, V>
    *
    * The builder extracts the generic type parameters from the anonymous subclass.
    */
-  @SuppressWarnings("unchecked")
+  
   protected Cache2kBuilder() {
     Type t = this.getClass().getGenericSuperclass();
     if (!(t instanceof ParameterizedType)) {
@@ -167,7 +167,7 @@ public class Cache2kBuilder<K, V>
     }
   }
 
-  private Cache2kBuilder(@Nullable CacheType<K> keyType, @Nullable CacheType<V> valueType) {
+  private Cache2kBuilder( @Nullable CacheType<K> keyType,  @Nullable CacheType<V> valueType) {
     this.keyType = keyType;
     this.valueType = valueType;
   }
@@ -179,7 +179,7 @@ public class Cache2kBuilder<K, V>
   /**
    * Bind to default manager if not set before. Read in default configuration.
    */
-  @SuppressWarnings("unchecked")
+  
   private Cache2kConfig<K, V> cfg() {
     if (config == null) {
       config = CacheManager.PROVIDER.getDefaultConfig(getManager());
@@ -217,7 +217,7 @@ public class Cache2kBuilder<K, V>
    * @throws IllegalArgumentException in case the type is illegal
    * @see CacheType for a general discussion on types
    */
-  @SuppressWarnings("unchecked")
+  
   public final <K2> Cache2kBuilder<K2, V> keyType(Class<K2> t) {
     Cache2kBuilder<K2, V> me = (Cache2kBuilder<K2, V>) this;
     me.cfg().setKeyType(CacheType.of(t));
@@ -230,7 +230,7 @@ public class Cache2kBuilder<K, V>
    * @throws IllegalArgumentException in case the type is illegal
    * @see CacheType for a general discussion on types
    */
-  @SuppressWarnings("unchecked")
+  
   public final <V2> Cache2kBuilder<K, V2> valueType(Class<V2> t) {
     Cache2kBuilder<K, V2> me = (Cache2kBuilder<K, V2>) this;
     me.cfg().setValueType(CacheType.of(t));
@@ -244,7 +244,7 @@ public class Cache2kBuilder<K, V>
    * @throws IllegalArgumentException in case the type is illegal
    * @see CacheType for a general discussion on types
    */
-  @SuppressWarnings("unchecked")
+  
   public final <K2> Cache2kBuilder<K2, V> keyType(CacheType<K2> t) {
     Cache2kBuilder<K2, V> me = (Cache2kBuilder<K2, V>) this;
     me.cfg().setKeyType(t);
@@ -257,7 +257,7 @@ public class Cache2kBuilder<K, V>
    * @throws IllegalArgumentException in case the type is illegal
    * @see CacheType for a general discussion on types
    */
-  @SuppressWarnings("unchecked")
+  
   public final <V2> Cache2kBuilder<K, V2> valueType(CacheType<V2> t) {
     Cache2kBuilder<K, V2> me = (Cache2kBuilder<K, V2>) this;
     me.cfg().setValueType(t);
@@ -586,7 +586,7 @@ public class Cache2kBuilder<K, V>
    *
    * @see CacheLoader for general discussion on cache loaders
    */
-  @SuppressWarnings("unchecked")
+  
   public final Cache2kBuilder<K, V> wrappingLoader(AdvancedCacheLoader<K, LoadDetail<V>> l) {
     cfg().setAdvancedLoader((
       CustomizationSupplier<AdvancedCacheLoader<K, V>>) (Object) wrapCustomizationInstance(l));
@@ -598,7 +598,7 @@ public class Cache2kBuilder<K, V>
    *
    * @see CacheLoader for general discussion on cache loaders
    */
-  @SuppressWarnings("unchecked")
+  
   public final Cache2kBuilder<K, V> wrappingLoader(CacheLoader<K, LoadDetail<V>> l) {
     cfg().setAdvancedLoader((
       CustomizationSupplier<AdvancedCacheLoader<K, V>>) (Object) wrapCustomizationInstance(l));

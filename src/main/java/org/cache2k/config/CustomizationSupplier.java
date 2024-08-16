@@ -37,7 +37,7 @@ import org.checkerframework.checker.nullness.qual.NonNull;
  * @author Jens Wilke
  */
 @FunctionalInterface
-public interface CustomizationSupplier<@NonNull T> {
+public interface CustomizationSupplier< T> {
 
   /**
    * Create or return an existing customization instance.

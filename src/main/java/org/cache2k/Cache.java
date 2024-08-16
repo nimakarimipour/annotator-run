@@ -144,7 +144,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
    * @throws CacheLoaderException if the loading produced an exception .
    */
   @Override
-  @Nullable V get(K key);
+   V get(K key);
 
   /**
    * Returns an entry that contains the cache value associated with the given key.
@@ -172,7 +172,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
    * @return An entry representing the cache mapping. Multiple calls for the same key may
    *          return different instances of the entry object.
    */
-  @Nullable CacheEntry<K, V> getEntry(K key);
+   CacheEntry<K, V> getEntry(K key);
 
   /**
    * Returns the value associated to the given key.
@@ -196,7 +196,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
    *         prevents it from being stored in this cache
    * @throws CacheLoaderException if the loading produced an exception .
    */
-  @Nullable V peek(K key);
+   V peek(K key);
 
   /**
    * Returns an entry that contains the cache value associated with the given key.
@@ -219,7 +219,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
    * @return An entry representing the cache mapping. Multiple calls for the same key may
    *          return different instances of the entry object.
    */
-  @Nullable CacheEntry<K, V> peekEntry(K key);
+   CacheEntry<K, V> peekEntry(K key);
 
   /**
    * Returns {@code true}, if there is a mapping for the specified key.
@@ -375,7 +375,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
    * @throws CacheLoaderException if the loading of the entry produced
    *         an exception, which was not suppressed and is not yet expired
    */
-  @Nullable V peekAndReplace(K key, V value);
+   V peekAndReplace(K key, V value);
 
   /**
    * Replaces the entry for a key only if currently mapped to some value.
@@ -469,7 +469,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
    *         the cache. This check is optional depending on the cache
    *         configuration.
    */
-  @Nullable V peekAndRemove(K key);
+   V peekAndRemove(K key);
 
   /**
    * Removes the mapping for a key from the cache and returns {@code true} if it
@@ -577,7 +577,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
    * @throws IllegalArgumentException if some property of the specified key
    *         or value prevents it from being stored in this cache.
    */
-  @Nullable V peekAndPut(K key, V value);
+   V peekAndPut(K key, V value);
 
   /**
    * Updates an existing not expired mapping to expire at the given point in time.
@@ -704,7 +704,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
    * @see EntryProcessor
    * @see org.cache2k.processor.MutableCacheEntry
    */
-  <@Nullable R> @Nullable R invoke(K key, EntryProcessor<K, V, R> processor);
+  < R>  R invoke(K key, EntryProcessor<K, V, R> processor);
 
   /**
    * Invoke a user defined operation on a cache entry.
@@ -724,7 +724,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
   default void mutate(K key, EntryMutator<K, V> mutator) {
     invoke(key, new EntryProcessor<K, V, Void>() {
       @Override
-      public @Nullable Void process(MutableCacheEntry<K, V> entry) throws Exception {
+      public  Void process(MutableCacheEntry<K, V> entry) throws Exception {
         mutator.mutate(entry);
         return null;
       }
@@ -748,7 +748,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
    * @see EntryProcessor
    * @see org.cache2k.processor.MutableCacheEntry
    */
-  <@Nullable R> Map<K, EntryProcessingResult<R>> invokeAll(
+  < R> Map<K, EntryProcessingResult<R>> invokeAll(
     Iterable<? extends K> keys, EntryProcessor<K, V, R> entryProcessor);
 
   /**
@@ -768,7 +768,7 @@ public interface Cache<K, V> extends KeyValueStore<K, V>, DataAware<K, V>, Close
    * @see org.cache2k.processor.MutableCacheEntry
    * @since 2.0
    */
-  @SuppressWarnings("nullness")
+  
   default void mutateAll(Iterable<? extends K> keys, EntryMutator<K, V> mutator) {
     invokeAll(keys, entry -> { mutator.mutate(entry); return null; });
   }

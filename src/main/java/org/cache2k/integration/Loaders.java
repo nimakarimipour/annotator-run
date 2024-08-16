@@ -38,8 +38,8 @@ public class Loaders {
    * @see CacheLoader#load(Object)
    * @see AdvancedCacheLoader#load(Object, long, CacheEntry)
    */
-  @SuppressWarnings("unchecked")
-  public static <@NonNull V> LoadDetail<V> wrapRefreshedTime(@NonNull V value, long refreshedTimeInMillis) {
+  
+  public static < V> LoadDetail<V> wrapRefreshedTime( V value, long refreshedTimeInMillis) {
     return new RefreshedTimeWrapper<V>(value, refreshedTimeInMillis);
   }
 

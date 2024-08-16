@@ -37,7 +37,7 @@ import java.util.concurrent.ConcurrentMap;
  *
  * @author Jens Wilke
  */
-public class AbstractCache<@NonNull K, @NonNull V> implements Cache<K, V> {
+public class AbstractCache< K,  V> implements Cache<K, V> {
 
   @Override
   public String getName() {
@@ -45,7 +45,7 @@ public class AbstractCache<@NonNull K, @NonNull V> implements Cache<K, V> {
   }
 
   @Override
-  public @Nullable V get(K key) {
+  public  V get(K key) {
     throw new UnsupportedOperationException();
   }
 
@@ -85,7 +85,7 @@ public class AbstractCache<@NonNull K, @NonNull V> implements Cache<K, V> {
   }
 
   @Override
-  public @Nullable V peekAndReplace(K key, V value) {
+  public  V peekAndReplace(K key, V value) {
     throw new UnsupportedOperationException();
   }
 
@@ -100,7 +100,7 @@ public class AbstractCache<@NonNull K, @NonNull V> implements Cache<K, V> {
   }
 
   @Override
-  public @Nullable V peekAndRemove(K key) {
+  public  V peekAndRemove(K key) {
     throw new UnsupportedOperationException();
   }
 
@@ -129,19 +129,19 @@ public class AbstractCache<@NonNull K, @NonNull V> implements Cache<K, V> {
     throw new UnsupportedOperationException();
   }
 
-  @SuppressWarnings("deprecation")
+  
   @Override
   public void expireAt(K key, long millis) {
     throw new UnsupportedOperationException();
   }
 
-  @SuppressWarnings("deprecation")
+  
   @Override
   public void loadAll(Iterable<? extends K> keys, CacheOperationCompletionListener listener) {
     throw new UnsupportedOperationException();
   }
 
-  @SuppressWarnings("deprecation")
+  
   @Override
   public void reloadAll(Iterable<? extends K> keys, CacheOperationCompletionListener listener) {
     throw new UnsupportedOperationException();
@@ -158,12 +158,12 @@ public class AbstractCache<@NonNull K, @NonNull V> implements Cache<K, V> {
   }
 
   @Override
-  public <@Nullable R> R invoke(K key, EntryProcessor<K, V, R> processor) {
+  public < R> R invoke(K key, EntryProcessor<K, V, R> processor) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public <@Nullable R> Map<K, EntryProcessingResult<R>> invokeAll(
+  public < R> Map<K, EntryProcessingResult<R>> invokeAll(
     Iterable<? extends K> keys, EntryProcessor<K, V, R> entryProcessor) {
     throw new UnsupportedOperationException();
   }

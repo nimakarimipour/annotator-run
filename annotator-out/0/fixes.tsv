@@ -1,2 +1,2 @@
 kind	class	method	param	index	uri	reason	annotation	rootClass	rootMethod
-METHOD	org.cache2k.ForwardingCache	invoke(K,org.cache2k.processor.EntryProcessor)	null	null	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/ForwardingCache.java	RETURN_NULLABLE	nullable	org.cache2k.ForwardingCache	invoke(K,org.cache2k.processor.EntryProcessor)
+METHOD	org.cache2k.config.CacheType	getComponentType()	null	null	/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheType.java	WRONG_OVERRIDE_RETURN	nullable	org.cache2k.config.CacheTypeCapture$BaseType	getComponentType()
