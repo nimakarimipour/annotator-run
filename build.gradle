@@ -45,6 +45,9 @@ plugins {
 // }
 
 repositories {
+    maven{
+        url "https://jitpack.io"
+    }
     mavenLocal()
     mavenCentral()
     jcenter()
@@ -52,11 +55,11 @@ repositories {
 }
 
 dependencies {
-    implementation project(':butterknife-annotations')
-    implementation "com.google.auto:auto-common:0.10"
-    implementation "com.google.guava:guava:24.0-jre"
-    implementation "com.squareup:javapoet:1.10.0"
-    implementation "com.google.auto.service:auto-service:1.0-rc4"
+    implementation "com.github.spacious-team:table-wrapper-api:24d52702c5"
+    implementation "com.univocity:univocity-parsers:2.9.1"
+    implementation "org.projectlombok:lombok:1.18.32"
+    annotationProcessor "org.projectlombok:lombok:1.18.32"
+    compileOnly "org.checkerframework:checker-qual:3.42.0"
     // compileOnly files(org.gradle.internal.jvm.Jvm.current().getToolsJar())
 
     // ErrorProne and NullAway
@@ -78,7 +81,7 @@ tasks.withType(JavaCompile) {
         check("NullAway", CheckSeverity.ERROR)
         check("AnnotatorScanner", CheckSeverity.ERROR)
         check("AnnotLocator", CheckSeverity.ERROR)
-        option("NullAway:AnnotatedPackages", "butterknife.compiler")
+        option("NullAway:AnnotatedPackages", "org.spacious_team.table_wrapper.csv")
         option("NullAway:SerializeFixMetadata", "true")
         option("NullAway:FixSerializationConfigPath", nullaway_path)
         option("AnnotatorScanner:ConfigPath",  scanner_path)
