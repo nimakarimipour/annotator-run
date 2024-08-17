@@ -82,6 +82,7 @@ import static javax.lang.model.element.ElementKind.INTERFACE;
 import static javax.lang.model.element.ElementKind.METHOD;
 import static javax.lang.model.element.Modifier.PRIVATE;
 import static javax.lang.model.element.Modifier.STATIC;
+import javax.annotation.Nullable;
 
 @AutoService(Processor.class)
 public final class ButterKnifeProcessor extends AbstractProcessor {
@@ -958,7 +959,7 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
    * Returns a method name from the {@link android.content.res.Resources} class for array resource
    * binding, null if the element type is not supported.
    */
-  private static FieldResourceBinding.Type getArrayResourceMethodName(Element element) {
+  @Nullable private static FieldResourceBinding.Type getArrayResourceMethodName(Element element) {
     TypeMirror typeMirror = element.asType();
     if (TYPED_ARRAY_TYPE.equals(typeMirror.toString())) {
       return FieldResourceBinding.Type.TYPED_ARRAY;
@@ -978,7 +979,7 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
   }
 
   /** Returns the first duplicate element inside an array, null if there are no duplicates. */
-  private static Integer findDuplicate(int[] array) {
+  @Nullable private static Integer findDuplicate(int[] array) {
     Set<Integer> seenElements = new LinkedHashSet<>();
 
     for (int element : array) {
@@ -1259,7 +1260,7 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
   }
 
   private BindingSet.Builder getOrCreateBindingBuilder(
-      Map<TypeElement, BindingSet.Builder> builderMap, TypeElement enclosingElement) {
+      Map<TypeElement, BindingSet.Builder> builderMap, @Nullable TypeElement enclosingElement) {
     BindingSet.Builder builder = builderMap.get(enclosingElement);
     if (builder == null) {
       builder = BindingSet.newBuilder(enclosingElement);
@@ -1269,7 +1270,7 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
   }
 
   /** Finds the parent binder type in the supplied set, if any. */
-  private TypeElement findParentType(TypeElement typeElement, Set<TypeElement> parents) {
+  @Nullable private TypeElement findParentType(TypeElement typeElement, Set<TypeElement> parents) {
     TypeMirror type;
     while (true) {
       type = typeElement.getSuperclass();
@@ -1287,7 +1288,7 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
     return SourceVersion.latestSupported();
   }
 
-  private void error(Element element, String message, Object... args) {
+  private void error(Element element, String message, @Nullable Object... args) {
     printMessage(Kind.ERROR, element, message, args);
   }
 
@@ -1295,7 +1296,7 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
     printMessage(Kind.NOTE, element, message, args);
   }
 
-  private void printMessage(Kind kind, Element element, String message, Object[] args) {
+  private void printMessage(Kind kind, Element element, String message, @Nullable Object[] args) {
     if (args.length > 0) {
       message = String.format(message, args);
     }
@@ -1350,7 +1351,7 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
     return element.getAnnotation(Optional.class) == null;
   }
 
-  private static AnnotationMirror getMirror(Element element,
+  @Nullable private static AnnotationMirror getMirror(Element element,
       Class<? extends Annotation> annotation) {
     for (AnnotationMirror annotationMirror : element.getAnnotationMirrors()) {
       if (annotationMirror.getAnnotationType().toString().equals(annotation.getCanonicalName())) {

@@ -8,6 +8,7 @@ import java.util.List;
 
 import static java.util.Collections.singletonList;
 import static java.util.Collections.unmodifiableList;
+import javax.annotation.Nullable;
 
 final class FieldResourceBinding implements ResourceBinding {
   enum Type {
@@ -57,12 +58,12 @@ final class FieldResourceBinding implements ResourceBinding {
   }
 
   static final class ResourceMethod implements Comparable<ResourceMethod> {
-    final ClassName typeName;
+    @Nullable final ClassName typeName;
     final String name;
     final boolean requiresResources;
     final int sdk;
 
-    ResourceMethod(ClassName typeName, String name, boolean requiresResources, int sdk) {
+    ResourceMethod(@Nullable ClassName typeName, String name, boolean requiresResources, int sdk) {
       this.typeName = typeName;
       this.name = name;
       this.requiresResources = requiresResources;
@@ -78,7 +79,7 @@ final class FieldResourceBinding implements ResourceBinding {
   private final String name;
   private final Type type;
 
-  FieldResourceBinding(Id id, String name, Type type) {
+  FieldResourceBinding(Id id, String name, @Nullable Type type) {
     this.id = id;
     this.name = name;
     this.type = type;
