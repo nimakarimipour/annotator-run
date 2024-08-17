@@ -45,8 +45,8 @@ public class CsvTableRow extends AbstractReportPageRow {
         this.cellsCache = new CsvTableCell[row.length];
     }
 
-    @Override
-    public @Nullable CsvTableCell getCell(int i) {
+    @Nullable @Override
+    public  CsvTableCell getCell(int i) {
         if (i >= row.length) {
             return null;
         }
@@ -74,8 +74,8 @@ public class CsvTableRow extends AbstractReportPageRow {
     }
 
     @Override
-    public Iterator<@Nullable TableCell> iterator() {
-        return new Iterator<@Nullable TableCell>() {
+    public Iterator< TableCell> iterator() {
+        return new Iterator< TableCell>() {
             private int cellIndex = 0;
 
             @Override
@@ -83,8 +83,8 @@ public class CsvTableRow extends AbstractReportPageRow {
                 return cellIndex < row.length;
             }
 
-            @Override
-            public @Nullable TableCell next() {
+            @Nullable @Override
+            public  TableCell next() {
                 if (hasNext()) {
                     return getCell(cellIndex++);
                 }

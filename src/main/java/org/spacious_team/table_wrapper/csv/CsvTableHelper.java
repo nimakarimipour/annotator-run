@@ -62,7 +62,7 @@ final class CsvTableHelper {
         return NOT_FOUND;
     }
 
-    @SuppressWarnings({"nullness", "ConstantConditions"})
+    
     static Predicate<String> equalsPredicate(Object expected) {
         if (expected == null) {
             return Objects::isNull;

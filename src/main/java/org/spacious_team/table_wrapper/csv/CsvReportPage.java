@@ -77,8 +77,8 @@ public class CsvReportPage extends AbstractReportPage<CsvTableRow> {
         return CsvTableHelper.find(rows, startRow, endRow, startColumn, endColumn, cellValuePredicate::test);
     }
 
-    @Override
-    public @Nullable CsvTableRow getRow(int i) {
+    @Nullable @Override
+    public  CsvTableRow getRow(int i) {
         return (i >= rows.length) ? null : new CsvTableRow(rows[i], i);
     }
 
