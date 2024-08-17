@@ -29,9 +29,9 @@ butterknife.compiler.FieldResourceBinding$Type	Type(butterknife.compiler.FieldRe
 butterknife.compiler.FieldResourceBinding$Type	Type(butterknife.compiler.FieldResourceBinding.ResourceMethod[])	addAll(java.util.Collection,T[])	java.util.Collections	SOURCE
 butterknife.compiler.FieldResourceBinding$Type	Type(butterknife.compiler.FieldResourceBinding.ResourceMethod[])	sort(java.util.List)	java.util.Collections	SOURCE
 butterknife.compiler.FieldResourceBinding$Type	Type(butterknife.compiler.FieldResourceBinding.ResourceMethod[])	reverse(java.util.List)	java.util.Collections	SOURCE
-butterknife.compiler.FieldResourceBinding$Type	Type(butterknife.compiler.FieldResourceBinding.ResourceMethod[])	copyOf(java.util.Collection)	com.google.common.collect.ImmutableList	SOURCE
+butterknife.compiler.FieldResourceBinding$Type	Type(butterknife.compiler.FieldResourceBinding.ResourceMethod[])	unmodifiableList(java.util.List)	java.util.Collections	SOURCE
 butterknife.compiler.FieldResourceBinding$Type	Type(java.lang.String)	Enum(java.lang.String,int)	java.lang.Enum	SOURCE
-butterknife.compiler.FieldResourceBinding$Type	Type(java.lang.String)	of(E)	com.google.common.collect.ImmutableList	SOURCE
+butterknife.compiler.FieldResourceBinding$Type	Type(java.lang.String)	singletonList(T)	java.util.Collections	SOURCE
 butterknife.compiler.FieldResourceBinding$Type	Type(java.lang.String)	ResourceMethod(com.squareup.javapoet.ClassName,java.lang.String,boolean,int)	butterknife.compiler.FieldResourceBinding$ResourceMethod	SOURCE
 butterknife.compiler.FieldResourceBinding$Type	methodForSdk(int)	AssertionError()	java.lang.AssertionError	SOURCE
 butterknife.compiler.FieldResourceBinding$ResourceMethod	ResourceMethod(com.squareup.javapoet.ClassName,java.lang.String,boolean,int)	Object()	java.lang.Object	SOURCE
@@ -297,12 +297,10 @@ butterknife.compiler.ButterKnifeProcessor	parseBindViews(javax.lang.model.elemen
 butterknife.compiler.ButterKnifeProcessor	parseBindViews(javax.lang.model.element.Element,java.util.Map,java.util.Set)	getQualifiedName()	javax.lang.model.element.TypeElement	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseBindViews(javax.lang.model.element.Element,java.util.Map,java.util.Set)	getSimpleName()	javax.lang.model.element.Element	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseBindViews(javax.lang.model.element.Element,java.util.Map,java.util.Set)	get(javax.lang.model.type.TypeMirror)	com.squareup.javapoet.TypeName	SOURCE
-butterknife.compiler.ButterKnifeProcessor	parseBindViews(javax.lang.model.element.Element,java.util.Map,java.util.Set)	requireNonNull(T)	java.util.Objects	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseBindViews(javax.lang.model.element.Element,java.util.Map,java.util.Set)	isFieldRequired(javax.lang.model.element.Element)	butterknife.compiler.ButterKnifeProcessor	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseBindViews(javax.lang.model.element.Element,java.util.Map,java.util.Set)	getOrCreateBindingBuilder(java.util.Map,javax.lang.model.element.TypeElement)	butterknife.compiler.ButterKnifeProcessor	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseBindViews(javax.lang.model.element.Element,java.util.Map,java.util.Set)	addFieldCollection(butterknife.compiler.FieldCollectionViewBinding)	butterknife.compiler.BindingSet$Builder	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseBindViews(javax.lang.model.element.Element,java.util.Map,java.util.Set)	FieldCollectionViewBinding(java.lang.String,com.squareup.javapoet.TypeName,butterknife.compiler.FieldCollectionViewBinding.Kind,java.util.List,boolean)	butterknife.compiler.FieldCollectionViewBinding	SOURCE
-butterknife.compiler.ButterKnifeProcessor	parseBindViews(javax.lang.model.element.Element,java.util.Map,java.util.Set)	requireNonNull(T)	java.util.Objects	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseBindViews(javax.lang.model.element.Element,java.util.Map,java.util.Set)	ArrayList(java.util.Collection)	java.util.ArrayList	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseBindViews(javax.lang.model.element.Element,java.util.Map,java.util.Set)	values()	java.util.Map	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseBindViews(javax.lang.model.element.Element,java.util.Map,java.util.Set)	elementToIds(javax.lang.model.element.Element,java.lang.Class,int[])	butterknife.compiler.ButterKnifeProcessor	SOURCE
@@ -520,7 +518,6 @@ butterknife.compiler.ButterKnifeProcessor	parseResourceArray(javax.lang.model.el
 butterknife.compiler.ButterKnifeProcessor	parseResourceArray(javax.lang.model.element.Element,java.util.Map,java.util.Set)	getOrCreateBindingBuilder(java.util.Map,javax.lang.model.element.TypeElement)	butterknife.compiler.ButterKnifeProcessor	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseResourceArray(javax.lang.model.element.Element,java.util.Map,java.util.Set)	addResource(butterknife.compiler.ResourceBinding)	butterknife.compiler.BindingSet$Builder	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseResourceArray(javax.lang.model.element.Element,java.util.Map,java.util.Set)	FieldResourceBinding(butterknife.compiler.Id,java.lang.String,butterknife.compiler.FieldResourceBinding.Type)	butterknife.compiler.FieldResourceBinding	SOURCE
-butterknife.compiler.ButterKnifeProcessor	parseResourceArray(javax.lang.model.element.Element,java.util.Map,java.util.Set)	requireNonNull(T)	java.util.Objects	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseResourceArray(javax.lang.model.element.Element,java.util.Map,java.util.Set)	add(E)	java.util.Set	SOURCE
 butterknife.compiler.ButterKnifeProcessor	getArrayResourceMethodName(javax.lang.model.element.Element)	asType()	javax.lang.model.element.Element	SOURCE
 butterknife.compiler.ButterKnifeProcessor	getArrayResourceMethodName(javax.lang.model.element.Element)	equals(java.lang.Object)	java.lang.String	SOURCE
@@ -676,11 +673,10 @@ butterknife.compiler.ButterKnifeProcessor	parseListenerAnnotation(java.lang.Clas
 butterknife.compiler.ButterKnifeProcessor	parseListenerAnnotation(java.lang.Class,javax.lang.model.element.Element,java.util.Map,java.util.Set)	asList(T[])	java.util.Arrays	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseListenerAnnotation(java.lang.Class,javax.lang.model.element.Element,java.util.Map,java.util.Set)	getOrCreateBindingBuilder(java.util.Map,javax.lang.model.element.TypeElement)	butterknife.compiler.ButterKnifeProcessor	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseListenerAnnotation(java.lang.Class,javax.lang.model.element.Element,java.util.Map,java.util.Set)	elementToIds(javax.lang.model.element.Element,java.lang.Class,int[])	butterknife.compiler.ButterKnifeProcessor	SOURCE
-butterknife.compiler.ButterKnifeProcessor	parseListenerAnnotation(java.lang.Class,javax.lang.model.element.Element,java.util.Map,java.util.Set)	entrySet()	java.util.Map	SOURCE
+butterknife.compiler.ButterKnifeProcessor	parseListenerAnnotation(java.lang.Class,javax.lang.model.element.Element,java.util.Map,java.util.Set)	keySet()	java.util.Map	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseListenerAnnotation(java.lang.Class,javax.lang.model.element.Element,java.util.Map,java.util.Set)	addMethod(butterknife.compiler.Id,butterknife.internal.ListenerClass,butterknife.internal.ListenerMethod,butterknife.compiler.MethodViewBinding)	butterknife.compiler.BindingSet$Builder	SOURCE
-butterknife.compiler.ButterKnifeProcessor	parseListenerAnnotation(java.lang.Class,javax.lang.model.element.Element,java.util.Map,java.util.Set)	getValue()	java.util.Map$Entry	SOURCE
+butterknife.compiler.ButterKnifeProcessor	parseListenerAnnotation(java.lang.Class,javax.lang.model.element.Element,java.util.Map,java.util.Set)	get(java.lang.Object)	java.util.Map	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseListenerAnnotation(java.lang.Class,javax.lang.model.element.Element,java.util.Map,java.util.Set)	error(javax.lang.model.element.Element,java.lang.String,java.lang.Object[])	butterknife.compiler.ButterKnifeProcessor	SOURCE
-butterknife.compiler.ButterKnifeProcessor	parseListenerAnnotation(java.lang.Class,javax.lang.model.element.Element,java.util.Map,java.util.Set)	getKey()	java.util.Map$Entry	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseListenerAnnotation(java.lang.Class,javax.lang.model.element.Element,java.util.Map,java.util.Set)	getQualifiedName()	javax.lang.model.element.TypeElement	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseListenerAnnotation(java.lang.Class,javax.lang.model.element.Element,java.util.Map,java.util.Set)	getSimpleName()	javax.lang.model.element.Element	SOURCE
 butterknife.compiler.ButterKnifeProcessor	parseListenerAnnotation(java.lang.Class,javax.lang.model.element.Element,java.util.Map,java.util.Set)	add(E)	java.util.Set	SOURCE
@@ -758,7 +754,6 @@ butterknife.compiler.ButterKnifeProcessor$RScanner	visitSelect(com.sun.tools.jav
 butterknife.compiler.ButterKnifeProcessor$RScanner	visitSelect(com.sun.tools.javac.tree.JCTree.JCFieldAccess)	enclClass()	com.sun.tools.javac.code.Symbol	SOURCE
 butterknife.compiler.ButterKnifeProcessor$RScanner	visitSelect(com.sun.tools.javac.tree.JCTree.JCFieldAccess)	getEnclosingElement()	com.sun.tools.javac.code.Symbol	SOURCE
 butterknife.compiler.ButterKnifeProcessor$RScanner	visitSelect(com.sun.tools.javac.tree.JCTree.JCFieldAccess)	getEnclosingElement()	com.sun.tools.javac.code.Symbol	SOURCE
-butterknife.compiler.ButterKnifeProcessor$RScanner	visitSelect(com.sun.tools.javac.tree.JCTree.JCFieldAccess)	requireNonNull(T)	java.util.Objects	SOURCE
 butterknife.compiler.ButterKnifeProcessor$RScanner	visitSelect(com.sun.tools.javac.tree.JCTree.JCFieldAccess)	getConstantValue()	com.sun.tools.javac.code.Symbol$VarSymbol	SOURCE
 butterknife.compiler.ButterKnifeProcessor$RScanner	visitSelect(com.sun.tools.javac.tree.JCTree.JCFieldAccess)	put(K,V)	java.util.Map	SOURCE
 butterknife.compiler.ButterKnifeProcessor$RScanner	visitSelect(com.sun.tools.javac.tree.JCTree.JCFieldAccess)	Id(int,com.sun.tools.javac.code.Symbol)	butterknife.compiler.Id	SOURCE
@@ -937,7 +932,6 @@ butterknife.compiler.BindingSet	addFieldAndUnbindStatement(com.squareup.javapoet
 butterknife.compiler.BindingSet	removerOrSetter(butterknife.internal.ListenerClass,boolean)	remover()	butterknife.internal.ListenerClass	SOURCE
 butterknife.compiler.BindingSet	removerOrSetter(butterknife.internal.ListenerClass,boolean)	setter()	butterknife.internal.ListenerClass	SOURCE
 butterknife.compiler.BindingSet	addViewBinding(com.squareup.javapoet.MethodSpec.Builder,butterknife.compiler.ViewBinding,boolean)	isSingleFieldBinding()	butterknife.compiler.ViewBinding	SOURCE
-butterknife.compiler.BindingSet	addViewBinding(com.squareup.javapoet.MethodSpec.Builder,butterknife.compiler.ViewBinding,boolean)	requireNonNull(T)	java.util.Objects	SOURCE
 butterknife.compiler.BindingSet	addViewBinding(com.squareup.javapoet.MethodSpec.Builder,butterknife.compiler.ViewBinding,boolean)	getFieldBinding()	butterknife.compiler.ViewBinding	SOURCE
 butterknife.compiler.BindingSet	addViewBinding(com.squareup.javapoet.MethodSpec.Builder,butterknife.compiler.ViewBinding,boolean)	add(java.lang.String,java.lang.Object[])	com.squareup.javapoet.CodeBlock$Builder	SOURCE
 butterknife.compiler.BindingSet	addViewBinding(com.squareup.javapoet.MethodSpec.Builder,butterknife.compiler.ViewBinding,boolean)	builder()	com.squareup.javapoet.CodeBlock	SOURCE

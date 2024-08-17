@@ -8,14 +8,15 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import javax.annotation.Nullable;
 
 final class ViewBinding {
   private final Id id;
   private final Map<ListenerClass, Map<ListenerMethod, Set<MethodViewBinding>>> methodBindings;
-  private final FieldViewBinding fieldBinding;
+  @Nullable private final FieldViewBinding fieldBinding;
 
-  ViewBinding(Id id, Map<ListenerClass, Map<ListenerMethod, Set<MethodViewBinding>>> methodBindings,
-      FieldViewBinding fieldBinding) {
+  ViewBinding(@Nullable Id id, Map<ListenerClass, Map<ListenerMethod, Set<MethodViewBinding>>> methodBindings,
+      @Nullable FieldViewBinding fieldBinding) {
     this.id = id;
     this.methodBindings = methodBindings;
     this.fieldBinding = fieldBinding;
@@ -25,7 +26,7 @@ final class ViewBinding {
     return id;
   }
 
-  public FieldViewBinding getFieldBinding() {
+  @Nullable public FieldViewBinding getFieldBinding() {
     return fieldBinding;
   }
 
@@ -69,13 +70,13 @@ final class ViewBinding {
   }
 
   public static final class Builder {
-    private final Id id;
+    @Nullable private final Id id;
 
     private final Map<ListenerClass, Map<ListenerMethod, Set<MethodViewBinding>>> methodBindings =
         new LinkedHashMap<>();
-    FieldViewBinding fieldBinding;
+    @Nullable FieldViewBinding fieldBinding;
 
-    Builder(Id id) {
+    Builder(@Nullable Id id) {
       this.id = id;
     }
 

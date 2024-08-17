@@ -6,14 +6,15 @@ import static butterknife.compiler.BindingSet.CONTEXT_COMPAT;
 import static butterknife.compiler.BindingSet.CONTEXT_COMPAT_ANDROIDX;
 import static butterknife.compiler.BindingSet.UTILS;
 import static butterknife.internal.Constants.NO_RES_ID;
+import javax.annotation.Nullable;
 
 final class FieldDrawableBinding implements ResourceBinding {
   private final Id id;
   private final String name;
-  private final Id tintAttributeId;
+  @Nullable private final Id tintAttributeId;
   private final boolean androidX;
 
-  FieldDrawableBinding(Id id, String name, Id tintAttributeId, boolean useAndroidX) {
+  FieldDrawableBinding(@Nullable Id id, String name, @Nullable Id tintAttributeId, boolean useAndroidX) {
     this.id = id;
     this.name = name;
     this.tintAttributeId = tintAttributeId;
