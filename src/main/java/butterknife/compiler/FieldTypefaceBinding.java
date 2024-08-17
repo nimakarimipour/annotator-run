@@ -24,7 +24,7 @@ final class FieldTypefaceBinding implements ResourceBinding {
       this.value = value;
     }
 
-    @Nullable static TypefaceStyles fromValue(int value) {
+     @Nullable static TypefaceStyles fromValue(int value) {
       for (TypefaceStyles style : values()) {
         if (style.value == value) {
           return style;

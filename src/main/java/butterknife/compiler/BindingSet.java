@@ -72,12 +72,12 @@ final class BindingSet {
   private final ImmutableList<ViewBinding> viewBindings;
   private final ImmutableList<FieldCollectionViewBinding> collectionBindings;
   private final ImmutableList<ResourceBinding> resourceBindings;
-  private final @Nullable BindingSet parentBinding;
+  @Nullable private final  BindingSet parentBinding;
 
   private BindingSet(TypeName targetTypeName, ClassName bindingClassName, boolean isFinal,
       boolean isView, boolean isActivity, boolean isDialog, ImmutableList<ViewBinding> viewBindings,
       ImmutableList<FieldCollectionViewBinding> collectionBindings,
-      ImmutableList<ResourceBinding> resourceBindings, @Nullable BindingSet parentBinding) {
+      ImmutableList<ResourceBinding> resourceBindings,  @Nullable BindingSet parentBinding) {
     this.isFinal = isFinal;
     this.targetTypeName = targetTypeName;
     this.bindingClassName = bindingClassName;
@@ -709,7 +709,7 @@ final class BindingSet {
     private final boolean isActivity;
     private final boolean isDialog;
 
-    private @Nullable BindingSet parentBinding;
+    @Nullable private  BindingSet parentBinding;
 
     private final Map<Id, ViewBinding.Builder> viewIdMap = new LinkedHashMap<>();
     private final ImmutableList.Builder<FieldCollectionViewBinding> collectionBindings =
@@ -755,7 +755,7 @@ final class BindingSet {
       this.parentBinding = parent;
     }
 
-    @Nullable String findExistingBindingName(Id id) {
+     @Nullable String findExistingBindingName(Id id) {
       ViewBinding.Builder builder = viewIdMap.get(id);
       if (builder == null) {
         return null;

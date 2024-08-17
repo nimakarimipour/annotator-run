@@ -58,13 +58,13 @@ final class FieldResourceBinding implements ResourceBinding {
 
   @Immutable
   static final class ResourceMethod implements Comparable<ResourceMethod> {
-    @SuppressWarnings("Immutable")
-    final @Nullable ClassName typeName;
+    @Nullable @SuppressWarnings("Immutable")
+    final  ClassName typeName;
     final String name;
     final boolean requiresResources;
     final int sdk;
 
-    ResourceMethod(@Nullable ClassName typeName, String name, boolean requiresResources, int sdk) {
+    ResourceMethod( @Nullable ClassName typeName, String name, boolean requiresResources, int sdk) {
       this.typeName = typeName;
       this.name = name;
       this.requiresResources = requiresResources;

@@ -1,10 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<scanner>
-    <serialization active="true" />
-    <uuid>48bdbbd2-1295-493c-aa2a-9b859b1ba84a</uuid>
-    <path>/Users/nima/Developer/annotator-run/annotator-out/0</path>
-    <processor>
-        <LOMBOK active="true" />
-    </processor>
-    <annotations />
-</scanner>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><scanner><serialization active="false"/><uuid>68528c6a-a0fa-4188-b3c0-7d0fd18330ae</uuid><path>/Users/nima/Developer/annotator-run/annotator-out/0</path><processor><LOMBOK active="true"/></processor><annotations/></scanner>
