@@ -91,7 +91,7 @@ final class DateTimeFormatParser {
 
     private static DateTimeFormatter getDateFormatter(boolean isYearAtFirst, char dateSplitter) {
         Integer key = dateSplitter + 0x40000 + (isYearAtFirst ? 0x20000 : 0);
-        @Nullable DateTimeFormatter result = dateTimeFormatters.get(key);
+         DateTimeFormatter result = dateTimeFormatters.get(key);
         if (result == null) {
             StringBuilder format = new StringBuilder();
             appendDate(isYearAtFirst, dateSplitter, format);
@@ -108,7 +108,7 @@ final class DateTimeFormatParser {
      */
     private static DateTimeFormatter getDateTimeFormatter(boolean isDateAtFirst, boolean isYearAtFirst, char dateSplitter) {
         Integer key = dateSplitter + (isDateAtFirst ? 0x10000 : 0) + (isYearAtFirst ? 0x20000 : 0);
-        @Nullable DateTimeFormatter result = dateTimeFormatters.get(key);
+         DateTimeFormatter result = dateTimeFormatters.get(key);
         if (result == null) {
             StringBuilder format = new StringBuilder();
             if (isDateAtFirst) {

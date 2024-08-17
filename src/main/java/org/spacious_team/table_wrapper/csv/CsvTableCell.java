@@ -62,8 +62,8 @@ public class CsvTableCell extends AbstractTableCell<CsvTableCell.RowAndIndex> {
         @Getter
         private final int columnIndex;
 
-        @Nullable
-        String getValue() {
+        
+        @Nullable String getValue() {
             return checkIndex() ? row[columnIndex] : null;
         }
 
@@ -72,7 +72,7 @@ public class CsvTableCell extends AbstractTableCell<CsvTableCell.RowAndIndex> {
         }
 
         @Override
-        public boolean equals(@Nullable Object obj) {
+        public boolean equals( Object obj) {
             if (obj == this) {
                 return true;
             } else if (!(obj instanceof RowAndIndex)) {
