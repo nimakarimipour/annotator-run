@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static lombok.AccessLevel.PRIVATE;
+import javax.annotation.Nullable;
 
 @NoArgsConstructor(access = PRIVATE)
 final class DateTimeFormatParser {
@@ -41,7 +42,7 @@ final class DateTimeFormatParser {
     static DateTimeFormatter getForDate(String date) {
         boolean isYearAtFirst;
         char dateSplitter;
-        @SuppressWarnings("DuplicatedCode")
+        
         char ch = date.charAt(date.length() - 5);
         if (!Character.isDigit(ch)) {
             // date format is DD MM YYYY
