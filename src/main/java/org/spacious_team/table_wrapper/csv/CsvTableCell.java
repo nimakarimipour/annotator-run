@@ -26,6 +26,7 @@ import org.spacious_team.table_wrapper.api.AbstractTableCell;
 import java.util.Objects;
 
 import static lombok.AccessLevel.PACKAGE;
+import javax.annotation.Nullable;
 
 @EqualsAndHashCode(of = {"rowAndIndex"}, callSuper = false)
 public class CsvTableCell extends AbstractTableCell<CsvTableCell.RowAndIndex> {
@@ -61,7 +62,7 @@ public class CsvTableCell extends AbstractTableCell<CsvTableCell.RowAndIndex> {
         @Getter
         private final int columnIndex;
 
-        String getValue() {
+        @Nullable String getValue() {
             return checkIndex() ? row[columnIndex] : null;
         }
 

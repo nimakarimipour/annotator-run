@@ -28,6 +28,7 @@ import java.util.NoSuchElementException;
 
 import static org.spacious_team.table_wrapper.api.TableCellAddress.NOT_FOUND;
 import static org.spacious_team.table_wrapper.csv.CsvTableHelper.equalsPredicate;
+import javax.annotation.Nullable;
 
 @EqualsAndHashCode(of ={"row", "rowNum"}, callSuper = false)
 public class CsvTableRow extends AbstractReportPageRow {
@@ -44,7 +45,7 @@ public class CsvTableRow extends AbstractReportPageRow {
         this.cellsCache = new CsvTableCell[row.length];
     }
 
-    @Override
+    @Nullable @Override
     public CsvTableCell getCell(int i) {
         if (i >= row.length) {
             return null;
@@ -82,7 +83,7 @@ public class CsvTableRow extends AbstractReportPageRow {
                 return cellIndex < row.length;
             }
 
-            @Override
+            @Nullable @Override
             public TableCell next() {
                 if (hasNext()) {
                     return getCell(cellIndex++);

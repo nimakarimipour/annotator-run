@@ -34,6 +34,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.function.Predicate;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
+import javax.annotation.Nullable;
 
 public class CsvReportPage extends AbstractReportPage<CsvTableRow> {
 
@@ -76,7 +77,7 @@ public class CsvReportPage extends AbstractReportPage<CsvTableRow> {
         return CsvTableHelper.find(rows, startRow, endRow, startColumn, endColumn, cellValuePredicate::test);
     }
 
-    @Override
+    @Nullable @Override
     public CsvTableRow getRow(int i) {
         return (i >= rows.length) ? null : new CsvTableRow(rows[i], i);
     }
