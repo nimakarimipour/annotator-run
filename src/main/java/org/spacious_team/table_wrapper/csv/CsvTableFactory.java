@@ -22,9 +22,9 @@ import org.spacious_team.table_wrapper.api.AbstractTableFactory;
 import org.spacious_team.table_wrapper.api.ReportPage;
 import org.spacious_team.table_wrapper.api.Table;
 import org.spacious_team.table_wrapper.api.TableCellRange;
-import org.spacious_team.table_wrapper.api.TableHeaderColumn;
+import org.spacious_team.table_wrapper.api.TableColumnDescription;
 
-
+@SuppressWarnings("unused")
 public class CsvTableFactory extends AbstractTableFactory<CsvReportPage> {
 
     public CsvTableFactory() {
@@ -32,12 +32,11 @@ public class CsvTableFactory extends AbstractTableFactory<CsvReportPage> {
     }
 
     @Override
-    public <T extends Enum<T> & TableHeaderColumn>
-    Table create(ReportPage reportPage,
-                 String tableName,
-                 TableCellRange tableRange,
-                 Class<T> headerDescription,
-                 int headersRowCount) {
+    public Table create(ReportPage reportPage,
+                        String tableName,
+                        TableCellRange tableRange,
+                        Class<? extends TableColumnDescription> headerDescription,
+                        int headersRowCount) {
         return new CsvTable(
                 cast(reportPage),
                 tableName,
