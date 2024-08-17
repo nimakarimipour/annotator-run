@@ -53,7 +53,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import javax.annotation.Nullable;
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Filer;
 import javax.annotation.processing.ProcessingEnvironment;
@@ -77,7 +76,7 @@ import javax.lang.model.util.Types;
 import javax.tools.Diagnostic.Kind;
 
 import static butterknife.internal.Constants.NO_RES_ID;
-import static java.util.Objects.requireNonNull;
+
 import static javax.lang.model.element.ElementKind.CLASS;
 import static javax.lang.model.element.ElementKind.INTERFACE;
 import static javax.lang.model.element.ElementKind.METHOD;
@@ -85,9 +84,7 @@ import static javax.lang.model.element.Modifier.PRIVATE;
 import static javax.lang.model.element.Modifier.STATIC;
 
 @AutoService(Processor.class)
- // TODO fix all these...
 public final class ButterKnifeProcessor extends AbstractProcessor {
-
   // TODO remove when http://b.android.com/187527 is released.
   private static final String OPTION_SDK_INT = "butterknife.minSdk";
   private static final String OPTION_DEBUGGABLE = "butterknife.debuggable";
@@ -120,7 +117,7 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
 
   private Types typeUtils;
   private Filer filer;
-  private  Trees trees;
+  private Trees trees;
 
   private int sdk = 1;
   private boolean debuggable = true;
@@ -567,11 +564,12 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
       return;
     }
 
-    TypeName type = TypeName.get(requireNonNull(viewType));
+    assert viewType != null; // Always false as hasError would have been true.
+    TypeName type = TypeName.get(viewType);
     boolean required = isFieldRequired(element);
 
     BindingSet.Builder builder = getOrCreateBindingBuilder(builderMap, enclosingElement);
-    builder.addFieldCollection(new FieldCollectionViewBinding(name, type, requireNonNull(kind),
+    builder.addFieldCollection(new FieldCollectionViewBinding(name, type, kind,
         new ArrayList<>(elementToIds(element, BindViews.class, ids).values()), required));
 
     erasedTargetNames.add(enclosingElement);
@@ -951,16 +949,16 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
     int id = element.getAnnotation(BindArray.class).value();
     Id resourceId = elementToId(element, BindArray.class, id);
     BindingSet.Builder builder = getOrCreateBindingBuilder(builderMap, enclosingElement);
-    builder.addResource(new FieldResourceBinding(resourceId, name, requireNonNull(type)));
+    builder.addResource(new FieldResourceBinding(resourceId, name, type));
 
     erasedTargetNames.add(enclosingElement);
   }
 
   /**
-   * Returns a method name from the {@code android.content.res.Resources} class for array resource
+   * Returns a method name from the {@link android.content.res.Resources} class for array resource
    * binding, null if the element type is not supported.
    */
-  @Nullable private static  FieldResourceBinding.Type getArrayResourceMethodName(Element element) {
+  private static FieldResourceBinding.Type getArrayResourceMethodName(Element element) {
     TypeMirror typeMirror = element.asType();
     if (TYPED_ARRAY_TYPE.equals(typeMirror.toString())) {
       return FieldResourceBinding.Type.TYPED_ARRAY;
@@ -980,7 +978,7 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
   }
 
   /** Returns the first duplicate element inside an array, null if there are no duplicates. */
-  @Nullable private static  Integer findDuplicate(int[] array) {
+  private static Integer findDuplicate(int[] array) {
     Set<Integer> seenElements = new LinkedHashSet<>();
 
     for (int element : array) {
@@ -1199,10 +1197,10 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
     BindingSet.Builder builder = getOrCreateBindingBuilder(builderMap, enclosingElement);
     Map<Integer, Id> resourceIds = elementToIds(element, annotationClass, ids);
 
-    for (Map.Entry<Integer, Id> entry : resourceIds.entrySet()) {
-      if (!builder.addMethod(entry.getValue(), listener, method, binding)) {
+    for (int id : resourceIds.keySet()) {
+      if (!builder.addMethod(resourceIds.get(id), listener, method, binding)) {
         error(element, "Multiple listener methods with return value specified for ID %d. (%s.%s)",
-            entry.getKey(), enclosingElement.getQualifiedName(), element.getSimpleName());
+            id, enclosingElement.getQualifiedName(), element.getSimpleName());
         return;
       }
     }
@@ -1261,7 +1259,7 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
   }
 
   private BindingSet.Builder getOrCreateBindingBuilder(
-      Map<TypeElement, BindingSet.Builder> builderMap, @Nullable TypeElement enclosingElement) {
+      Map<TypeElement, BindingSet.Builder> builderMap, TypeElement enclosingElement) {
     BindingSet.Builder builder = builderMap.get(enclosingElement);
     if (builder == null) {
       builder = BindingSet.newBuilder(enclosingElement);
@@ -1271,7 +1269,7 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
   }
 
   /** Finds the parent binder type in the supplied set, if any. */
-  @Nullable private  TypeElement findParentType(TypeElement typeElement, Set<TypeElement> parents) {
+  private TypeElement findParentType(TypeElement typeElement, Set<TypeElement> parents) {
     TypeMirror type;
     while (true) {
       type = typeElement.getSuperclass();
@@ -1289,7 +1287,7 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
     return SourceVersion.latestSupported();
   }
 
-  private void error(Element element, String message, @Nullable Object... args) {
+  private void error(Element element, String message, Object... args) {
     printMessage(Kind.ERROR, element, message, args);
   }
 
@@ -1297,7 +1295,7 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
     printMessage(Kind.NOTE, element, message, args);
   }
 
-  private void printMessage(Kind kind, Element element, String message, @Nullable Object[] args) {
+  private void printMessage(Kind kind, Element element, String message, Object[] args) {
     if (args.length > 0) {
       message = String.format(message, args);
     }
@@ -1352,7 +1350,7 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
     return element.getAnnotation(Optional.class) == null;
   }
 
-  @Nullable private static  AnnotationMirror getMirror(Element element,
+  private static AnnotationMirror getMirror(Element element,
       Class<? extends Annotation> annotation) {
     for (AnnotationMirror annotationMirror : element.getAnnotationMirrors()) {
       if (annotationMirror.getAnnotationType().toString().equals(annotation.getCanonicalName())) {
@@ -1384,7 +1382,7 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
           && symbol.getEnclosingElement().getEnclosingElement() != null
           && symbol.getEnclosingElement().getEnclosingElement().enclClass() != null) {
         try {
-          int value = (Integer) requireNonNull(((Symbol.VarSymbol) symbol).getConstantValue());
+          int value = (Integer) ((Symbol.VarSymbol) symbol).getConstantValue();
           resourceIds.put(value, new Id(value, symbol));
         } catch (Exception ignored) { }
       }

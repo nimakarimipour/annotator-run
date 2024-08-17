@@ -1,7 +1,6 @@
 package butterknife.compiler;
 
 import com.squareup.javapoet.CodeBlock;
-import javax.annotation.Nullable;
 
 interface ResourceBinding {
   Id id();

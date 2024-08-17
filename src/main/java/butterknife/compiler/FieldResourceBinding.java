@@ -1,13 +1,13 @@
 package butterknife.compiler;
 
-import javax.annotation.Nullable;
-import com.google.common.collect.ImmutableList;
-import com.google.errorprone.annotations.Immutable;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.CodeBlock;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static java.util.Collections.singletonList;
+import static java.util.Collections.unmodifiableList;
 
 final class FieldResourceBinding implements ResourceBinding {
   enum Type {
@@ -32,18 +32,18 @@ final class FieldResourceBinding implements ResourceBinding {
     TEXT_ARRAY("getTextArray"),
     TYPED_ARRAY("obtainTypedArray");
 
-    private final ImmutableList<ResourceMethod> methods;
+    private final List<ResourceMethod> methods;
 
     Type(ResourceMethod... methods) {
       List<ResourceMethod> methodList = new ArrayList<>(methods.length);
       Collections.addAll(methodList, methods);
       Collections.sort(methodList);
       Collections.reverse(methodList);
-      this.methods = ImmutableList.copyOf(methodList);
+      this.methods = unmodifiableList(methodList);
     }
 
     Type(String methodName) {
-      methods = ImmutableList.of(new ResourceMethod(null, methodName, true, 1));
+      methods = singletonList(new ResourceMethod(null, methodName, true, 1));
     }
 
     ResourceMethod methodForSdk(int sdk) {
@@ -56,15 +56,13 @@ final class FieldResourceBinding implements ResourceBinding {
     }
   }
 
-  @Immutable
   static final class ResourceMethod implements Comparable<ResourceMethod> {
-    
-    @Nullable final  ClassName typeName;
+    final ClassName typeName;
     final String name;
     final boolean requiresResources;
     final int sdk;
 
-    ResourceMethod( @Nullable ClassName typeName, String name, boolean requiresResources, int sdk) {
+    ResourceMethod(ClassName typeName, String name, boolean requiresResources, int sdk) {
       this.typeName = typeName;
       this.name = name;
       this.requiresResources = requiresResources;
