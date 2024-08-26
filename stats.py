@@ -1,9 +1,8 @@
 import sys
 
-def roundd(num):
-    print(num)
-    # to two decimal places
-    return "{:.2f}".format(num)
+def round_up(n):
+    # round with 2 decimal places
+    return round(n, 2)
 
 def remain():
     annots_post = open("annots_post.tsv", "r").readlines()
@@ -14,7 +13,7 @@ def remain():
     
     # Find annotations that are both annots_post and in annots_infer
     both = set(annots_post).intersection(annots_infer)
-    print(len(both) + " (" + str(roundd(len(both) / len(annots_infer) * 100)) + "%)")
+    print(str(len(both)) + " (" + str(round(len(both) / len(annots_infer) * 100)) + "%)")
     
 
 def recall():
@@ -26,7 +25,7 @@ def recall():
     
     # calculate recall
     recall = len(set(annots_post).intersection(annots_infer)) / len(annots_post)
-    print("Recall: " + str(roundd(recall * 100)) + "%")
+    print("Recall: " + str(round_up(recall * 100)) + "%")
 
 
 def precision():
@@ -38,7 +37,7 @@ def precision():
     
     # calculate precision
     precision = len(set(annots_post).intersection(annots_infer)) / len(annots_infer)
-    print("Precision: " + str(roundd(precision * 100)) + "%")
+    print("Precision: " + str(round_up(precision * 100)) + "%")
     
     
 if __name__ == "__main__":
