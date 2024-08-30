@@ -245,6 +245,8 @@ com.google.cloud.tools.jib.image.json.V21ManifestTemplate	getLayerDigests()	fsLa
 com.google.cloud.tools.jib.image.json.V21ManifestTemplate	getLayerDigests()	blobSum	com.google.cloud.tools.jib.image.json.V21ManifestTemplate$LayerObjectTemplate	SOURCE
 com.google.cloud.tools.jib.image.json.V21ManifestTemplate	getSchemaVersion()	schemaVersion	com.google.cloud.tools.jib.image.json.V21ManifestTemplate	SOURCE
 com.google.cloud.tools.jib.image.json.V21ManifestTemplate	getFsLayers()	fsLayers	com.google.cloud.tools.jib.image.json.V21ManifestTemplate	SOURCE
+com.google.cloud.tools.jib.image.json.V21ManifestTemplate	getLayerDigest(int)	blobSum	com.google.cloud.tools.jib.image.json.V21ManifestTemplate$LayerObjectTemplate	SOURCE
+com.google.cloud.tools.jib.image.json.V21ManifestTemplate	getLayerDigest(int)	fsLayers	com.google.cloud.tools.jib.image.json.V21ManifestTemplate	SOURCE
 com.google.cloud.tools.jib.image.json.V21ManifestTemplate	getV1Compatibility(int)	v1Compatibility	com.google.cloud.tools.jib.image.json.V21ManifestTemplate$V1CompatibilityTemplate	SOURCE
 com.google.cloud.tools.jib.image.json.V21ManifestTemplate	getV1Compatibility(int)	history	com.google.cloud.tools.jib.image.json.V21ManifestTemplate	SOURCE
 com.google.cloud.tools.jib.image.json.OCIManifestTemplate	mediaType	MANIFEST_MEDIA_TYPE	com.google.cloud.tools.jib.image.json.OCIManifestTemplate	SOURCE
@@ -508,7 +510,6 @@ com.google.cloud.tools.jib.registry.RegistryAuthenticator	authenticate(java.lang
 com.google.cloud.tools.jib.registry.RegistryAuthenticator	authenticate(java.lang.String)	authorization	com.google.cloud.tools.jib.registry.RegistryAuthenticator	SOURCE
 com.google.cloud.tools.jib.registry.RegistryAuthenticator	authenticate(java.lang.String)	class	com.google.cloud.tools.jib.registry.RegistryAuthenticator$AuthenticationResponseTemplate	SOURCE
 com.google.cloud.tools.jib.registry.RegistryAuthenticator	authenticate(java.lang.String)	token	com.google.cloud.tools.jib.registry.RegistryAuthenticator$AuthenticationResponseTemplate	SOURCE
-com.google.cloud.tools.jib.registry.RegistryAuthenticator	authenticate(java.lang.String)	token	com.google.cloud.tools.jib.registry.RegistryAuthenticator$AuthenticationResponseTemplate	SOURCE
 com.google.cloud.tools.jib.registry.RegistryAuthenticationFailedException	RegistryAuthenticationFailedException(java.lang.Throwable)	REASON_PREFIX	com.google.cloud.tools.jib.registry.RegistryAuthenticationFailedException	SOURCE
 com.google.cloud.tools.jib.registry.RegistryAuthenticationFailedException	RegistryAuthenticationFailedException(java.lang.String)	REASON_PREFIX	com.google.cloud.tools.jib.registry.RegistryAuthenticationFailedException	SOURCE
 com.google.cloud.tools.jib.registry.RegistryErrorExceptionBuilder	RegistryErrorExceptionBuilder(java.lang.String,java.lang.Throwable)	cause	com.google.cloud.tools.jib.registry.RegistryErrorExceptionBuilder	SOURCE
@@ -586,10 +587,8 @@ com.google.cloud.tools.jib.registry.credentials.RegistryCredentials$Authorizatio
 com.google.cloud.tools.jib.registry.credentials.RegistryCredentials$AuthorizationSourcePair	AuthorizationSourcePair(java.lang.String,com.google.cloud.tools.jib.http.Authorization)	authorization	com.google.cloud.tools.jib.registry.credentials.RegistryCredentials$AuthorizationSourcePair	SOURCE
 com.google.cloud.tools.jib.registry.credentials.RegistryCredentials$AuthorizationSourcePair	AuthorizationSourcePair(java.lang.String,com.google.cloud.tools.jib.http.Authorization)	this	com.google.cloud.tools.jib.registry.credentials.RegistryCredentials$AuthorizationSourcePair	SOURCE
 com.google.cloud.tools.jib.registry.credentials.RegistryCredentials	has(java.lang.String)	credentials	com.google.cloud.tools.jib.registry.credentials.RegistryCredentials	SOURCE
-com.google.cloud.tools.jib.registry.credentials.RegistryCredentials	getAuthorization(java.lang.String)	credentials	com.google.cloud.tools.jib.registry.credentials.RegistryCredentials	SOURCE
 com.google.cloud.tools.jib.registry.credentials.RegistryCredentials	getAuthorization(java.lang.String)	authorization	com.google.cloud.tools.jib.registry.credentials.RegistryCredentials$AuthorizationSourcePair	SOURCE
 com.google.cloud.tools.jib.registry.credentials.RegistryCredentials	getAuthorization(java.lang.String)	credentials	com.google.cloud.tools.jib.registry.credentials.RegistryCredentials	SOURCE
-com.google.cloud.tools.jib.registry.credentials.RegistryCredentials	getCredentialSource(java.lang.String)	credentials	com.google.cloud.tools.jib.registry.credentials.RegistryCredentials	SOURCE
 com.google.cloud.tools.jib.registry.credentials.RegistryCredentials	getCredentialSource(java.lang.String)	credentialSource	com.google.cloud.tools.jib.registry.credentials.RegistryCredentials$AuthorizationSourcePair	SOURCE
 com.google.cloud.tools.jib.registry.credentials.RegistryCredentials	getCredentialSource(java.lang.String)	credentials	com.google.cloud.tools.jib.registry.credentials.RegistryCredentials	SOURCE
 com.google.cloud.tools.jib.registry.credentials.RegistryCredentials	store(java.lang.String,java.lang.String,com.google.cloud.tools.jib.http.Authorization)	credentials	com.google.cloud.tools.jib.registry.credentials.RegistryCredentials	SOURCE
@@ -647,9 +646,6 @@ com.google.cloud.tools.jib.registry.credentials.DockerCredentialHelper	retrieve(
 com.google.cloud.tools.jib.registry.credentials.DockerCredentialHelper	retrieve()	Username	com.google.cloud.tools.jib.registry.credentials.DockerCredentialHelper$DockerCredentialsTemplate	SOURCE
 com.google.cloud.tools.jib.registry.credentials.DockerCredentialHelper	retrieve()	Secret	com.google.cloud.tools.jib.registry.credentials.DockerCredentialHelper$DockerCredentialsTemplate	SOURCE
 com.google.cloud.tools.jib.registry.credentials.DockerCredentialHelper	retrieve()	serverUrl	com.google.cloud.tools.jib.registry.credentials.DockerCredentialHelper	SOURCE
-com.google.cloud.tools.jib.registry.credentials.DockerCredentialHelper	retrieve()	Username	com.google.cloud.tools.jib.registry.credentials.DockerCredentialHelper$DockerCredentialsTemplate	SOURCE
-com.google.cloud.tools.jib.registry.credentials.DockerCredentialHelper	retrieve()	Secret	com.google.cloud.tools.jib.registry.credentials.DockerCredentialHelper$DockerCredentialsTemplate	SOURCE
-com.google.cloud.tools.jib.registry.credentials.DockerCredentialHelper	retrieve()	serverUrl	com.google.cloud.tools.jib.registry.credentials.DockerCredentialHelper	SOURCE
 com.google.cloud.tools.jib.registry.credentials.DockerCredentialHelper	retrieve()	credentialHelperSuffix	com.google.cloud.tools.jib.registry.credentials.DockerCredentialHelper	SOURCE
 com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	targetFormat	class	com.google.cloud.tools.jib.image.json.V22ManifestTemplate	SOURCE
 com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	targetFormat	class	com.google.cloud.tools.jib.image.json.V22ManifestTemplate	SOURCE
@@ -679,9 +675,6 @@ com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	setEnvironment(jav
 com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	setTargetFormat(java.lang.Class)	targetFormat	com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	SOURCE
 com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	setTargetFormat(java.lang.Class)	this	com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	SOURCE
 com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	setTargetFormat(java.lang.Class)	this	com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	SOURCE
-com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	build()	baseImageReference	com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	SOURCE
-com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	build()	targetImageReference	com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	SOURCE
-com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	build()	mainClass	com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	SOURCE
 com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	build()	baseImageReference	com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	SOURCE
 com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	build()	targetImageReference	com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	SOURCE
 com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	build()	mainClass	com.google.cloud.tools.jib.builder.BuildConfiguration$Builder	SOURCE
@@ -896,6 +889,8 @@ com.google.cloud.tools.jib.builder.RetrieveRegistryCredentialsStep	call()	buildC
 com.google.cloud.tools.jib.builder.RetrieveRegistryCredentialsStep	call()	DESCRIPTION	com.google.cloud.tools.jib.builder.RetrieveRegistryCredentialsStep	SOURCE
 com.google.cloud.tools.jib.builder.RetrieveRegistryCredentialsStep	call()	buildConfiguration	com.google.cloud.tools.jib.builder.RetrieveRegistryCredentialsStep	SOURCE
 com.google.cloud.tools.jib.builder.RetrieveRegistryCredentialsStep	call()	buildConfiguration	com.google.cloud.tools.jib.builder.RetrieveRegistryCredentialsStep	SOURCE
+com.google.cloud.tools.jib.builder.RetrieveRegistryCredentialsStep	call()	buildConfiguration	com.google.cloud.tools.jib.builder.RetrieveRegistryCredentialsStep	SOURCE
+com.google.cloud.tools.jib.builder.RetrieveRegistryCredentialsStep	call()	registry	com.google.cloud.tools.jib.builder.RetrieveRegistryCredentialsStep	SOURCE
 com.google.cloud.tools.jib.builder.RetrieveRegistryCredentialsStep	call()	buildConfiguration	com.google.cloud.tools.jib.builder.RetrieveRegistryCredentialsStep	SOURCE
 com.google.cloud.tools.jib.builder.RetrieveRegistryCredentialsStep	call()	registry	com.google.cloud.tools.jib.builder.RetrieveRegistryCredentialsStep	SOURCE
 com.google.cloud.tools.jib.builder.RetrieveRegistryCredentialsStep	call()	buildConfiguration	com.google.cloud.tools.jib.builder.RetrieveRegistryCredentialsStep	SOURCE
