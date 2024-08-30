@@ -50,7 +50,7 @@ class AuthenticatePushStep implements Callable<Authorization> {
 
   /** Depends on {@link RetrieveRegistryCredentialsStep}. */
   @Override
-  @Nullable
+  
   public Authorization call()
       throws ExecutionException, InterruptedException, RegistryAuthenticationFailedException,
           IOException, RegistryException {

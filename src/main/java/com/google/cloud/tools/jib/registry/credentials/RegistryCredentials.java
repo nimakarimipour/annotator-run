@@ -123,8 +123,8 @@ public class RegistryCredentials {
    * @return the {@code Authorization} retrieved for the {@code registry}, or {@code null} if none
    *     exists
    */
-  @Nullable
-  public Authorization getAuthorization(String registry) {
+  
+  @Nullable public Authorization getAuthorization(String registry) {
     if (!has(registry)) {
       return null;
     }
@@ -135,8 +135,8 @@ public class RegistryCredentials {
    * @return the name of the credential helper used to retrieve authorization for the {@code
    *     registry}, or {@code null} if none exists
    */
-  @Nullable
-  public String getCredentialSource(String registry) {
+  
+  @Nullable public String getCredentialSource(String registry) {
     if (!has(registry)) {
       return null;
     }

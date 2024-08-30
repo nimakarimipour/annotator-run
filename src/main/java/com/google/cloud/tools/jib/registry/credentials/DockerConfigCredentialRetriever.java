@@ -76,8 +76,8 @@ public class DockerConfigCredentialRetriever {
   }
 
   /** @return {@link Authorization} found for {@code registry}, or {@code null} if not found */
-  @Nullable
-  public Authorization retrieve() {
+  
+  @Nullable public Authorization retrieve() {
     DockerConfigTemplate dockerConfigTemplate = loadDockerConfigTemplate();
     if (dockerConfigTemplate == null) {
       return null;
@@ -106,8 +106,8 @@ public class DockerConfigCredentialRetriever {
   }
 
   /** Loads the Docker config JSON and caches it. */
-  @Nullable
-  private DockerConfigTemplate loadDockerConfigTemplate() {
+  
+  @Nullable private DockerConfigTemplate loadDockerConfigTemplate() {
     // Loads the Docker config.
     if (!Files.exists(dockerConfigFile)) {
       return null;

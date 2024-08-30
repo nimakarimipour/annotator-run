@@ -62,13 +62,13 @@ public class DockerConfigTemplate implements JsonTemplate {
   /** Template for an {@code auth} defined for a registry under {@code auths}. */
   private static class AuthTemplate implements JsonTemplate {
 
-    private String auth;
+    @Nullable private String auth;
   }
 
   /** Maps from registry to its {@link AuthTemplate}. */
   private final Map<String, AuthTemplate> auths = new HashMap<>();
 
-  private String credsStore;
+  @Nullable private String credsStore;
 
   /** Maps from registry to credential helper name. */
   private final Map<String, String> credHelpers = new HashMap<>();
@@ -77,8 +77,8 @@ public class DockerConfigTemplate implements JsonTemplate {
    * @return the base64-encoded {@code Basic} authorization for {@code registry}, or {@code null} if
    *     none exists
    */
-  @Nullable
-  public String getAuthFor(String registry) {
+  
+  @Nullable public String getAuthFor(String registry) {
     if (!auths.containsKey(registry)) {
       return null;
     }
@@ -89,8 +89,8 @@ public class DockerConfigTemplate implements JsonTemplate {
    * @return {@code credsStore} if {@code registry} is present in {@code auths}; otherwise, searches
    *     {@code credHelpers}; otherwise, {@code null} if not found
    */
-  @Nullable
-  public String getCredentialHelperFor(String registry) {
+  
+  @Nullable public String getCredentialHelperFor(String registry) {
     if (credsStore != null && auths.containsKey(registry)) {
       return credsStore;
     }
@@ -101,7 +101,7 @@ public class DockerConfigTemplate implements JsonTemplate {
   }
 
   @VisibleForTesting
-  DockerConfigTemplate addAuth(String registry, @Nullable String auth) {
+  DockerConfigTemplate addAuth(String registry,  String auth) {
     AuthTemplate authTemplate = new AuthTemplate();
     authTemplate.auth = auth;
     auths.put(registry, authTemplate);

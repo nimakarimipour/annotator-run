@@ -22,15 +22,15 @@ import javax.annotation.Nullable;
 class CachedLayerWithMetadata extends CachedLayer {
 
   /** Extra layer properties for application layers. */
-  @Nullable private final LayerMetadata metadata;
+   @Nullable private final LayerMetadata metadata;
 
-  CachedLayerWithMetadata(CachedLayer cachedLayer, @Nullable LayerMetadata metadata) {
+  CachedLayerWithMetadata(CachedLayer cachedLayer,  @Nullable LayerMetadata metadata) {
     super(cachedLayer.getContentFile(), cachedLayer.getBlobDescriptor(), cachedLayer.getDiffId());
 
     this.metadata = metadata;
   }
 
-  @Nullable
+  
   LayerMetadata getMetadata() {
     return metadata;
   }

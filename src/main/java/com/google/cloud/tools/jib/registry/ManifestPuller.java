@@ -52,8 +52,8 @@ class ManifestPuller<T extends ManifestTemplate> implements RegistryEndpointProv
     this.manifestTemplateClass = manifestTemplateClass;
   }
 
-  @Nullable
-  @Override
+  
+  @Nullable @Override
   public BlobHttpContent getContent() {
     return null;
   }
