@@ -71,11 +71,11 @@ public class RegistryClient {
 
   private static final String PROTOCOL = "https";
 
-  @Nullable private static String userAgentSuffix;
+   @Nullable private static String userAgentSuffix;
 
   // TODO: Inject via a RegistryClientFactory.
   /** Sets a suffix to append to {@code User-Agent} headers. */
-  public static void setUserAgentSuffix(@Nullable String userAgentSuffix) {
+  public static void setUserAgentSuffix( String userAgentSuffix) {
     RegistryClient.userAgentSuffix = userAgentSuffix;
   }
 
@@ -94,10 +94,10 @@ public class RegistryClient {
     return userAgentBuilder.toString();
   }
 
-  @Nullable private final Authorization authorization;
+   @Nullable private final Authorization authorization;
   private final RegistryEndpointProperties registryEndpointProperties;
 
-  public RegistryClient(@Nullable Authorization authorization, String serverUrl, String imageName) {
+  public RegistryClient( @Nullable Authorization authorization, String serverUrl, String imageName) {
     this.authorization = authorization;
     this.registryEndpointProperties = new RegistryEndpointProperties(serverUrl, imageName);
   }
@@ -106,8 +106,8 @@ public class RegistryClient {
    * @return the {@link RegistryAuthenticator} to authenticate pulls/pushes with the registry, or
    *     {@code null} if no token authentication is necessary
    */
-  @Nullable
-  public RegistryAuthenticator getRegistryAuthenticator() throws IOException, RegistryException {
+  
+  @Nullable public RegistryAuthenticator getRegistryAuthenticator() throws IOException, RegistryException {
     // Gets the WWW-Authenticate header (eg. 'WWW-Authenticate: Bearer
     // realm="https://gcr.io/v2/token",service="gcr.io"')
     return callRegistryEndpoint(new AuthenticationMethodRetriever(registryEndpointProperties));
@@ -146,8 +146,8 @@ public class RegistryClient {
    * @return the BLOB's {@link BlobDescriptor} if the BLOB exists on the registry, or {@code null}
    *     if it doesn't
    */
-  @Nullable
-  public BlobDescriptor checkBlob(DescriptorDigest blobDigest)
+  
+  @Nullable public BlobDescriptor checkBlob(DescriptorDigest blobDigest)
       throws IOException, RegistryException {
     BlobChecker blobChecker = new BlobChecker(registryEndpointProperties, blobDigest);
     return callRegistryEndpoint(blobChecker);
@@ -218,8 +218,8 @@ public class RegistryClient {
    *
    * @param registryEndpointProvider the {@link RegistryEndpointProvider} to the endpoint
    */
-  @Nullable
-  private <T> T callRegistryEndpoint(RegistryEndpointProvider<T> registryEndpointProvider)
+  
+  @Nullable private <T> T callRegistryEndpoint(RegistryEndpointProvider<T> registryEndpointProvider)
       throws IOException, RegistryException {
     return callRegistryEndpoint(null, registryEndpointProvider);
   }
@@ -231,9 +231,9 @@ public class RegistryClient {
    *     registryEndpointProvider}
    * @param registryEndpointProvider the {@link RegistryEndpointProvider} to the endpoint
    */
-  @Nullable
-  private <T> T callRegistryEndpoint(
-      @Nullable URL url, RegistryEndpointProvider<T> registryEndpointProvider)
+  
+  @Nullable private <T> T callRegistryEndpoint(
+       @Nullable URL url, RegistryEndpointProvider<T> registryEndpointProvider)
       throws IOException, RegistryException {
     if (url == null) {
       url = registryEndpointProvider.getApiRoute(getApiRouteBase());

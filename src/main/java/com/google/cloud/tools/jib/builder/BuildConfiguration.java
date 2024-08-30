@@ -33,12 +33,12 @@ public class BuildConfiguration {
   public static class Builder {
 
     // All the parameters below are set to their default values.
-    @Nullable private ImageReference baseImageReference;
-    @Nullable private ImageReference targetImageReference;
+     @Nullable private ImageReference baseImageReference;
+     @Nullable private ImageReference targetImageReference;
     private List<String> credentialHelperNames = new ArrayList<>();
     private RegistryCredentials knownRegistryCredentials = RegistryCredentials.none();
     private boolean enableReproducibleBuilds = true;
-    @Nullable private String mainClass;
+     @Nullable private String mainClass;
     private List<String> jvmFlags = new ArrayList<>();
     private Map<String, String> environmentMap = new HashMap<>();
     private Class<? extends BuildableManifestTemplate> targetFormat = V22ManifestTemplate.class;
@@ -49,17 +49,17 @@ public class BuildConfiguration {
       this.buildLogger = buildLogger;
     }
 
-    public Builder setBaseImage(@Nullable ImageReference imageReference) {
+    public Builder setBaseImage( ImageReference imageReference) {
       baseImageReference = imageReference;
       return this;
     }
 
-    public Builder setTargetImage(@Nullable ImageReference imageReference) {
+    public Builder setTargetImage( ImageReference imageReference) {
       targetImageReference = imageReference;
       return this;
     }
 
-    public Builder setCredentialHelperNames(@Nullable List<String> credentialHelperNames) {
+    public Builder setCredentialHelperNames( List<String> credentialHelperNames) {
       if (credentialHelperNames != null) {
         this.credentialHelperNames = credentialHelperNames;
       }
@@ -67,7 +67,7 @@ public class BuildConfiguration {
     }
 
     public Builder setKnownRegistryCredentials(
-        @Nullable RegistryCredentials knownRegistryCredentials) {
+         RegistryCredentials knownRegistryCredentials) {
       if (knownRegistryCredentials != null) {
         this.knownRegistryCredentials = knownRegistryCredentials;
       }
@@ -79,19 +79,19 @@ public class BuildConfiguration {
       return this;
     }
 
-    public Builder setMainClass(@Nullable String mainClass) {
+    public Builder setMainClass( String mainClass) {
       this.mainClass = mainClass;
       return this;
     }
 
-    public Builder setJvmFlags(@Nullable List<String> jvmFlags) {
+    public Builder setJvmFlags( List<String> jvmFlags) {
       if (jvmFlags != null) {
         this.jvmFlags = jvmFlags;
       }
       return this;
     }
 
-    public Builder setEnvironment(@Nullable Map<String, String> environmentMap) {
+    public Builder setEnvironment( Map<String, String> environmentMap) {
       if (environmentMap != null) {
         this.environmentMap = environmentMap;
       }

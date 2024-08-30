@@ -51,8 +51,8 @@ class BlobPusher {
   /** Initializes the BLOB upload. */
   private class Initializer implements RegistryEndpointProvider<String> {
 
-    @Nullable
-    @Override
+    
+    @Nullable @Override
     public BlobHttpContent getContent() {
       return null;
     }
@@ -66,8 +66,8 @@ class BlobPusher {
      * @return a URL to continue pushing the BLOB to, or {@code null} if the BLOB already exists on
      *     the registry
      */
-    @Nullable
-    @Override
+    
+    @Nullable @Override
     public String handleResponse(Response response) throws RegistryErrorException {
       switch (response.getStatusCode()) {
         case HttpStatusCodes.STATUS_CODE_CREATED:
@@ -108,7 +108,7 @@ class BlobPusher {
 
     private final URL location;
 
-    @Nullable
+    
     @Override
     public BlobHttpContent getContent() {
       return new BlobHttpContent(blob, MediaType.OCTET_STREAM.toString());
@@ -151,8 +151,8 @@ class BlobPusher {
 
     private final URL location;
 
-    @Nullable
-    @Override
+    
+    @Nullable @Override
     public BlobHttpContent getContent() {
       return null;
     }

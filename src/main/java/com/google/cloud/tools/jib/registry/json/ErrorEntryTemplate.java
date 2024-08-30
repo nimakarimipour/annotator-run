@@ -24,8 +24,8 @@ import javax.annotation.Nullable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ErrorEntryTemplate implements JsonTemplate {
 
-  @Nullable private String code;
-  @Nullable private String message;
+   @Nullable private String code;
+   @Nullable private String message;
 
   public ErrorEntryTemplate(String code, String message) {
     this.code = code;
@@ -34,13 +34,13 @@ public class ErrorEntryTemplate implements JsonTemplate {
 
   private ErrorEntryTemplate() {}
 
-  @Nullable
-  public String getCode() {
+  
+  @Nullable public String getCode() {
     return code;
   }
 
-  @Nullable
-  public String getMessage() {
+  
+  @Nullable public String getMessage() {
     return message;
   }
 }

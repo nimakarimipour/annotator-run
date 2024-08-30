@@ -32,8 +32,8 @@ class AuthenticationMethodRetriever implements RegistryEndpointProvider<Registry
 
   private final RegistryEndpointProperties registryEndpointProperties;
 
-  @Nullable
-  @Override
+  
+  @Nullable @Override
   public BlobHttpContent getContent() {
     return null;
   }
@@ -43,8 +43,8 @@ class AuthenticationMethodRetriever implements RegistryEndpointProvider<Registry
     return Collections.emptyList();
   }
 
-  @Override
-  @Nullable
+  @Nullable @Override
+  
   public RegistryAuthenticator handleResponse(Response response) {
     // The registry does not require authentication.
     return null;
@@ -65,8 +65,8 @@ class AuthenticationMethodRetriever implements RegistryEndpointProvider<Registry
     return "retrieve authentication method for " + registryEndpointProperties.getServerUrl();
   }
 
-  @Override
-  @Nullable
+  @Nullable @Override
+  
   public RegistryAuthenticator handleHttpResponseException(
       HttpResponseException httpResponseException)
       throws HttpResponseException, RegistryErrorException {

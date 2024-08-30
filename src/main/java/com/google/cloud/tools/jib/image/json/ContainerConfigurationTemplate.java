@@ -70,10 +70,10 @@ public class ContainerConfigurationTemplate implements JsonTemplate {
   private static class ConfigurationObjectTemplate implements JsonTemplate {
 
     /** Environment variables in the format {@code VARNAME=VARVALUE}. */
-    @Nullable private List<String> Env;
+     @Nullable private List<String> Env;
 
     /** Command to run when container starts. */
-    @Nullable private List<String> Entrypoint;
+     @Nullable private List<String> Entrypoint;
   }
 
   /**
@@ -108,13 +108,13 @@ public class ContainerConfigurationTemplate implements JsonTemplate {
     return rootfs.diff_ids;
   }
 
-  @Nullable
-  List<String> getContainerEnvironment() {
+  
+  @Nullable List<String> getContainerEnvironment() {
     return config.Env;
   }
 
-  @Nullable
-  List<String> getContainerEntrypoint() {
+  
+  @Nullable List<String> getContainerEntrypoint() {
     return config.Entrypoint;
   }
 

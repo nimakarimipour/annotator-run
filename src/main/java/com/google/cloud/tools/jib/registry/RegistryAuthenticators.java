@@ -34,8 +34,8 @@ public abstract class RegistryAuthenticators {
     }
   }
 
-  @Nullable
-  public static RegistryAuthenticator forOther(String serverUrl, String repository)
+  
+  @Nullable public static RegistryAuthenticator forOther(String serverUrl, String repository)
       throws RegistryAuthenticationFailedException, IOException, RegistryException {
     try {
       RegistryClient registryClient = new RegistryClient(null, serverUrl, repository);

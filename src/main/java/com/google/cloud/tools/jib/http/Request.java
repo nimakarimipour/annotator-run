@@ -27,19 +27,19 @@ public class Request {
   private final HttpHeaders headers;
 
   /** The HTTP request body. */
-  @Nullable private BlobHttpContent body;
+   @Nullable private BlobHttpContent body;
 
   public static class Builder {
 
     private final HttpHeaders headers = new HttpHeaders().setAccept("*/*");
-    @Nullable private BlobHttpContent body;
+     @Nullable private BlobHttpContent body;
 
     public Request build() {
       return new Request(this);
     }
 
     /** Sets the {@code Authorization} header. */
-    public Builder setAuthorization(@Nullable Authorization authorization) {
+    public Builder setAuthorization( @Nullable Authorization authorization) {
       if (authorization != null) {
         headers.setAuthorization(authorization.toString());
       }
@@ -59,7 +59,7 @@ public class Request {
     }
 
     /** Sets the body and its corresponding {@code Content-Type} header. */
-    public Builder setBody(@Nullable BlobHttpContent blobHttpContent) {
+    public Builder setBody( @Nullable BlobHttpContent blobHttpContent) {
       this.body = blobHttpContent;
       return this;
     }
@@ -78,8 +78,8 @@ public class Request {
     return headers;
   }
 
-  @Nullable
-  BlobHttpContent getHttpContent() {
+  
+  @Nullable BlobHttpContent getHttpContent() {
     return body;
   }
 }

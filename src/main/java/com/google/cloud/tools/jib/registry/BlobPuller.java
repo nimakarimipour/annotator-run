@@ -69,8 +69,8 @@ class BlobPuller implements RegistryEndpointProvider<Void> {
     return null;
   }
 
-  @Override
-  @Nullable
+  @Nullable @Override
+  
   public BlobHttpContent getContent() {
     return null;
   }
