@@ -1,1 +1,1 @@
-./gradlew compileJava --rerun-tasks
+./gradlew clean compileJava --no-build-cache

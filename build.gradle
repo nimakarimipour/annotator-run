@@ -49,8 +49,12 @@ repositories {
 }
 
 dependencies {
-    compileOnly "com.google.code.findbugs:jsr305:3.0.2"
-    compileOnly "org.jetbrains.kotlin:kotlin-annotations-jvm:1.4.10"
+    compileOnly 'com.google.http-client:google-http-client:1.23.0'
+    compileOnly 'org.apache.commons:commons-compress:1.15'
+    compileOnly 'com.google.guava:guava:23.5-jre'
+    compileOnly 'com.fasterxml.jackson.core:jackson-databind:2.9.2'
+    compileOnly 'org.slf4j:slf4j-api:1.7.25'
+
     compileOnly "org.checkerframework:checker-qual:3.43.0"
 
     // ErrorProne and NullAway
@@ -71,16 +75,16 @@ import net.ltgt.gradle.errorprone.CheckSeverity
 tasks.withType(JavaCompile) {
     options.errorprone.disableAllChecks = true
     options.errorprone {
-        check("NullAway", CheckSeverity.ERROR)
-        check("AnnotatorScanner", CheckSeverity.ERROR)
-        check("AnnotLocator", CheckSeverity.ERROR)
-        option("NullAway:AnnotatedPackages", "org.cache2k")
+        check("NullAway", CheckSeverity.WARN)
+        check("AnnotatorScanner", CheckSeverity.WARN)
+        check("AnnotLocator", CheckSeverity.WARN)
+        option("NullAway:AnnotatedPackages", "com.google.cloud.tools.jib")
         option("NullAway:SerializeFixMetadata", "true")
         option("NullAway:FixSerializationConfigPath", nullaway_path)
         option("AnnotatorScanner:ConfigPath",  scanner_path)
     }
     // Set max errors to 10000
-    options.compilerArgs += ["-Xmaxerrs", "10000"]    
+    options.compilerArgs += ["-Xmaxerrs", "10000"]
 }
 
 // checkerFramework {
