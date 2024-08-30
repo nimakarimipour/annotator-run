@@ -62,13 +62,13 @@ public class DockerConfigTemplate implements JsonTemplate {
   /** Template for an {@code auth} defined for a registry under {@code auths}. */
   private static class AuthTemplate implements JsonTemplate {
 
-    @Nullable private String auth;
+    private String auth;
   }
 
   /** Maps from registry to its {@link AuthTemplate}. */
   private final Map<String, AuthTemplate> auths = new HashMap<>();
 
-  @Nullable private String credsStore;
+  private String credsStore;
 
   /** Maps from registry to credential helper name. */
   private final Map<String, String> credHelpers = new HashMap<>();

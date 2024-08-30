@@ -124,11 +124,7 @@ public class RegistryClient {
       String imageTag, Class<T> manifestTemplateClass) throws IOException, RegistryException {
     ManifestPuller<T> manifestPuller =
         new ManifestPuller<>(registryEndpointProperties, imageTag, manifestTemplateClass);
-    T manifestTemplate = callRegistryEndpoint(manifestPuller);
-    if (manifestTemplate == null) {
-      throw new IllegalStateException("ManifestPuller#handleResponse does not return null");
-    }
-    return manifestTemplate;
+    return callRegistryEndpoint(manifestPuller);
   }
 
   public ManifestTemplate pullManifest(String imageTag) throws IOException, RegistryException {
@@ -146,7 +142,6 @@ public class RegistryClient {
    * @return the BLOB's {@link BlobDescriptor} if the BLOB exists on the registry, or {@code null}
    *     if it doesn't
    */
-  @Nullable
   public BlobDescriptor checkBlob(DescriptorDigest blobDigest)
       throws IOException, RegistryException {
     BlobChecker blobChecker = new BlobChecker(registryEndpointProperties, blobDigest);
@@ -218,7 +213,6 @@ public class RegistryClient {
    *
    * @param registryEndpointProvider the {@link RegistryEndpointProvider} to the endpoint
    */
-  @Nullable
   private <T> T callRegistryEndpoint(RegistryEndpointProvider<T> registryEndpointProvider)
       throws IOException, RegistryException {
     return callRegistryEndpoint(null, registryEndpointProvider);
@@ -231,7 +225,6 @@ public class RegistryClient {
    *     registryEndpointProvider}
    * @param registryEndpointProvider the {@link RegistryEndpointProvider} to the endpoint
    */
-  @Nullable
   private <T> T callRegistryEndpoint(
       @Nullable URL url, RegistryEndpointProvider<T> registryEndpointProvider)
       throws IOException, RegistryException {

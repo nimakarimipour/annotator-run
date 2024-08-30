@@ -28,7 +28,6 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
 /** Reads image content from the cache. */
 public class CacheReader {
@@ -77,8 +76,7 @@ public class CacheReader {
     this.cache = cache;
   }
 
-  /** @return the cached layer with digest {@code layerDigest}, or {@code null} if not found */
-  @Nullable
+  /** @return the cached layer with digest {@code layerDigest} */
   public CachedLayer getLayer(DescriptorDigest layerDigest) throws LayerPropertyNotFoundException {
     return cache.getMetadata().getLayers().get(layerDigest);
   }
@@ -87,10 +85,8 @@ public class CacheReader {
    * Finds the file that stores the content BLOB for an application layer.
    *
    * @param sourceFiles the source files the layer must be built from
-   * @return the newest cached layer file that matches the {@code layerType} and {@code
-   *     sourceFiles}, or {@code null} if there is no match
+   * @return the newest cached layer file that matches the {@code layerType} and {@code sourceFiles}
    */
-  @Nullable
   public Path getLayerFile(List<Path> sourceFiles) throws CacheMetadataCorruptedException {
     CacheMetadata cacheMetadata = cache.getMetadata();
     ImageLayers<CachedLayerWithMetadata> cachedLayers =
@@ -101,10 +97,6 @@ public class CacheReader {
 
     Path newestLayerFile = null;
     for (CachedLayerWithMetadata cachedLayer : cachedLayers) {
-      if (cachedLayer.getMetadata() == null) {
-        throw new IllegalStateException("Layers with sourceFiles should have metadata");
-      }
-
       FileTime cachedLayerLastModifiedTime = cachedLayer.getMetadata().getLastModifiedTime();
       if (cachedLayerLastModifiedTime.compareTo(newestLastModifiedTime) > 0) {
         newestLastModifiedTime = cachedLayerLastModifiedTime;
@@ -122,7 +114,6 @@ public class CacheReader {
    * will not have been modified since creation of any up-to-date layer (ie. all up-to-date layers
    * should have the same file contents)
    */
-  @Nullable
   public CachedLayer getUpToDateLayerBySourceFiles(List<Path> sourceFiles)
       throws IOException, CacheMetadataCorruptedException {
     // Grabs all the layers that have matching source files.
@@ -143,10 +134,6 @@ public class CacheReader {
 
     // Checks if at least one of the matched layers is up-to-date.
     for (CachedLayerWithMetadata cachedLayer : cachedLayersWithSourceFiles) {
-      if (cachedLayer.getMetadata() == null) {
-        throw new IllegalStateException("Layers with sourceFiles should have metadata");
-      }
-
       if (sourceFilesLastModifiedTime.compareTo(cachedLayer.getMetadata().getLastModifiedTime())
           <= 0) {
         // This layer is an up-to-date layer.

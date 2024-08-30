@@ -20,7 +20,6 @@ import com.google.cloud.tools.jib.image.DescriptorDigest;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import javax.annotation.Nullable;
 
 /**
  * JSON Template for Docker Manifest Schema V2.2
@@ -72,7 +71,7 @@ public class V22ManifestTemplate implements BuildableManifestTemplate {
   private final String mediaType = MANIFEST_MEDIA_TYPE;
 
   /** The container configuration reference. */
-  @Nullable private ContentDescriptorTemplate config;
+  private ContentDescriptorTemplate config;
 
   /** The list of layer references. */
   private final List<ContentDescriptorTemplate> layers = new ArrayList<>();
@@ -88,7 +87,6 @@ public class V22ManifestTemplate implements BuildableManifestTemplate {
   }
 
   @Override
-  @Nullable
   public ContentDescriptorTemplate getContainerConfiguration() {
     return config;
   }

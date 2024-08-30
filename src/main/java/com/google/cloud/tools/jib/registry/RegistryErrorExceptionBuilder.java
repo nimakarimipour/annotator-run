@@ -18,12 +18,11 @@ package com.google.cloud.tools.jib.registry;
 
 import com.google.cloud.tools.jib.ProjectInfo;
 import com.google.cloud.tools.jib.registry.json.ErrorEntryTemplate;
-import javax.annotation.Nullable;
 
 /** Builds a {@link RegistryErrorException} with multiple causes. */
 class RegistryErrorExceptionBuilder {
 
-  @Nullable private final Throwable cause;
+  private final Throwable cause;
   private final StringBuilder errorMessageBuilder = new StringBuilder();
 
   private boolean firstErrorReason = true;
@@ -35,16 +34,8 @@ class RegistryErrorExceptionBuilder {
    * @param message the original received error message, which may or may not be used depending on
    *     the {@code errorCode}
    */
-  private static String getReason(@Nullable String errorCodeString, @Nullable String message) {
-    if (message == null) {
-      message = "no details";
-    }
-
+  private static String getReason(String errorCodeString, String message) {
     try {
-      if (errorCodeString == null) {
-        throw new IllegalArgumentException();
-      }
-
       ErrorCodes errorCode = ErrorCodes.valueOf(errorCodeString);
 
       if (errorCode == ErrorCodes.MANIFEST_INVALID || errorCode == ErrorCodes.BLOB_UNKNOWN) {
@@ -66,7 +57,7 @@ class RegistryErrorExceptionBuilder {
   }
 
   /** @param method the registry method that errored */
-  RegistryErrorExceptionBuilder(String method, @Nullable Throwable cause) {
+  RegistryErrorExceptionBuilder(String method, Throwable cause) {
     this.cause = cause;
 
     errorMessageBuilder.append("Tried to ");

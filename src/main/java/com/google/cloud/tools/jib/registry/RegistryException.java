@@ -16,12 +16,10 @@
 
 package com.google.cloud.tools.jib.registry;
 
-import javax.annotation.Nullable;
-
 /** Thrown when interacting with a registry. */
 public class RegistryException extends Exception {
 
-  public RegistryException(String message, @Nullable Throwable cause) {
+  public RegistryException(String message, Throwable cause) {
     super(message, cause);
   }
 

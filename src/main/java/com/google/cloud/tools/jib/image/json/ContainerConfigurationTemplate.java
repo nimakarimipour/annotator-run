@@ -22,7 +22,6 @@ import com.google.cloud.tools.jib.json.JsonTemplate;
 import com.google.common.annotations.VisibleForTesting;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nullable;
 
 /**
  * JSON Template for Docker Container Configuration referenced in Docker Manifest Schema V2.2
@@ -70,10 +69,10 @@ public class ContainerConfigurationTemplate implements JsonTemplate {
   private static class ConfigurationObjectTemplate implements JsonTemplate {
 
     /** Environment variables in the format {@code VARNAME=VARVALUE}. */
-    @Nullable private List<String> Env;
+    private List<String> Env;
 
     /** Command to run when container starts. */
-    @Nullable private List<String> Entrypoint;
+    private List<String> Entrypoint;
   }
 
   /**
@@ -108,12 +107,10 @@ public class ContainerConfigurationTemplate implements JsonTemplate {
     return rootfs.diff_ids;
   }
 
-  @Nullable
   List<String> getContainerEnvironment() {
     return config.Env;
   }
 
-  @Nullable
   List<String> getContainerEntrypoint() {
     return config.Entrypoint;
   }
