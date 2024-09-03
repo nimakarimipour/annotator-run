@@ -36,7 +36,7 @@ import java.lang.annotation.RetentionPolicy;
  * <a href="https://youtrack.jetbrains.com/issue/IDEA-125281">implementation</a>
  */
 @Documented
-@Nonnull
+
 @TypeQualifierDefault({
         ElementType.ANNOTATION_TYPE,
         ElementType.CONSTRUCTOR,

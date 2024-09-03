@@ -159,7 +159,7 @@ public abstract class AbstractTable<R extends ReportPageRow> implements Table {
 
     private <T> List<T> getDataCollection(Object report, BiConsumer<TableRow, Collection<T>> rowHandler) {
         List<T> data = new ArrayList<>();
-        for (@Nullable TableRow row : this) {
+        for ( TableRow row : this) {
             if (row != null) {
                 try {
                     rowHandler.accept(row, data);
@@ -176,7 +176,7 @@ public abstract class AbstractTable<R extends ReportPageRow> implements Table {
                                                   Collection<T> collection,
                                                   BiPredicate<T, T> equalityChecker,
                                                   BiFunction<T, T, Collection<T>> duplicatesMerger) {
-        @Nullable T equalsObject = null;
+         T equalsObject = null;
         for (T e : collection) {
             if (equalityChecker.test(e, element)) {
                 equalsObject = e;
@@ -225,7 +225,7 @@ public abstract class AbstractTable<R extends ReportPageRow> implements Table {
         @Override
         public TableRow next() {
             int rowNum;
-            @Nullable R row;
+             R row;
             do {
                 rowNum = tableRange.getFirstRow() + (i++);
                 row = getRow(rowNum);
@@ -238,28 +238,28 @@ public abstract class AbstractTable<R extends ReportPageRow> implements Table {
         }
     }
 
-    @Nullable
+    
     @Override
     public R getRow(int i) {
         return reportPage.getRow(i);
     }
 
-    @Nullable
-    @Override
+    
+    @Nullable @Override
     public TableRow findRow(Object value) {
         TableCellAddress address = reportPage.find(value);
         return getMutableTableRow(address);
     }
 
-    @Nullable
-    @Override
+    
+    @Nullable @Override
     public TableRow findRowByPrefix(String prefix) {
         TableCellAddress address = reportPage.findByPrefix(prefix);
         return getMutableTableRow(address);
     }
 
-    @Nullable
-    private MutableTableRow<R> getMutableTableRow(TableCellAddress address) {
+    
+    @Nullable private MutableTableRow<R> getMutableTableRow(TableCellAddress address) {
         if (tableRange.contains(address)) {
             MutableTableRow<R> tableRow = new MutableTableRow<>(this, getCellDataAccessObject());
             tableRow.setRow(getRow(address.getRow()));

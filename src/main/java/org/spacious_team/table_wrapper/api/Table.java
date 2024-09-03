@@ -69,20 +69,20 @@ public interface Table extends Iterable<TableRow> {
      * @return row object or null is row does not exist
      * @apiNote Method impl should return {@link CellDataAccessObject} aware {@link ReportPageRow} impl
      */
-    @Nullable
+    
     ReportPageRow getRow(int i);
 
     /**
      * @return row containing cell with exact value or null if not found
      */
-    @Nullable
-    TableRow findRow(Object value);
+    
+    @Nullable TableRow findRow(Object value);
 
     /**
      * @return row containing cell starting with prefix or null if not found
      */
-    @Nullable
-    TableRow findRowByPrefix(String prefix);
+    
+    @Nullable TableRow findRowByPrefix(String prefix);
 
     Map<TableColumn, Integer> getHeaderDescription();
 

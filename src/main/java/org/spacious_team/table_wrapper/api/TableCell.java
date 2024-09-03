@@ -31,7 +31,7 @@ public interface TableCell {
      */
     int getColumnIndex();
 
-    @Nullable
+    
     Object getValue();
 
     /**
@@ -72,8 +72,8 @@ public interface TableCell {
     /**
      * @return return cell value or defaultValue if the cell is missing or the type does not match the expected
      */
-    @Nullable
-    default Object getValueOrDefault(@Nullable Object defaultValue) {
+    
+    default Object getValueOrDefault( Object defaultValue) {
         try {
             return getValue();
         } catch (Exception e) {
