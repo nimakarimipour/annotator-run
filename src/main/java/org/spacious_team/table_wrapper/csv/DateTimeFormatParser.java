@@ -18,16 +18,11 @@
 
 package org.spacious_team.table_wrapper.csv;
 
-import lombok.NoArgsConstructor;
-
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static lombok.AccessLevel.PRIVATE;
-
-@NoArgsConstructor(access = PRIVATE)
-final class DateTimeFormatParser {
+class DateTimeFormatParser {
 
     // internal calculated unique key -> date-time format
     private static final Map<Integer, DateTimeFormatter> dateTimeFormatters = new ConcurrentHashMap<>();
@@ -56,8 +51,7 @@ final class DateTimeFormatParser {
     }
 
     static DateTimeFormatter getForDateTime(String dateTime) {
-        boolean isDateAtFirst;
-        boolean isYearAtFirst;
+        boolean isDateAtFirst, isYearAtFirst;
         char dateSplitter;
         if (dateTime.charAt(2) == ':') {
             // format is <time> <date>

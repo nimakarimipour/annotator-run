@@ -37,16 +37,8 @@ public class CsvTableCell extends AbstractTableCell<CsvTableCell.RowAndIndex> {
         return new CsvTableCell(new RowAndIndex(row, columnIndex));
     }
 
-    public static CsvTableCell of(String[] row, int columnIndex, CsvCellDataAccessObject dao) {
-        return new CsvTableCell(new RowAndIndex(row, columnIndex), dao);
-    }
-
     public CsvTableCell(RowAndIndex rowAndIndex) {
-        this(rowAndIndex, CsvCellDataAccessObject.INSTANCE);
-    }
-
-    public CsvTableCell(RowAndIndex rowAndIndex, CsvCellDataAccessObject dao) {
-        super(rowAndIndex, dao);
+        super(rowAndIndex, CsvCellDataAccessObject.INSTANCE);
         this.rowAndIndex = rowAndIndex;
     }
 

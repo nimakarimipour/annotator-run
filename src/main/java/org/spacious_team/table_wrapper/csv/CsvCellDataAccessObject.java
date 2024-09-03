@@ -18,23 +18,22 @@
 
 package org.spacious_team.table_wrapper.csv;
 
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.spacious_team.table_wrapper.api.CellDataAccessObject;
 import org.spacious_team.table_wrapper.csv.CsvTableCell.RowAndIndex;
 
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 
-@RequiredArgsConstructor
 public class CsvCellDataAccessObject implements CellDataAccessObject<RowAndIndex, CsvTableRow> {
-    public static final CsvCellDataAccessObject INSTANCE = new CsvCellDataAccessObject(null);
-    /**
-     * If null, date time format is derived from value
-     */
-    public final DateTimeFormatter dateTimeFormatter;
+    public static final CsvCellDataAccessObject INSTANCE = new CsvCellDataAccessObject();
+    @Setter
+    @Getter
+    public static DateTimeFormatter dateTimeFormatter = null;
 
     @Override
     public RowAndIndex getCell(CsvTableRow row, Integer cellIndex) {
@@ -56,7 +55,7 @@ public class CsvCellDataAccessObject implements CellDataAccessObject<RowAndIndex
                 LocalDate.parse(value, formatter).atTime(12, 0) :
                 LocalDateTime.parse(value, formatter);
         return dateTime
-                .atZone(ZoneId.systemDefault())
+                .atZone(ZoneOffset.systemDefault())
                 .toInstant();
     }
 }
