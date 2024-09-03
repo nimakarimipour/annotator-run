@@ -41,8 +41,8 @@ org.spacious_team.table_wrapper.csv.CsvTableRow$1	hasNext()	length	Array	SOURCE
 org.spacious_team.table_wrapper.csv.CsvTableRow$1	hasNext()	row	org.spacious_team.table_wrapper.csv.CsvTableRow	SOURCE
 org.spacious_team.table_wrapper.csv.CsvTableRow$1	next()	cellIndex	org.spacious_team.table_wrapper.csv.CsvTableRow$1	SOURCE
 org.spacious_team.table_wrapper.csv.CsvTableCell	CsvTableCell(org.spacious_team.table_wrapper.csv.CsvTableCell.RowAndIndex)	INSTANCE	org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	SOURCE
-org.spacious_team.table_wrapper.csv.CsvTableCell	CsvTableCell(org.spacious_team.table_wrapper.csv.CsvTableCell.RowAndIndex,org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject)	rowAndIndex	org.spacious_team.table_wrapper.csv.CsvTableCell	SOURCE
-org.spacious_team.table_wrapper.csv.CsvTableCell	CsvTableCell(org.spacious_team.table_wrapper.csv.CsvTableCell.RowAndIndex,org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject)	this	org.spacious_team.table_wrapper.csv.CsvTableCell	SOURCE
+org.spacious_team.table_wrapper.csv.CsvTableCell	CsvTableCell(org.spacious_team.table_wrapper.csv.CsvTableCell.RowAndIndex)	rowAndIndex	org.spacious_team.table_wrapper.csv.CsvTableCell	SOURCE
+org.spacious_team.table_wrapper.csv.CsvTableCell	CsvTableCell(org.spacious_team.table_wrapper.csv.CsvTableCell.RowAndIndex)	this	org.spacious_team.table_wrapper.csv.CsvTableCell	SOURCE
 org.spacious_team.table_wrapper.csv.CsvTableCell	getColumnIndex()	rowAndIndex	org.spacious_team.table_wrapper.csv.CsvTableCell	SOURCE
 org.spacious_team.table_wrapper.csv.CsvTableCell$RowAndIndex	getValue()	row	org.spacious_team.table_wrapper.csv.CsvTableCell$RowAndIndex	SOURCE
 org.spacious_team.table_wrapper.csv.CsvTableCell$RowAndIndex	getValue()	columnIndex	org.spacious_team.table_wrapper.csv.CsvTableCell$RowAndIndex	SOURCE
@@ -51,14 +51,6 @@ org.spacious_team.table_wrapper.csv.CsvTableCell$RowAndIndex	checkIndex()	column
 org.spacious_team.table_wrapper.csv.CsvTableCell$RowAndIndex	checkIndex()	length	Array	SOURCE
 org.spacious_team.table_wrapper.csv.CsvTableCell$RowAndIndex	checkIndex()	row	org.spacious_team.table_wrapper.csv.CsvTableCell$RowAndIndex	SOURCE
 org.spacious_team.table_wrapper.csv.CsvTableCell$RowAndIndex	equals(java.lang.Object)	this	org.spacious_team.table_wrapper.csv.CsvTableCell$RowAndIndex	SOURCE
-org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	CsvCellDataAccessObject(java.time.format.DateTimeFormatter,java.time.ZoneId)	dateTimeFormatter	org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	SOURCE
-org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	CsvCellDataAccessObject(java.time.format.DateTimeFormatter,java.time.ZoneId)	this	org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	SOURCE
-org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	CsvCellDataAccessObject(java.time.format.DateTimeFormatter,java.time.ZoneId)	defaultZone	org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	SOURCE
-org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	CsvCellDataAccessObject(java.time.format.DateTimeFormatter,java.time.ZoneId)	this	org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	SOURCE
-org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	getInstantValue(org.spacious_team.table_wrapper.csv.CsvTableCell.RowAndIndex)	dateTimeFormatter	org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	SOURCE
-org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	getInstantValue(org.spacious_team.table_wrapper.csv.CsvTableCell.RowAndIndex)	dateTimeFormatter	org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	SOURCE
-org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	getInstantValue(org.spacious_team.table_wrapper.csv.CsvTableCell.RowAndIndex)	defaultZone	org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	SOURCE
-org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	getInstantValue(org.spacious_team.table_wrapper.csv.CsvTableCell.RowAndIndex)	defaultZone	org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	SOURCE
 org.spacious_team.table_wrapper.csv.DateTimeFormatParser	getDateFormatter(boolean,char)	dateTimeFormatters	org.spacious_team.table_wrapper.csv.DateTimeFormatParser	SOURCE
 org.spacious_team.table_wrapper.csv.DateTimeFormatParser	getDateFormatter(boolean,char)	dateTimeFormatters	org.spacious_team.table_wrapper.csv.DateTimeFormatParser	SOURCE
 org.spacious_team.table_wrapper.csv.DateTimeFormatParser	getDateTimeFormatter(boolean,boolean,char)	dateTimeFormatters	org.spacious_team.table_wrapper.csv.DateTimeFormatParser	SOURCE
@@ -67,3 +59,5 @@ org.spacious_team.table_wrapper.csv.CsvTable	cellDataAccessObject	INSTANCE	org.s
 org.spacious_team.table_wrapper.csv.CsvTable	cellDataAccessObject	INSTANCE	org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	SOURCE
 org.spacious_team.table_wrapper.csv.CsvTable	subTable(int,int)	this	org.spacious_team.table_wrapper.csv.CsvTable	SOURCE
 org.spacious_team.table_wrapper.csv.CsvTableFactory	CsvTableFactory()	class	org.spacious_team.table_wrapper.csv.CsvReportPage	SOURCE
+org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	getInstantValue(org.spacious_team.table_wrapper.csv.CsvTableCell.RowAndIndex)	dateTimeFormatter	org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	SOURCE
+org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	getInstantValue(org.spacious_team.table_wrapper.csv.CsvTableCell.RowAndIndex)	dateTimeFormatter	org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	SOURCE

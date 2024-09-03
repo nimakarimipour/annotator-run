@@ -28,10 +28,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import javax.annotation.Nullable;
 
 public class CsvCellDataAccessObject implements CellDataAccessObject<RowAndIndex, CsvTableRow> {
     public static final CsvCellDataAccessObject INSTANCE = new CsvCellDataAccessObject();
-    @Setter
+    @Nullable @Setter
     @Getter
     public static DateTimeFormatter dateTimeFormatter = null;
 
