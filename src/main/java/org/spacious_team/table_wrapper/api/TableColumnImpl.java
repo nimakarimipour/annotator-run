@@ -45,8 +45,8 @@ public class TableColumnImpl implements TableColumn {
     public int getColumnIndex(int firstColumnForSearch, ReportPageRow... headerRows) {
         for (ReportPageRow header : headerRows) {
             next_cell:
-            for (@Nullable TableCell cell : header) {
-                @Nullable Object value;
+            for ( TableCell cell : header) {
+                 Object value;
                 if (cell != null && cell.getColumnIndex() >= firstColumnForSearch &&
                         ((value = cell.getValue()) instanceof String)) {
                     String colName = value.toString().toLowerCase();

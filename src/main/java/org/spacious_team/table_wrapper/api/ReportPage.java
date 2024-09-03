@@ -24,7 +24,7 @@ import java.util.function.Predicate;
 import static java.util.Objects.requireNonNull;
 import static org.spacious_team.table_wrapper.api.ReportPageHelper.getCellStringValueIgnoreCasePrefixPredicate;
 
-@SuppressWarnings("unused")
+
 public interface ReportPage {
 
     /**
@@ -153,7 +153,7 @@ public interface ReportPage {
      * @param endColumn   search columns excluding this, can handle values greater than real columns count
      * @return cell address or {@link TableCellAddress#NOT_FOUND}
      */
-    default TableCellAddress findByPrefix(@Nullable String prefix, int startRow, int endRow, int startColumn, int endColumn) {
+    default TableCellAddress findByPrefix( String prefix, int startRow, int endRow, int startColumn, int endColumn) {
         return prefix == null ?
                 TableCellAddress.NOT_FOUND :
                 find(startRow, endRow, startColumn, endColumn, getCellStringValueIgnoreCasePrefixPredicate(prefix));
@@ -162,14 +162,14 @@ public interface ReportPage {
     /**
      * For vertical table of key-value records (table with two columns), search and return value for requested key.
      */
-    @Nullable
-    default Object getNextColumnValue(String firstColumnValuePrefix) {
+    
+    @Nullable default Object getNextColumnValue(String firstColumnValuePrefix) {
         TableCellAddress address = findByPrefix(firstColumnValuePrefix);
-        @Nullable ReportPageRow row = getRow(address.getRow());
+         ReportPageRow row = getRow(address.getRow());
         if (row != null) {
-            for (@Nullable TableCell cell : row) {
+            for ( TableCell cell : row) {
                 if (cell != null && cell.getColumnIndex() > address.getColumn()) {
-                    @Nullable Object value = cell.getValue();
+                     Object value = cell.getValue();
                     if (value != null && (!(value instanceof String) || !((String) value).isBlank())) {
                         return value;
                     }
@@ -184,7 +184,7 @@ public interface ReportPage {
      * @return row object or null is row does not exist
      * @apiNote Method impl should return {@link CellDataAccessObject} aware {@link ReportPageRow} impl
      */
-    @Nullable
+    
     ReportPageRow getRow(int i);
 
     /**
@@ -192,9 +192,9 @@ public interface ReportPage {
      */
     int getLastRowNum();
 
-    @Nullable
+    
     default TableCell getCell(TableCellAddress address) {
-        @Nullable ReportPageRow row = getRow(address.getRow());
+         ReportPageRow row = getRow(address.getRow());
         return (row == null) ? null : row.getCell(address.getColumn());
     }
 
@@ -202,9 +202,9 @@ public interface ReportPage {
      * Returns table range. Table's first row starts with 'firstRowPrefix' prefix in one of the cells
      * and table ends with predefined prefix in one of the last row cells.
      */
-    default TableCellRange getTableCellRange(@Nullable String firstRowPrefix,
+    default TableCellRange getTableCellRange( String firstRowPrefix,
                                              int headersRowCount,
-                                             @Nullable String lastRowPrefix) {
+                                              String lastRowPrefix) {
         if (firstRowPrefix == null || lastRowPrefix == null) {
             return TableCellRange.EMPTY_RANGE;
         }
@@ -217,9 +217,9 @@ public interface ReportPage {
     /**
      * Returns table range. First and last row will be found by predicate.
      */
-    default TableCellRange getTableCellRange(@Nullable Predicate<Object> firstRowFinder,
+    default TableCellRange getTableCellRange( Predicate<Object> firstRowFinder,
                                              int headersRowCount,
-                                             @Nullable Predicate<Object> lastRowFinder) {
+                                              Predicate<Object> lastRowFinder) {
         if (firstRowFinder == null || lastRowFinder == null) {
             return TableCellRange.EMPTY_RANGE;
         }
@@ -244,7 +244,7 @@ public interface ReportPage {
      * Returns table range. First row starts with 'firstRowPrefix' prefix in one of the cells,
      * range ends with empty row or last row of report page.
      */
-    default TableCellRange getTableCellRange(@Nullable String firstRowPrefix, int headersRowCount) {
+    default TableCellRange getTableCellRange( String firstRowPrefix, int headersRowCount) {
         if (firstRowPrefix == null) {
             return TableCellRange.EMPTY_RANGE;
         }
@@ -256,7 +256,7 @@ public interface ReportPage {
     /**
      * Returns table range. First row will be found by predicate, range ends with empty row or last row of report page.
      */
-    default TableCellRange getTableCellRange(@Nullable Predicate<Object> firstRowFinder, int headersRowCount) {
+    default TableCellRange getTableCellRange( Predicate<Object> firstRowFinder, int headersRowCount) {
         if (firstRowFinder == null) {
             return TableCellRange.EMPTY_RANGE;
         }
@@ -293,12 +293,12 @@ public interface ReportPage {
         int lastRowNum = startRow;
         LAST_ROW:
         for (int n = getLastRowNum(); lastRowNum <= n; lastRowNum++) {
-            @Nullable ReportPageRow row = getRow(lastRowNum);
+             ReportPageRow row = getRow(lastRowNum);
             if (row == null || row.getLastCellNum() == -1) {
                 return lastRowNum; // all row cells blank
             }
-            for (@Nullable TableCell cell : row) {
-                @Nullable Object value;
+            for ( TableCell cell : row) {
+                 Object value;
                 if (!(cell == null
                         || ((value = cell.getValue()) == null)
                         || (value instanceof String) && (value.toString().isEmpty()))) {

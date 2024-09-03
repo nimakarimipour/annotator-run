@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  */
 public abstract class AbstractReportPage<T extends ReportPageRow> implements ReportPage {
 
-    @Nullable
+    
     @Override
     public abstract T getRow(int i);
 
