@@ -40,6 +40,8 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+import static java.util.Objects.requireNonNull;
+
 @Slf4j
 @ToString(of = {"tableName"})
 public abstract class AbstractTable<R extends ReportPageRow> implements Table {
@@ -262,7 +264,8 @@ public abstract class AbstractTable<R extends ReportPageRow> implements Table {
     private MutableTableRow<R> getMutableTableRow(TableCellAddress address) {
         if (tableRange.contains(address)) {
             MutableTableRow<R> tableRow = new MutableTableRow<>(this, getCellDataAccessObject());
-            tableRow.setRow(getRow(address.getRow()));
+            R row = requireNonNull(getRow(address.getRow()), "Row is empty");
+            tableRow.setRow(row);
             return tableRow;
         }
         return null;
