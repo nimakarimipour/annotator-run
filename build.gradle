@@ -66,6 +66,7 @@ def nullaway_path = projectDir.absolutePath + "/annotator-out/nullaway.xml"
 import net.ltgt.gradle.errorprone.CheckSeverity
 tasks.withType(JavaCompile) {
     options.errorprone {
+        options.errorprone.disableAllChecks = true
         check("NullAway", CheckSeverity.ERROR)
         check("AnnotatorScanner", CheckSeverity.ERROR)
         check("AnnotLocator", CheckSeverity.ERROR)
@@ -75,5 +76,5 @@ tasks.withType(JavaCompile) {
         option("AnnotatorScanner:ConfigPath",  scanner_path)
     }
     // Set max errors to 10000
-    options.compilerArgs += ["-Xmaxerrs", "10000"]    
+    options.compilerArgs += ["-Xmaxerrs", "10000"]
 }
