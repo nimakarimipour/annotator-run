@@ -28,6 +28,8 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Iterator;
 
+import static java.util.Objects.requireNonNull;
+
 /**
  * Mutable implementation. Used by {@link AbstractTable#iterator()} and {@link AbstractTable#stream()} to eliminate
  * heap pollution. On each iteration {@link #row} field is updated. Call {@link #clone()} instead of using this object
@@ -113,8 +115,9 @@ class MutableTableRow<T extends ReportPageRow> implements TableRow {
     }
 
     private Integer getCellIndex(TableColumnDescription column) {
-        return table.getHeaderDescription()
+        Integer cellIndex = table.getHeaderDescription()
                 .get(column.getColumn());
+        return requireNonNull(cellIndex, "Cell not found");
     }
 
     /**
