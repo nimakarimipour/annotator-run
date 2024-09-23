@@ -120,14 +120,18 @@ public class RegistryClient {
    * @param manifestTemplateClass the specific version of manifest template to pull, or {@link
    *     ManifestTemplate} to pull either {@link V22ManifestTemplate} or {@link V21ManifestTemplate}
    */
-  @Nullable public <T extends ManifestTemplate> T pullManifest(
+  public <T extends ManifestTemplate> T pullManifest(
       String imageTag, Class<T> manifestTemplateClass) throws IOException, RegistryException {
     ManifestPuller<T> manifestPuller =
         new ManifestPuller<>(registryEndpointProperties, imageTag, manifestTemplateClass);
-    return callRegistryEndpoint(manifestPuller);
+    T manifestTemplate = callRegistryEndpoint(manifestPuller);
+    if (manifestTemplate == null) {
+      throw new IllegalStateException("ManifestPuller#handleResponse does not return null");
+    }
+    return manifestTemplate;
   }
 
-  @Nullable public ManifestTemplate pullManifest(String imageTag) throws IOException, RegistryException {
+  public ManifestTemplate pullManifest(String imageTag) throws IOException, RegistryException {
     return pullManifest(imageTag, ManifestTemplate.class);
   }
 
