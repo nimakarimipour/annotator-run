@@ -77,6 +77,7 @@ public class RequestCreator {
     this.data = new Request.Builder(uri, resourceId, picasso.defaultBitmapConfig);
   }
 
+  @SuppressWarnings("NullAway")
   @VisibleForTesting RequestCreator() {
     this.picasso = null;
     this.data = new Request.Builder(null, 0, null);
