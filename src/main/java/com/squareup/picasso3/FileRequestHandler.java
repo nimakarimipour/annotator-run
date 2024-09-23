@@ -17,6 +17,7 @@ package com.squareup.picasso3;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.media.ExifInterface;
 import java.io.IOException;
@@ -34,7 +35,8 @@ class FileRequestHandler extends ContentStreamRequestHandler {
   }
 
   @Override public boolean canHandleRequest(@NonNull Request data) {
-    return SCHEME_FILE.equals(data.uri.getScheme());
+    Uri uri = data.uri;
+    return uri != null && SCHEME_FILE.equals(uri.getScheme());
   }
 
   @Override
