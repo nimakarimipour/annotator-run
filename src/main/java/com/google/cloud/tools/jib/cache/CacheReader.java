@@ -138,6 +138,9 @@ public class CacheReader {
 
     // Checks if at least one of the matched layers is up-to-date.
     for (CachedLayerWithMetadata cachedLayer : cachedLayersWithSourceFiles) {
+      if (cachedLayer.getMetadata() == null) {
+        throw new IllegalStateException("Layers with sourceFiles should have metadata");
+      }
       if (sourceFilesLastModifiedTime.compareTo(cachedLayer.getMetadata().getLastModifiedTime())
           <= 0) {
         // This layer is an up-to-date layer.
