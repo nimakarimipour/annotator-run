@@ -78,6 +78,7 @@ class BitmapHunter implements Runnable {
   @Nullable
   Result result;
   @Nullable Future<?> future;
+  @Nullable
   Exception exception;
   int retryCount;
   Priority priority;
@@ -345,6 +346,7 @@ class BitmapHunter implements Runnable {
     return actions;
   }
 
+  @Nullable
   Exception getException() {
     return exception;
   }

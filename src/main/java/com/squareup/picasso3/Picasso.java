@@ -601,7 +601,7 @@ public class Picasso implements LifecycleObserver {
     }
   }
 
-  private void deliverAction(@Nullable RequestHandler.Result result, Action action, Exception e) {
+  private void deliverAction(@Nullable RequestHandler.Result result, Action action, @Nullable Exception e) {
     if (action.isCancelled()) {
       return;
     }
@@ -614,9 +614,10 @@ public class Picasso implements LifecycleObserver {
         log(OWNER_MAIN, VERB_COMPLETED, action.request.logId(), "from " + result.getLoadedFrom());
       }
     } else {
-      action.error(e);
+      Exception exception = checkNotNull(e, "e == null");
+      action.error(exception);
       if (loggingEnabled) {
-        log(OWNER_MAIN, VERB_ERRORED, action.request.logId(), e.getMessage());
+        log(OWNER_MAIN, VERB_ERRORED, action.request.logId(), exception.getMessage());
       }
     }
   }
