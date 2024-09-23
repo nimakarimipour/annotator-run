@@ -129,6 +129,6 @@ public class AmountParser {
       }
     }
 
-    return Float.parseFloat(withoutUnicodeFraction) + fractionLookup.get(usedFraction);
+    return Float.parseFloat(withoutUnicodeFraction) + fractionLookup.getOrDefault(usedFraction, 0f);
   }
 }
