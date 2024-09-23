@@ -1,2 +1,1 @@
 kind	class	method	param	index	uri	reason	annotation	rootClass	rootMethod
-METHOD	de.zuellich.meal_planner.pinterest.datatypes.Pin	getOriginalLink()	null	null	/Users/nima/Developer/annotator-run/src/main/java/de/zuellich/meal_planner/pinterest/datatypes/Pin.java	RETURN_NULLABLE	nullable	de.zuellich.meal_planner.pinterest.datatypes.Pin	getOriginalLink()

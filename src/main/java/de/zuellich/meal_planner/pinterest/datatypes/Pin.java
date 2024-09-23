@@ -15,8 +15,8 @@ public class Pin {
   @Nullable private String id;
 
   /** The URL to the pinned page. */
-  @Nullable @JsonProperty("original_link")
-  private String originalLink;
+  @JsonProperty("original_link")
+  private String originalLink = "";
 
   @Nullable private String note;
 

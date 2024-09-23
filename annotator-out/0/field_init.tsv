@@ -1,4 +1,5 @@
 kind	class	method	param	index	uri	field
+METHOD	de.zuellich.meal_planner.pinterest.datatypes.Pin	setOriginalLink(java.lang.String)	null	null	/Users/nima/Developer/annotator-run/src/main/java/de/zuellich/meal_planner/pinterest/datatypes/Pin.java	originalLink
 METHOD	de.zuellich.meal_planner.datatypes.Recipe	setName(java.lang.String)	null	null	/Users/nima/Developer/annotator-run/src/main/java/de/zuellich/meal_planner/datatypes/Recipe.java	name
 METHOD	de.zuellich.meal_planner.datatypes.Recipe	setIngredients(java.util.List)	null	null	/Users/nima/Developer/annotator-run/src/main/java/de/zuellich/meal_planner/datatypes/Recipe.java	ingredients
 METHOD	de.zuellich.meal_planner.datatypes.Recipe	setSource(java.lang.String)	null	null	/Users/nima/Developer/annotator-run/src/main/java/de/zuellich/meal_planner/datatypes/Recipe.java	source
