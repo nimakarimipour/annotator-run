@@ -64,7 +64,7 @@ class ContactsPhotoRequestHandler extends RequestHandler {
 
   @Override public boolean canHandleRequest(@NonNull Request data) {
     final Uri uri = data.uri;
-    return (SCHEME_CONTENT.equals(uri.getScheme())
+    return uri != null && (SCHEME_CONTENT.equals(uri.getScheme())
         && ContactsContract.Contacts.CONTENT_URI.getHost().equals(uri.getHost())
         && matcher.match(data.uri) != UriMatcher.NO_MATCH);
   }
