@@ -1,0 +1,1 @@
+{"REPORTS":[{"PATH":/Users/nima/Developer/annotator-run/src/main/java/org/cache2k/config/CacheType.java,"KIND":"METHOD","LOCAL EFFECT":1,"CLASS":"org.cache2k.config.CacheType","TREE":[],"METHOD":"getComponentType()","FINISHED":true,"OVERALL EFFECT":1,"Upper Bound EFFECT":0,"Lower Bound EFFECT":0}]}

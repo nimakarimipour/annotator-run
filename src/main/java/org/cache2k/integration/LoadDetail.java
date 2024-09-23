@@ -1,4 +1,5 @@
 package org.cache2k.integration;
+import javax.annotation.Nullable;
 
 /*
  * #%L
@@ -41,7 +42,7 @@ public abstract class LoadDetail<V> {
     return (V) value;
   }
 
-  @SuppressWarnings("unchecked")
+  @Nullable @SuppressWarnings("unchecked")
   public LoadDetail<V> getNextInChain() {
     if (value instanceof LoadDetail) {
       return ((LoadDetail<V>) value);
