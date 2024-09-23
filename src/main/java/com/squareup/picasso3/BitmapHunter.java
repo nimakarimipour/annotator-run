@@ -192,7 +192,9 @@ class BitmapHunter implements Runnable {
     }
 
     Result result = resultReference.get();
-
+    if (result == null) {
+      throw new AssertionError("Request handler neither returned a result nor an exception.");
+    }
     Bitmap bitmap = result.getBitmap();
     if (bitmap != null) {
       if (picasso.loggingEnabled) {
