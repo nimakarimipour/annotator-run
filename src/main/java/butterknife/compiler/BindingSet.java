@@ -680,7 +680,7 @@ final class BindingSet {
     return bindingClassName.toString();
   }
 
-  static Builder newBuilder(@Nullable TypeElement enclosingElement) {
+  static Builder newBuilder(TypeElement enclosingElement) {
     TypeMirror typeMirror = enclosingElement.asType();
 
     boolean isView = isSubtypeOfType(typeMirror, VIEW_TYPE);
