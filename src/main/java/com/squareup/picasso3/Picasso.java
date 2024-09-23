@@ -567,7 +567,7 @@ public class Picasso implements LifecycleObserver {
       deliverAction(result, single, exception);
     }
 
-    if (hasMultiple) {
+    if (joined != null) {
       //noinspection ForLoopReplaceableByForEach
       for (int i = 0, n = joined.size(); i < n; i++) {
         Action join = joined.get(i);

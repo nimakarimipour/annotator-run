@@ -260,7 +260,7 @@ class Dispatcher {
         }
       }
 
-      if (hasMultiple) {
+      if (joined != null) {
         for (int i = joined.size() - 1; i >= 0; i--) {
           Action action = joined.get(i);
           if (!action.getTag().equals(tag)) {

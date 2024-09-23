@@ -73,6 +73,7 @@ class BitmapHunter implements Runnable {
   final RequestHandler requestHandler;
 
   @Nullable Action action;
+  @Nullable
   List<Action> actions;
   Result result;
   @Nullable Future<?> future;
@@ -280,7 +281,7 @@ class BitmapHunter implements Runnable {
       newPriority = action.getPriority();
     }
 
-    if (hasMultiple) {
+    if (actions != null) {
       //noinspection ForLoopReplaceableByForEach
       for (int i = 0, n = actions.size(); i < n; i++) {
         Priority actionPriority = actions.get(i).getPriority();
@@ -337,6 +338,7 @@ class BitmapHunter implements Runnable {
     return picasso;
   }
 
+  @Nullable
   List<Action> getActions() {
     return actions;
   }
