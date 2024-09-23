@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.uber.nullaway:nullaway-annotations:0.10.20" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="com.uber.nullaway" artifactId="nullaway-annotations" version="0.10.20" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.uber.nullaway/nullaway-annotations/0.10.20/1a0a8e4d56509555212e3c26b8cf76d3e0e887b9/nullaway-annotations-0.10.20.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.uber.nullaway/nullaway-annotations/0.10.20/52f614339b787f444744eda73e74216c232fc043/nullaway-annotations-0.10.20-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.uber.nullaway/nullaway-annotations/0.10.20/fd19bc83335d1fea36dc5033c5c705b98d2f26d0/nullaway-annotations-0.10.20-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

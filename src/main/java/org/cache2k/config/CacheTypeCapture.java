@@ -9,9 +9,9 @@ package org.cache2k.config;
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -52,6 +52,7 @@ public class CacheTypeCapture<T> implements CacheType<T> {
   protected CacheTypeCapture() { }
 
   @Override
+  @Nullable
   public CacheType<?> getComponentType() {
     return descriptor.getComponentType();
   }
@@ -203,6 +204,7 @@ public class CacheTypeCapture<T> implements CacheType<T> {
       return componentType;
     }
 
+    @SuppressWarnings("NullAway")
     static int countDimensions(CacheType<?> td) {
       int cnt = 0;
       while (td.isArray()) {
@@ -212,7 +214,8 @@ public class CacheTypeCapture<T> implements CacheType<T> {
       return cnt;
     }
 
-    @Nullable static Class<?> finalPrimitiveType(CacheType<?> td) {
+    @SuppressWarnings("NullAway")
+    static Class<?> finalPrimitiveType(CacheType<?> td) {
       while (td.isArray()) {
         td = td.getComponentType();
       }
