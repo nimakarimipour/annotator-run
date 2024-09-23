@@ -35,6 +35,7 @@ import static java.util.Collections.singletonList;
 import static javax.lang.model.element.Modifier.FINAL;
 import static javax.lang.model.element.Modifier.PRIVATE;
 import static javax.lang.model.element.Modifier.PUBLIC;
+import javax.annotation.Nullable;
 
 /** A set of all the bindings requested by a single type. */
 final class BindingSet {
@@ -70,12 +71,12 @@ final class BindingSet {
   private final ImmutableList<ViewBinding> viewBindings;
   private final ImmutableList<FieldCollectionViewBinding> collectionBindings;
   private final ImmutableList<ResourceBinding> resourceBindings;
-  private final BindingSet parentBinding;
+  @Nullable private final BindingSet parentBinding;
 
   private BindingSet(TypeName targetTypeName, ClassName bindingClassName, boolean isFinal,
       boolean isView, boolean isActivity, boolean isDialog, ImmutableList<ViewBinding> viewBindings,
       ImmutableList<FieldCollectionViewBinding> collectionBindings,
-      ImmutableList<ResourceBinding> resourceBindings, BindingSet parentBinding) {
+      ImmutableList<ResourceBinding> resourceBindings, @Nullable BindingSet parentBinding) {
     this.isFinal = isFinal;
     this.targetTypeName = targetTypeName;
     this.bindingClassName = bindingClassName;
@@ -678,7 +679,7 @@ final class BindingSet {
     return bindingClassName.toString();
   }
 
-  static Builder newBuilder(TypeElement enclosingElement) {
+  static Builder newBuilder(@Nullable TypeElement enclosingElement) {
     TypeMirror typeMirror = enclosingElement.asType();
 
     boolean isView = isSubtypeOfType(typeMirror, VIEW_TYPE);
@@ -707,7 +708,7 @@ final class BindingSet {
     private final boolean isActivity;
     private final boolean isDialog;
 
-    private BindingSet parentBinding;
+    @Nullable private BindingSet parentBinding;
 
     private final Map<Id, ViewBinding.Builder> viewIdMap = new LinkedHashMap<>();
     private final ImmutableList.Builder<FieldCollectionViewBinding> collectionBindings =
@@ -733,7 +734,7 @@ final class BindingSet {
     }
 
     boolean addMethod(
-        Id id,
+        @Nullable Id id,
         ListenerClass listener,
         ListenerMethod method,
         MethodViewBinding binding) {
@@ -753,7 +754,7 @@ final class BindingSet {
       this.parentBinding = parent;
     }
 
-    String findExistingBindingName(Id id) {
+    @Nullable String findExistingBindingName(Id id) {
       ViewBinding.Builder builder = viewIdMap.get(id);
       if (builder == null) {
         return null;
@@ -765,7 +766,7 @@ final class BindingSet {
       return fieldBinding.getName();
     }
 
-    private ViewBinding.Builder getOrCreateViewBindings(Id id) {
+    private ViewBinding.Builder getOrCreateViewBindings(@Nullable Id id) {
       ViewBinding.Builder viewId = viewIdMap.get(id);
       if (viewId == null) {
         viewId = new ViewBinding.Builder(id);
