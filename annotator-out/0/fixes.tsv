@@ -1,4 +1,3 @@
 kind	class	method	param	index	uri	reason	annotation	rootClass	rootMethod
-FIELD	com.squareup.picasso3.Action	null	wrapper	null	/Users/nima/Developer/annotator-run/src/main/java/com/squareup/picasso3/Action.java	ASSIGN_FIELD_NULLABLE	nullable	com.squareup.picasso3.Action	Action(com.squareup.picasso3.Picasso,com.squareup.picasso3.Target,com.squareup.picasso3.Request)
 METHOD	com.squareup.picasso3.Action	getPriority()	null	null	/Users/nima/Developer/annotator-run/src/main/java/com/squareup/picasso3/Action.java	RETURN_NULLABLE	nullable	com.squareup.picasso3.Action	getPriority()
 FIELD	com.squareup.picasso3.RequestCreator	null	picasso	null	/Users/nima/Developer/annotator-run/src/main/java/com/squareup/picasso3/RequestCreator.java	ASSIGN_FIELD_NULLABLE	nullable	com.squareup.picasso3.RequestCreator	RequestCreator()
