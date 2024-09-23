@@ -1,4 +1,3 @@
 kind	class	method	param	index	uri	reason	annotation	rootClass	rootMethod
-FIELD	butterknife.compiler.ButterKnifeProcessor	null	trees	null	/Users/nima/Developer/annotator-run/src/main/java/butterknife/compiler/ButterKnifeProcessor.java	METHOD_NO_INIT	nullable	butterknife.compiler.ButterKnifeProcessor	null
 FIELD	butterknife.compiler.ViewBinding	null	id	null	/Users/nima/Developer/annotator-run/src/main/java/butterknife/compiler/ViewBinding.java	ASSIGN_FIELD_NULLABLE	nullable	butterknife.compiler.ViewBinding	ViewBinding(butterknife.compiler.Id,java.util.Map,butterknife.compiler.FieldViewBinding)
 FIELD	butterknife.compiler.FieldDrawableBinding	null	id	null	/Users/nima/Developer/annotator-run/src/main/java/butterknife/compiler/FieldDrawableBinding.java	ASSIGN_FIELD_NULLABLE	nullable	butterknife.compiler.FieldDrawableBinding	FieldDrawableBinding(butterknife.compiler.Id,java.lang.String,butterknife.compiler.Id,boolean)

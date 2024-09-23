@@ -86,6 +86,7 @@ import static javax.lang.model.element.Modifier.STATIC;
 import javax.annotation.Nullable;
 
 @AutoService(Processor.class)
+@SuppressWarnings("NullAway")
 public final class ButterKnifeProcessor extends AbstractProcessor {
   // TODO remove when http://b.android.com/187527 is released.
   private static final String OPTION_SDK_INT = "butterknife.minSdk";
@@ -119,7 +120,7 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
 
   private Types typeUtils;
   private Filer filer;
-  private Trees trees;
+  private @Nullable Trees trees;
 
   private int sdk = 1;
   private boolean debuggable = true;
