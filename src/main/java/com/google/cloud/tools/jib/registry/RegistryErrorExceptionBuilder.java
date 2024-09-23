@@ -35,8 +35,11 @@ class RegistryErrorExceptionBuilder {
    * @param message the original received error message, which may or may not be used depending on
    *     the {@code errorCode}
    */
-  @Nullable private static String getReason(String errorCodeString, @Nullable String message) {
+  @Nullable private static String getReason(@Nullable String errorCodeString, @Nullable String message) {
     try {
+      if (errorCodeString == null) {
+        throw new IllegalArgumentException();
+      }
       ErrorCodes errorCode = ErrorCodes.valueOf(errorCodeString);
 
       if (errorCode == ErrorCodes.MANIFEST_INVALID || errorCode == ErrorCodes.BLOB_UNKNOWN) {

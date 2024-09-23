@@ -79,7 +79,12 @@ class BlobChecker implements RegistryEndpointProvider<BlobDescriptor> {
             JsonTemplateMapper.readJson(errorContent, ErrorResponseTemplate.class);
         List<ErrorEntryTemplate> errors = errorResponse.getErrors();
         if (errors.size() == 1) {
-          ErrorCodes errorCode = ErrorCodes.valueOf(errors.get(0).getCode());
+          String errorCodeString = errors.get(0).getCode();
+          if (errorCodeString == null) {
+            // Did not get an error code back.
+            throw httpResponseException;
+          }
+          ErrorCodes errorCode = ErrorCodes.valueOf(errorCodeString);
           if (errorCode.equals(ErrorCodes.BLOB_UNKNOWN)) {
             return null;
           }

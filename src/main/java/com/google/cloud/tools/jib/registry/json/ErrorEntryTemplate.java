@@ -34,6 +34,7 @@ public class ErrorEntryTemplate implements JsonTemplate {
 
   private ErrorEntryTemplate() {}
 
+  @Nullable
   public String getCode() {
     return code;
   }
