@@ -118,7 +118,7 @@ public class BuildConfiguration {
       }
       switch (errorMessages.size()) {
         case 0: // No errors
-          if (baseImageReference == null) {
+          if (baseImageReference == null || targetImageReference == null) {
             throw new IllegalStateException("Required fields should not be null");
           }
           return new BuildConfiguration(
