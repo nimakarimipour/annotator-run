@@ -98,6 +98,9 @@ public class CacheReader {
 
     Path newestLayerFile = null;
     for (CachedLayerWithMetadata cachedLayer : cachedLayers) {
+      if (cachedLayer.getMetadata() == null) {
+        throw new IllegalStateException("Layers with sourceFiles should have metadata");
+      }
       FileTime cachedLayerLastModifiedTime = cachedLayer.getMetadata().getLastModifiedTime();
       if (cachedLayerLastModifiedTime.compareTo(newestLastModifiedTime) > 0) {
         newestLastModifiedTime = cachedLayerLastModifiedTime;
