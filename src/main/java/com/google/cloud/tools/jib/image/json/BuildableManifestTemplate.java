@@ -63,6 +63,7 @@ public interface BuildableManifestTemplate extends ManifestTemplate {
     }
 
     @VisibleForTesting
+    @Nullable
     public DescriptorDigest getDigest() {
       return digest;
     }
