@@ -1,5 +1,4 @@
 kind	class	method	param	index	uri	reason	annotation	rootClass	rootMethod
-METHOD	com.squareup.picasso3.RequestHandler	createBitmapOptions(com.squareup.picasso3.Request)	null	null	/Users/nima/Developer/annotator-run/src/main/java/com/squareup/picasso3/RequestHandler.java	RETURN_NULLABLE	nullable	com.squareup.picasso3.RequestHandler	createBitmapOptions(com.squareup.picasso3.Request)
 FIELD	com.squareup.picasso3.BitmapHunter	null	actions	null	/Users/nima/Developer/annotator-run/src/main/java/com/squareup/picasso3/BitmapHunter.java	METHOD_NO_INIT	nullable	com.squareup.picasso3.BitmapHunter	null
 FIELD	com.squareup.picasso3.BitmapHunter	null	result	null	/Users/nima/Developer/annotator-run/src/main/java/com/squareup/picasso3/BitmapHunter.java	METHOD_NO_INIT	nullable	com.squareup.picasso3.BitmapHunter	null
 FIELD	com.squareup.picasso3.BitmapHunter	null	exception	null	/Users/nima/Developer/annotator-run/src/main/java/com/squareup/picasso3/BitmapHunter.java	METHOD_NO_INIT	nullable	com.squareup.picasso3.BitmapHunter	null

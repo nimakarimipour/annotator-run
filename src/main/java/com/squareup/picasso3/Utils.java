@@ -97,7 +97,7 @@ final class Utils {
     // No instances.
   }
 
-  static <T> T checkNotNull(T value, String message) {
+  static <T> T checkNotNull(@Nullable T value, String message) {
     if (value == null) {
       throw new NullPointerException(message);
     }

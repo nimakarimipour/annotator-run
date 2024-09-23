@@ -36,6 +36,7 @@ import static com.squareup.picasso3.MediaStoreRequestHandler.PicassoKind.FULL;
 import static com.squareup.picasso3.MediaStoreRequestHandler.PicassoKind.MICRO;
 import static com.squareup.picasso3.MediaStoreRequestHandler.PicassoKind.MINI;
 import static com.squareup.picasso3.Picasso.LoadedFrom.DISK;
+import static com.squareup.picasso3.Utils.checkNotNull;
 
 class MediaStoreRequestHandler extends ContentStreamRequestHandler {
   private static final String[] CONTENT_ORIENTATION = new String[] {
@@ -74,7 +75,7 @@ class MediaStoreRequestHandler extends ContentStreamRequestHandler {
 
         long id = parseId(request.uri);
 
-        BitmapFactory.Options options = createBitmapOptions(request);
+        BitmapFactory.Options options = checkNotNull(createBitmapOptions(request), "options == null");
         options.inJustDecodeBounds = true;
 
         calculateInSampleSize(request.targetWidth, request.targetHeight, picassoKind.width,

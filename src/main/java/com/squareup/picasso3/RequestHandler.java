@@ -160,6 +160,7 @@ public abstract class RequestHandler {
    * Lazily create {@link BitmapFactory.Options} based in given
    * {@link Request}, only instantiating them if needed.
    */
+  @Nullable
   static BitmapFactory.Options createBitmapOptions(Request data) {
     final boolean justBounds = data.hasSize();
     final boolean hasConfig = data.config != null;
@@ -176,7 +177,7 @@ public abstract class RequestHandler {
     return options;
   }
 
-  static boolean requiresInSampleSize(BitmapFactory.Options options) {
+  static boolean requiresInSampleSize(@Nullable BitmapFactory.Options options) {
     return options != null && options.inJustDecodeBounds;
   }
 
@@ -252,7 +253,8 @@ public abstract class RequestHandler {
       byte[] bytes = bufferedSource.readByteArray();
       if (calculateSize) {
         BitmapFactory.decodeByteArray(bytes, 0, bytes.length, options);
-        RequestHandler.calculateInSampleSize(request.targetWidth, request.targetHeight, options,
+        RequestHandler.calculateInSampleSize(request.targetWidth, request.targetHeight,
+                checkNotNull(options, "options == null"),
             request);
       }
       bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length, options);
@@ -260,7 +262,8 @@ public abstract class RequestHandler {
       if (calculateSize) {
         InputStream stream = new SourceBufferingInputStream(bufferedSource);
         BitmapFactory.decodeStream(stream, null, options);
-        RequestHandler.calculateInSampleSize(request.targetWidth, request.targetHeight, options,
+        RequestHandler.calculateInSampleSize(request.targetWidth, request.targetHeight,
+                checkNotNull(options, "options == null"),
             request);
       }
       bitmap = BitmapFactory.decodeStream(bufferedSource.inputStream(), null, options);
@@ -294,7 +297,7 @@ public abstract class RequestHandler {
     final BitmapFactory.Options options = createBitmapOptions(request);
     if (requiresInSampleSize(options)) {
       BitmapFactory.decodeResource(resources, id, options);
-      calculateInSampleSize(request.targetWidth, request.targetHeight, options, request);
+      calculateInSampleSize(request.targetWidth, request.targetHeight, checkNotNull(options, "options == null"), request);
     }
     return BitmapFactory.decodeResource(resources, id, options);
   }
