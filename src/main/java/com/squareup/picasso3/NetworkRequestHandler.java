@@ -28,6 +28,7 @@ import okhttp3.ResponseBody;
 
 import static com.squareup.picasso3.Picasso.LoadedFrom.DISK;
 import static com.squareup.picasso3.Picasso.LoadedFrom.NETWORK;
+import static com.squareup.picasso3.Utils.checkNotNull;
 
 final class NetworkRequestHandler extends RequestHandler {
   private static final String SCHEME_HTTP = "http";
@@ -118,8 +119,8 @@ final class NetworkRequestHandler extends RequestHandler {
         cacheControl = builder.build();
       }
     }
-
-    okhttp3.Request.Builder builder = new okhttp3.Request.Builder().url(request.uri.toString());
+    Uri uri = checkNotNull(request.uri, "request.uri == null");
+    okhttp3.Request.Builder builder = new okhttp3.Request.Builder().url(uri.toString());
     if (cacheControl != null) {
       builder.cacheControl(cacheControl);
     }
