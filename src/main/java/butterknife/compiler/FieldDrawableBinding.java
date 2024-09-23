@@ -14,7 +14,7 @@ final class FieldDrawableBinding implements ResourceBinding {
   @Nullable private final Id tintAttributeId;
   private final boolean androidX;
 
-  FieldDrawableBinding(@Nullable Id id, String name, @Nullable Id tintAttributeId, boolean useAndroidX) {
+  FieldDrawableBinding(Id id, String name, @Nullable Id tintAttributeId, boolean useAndroidX) {
     this.id = id;
     this.name = name;
     this.tintAttributeId = tintAttributeId;

@@ -1,2 +1,1 @@
 kind	class	method	param	index	uri	reason	annotation	rootClass	rootMethod
-FIELD	butterknife.compiler.FieldDrawableBinding	null	id	null	/Users/nima/Developer/annotator-run/src/main/java/butterknife/compiler/FieldDrawableBinding.java	ASSIGN_FIELD_NULLABLE	nullable	butterknife.compiler.FieldDrawableBinding	FieldDrawableBinding(butterknife.compiler.Id,java.lang.String,butterknife.compiler.Id,boolean)
