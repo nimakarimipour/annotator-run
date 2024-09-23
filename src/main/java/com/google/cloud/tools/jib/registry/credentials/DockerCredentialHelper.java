@@ -112,6 +112,9 @@ public class DockerCredentialHelper {
       }
 
     } catch (IOException ex) {
+      if (ex.getMessage() == null) {
+        throw ex;
+      }
       // Checks if the failure is due to a nonexistent credential helper CLI.
       if (ex.getMessage().contains("No such file or directory")
           || ex.getMessage().contains("cannot find the file")) {
