@@ -1,2 +1,1 @@
 kind	class	method	param	index	uri	reason	annotation	rootClass	rootMethod
-METHOD	org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	getValue(org.spacious_team.table_wrapper.csv.CsvTableCell.RowAndIndex)	null	null	/Users/nima/Developer/annotator-run/src/main/java/org/spacious_team/table_wrapper/csv/CsvCellDataAccessObject.java	RETURN_NULLABLE	nullable	org.spacious_team.table_wrapper.csv.CsvCellDataAccessObject	getValue(org.spacious_team.table_wrapper.csv.CsvTableCell.RowAndIndex)

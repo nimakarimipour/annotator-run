@@ -28,6 +28,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
 public class CsvCellDataAccessObject implements CellDataAccessObject<RowAndIndex, CsvTableRow> {
@@ -44,6 +45,7 @@ public class CsvCellDataAccessObject implements CellDataAccessObject<RowAndIndex
     }
 
     @Override
+    @Nullable
     public String getValue(RowAndIndex cell) {
         return cell.getValue();
     }
@@ -51,6 +53,7 @@ public class CsvCellDataAccessObject implements CellDataAccessObject<RowAndIndex
     @Override
     public Instant getInstantValue(RowAndIndex cell) {
         String value = getValue(cell);
+        Objects.requireNonNull(value, "Not an instant");
         DateTimeFormatter formatter = (dateTimeFormatter != null) ?
                 dateTimeFormatter :
                 DateTimeFormatParser.getFor(value);
