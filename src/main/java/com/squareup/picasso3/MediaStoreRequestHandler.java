@@ -49,7 +49,7 @@ class MediaStoreRequestHandler extends ContentStreamRequestHandler {
 
   @Override public boolean canHandleRequest(@NonNull Request data) {
     final Uri uri = data.uri;
-    return (SCHEME_CONTENT.equals(uri.getScheme())
+    return uri != null && (SCHEME_CONTENT.equals(uri.getScheme())
             && MediaStore.AUTHORITY.equals(uri.getAuthority()));
   }
 
