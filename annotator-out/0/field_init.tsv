@@ -1,0 +1,4 @@
+kind	class	method	param	index	uri	field
+METHOD	com.squareup.picasso3.BitmapHunter	hunt()	null	null	/Users/nima/Developer/annotator-run/src/main/java/com/squareup/picasso3/BitmapHunter.java	data
+METHOD	com.squareup.picasso3.AssetRequestHandler	initializeIfFirstTime()	null	null	/Users/nima/Developer/annotator-run/src/main/java/com/squareup/picasso3/AssetRequestHandler.java	assetManager
+METHOD	com.squareup.picasso3.SourceBufferingInputStream	reset()	null	null	/Users/nima/Developer/annotator-run/src/main/java/com/squareup/picasso3/SourceBufferingInputStream.java	markPosition
