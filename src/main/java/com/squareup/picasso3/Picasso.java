@@ -601,7 +601,7 @@ public class Picasso implements LifecycleObserver {
     }
   }
 
-  private void deliverAction(RequestHandler.Result result, Action action, Exception e) {
+  private void deliverAction(@Nullable RequestHandler.Result result, Action action, Exception e) {
     if (action.isCancelled()) {
       return;
     }

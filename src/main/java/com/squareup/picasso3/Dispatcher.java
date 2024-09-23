@@ -346,9 +346,11 @@ class Dispatcher {
   void performComplete(BitmapHunter hunter) {
     if (shouldWriteToMemoryCache(hunter.data.memoryPolicy)) {
       RequestHandler.Result result = hunter.getResult();
-      Bitmap bitmap = result.getBitmap();
-      if (bitmap != null) {
-        cache.set(hunter.getKey(), bitmap);
+      if(result != null){
+        Bitmap bitmap = result.getBitmap();
+        if (bitmap != null) {
+          cache.set(hunter.getKey(), bitmap);
+        }
       }
     }
     hunterMap.remove(hunter.getKey());

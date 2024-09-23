@@ -75,6 +75,7 @@ class BitmapHunter implements Runnable {
   @Nullable Action action;
   @Nullable
   List<Action> actions;
+  @Nullable
   Result result;
   @Nullable Future<?> future;
   Exception exception;
@@ -318,6 +319,7 @@ class BitmapHunter implements Runnable {
     return requestHandler.supportsReplay();
   }
 
+  @Nullable
   Result getResult() {
     return result;
   }
