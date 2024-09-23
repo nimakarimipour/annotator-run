@@ -218,7 +218,7 @@ public abstract class RequestHandler {
    * about the supplied request in order to do the decoding efficiently (such as through leveraging
    * {@code inSampleSize}).
    */
-  static Bitmap decodeStream(Source source, Request request) throws IOException {
+  static Bitmap decodeStream(@Nullable Source source, Request request) throws IOException {
     BufferedSource bufferedSource = Okio.buffer(source);
 
     if (Build.VERSION.SDK_INT >= 28) {

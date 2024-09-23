@@ -403,7 +403,7 @@ public final class Request {
     }
 
     /** Internal use only. Used by {@link DeferredRequestCreator}. */
-    Object getTag() {
+    @Nullable Object getTag() {
       return tag;
     }
 
