@@ -735,7 +735,7 @@ final class BindingSet {
     }
 
     boolean addMethod(
-        @Nullable Id id,
+        Id id,
         ListenerClass listener,
         ListenerMethod method,
         MethodViewBinding binding) {
@@ -767,7 +767,7 @@ final class BindingSet {
       return fieldBinding.getName();
     }
 
-    private ViewBinding.Builder getOrCreateViewBindings(@Nullable Id id) {
+    private ViewBinding.Builder getOrCreateViewBindings(Id id) {
       ViewBinding.Builder viewId = viewIdMap.get(id);
       if (viewId == null) {
         viewId = new ViewBinding.Builder(id);

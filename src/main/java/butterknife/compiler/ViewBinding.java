@@ -15,7 +15,7 @@ final class ViewBinding {
   private final Map<ListenerClass, Map<ListenerMethod, Set<MethodViewBinding>>> methodBindings;
   @Nullable private final FieldViewBinding fieldBinding;
 
-  ViewBinding(@Nullable Id id, Map<ListenerClass, Map<ListenerMethod, Set<MethodViewBinding>>> methodBindings,
+  ViewBinding(Id id, Map<ListenerClass, Map<ListenerMethod, Set<MethodViewBinding>>> methodBindings,
       @Nullable FieldViewBinding fieldBinding) {
     this.id = id;
     this.methodBindings = methodBindings;
@@ -70,13 +70,13 @@ final class ViewBinding {
   }
 
   public static final class Builder {
-    @Nullable private final Id id;
+    private final Id id;
 
     private final Map<ListenerClass, Map<ListenerMethod, Set<MethodViewBinding>>> methodBindings =
         new LinkedHashMap<>();
     @Nullable FieldViewBinding fieldBinding;
 
-    Builder(@Nullable Id id) {
+    Builder(Id id) {
       this.id = id;
     }
 
