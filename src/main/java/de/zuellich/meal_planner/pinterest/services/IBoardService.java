@@ -10,7 +10,7 @@ import javax.annotation.Nullable;
 public interface IBoardService {
 
   /** @return A list of the users boards or an empty list of none found. */
-  @Nullable List<Board> getBoards();
+  List<Board> getBoards();
 
   List<Pin> getPins(@Nullable String boardId);
 

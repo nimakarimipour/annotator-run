@@ -1,16 +1,19 @@
 package de.zuellich.meal_planner.pinterest.datatypes;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+
 import java.util.List;
 import javax.annotation.Nullable;
 
 /** Represents a list of boards. Helper for JSON serialization. */
 public class BoardList {
 
-  @Nullable @JsonProperty(value = "data")
-  private List<Board> boards;
+  @JsonProperty(value = "data")
+  private List<Board> boards = ImmutableList.of();
 
-  @Nullable public List<Board> getBoards() {
+  public List<Board> getBoards() {
     return boards;
   }
 

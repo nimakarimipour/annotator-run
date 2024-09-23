@@ -32,7 +32,7 @@ public class BoardService implements IBoardService {
     this.restTemplate = restTemplate;
   }
 
-  @Nullable @Override
+  @Override
   @Cacheable("boards")
   public List<Board> getBoards() {
     try {

@@ -1,3 +1,2 @@
 message_type	message	enc_class	enc_member	offset	path	target_kind	target_class	target_method	target_param	target_index	target_path
-DEREFERENCE_NULLABLE	enhanced-for expression boards is @Nullable	de.zuellich.meal_planner.controller.PinterestExplorer	getRecipes()	2429	/Users/nima/Developer/annotator-run/src/main/java/de/zuellich/meal_planner/controller/PinterestExplorer.java	null	null	null	null	null	null
 DEREFERENCE_NULLABLE	dereferenced expression e.getCause() is @Nullable	de.zuellich.meal_planner.controller.PinterestExplorer	getRecipes()	3066	/Users/nima/Developer/annotator-run/src/main/java/de/zuellich/meal_planner/controller/PinterestExplorer.java	null	null	null	null	null	null
