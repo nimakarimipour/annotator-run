@@ -26,6 +26,8 @@ import okio.Source;
 
 import static android.content.ContentResolver.SCHEME_FILE;
 import static com.squareup.picasso3.Picasso.LoadedFrom.DISK;
+import static com.squareup.picasso3.Utils.checkNotNull;
+
 import javax.annotation.Nullable;
 
 class AssetRequestHandler extends RequestHandler {
@@ -77,6 +79,7 @@ class AssetRequestHandler extends RequestHandler {
   }
 
   static String getFilePath(Request request) {
-    return request.uri.toString().substring(ASSET_PREFIX_LENGTH);
+    Uri uri = checkNotNull(request.uri, "request.uri == null");
+    return uri.toString().substring(ASSET_PREFIX_LENGTH);
   }
 }
