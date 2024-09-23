@@ -23,6 +23,7 @@ import com.univocity.parsers.csv.CsvParserSettings;
 import org.spacious_team.table_wrapper.api.AbstractReportPage;
 import org.spacious_team.table_wrapper.api.TableCellAddress;
 
+import javax.annotation.Nullable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -76,7 +77,7 @@ public class CsvReportPage extends AbstractReportPage<CsvTableRow> {
         return CsvTableHelper.find(rows, startRow, endRow, startColumn, endColumn, cellValuePredicate::test);
     }
 
-    @Override
+    @Nullable @Override
     public CsvTableRow getRow(int i) {
         return (i >= rows.length) ? null : new CsvTableRow(rows[i], i);
     }

@@ -28,16 +28,19 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import javax.annotation.Nullable;
 
 public class CsvCellDataAccessObject implements CellDataAccessObject<RowAndIndex, CsvTableRow> {
     public static final CsvCellDataAccessObject INSTANCE = new CsvCellDataAccessObject();
-    @Setter
+    @Nullable @Setter
     @Getter
     public static DateTimeFormatter dateTimeFormatter = null;
 
     @Override
+    @Nullable
     public RowAndIndex getCell(CsvTableRow row, Integer cellIndex) {
-        return row.getCell(cellIndex).getRowAndIndex();
+        CsvTableCell cell = row.getCell(cellIndex);
+        return (cell == null) ? null : cell.getRowAndIndex();
     }
 
     @Override

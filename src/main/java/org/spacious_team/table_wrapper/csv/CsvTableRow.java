@@ -26,6 +26,7 @@ import java.util.Iterator;
 
 import static org.spacious_team.table_wrapper.api.TableCellAddress.NOT_FOUND;
 import static org.spacious_team.table_wrapper.csv.CsvTableHelper.equalsPredicate;
+import javax.annotation.Nullable;
 
 public class CsvTableRow extends AbstractReportPageRow {
 
@@ -41,7 +42,7 @@ public class CsvTableRow extends AbstractReportPageRow {
         this.cellsCache = new CsvTableCell[row.length];
     }
 
-    @Override
+    @Nullable @Override
     public CsvTableCell getCell(int i) {
         if (i >= row.length) {
             return null;
@@ -79,7 +80,7 @@ public class CsvTableRow extends AbstractReportPageRow {
                 return cellIndex < row.length;
             }
 
-            @Override
+            @Nullable @Override
             public TableCell next() {
                 return getCell(cellIndex++);
             }
