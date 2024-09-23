@@ -116,9 +116,11 @@ public class BuildConfiguration {
       if (mainClass == null) {
         errorMessages.add("main class is required but not set");
       }
-
       switch (errorMessages.size()) {
         case 0: // No errors
+          if (baseImageReference == null) {
+            throw new IllegalStateException("Required fields should not be null");
+          }
           return new BuildConfiguration(
               buildLogger,
               baseImageReference,
