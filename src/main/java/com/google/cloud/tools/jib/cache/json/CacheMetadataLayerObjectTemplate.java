@@ -51,6 +51,7 @@ public class CacheMetadataLayerObjectTemplate implements JsonTemplate {
     return reference.size;
   }
 
+  @Nullable
   public DescriptorDigest getDigest() {
     return reference.digest;
   }
