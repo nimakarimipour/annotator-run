@@ -1,2 +1,1 @@
 message_type	message	enc_class	enc_member	offset	path	target_kind	target_class	target_method	target_param	target_index	target_path
-DEREFERENCE_NULLABLE	dereferenced expression tintAttributeId is @Nullable	butterknife.compiler.FieldDrawableBinding	render(int)	945	/Users/nima/Developer/annotator-run/src/main/java/butterknife/compiler/FieldDrawableBinding.java	null	null	null	null	null	null

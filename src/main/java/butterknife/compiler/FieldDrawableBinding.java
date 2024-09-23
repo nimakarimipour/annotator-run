@@ -11,10 +11,10 @@ import javax.annotation.Nullable;
 final class FieldDrawableBinding implements ResourceBinding {
   private final Id id;
   private final String name;
-  @Nullable private final Id tintAttributeId;
+  private final Id tintAttributeId;
   private final boolean androidX;
 
-  FieldDrawableBinding(Id id, String name, @Nullable Id tintAttributeId, boolean useAndroidX) {
+  FieldDrawableBinding(Id id, String name, Id tintAttributeId, boolean useAndroidX) {
     this.id = id;
     this.name = name;
     this.tintAttributeId = tintAttributeId;
