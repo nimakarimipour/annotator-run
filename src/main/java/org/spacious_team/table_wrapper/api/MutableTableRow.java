@@ -49,6 +49,7 @@ class MutableTableRow<T extends ReportPageRow> implements TableRow {
     }
 
     @Override
+    @Nullable
     public TableCell getCell(int i) {
         return row.getCell(i);
     }
