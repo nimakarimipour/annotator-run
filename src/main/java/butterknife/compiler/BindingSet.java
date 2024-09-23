@@ -32,6 +32,7 @@ import static butterknife.compiler.ButterKnifeProcessor.VIEW_TYPE;
 import static butterknife.compiler.ButterKnifeProcessor.isSubtypeOfType;
 import static com.google.auto.common.MoreElements.getPackage;
 import static java.util.Collections.singletonList;
+import static java.util.Objects.requireNonNull;
 import static javax.lang.model.element.Modifier.FINAL;
 import static javax.lang.model.element.Modifier.PRIVATE;
 import static javax.lang.model.element.Modifier.PUBLIC;
@@ -364,7 +365,7 @@ final class BindingSet {
   private void addViewBinding(MethodSpec.Builder result, ViewBinding binding, boolean debuggable) {
     if (binding.isSingleFieldBinding()) {
       // Optimize the common case where there's a single binding directly to a field.
-      FieldViewBinding fieldBinding = binding.getFieldBinding();
+      FieldViewBinding fieldBinding = requireNonNull(binding.getFieldBinding());
       CodeBlock.Builder builder = CodeBlock.builder()
           .add("target.$L = ", fieldBinding.getName());
 

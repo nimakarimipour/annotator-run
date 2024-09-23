@@ -120,7 +120,7 @@ public final class ButterKnifeProcessor extends AbstractProcessor {
 
   private Types typeUtils;
   private Filer filer;
-  private @Nullable Trees trees;
+  private Trees trees;
 
   private int sdk = 1;
   private boolean debuggable = true;
