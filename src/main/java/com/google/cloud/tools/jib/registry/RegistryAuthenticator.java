@@ -94,7 +94,7 @@ public class RegistryAuthenticator {
   @JsonIgnoreProperties(ignoreUnknown = true)
   private static class AuthenticationResponseTemplate implements JsonTemplate {
 
-    private String token;
+    @Nullable private String token;
   }
 
   private final String authenticationUrlBase;
