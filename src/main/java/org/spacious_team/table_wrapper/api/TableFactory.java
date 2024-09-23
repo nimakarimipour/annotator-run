@@ -159,7 +159,8 @@ public interface TableFactory {
             if (!tableNameCell.equals(TableCellAddress.NOT_FOUND)) {
                 try {
                     //noinspection ConstantConditions
-                    tableName = reportPage.getCell(tableNameCell).getStringValue();
+                    TableCell cell = requireNonNull(reportPage.getCell(tableNameCell));
+                    tableName = cell.getStringValue();
                 } catch (Exception ignore) {
                 }
             }
