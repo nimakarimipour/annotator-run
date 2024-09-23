@@ -23,11 +23,11 @@ final class FieldCollectionViewBinding {
 
   final String name;
   private final TypeName type;
-  @Nullable private final Kind kind;
+  private final Kind kind;
   private final boolean required;
   private final List<Id> ids;
 
-  FieldCollectionViewBinding(String name, TypeName type, @Nullable Kind kind, List<Id> ids,
+  FieldCollectionViewBinding(String name, TypeName type, Kind kind, List<Id> ids,
       boolean required) {
     this.name = name;
     this.type = type;
