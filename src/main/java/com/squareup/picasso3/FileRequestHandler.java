@@ -27,6 +27,7 @@ import static android.content.ContentResolver.SCHEME_FILE;
 import static android.support.media.ExifInterface.ORIENTATION_NORMAL;
 import static android.support.media.ExifInterface.TAG_ORIENTATION;
 import static com.squareup.picasso3.Picasso.LoadedFrom.DISK;
+import static com.squareup.picasso3.Utils.checkNotNull;
 
 class FileRequestHandler extends ContentStreamRequestHandler {
 
@@ -56,7 +57,8 @@ class FileRequestHandler extends ContentStreamRequestHandler {
   }
 
   @Override protected int getExifOrientation(Request request) throws IOException {
-    ExifInterface exifInterface = new ExifInterface(request.uri.getPath());
+    Uri requestUri = checkNotNull(request.uri, "request.uri == null");
+    ExifInterface exifInterface = new ExifInterface(requestUri.getPath());
     return exifInterface.getAttributeInt(TAG_ORIENTATION, ORIENTATION_NORMAL);
   }
 }
