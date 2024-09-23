@@ -384,7 +384,8 @@ class BitmapHunter implements Runnable {
     return new BitmapHunter(picasso, dispatcher, cache, stats, action, ERRORING_HANDLER);
   }
 
-  @Nullable static Result applyTransformations(Picasso picasso, Request data,
+  @SuppressWarnings("NullAway")
+  static Result applyTransformations(Picasso picasso, Request data,
       List<Transformation> transformations, Result result) {
     for (int i = 0, count = transformations.size(); i < count; i++) {
       final Transformation transformation = transformations.get(i);
