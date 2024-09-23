@@ -6,8 +6,6 @@ import de.zuellich.meal_planner.datatypes.RecipeFormat;
 /** */
 public class NullParser implements RecipeParser {
 
-  Object object;
-
   @Override
   public Recipe parse(String source) {
     return new NullRecipe();

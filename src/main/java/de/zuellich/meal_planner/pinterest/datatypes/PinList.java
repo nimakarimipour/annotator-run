@@ -2,7 +2,6 @@ package de.zuellich.meal_planner.pinterest.datatypes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.common.collect.ImmutableList;
 import java.util.List;
 
 /** */
@@ -10,10 +9,10 @@ import java.util.List;
 public class PinList {
 
   @JsonProperty(value = "data")
-  private List<Pin> pins = ImmutableList.of();
+  private List<Pin> pins;
 
   @JsonProperty(value = "page")
-  private PagingInformation page = new PagingInformation();
+  private PagingInformation page;
 
   public List<Pin> getPins() {
     return pins;

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BoardRequest {
 
   @JsonProperty(value = "data")
-  private Board board = new Board();
+  private Board board;
 
   public Board getBoard() {
     return board;
