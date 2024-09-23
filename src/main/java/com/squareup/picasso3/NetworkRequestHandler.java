@@ -17,6 +17,7 @@ package com.squareup.picasso3;
 
 import android.graphics.Bitmap;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import java.io.IOException;
@@ -41,7 +42,9 @@ final class NetworkRequestHandler extends RequestHandler {
   }
 
   @Override public boolean canHandleRequest(@NonNull Request data) {
-    String scheme = data.uri.getScheme();
+    Uri uri = data.uri;
+    if (uri == null) return false;
+    String scheme = uri.getScheme();
     return (SCHEME_HTTP.equals(scheme) || SCHEME_HTTPS.equals(scheme));
   }
 
