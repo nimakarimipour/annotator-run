@@ -3,18 +3,19 @@ package de.zuellich.meal_planner.pinterest.datatypes;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
+import javax.annotation.Nullable;
 
 /** */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PinList {
 
-  @JsonProperty(value = "data")
+  @Nullable @JsonProperty(value = "data")
   private List<Pin> pins;
 
-  @JsonProperty(value = "page")
+  @Nullable @JsonProperty(value = "page")
   private PagingInformation page;
 
-  public List<Pin> getPins() {
+  @Nullable public List<Pin> getPins() {
     return pins;
   }
 
@@ -22,7 +23,7 @@ public class PinList {
     this.pins = pins;
   }
 
-  public PagingInformation getPage() {
+  @Nullable public PagingInformation getPage() {
     return page;
   }
 

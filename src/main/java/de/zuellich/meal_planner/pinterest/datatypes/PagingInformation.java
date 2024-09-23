@@ -1,16 +1,17 @@
 package de.zuellich.meal_planner.pinterest.datatypes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.annotation.Nullable;
 
 /** */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PagingInformation {
 
-  private String cursor;
+  @Nullable private String cursor;
 
-  private String next;
+  @Nullable private String next;
 
-  public String getCursor() {
+  @Nullable public String getCursor() {
     return cursor;
   }
 
@@ -18,7 +19,7 @@ public class PagingInformation {
     this.cursor = cursor;
   }
 
-  public String getNext() {
+  @Nullable public String getNext() {
     return next;
   }
 

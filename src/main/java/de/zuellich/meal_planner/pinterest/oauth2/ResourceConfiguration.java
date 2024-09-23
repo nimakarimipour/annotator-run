@@ -11,21 +11,22 @@ import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResour
 import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails;
 import org.springframework.security.oauth2.common.AuthenticationScheme;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
+import javax.annotation.Nullable;
 
 @Configuration
 @EnableOAuth2Client
 public class ResourceConfiguration {
 
-  @Value("${meal_planner.oauth2.clientId}")
+  @Nullable @Value("${meal_planner.oauth2.clientId}")
   private String clientId;
 
-  @Value("${meal_planner.oauth2.clientSecret}")
+  @Nullable @Value("${meal_planner.oauth2.clientSecret}")
   private String clientSecret;
 
-  @Value("${meal_planner.oauth2.accessTokenUri}")
+  @Nullable @Value("${meal_planner.oauth2.accessTokenUri}")
   private String accessTokenUri;
 
-  @Value("${meal_planner.oauth2.authorizationUri}")
+  @Nullable @Value("${meal_planner.oauth2.authorizationUri}")
   private String authorizationUri;
 
   /**

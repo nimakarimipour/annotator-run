@@ -1,17 +1,18 @@
 package de.zuellich.meal_planner.pinterest.datatypes;
 
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 /** */
 public class Board {
 
-  private String id;
+  @Nullable private String id;
 
-  private String name;
+  @Nullable private String name;
 
-  private String url;
+  @Nullable private String url;
 
-  public String getId() {
+  @Nullable public String getId() {
     return id;
   }
 
@@ -19,7 +20,7 @@ public class Board {
     this.id = id;
   }
 
-  public String getName() {
+  @Nullable public String getName() {
     return name;
   }
 
@@ -27,7 +28,7 @@ public class Board {
     this.name = name;
   }
 
-  public String getUrl() {
+  @Nullable public String getUrl() {
     return url;
   }
 

@@ -4,12 +4,13 @@ import de.zuellich.meal_planner.datatypes.IngredientUnit;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.stereotype.Service;
+import javax.annotation.Nullable;
 
 /** */
 @Service
 public class IngredientUnitLookup {
 
-  private static IngredientUnitLookup instance;
+  @Nullable private static IngredientUnitLookup instance;
 
   private Map<String, IngredientUnit> byShorthand;
   private Map<String, IngredientUnit> byPlural;

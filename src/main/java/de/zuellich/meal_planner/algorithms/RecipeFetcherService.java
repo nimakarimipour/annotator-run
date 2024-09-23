@@ -3,6 +3,7 @@ package de.zuellich.meal_planner.algorithms;
 import java.io.IOException;
 import org.jsoup.Jsoup;
 import org.springframework.stereotype.Service;
+import javax.annotation.Nullable;
 
 /** Implements methods to fetch a recipe. */
 @Service

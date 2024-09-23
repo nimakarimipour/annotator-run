@@ -1,6 +1,7 @@
 package de.zuellich.meal_planner.pinterest.datatypes;
 
 import java.util.List;
+import javax.annotation.Nullable;
 
 /**
  * Represents the listing of a board. Includes the board with its information and the list of pins
@@ -8,19 +9,19 @@ import java.util.List;
  */
 public class BoardListing {
 
-  private Board board;
+  @Nullable private Board board;
 
-  private List<Pin> pins;
+  @Nullable private List<Pin> pins;
 
-  public Board getBoard() {
+  @Nullable public Board getBoard() {
     return board;
   }
 
-  public void setBoard(Board board) {
+  public void setBoard(@Nullable Board board) {
     this.board = board;
   }
 
-  public List<Pin> getPins() {
+  @Nullable public List<Pin> getPins() {
     return pins;
   }
 

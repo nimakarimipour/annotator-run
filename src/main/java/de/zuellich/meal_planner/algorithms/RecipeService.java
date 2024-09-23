@@ -4,6 +4,7 @@ import de.zuellich.meal_planner.datatypes.Recipe;
 import de.zuellich.meal_planner.exception.RecipeParseException;
 import java.io.IOException;
 import org.springframework.stereotype.Service;
+import javax.annotation.Nullable;
 
 /** */
 @Service
