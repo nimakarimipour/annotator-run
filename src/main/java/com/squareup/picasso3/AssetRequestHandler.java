@@ -43,7 +43,7 @@ class AssetRequestHandler extends RequestHandler {
 
   @Override public boolean canHandleRequest(@NonNull Request data) {
     Uri uri = data.uri;
-    return (SCHEME_FILE.equals(uri.getScheme())
+    return uri != null && (SCHEME_FILE.equals(uri.getScheme())
         && !uri.getPathSegments().isEmpty() && ANDROID_ASSET.equals(uri.getPathSegments().get(0)));
   }
 
