@@ -48,7 +48,7 @@ public class TableColumnImpl implements TableColumn {
             for (@Nullable TableCell cell : header) {
                 @Nullable Object value;
                 if (cell != null && cell.getColumnIndex() >= firstColumnForSearch &&
-                        ((value = cell.getValue()) instanceof String)) {
+                        (((value = cell.getValue()) != null) && (value instanceof String))) {
                     String colName = value.toString().toLowerCase();
                     for (String word : words) {
                         if (!containsWord(colName, word)) {

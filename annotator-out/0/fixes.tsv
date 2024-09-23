@@ -1,3 +1,2 @@
 kind	class	method	param	index	uri	reason	annotation	rootClass	rootMethod
 FIELD	org.spacious_team.table_wrapper.api.MutableTableRow	null	row	null	/Users/nima/Developer/annotator-run/src/main/java/org/spacious_team/table_wrapper/api/MutableTableRow.java	METHOD_NO_INIT	nullable	org.spacious_team.table_wrapper.api.MutableTableRow	null
-METHOD	org.spacious_team.table_wrapper.api.MutableTableRow	getCellIndex(org.spacious_team.table_wrapper.api.TableColumnDescription)	null	null	/Users/nima/Developer/annotator-run/src/main/java/org/spacious_team/table_wrapper/api/MutableTableRow.java	RETURN_NULLABLE	nullable	org.spacious_team.table_wrapper.api.MutableTableRow	getCellIndex(org.spacious_team.table_wrapper.api.TableColumnDescription)
