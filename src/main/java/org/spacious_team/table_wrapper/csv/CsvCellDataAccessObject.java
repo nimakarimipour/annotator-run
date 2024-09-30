@@ -39,7 +39,8 @@ public class CsvCellDataAccessObject implements CellDataAccessObject<RowAndIndex
 
     @Override
     public RowAndIndex getCell(CsvTableRow row, Integer cellIndex) {
-        return row.getCell(cellIndex).getRowAndIndex();
+        CsvTableCell cell = row.getCell(cellIndex);
+        return (cell == null) ? null : cell.getRowAndIndex();
     }
 
     @Override
