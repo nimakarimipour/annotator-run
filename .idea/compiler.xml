@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/com/uber/nullaway/nullaway/0.10.20/nullaway-0.10.20.jar" />
+          <entry name="$MAVEN_REPOSITORY$/edu/ucr/cs/riple/annot-util/AnnotLocator/0.1/AnnotLocator-0.1.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/edu.ucr.cs.riple.annotator/annotator-scanner/1.3.14/166e659b25e0560ecc6668c1475eab7aefc28e04/annotator-scanner-1.3.14.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_core/2.29.2/8eeaea8644dbeaee906f950774c97ac9f4a10592/error_prone_core-2.29.2.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/checkerframework/dataflow-nullaway/3.41.0/dataflow-nullaway-3.41.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_check_api/2.29.2/d2f43054d37293ee8129cbd5558755cb8a8ad5f4/error_prone_check_api-2.29.2.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotation/2.29.2/ee622cf51cd79c469f30f5df30df29966d7083f/error_prone_annotation-2.29.2.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/auto/auto-common/1.2.2/auto-common-1.2.2.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/inject/guice/5.1.0/guice-5.1.0.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/guava/guava/32.1.1-jre/guava-32.1.1-jre.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_type_annotations/2.29.2/bc9b144846fbbcfb4e37693815e35863f72ee6c9/error_prone_type_annotations-2.29.2.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/pcollections/pcollections/4.0.1/pcollections-4.0.1.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar" />
+          <entry name="$MAVEN_REPOSITORY$/io/github/eisop/dataflow-errorprone/3.41.0-eisop1/dataflow-errorprone-3.41.0-eisop1.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/auto/value/auto-value-annotations/1.9/auto-value-annotations-1.9.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/github/ben-manes/caffeine/caffeine/3.0.5/caffeine-3.0.5.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.29.2/23bbed35f2d071c8507984834e3e6438c7fee7d2/error_prone_annotations-2.29.2.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/protobuf/protobuf-java/3.19.6/protobuf-java-3.19.6.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/auto/service/auto-service-annotations/1.0.1/auto-service-annotations-1.0.1.jar" />
+          <entry name="$MAVEN_REPOSITORY$/javax/inject/javax.inject/1/javax.inject-1.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar" />
+          <entry name="$MAVEN_REPOSITORY$/io/github/java-diff-utils/java-diff-utils/4.12/java-diff-utils-4.12.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/github/kevinstern/software-and-algorithms/1.0/software-and-algorithms-1.0.jar" />
+          <entry name="$MAVEN_REPOSITORY$/aopalliance/aopalliance/1.0/aopalliance-1.0.jar" />
+        </processorPath>
+        <module name="annotator-run.main" />
+        <module name="annotator-run.test" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="11" />
+  </component>
+</project>
