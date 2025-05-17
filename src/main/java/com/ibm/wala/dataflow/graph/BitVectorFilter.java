@@ -58,7 +58,9 @@ public class BitVectorFilter extends UnaryOperator<BitVectorVariable> {
     }
   }
 
-  /** @see java.lang.Object#toString() */
+  /**
+   * @see java.lang.Object#toString()
+   */
   @Override
   public String toString() {
     return "U - " + mask;

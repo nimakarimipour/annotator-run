@@ -16,6 +16,7 @@ import com.ibm.wala.util.collections.TwoLevelVector;
 import com.ibm.wala.util.debug.Assertions;
 import java.io.Serializable;
 import java.util.Iterator;
+import javax.annotation.Nullable;
 
 /**
  * A relation between non-negative integers
@@ -189,7 +190,7 @@ public final class BasicNaturalRelation implements IBinaryNaturalRelation, Seria
      */
     private int nextIndex = -1;
 
-    private IntIterator delegateIterator = null;
+    @Nullable private IntIterator delegateIterator = null;
 
     TotalIterator() {
       advanceX();
@@ -258,12 +259,15 @@ public final class BasicNaturalRelation implements IBinaryNaturalRelation, Seria
     return delegateStore.get(x);
   }
 
-  /** @return true iff there exists pair (x,y) for some y */
+  /**
+   * @return true iff there exists pair (x,y) for some y
+   */
   @Override
   public boolean anyRelated(int x) {
     return smallStore[0].get(x) != EMPTY_CODE;
   }
 
+  @Nullable
   @Override
   public IntSet getRelated(int x) {
     if (DEBUG) {
@@ -376,7 +380,9 @@ public final class BasicNaturalRelation implements IBinaryNaturalRelation, Seria
     delegateStore.set(x, null);
   }
 
-  /** @see com.ibm.wala.util.debug.VerboseAction#performVerboseAction() */
+  /**
+   * @see com.ibm.wala.util.debug.VerboseAction#performVerboseAction()
+   */
   @Override
   public void performVerboseAction() {
     if (VERBOSE) {

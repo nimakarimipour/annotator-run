@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
+import javax.annotation.Nullable;
 
 /**
  * This implementation of {@link Map} chooses between one of two implementations, depending on the
@@ -29,7 +30,7 @@ public class BimodalMap<K, V> implements Map<K, V> {
   private final int cutOff;
 
   /** The implementation we delegate to */
-  private Map<K, V> backingStore;
+  @Nullable private Map<K, V> backingStore;
 
   /**
    * @param cutoff the map size at which to switch from the small map implementation to the large
@@ -59,11 +60,13 @@ public class BimodalMap<K, V> implements Map<K, V> {
     return (backingStore == null) ? false : backingStore.containsValue(value);
   }
 
+  @Nullable
   @Override
   public V get(Object key) {
     return (backingStore == null) ? null : backingStore.get(key);
   }
 
+  @Nullable
   @Override
   public V put(K key, V value) {
     if (backingStore == null) {
@@ -91,7 +94,10 @@ public class BimodalMap<K, V> implements Map<K, V> {
     backingStore.putAll(S);
   }
 
-  /** @throws UnsupportedOperationException if the backingStore doesn't support remove */
+  /**
+   * @throws UnsupportedOperationException if the backingStore doesn't support remove
+   */
+  @Nullable
   @Override
   public V remove(Object key) {
     return (backingStore == null) ? null : backingStore.remove(key);
@@ -149,7 +155,9 @@ public class BimodalMap<K, V> implements Map<K, V> {
         ((backingStore == null) ? Collections.emptySet() : backingStore.values());
   }
 
-  /** @throws UnimplementedError if the backingStore implementation does */
+  /**
+   * @throws UnimplementedError if the backingStore implementation does
+   */
   @Override
   @SuppressWarnings("unchecked")
   public Set<Map.Entry<K, V>> entrySet() {

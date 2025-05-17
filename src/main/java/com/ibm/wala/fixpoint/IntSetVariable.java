@@ -13,6 +13,7 @@ package com.ibm.wala.fixpoint;
 import com.ibm.wala.util.intset.IntSet;
 import com.ibm.wala.util.intset.IntSetUtil;
 import com.ibm.wala.util.intset.MutableIntSet;
+import javax.annotation.Nullable;
 
 /**
  * A variable for dataflow analysis, representing a set of integers.
@@ -22,7 +23,7 @@ import com.ibm.wala.util.intset.MutableIntSet;
 @SuppressWarnings("rawtypes")
 public abstract class IntSetVariable<T extends IntSetVariable<T>> extends AbstractVariable<T> {
 
-  MutableIntSet V;
+  @Nullable MutableIntSet V;
 
   @Override
   public void copyState(T other) {
@@ -117,7 +118,10 @@ public abstract class IntSetVariable<T extends IntSetVariable<T>> extends Abstra
     }
   }
 
-  /** @return the value of this variable as a MutableSparseIntSet ... null if the set is empty. */
+  /**
+   * @return the value of this variable as a MutableSparseIntSet ... null if the set is empty.
+   */
+  @Nullable
   public MutableIntSet getValue() {
     return V;
   }

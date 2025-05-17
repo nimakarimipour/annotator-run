@@ -21,9 +21,13 @@ import com.ibm.wala.util.graph.Graph;
  */
 public interface IKilldallFramework<T, V extends IVariable<V>> {
 
-  /** @return the flow graph which induces this dataflow problem */
+  /**
+   * @return the flow graph which induces this dataflow problem
+   */
   public Graph<T> getFlowGraph();
 
-  /** @return an object which provides the flow function for each node in the graph */
+  /**
+   * @return an object which provides the flow function for each node in the graph
+   */
   public ITransferFunctionProvider<T, V> getTransferFunctionProvider();
 }

@@ -18,6 +18,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import javax.annotation.Nullable;
 
 /**
  * An {@link IVector} implementation designed for low occupancy. Note that get() from this vector is
@@ -46,7 +47,10 @@ public class SparseVector<T> implements IVector<T>, Serializable {
     indices = new TunedMutableSparseIntSet(initialSize, expansion);
   }
 
-  /** @see com.ibm.wala.util.intset.IntVector#get(int) */
+  /**
+   * @see com.ibm.wala.util.intset.IntVector#get(int)
+   */
+  @Nullable
   @Override
   @SuppressWarnings("unchecked")
   public T get(int x) {
@@ -64,7 +68,7 @@ public class SparseVector<T> implements IVector<T>, Serializable {
    * @see com.ibm.wala.util.intset.IntVector#set(int, int)
    */
   @Override
-  public void set(int x, T value) {
+  public void set(int x, @Nullable T value) {
     int index = indices.getIndex(x);
     if (index == -1) {
       indices.add(x);
@@ -83,7 +87,9 @@ public class SparseVector<T> implements IVector<T>, Serializable {
     }
   }
 
-  /** @see com.ibm.wala.util.debug.VerboseAction#performVerboseAction() */
+  /**
+   * @see com.ibm.wala.util.debug.VerboseAction#performVerboseAction()
+   */
   @Override
   public void performVerboseAction() {
     System.err.println((getClass() + " stats: "));
@@ -91,7 +97,9 @@ public class SparseVector<T> implements IVector<T>, Serializable {
     System.err.println(("indices.size() " + indices.size()));
   }
 
-  /** @see com.ibm.wala.util.intset.IntSet#intIterator() */
+  /**
+   * @see com.ibm.wala.util.intset.IntSet#intIterator()
+   */
   @Override
   public Iterator<T> iterator() {
     return new Iterator<T>() {
@@ -120,7 +128,9 @@ public class SparseVector<T> implements IVector<T>, Serializable {
     };
   }
 
-  /** @return max i s.t get(i) != null */
+  /**
+   * @return max i s.t get(i) != null
+   */
   @Override
   public int getMaxIndex() throws IllegalStateException {
     return indices.max();

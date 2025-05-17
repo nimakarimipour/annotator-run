@@ -11,6 +11,7 @@
 package com.ibm.wala.util.intset;
 
 import com.ibm.wala.util.debug.VerboseAction;
+import javax.annotation.Nullable;
 
 /** a relation R(x,y) where x &gt;= 0 */
 public interface IBinaryNaturalRelation extends VerboseAction, Iterable<IntPair> {
@@ -21,20 +22,29 @@ public interface IBinaryNaturalRelation extends VerboseAction, Iterable<IntPair>
    */
   public abstract boolean add(int x, int y);
 
-  /** @return IntSet of y s.t. R(x,y) or null if none. */
+  /**
+   * @return IntSet of y s.t. R(x,y) or null if none.
+   */
+  @Nullable
   public abstract IntSet getRelated(int x);
 
-  /** @return number of y s.t. R(x,y) */
+  /**
+   * @return number of y s.t. R(x,y)
+   */
   public abstract int getRelatedCount(int x);
 
-  /** @return true iff there exists pair (x,y) for some y */
+  /**
+   * @return true iff there exists pair (x,y) for some y
+   */
   public abstract boolean anyRelated(int x);
 
   public abstract void remove(int x, int y);
 
   public abstract void removeAll(int x);
 
-  /** @return true iff (x,y) \in R */
+  /**
+   * @return true iff (x,y) \in R
+   */
   public abstract boolean contains(int x, int y);
 
   public abstract int maxKeyValue();

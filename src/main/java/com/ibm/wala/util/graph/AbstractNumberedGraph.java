@@ -13,6 +13,7 @@ package com.ibm.wala.util.graph;
 import com.ibm.wala.util.graph.impl.NumberedNodeIterator;
 import com.ibm.wala.util.intset.IntSet;
 import java.util.Iterator;
+import javax.annotation.Nullable;
 
 /**
  * Basic functionality for a graph that delegates node and edge management, and tracks node numbers
@@ -20,29 +21,39 @@ import java.util.Iterator;
 public abstract class AbstractNumberedGraph<T> extends AbstractGraph<T>
     implements NumberedGraph<T> {
 
-  /** @return the object which manages nodes in the graph */
+  /**
+   * @return the object which manages nodes in the graph
+   */
   @Override
   protected abstract NumberedNodeManager<T> getNodeManager();
 
-  /** @return the object which manages edges in the graph */
+  /**
+   * @return the object which manages edges in the graph
+   */
   @Override
   protected abstract NumberedEdgeManager<T> getEdgeManager();
 
-  /** @see com.ibm.wala.util.graph.NumberedNodeManager#getMaxNumber() */
+  /**
+   * @see com.ibm.wala.util.graph.NumberedNodeManager#getMaxNumber()
+   */
   @Override
   public int getMaxNumber() {
     return getNodeManager().getMaxNumber();
   }
 
-  /** @see com.ibm.wala.util.graph.NumberedNodeManager#getNode(int) */
+  /**
+   * @see com.ibm.wala.util.graph.NumberedNodeManager#getNode(int)
+   */
   @Override
   public T getNode(int number) {
     return getNodeManager().getNode(number);
   }
 
-  /** @see com.ibm.wala.util.graph.NumberedNodeManager#getNumber(Object) */
+  /**
+   * @see com.ibm.wala.util.graph.NumberedNodeManager#getNumber(Object)
+   */
   @Override
-  public int getNumber(T N) {
+  public int getNumber(@Nullable T N) {
     if (N == null) {
       throw new IllegalArgumentException("N cannot be null");
     }
@@ -57,14 +68,18 @@ public abstract class AbstractNumberedGraph<T> extends AbstractGraph<T>
     return new NumberedNodeIterator<>(s, this);
   }
 
-  /** @see com.ibm.wala.util.graph.NumberedEdgeManager#getPredNodeNumbers(java.lang.Object) */
+  /**
+   * @see com.ibm.wala.util.graph.NumberedEdgeManager#getPredNodeNumbers(java.lang.Object)
+   */
   @Override
   public IntSet getPredNodeNumbers(T node) throws IllegalArgumentException {
     assert getEdgeManager() != null;
     return getEdgeManager().getPredNodeNumbers(node);
   }
 
-  /** @see com.ibm.wala.util.graph.NumberedEdgeManager#getSuccNodeNumbers(java.lang.Object) */
+  /**
+   * @see com.ibm.wala.util.graph.NumberedEdgeManager#getSuccNodeNumbers(java.lang.Object)
+   */
   @Override
   public IntSet getSuccNodeNumbers(T node) throws IllegalArgumentException {
     return getEdgeManager().getSuccNodeNumbers(node);

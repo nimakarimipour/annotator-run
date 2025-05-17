@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Objects;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 /**
  * Basic implementation of a numbered graph -- this implementation relies on nodes that carry
@@ -38,7 +39,7 @@ public class DelegatingNumberedNodeManager<T extends INodeWithNumber>
   private int numberOfNodes = 0;
 
   @Override
-  public int getNumber(T N) {
+  public int getNumber(@Nullable T N) {
     if (N == null) {
       throw new IllegalArgumentException("N is null");
     }
@@ -61,7 +62,9 @@ public class DelegatingNumberedNodeManager<T extends INodeWithNumber>
     return maxNumber;
   }
 
-  /** @see com.ibm.wala.util.graph.Graph#iterator() */
+  /**
+   * @see com.ibm.wala.util.graph.Graph#iterator()
+   */
   @Override
   public Iterator<T> iterator() {
     final INodeWithNumber[] arr = nodes;
@@ -87,6 +90,7 @@ public class DelegatingNumberedNodeManager<T extends INodeWithNumber>
         return nextCounter != -1;
       }
 
+      @Nullable
       @Override
       @SuppressWarnings("unchecked")
       public T next() {
@@ -112,7 +116,9 @@ public class DelegatingNumberedNodeManager<T extends INodeWithNumber>
     return Arrays.stream(nodes).filter(Objects::nonNull).map(node -> (T) node);
   }
 
-  /** @see com.ibm.wala.util.graph.Graph#getNumberOfNodes() */
+  /**
+   * @see com.ibm.wala.util.graph.Graph#getNumberOfNodes()
+   */
   @Override
   public int getNumberOfNodes() {
     return numberOfNodes;
@@ -156,7 +162,9 @@ public class DelegatingNumberedNodeManager<T extends INodeWithNumber>
     }
   }
 
-  /** @see com.ibm.wala.util.graph.NodeManager#removeNode(Object) */
+  /**
+   * @see com.ibm.wala.util.graph.NodeManager#removeNode(Object)
+   */
   @Override
   public void removeNode(T n) {
     if (n == null) {
@@ -186,9 +194,11 @@ public class DelegatingNumberedNodeManager<T extends INodeWithNumber>
     return result.toString();
   }
 
-  /** @see com.ibm.wala.util.graph.NodeManager#containsNode(Object) */
+  /**
+   * @see com.ibm.wala.util.graph.NodeManager#containsNode(Object)
+   */
   @Override
-  public boolean containsNode(T n) {
+  public boolean containsNode(@Nullable T n) {
     if (n == null) {
       throw new IllegalArgumentException("n is null");
     }

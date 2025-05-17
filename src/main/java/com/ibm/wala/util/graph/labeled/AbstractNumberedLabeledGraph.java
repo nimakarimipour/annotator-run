@@ -14,11 +14,14 @@ import com.ibm.wala.util.graph.AbstractNumberedGraph;
 import com.ibm.wala.util.intset.IntSet;
 import java.util.Iterator;
 import java.util.Set;
+import javax.annotation.Nullable;
 
 public abstract class AbstractNumberedLabeledGraph<T, U> extends AbstractNumberedGraph<T>
     implements LabeledGraph<T, U>, NumberedLabeledGraph<T, U> {
 
-  /** @return the object which manages edges in the graph */
+  /**
+   * @return the object which manages edges in the graph
+   */
   @Override
   protected abstract NumberedLabeledEdgeManager<T, U> getEdgeManager();
 
@@ -82,6 +85,7 @@ public abstract class AbstractNumberedLabeledGraph<T, U> extends AbstractNumbere
     return getEdgeManager().getEdgeLabels(src, dst);
   }
 
+  @Nullable
   @Override
   public U getDefaultLabel() {
     return getEdgeManager().getDefaultLabel();

@@ -13,6 +13,7 @@ package com.ibm.wala.util.collections;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import javax.annotation.Nullable;
 
 /** simple implementation of IVector */
 public class SimpleVector<T> implements IVector<T> {
@@ -27,7 +28,9 @@ public class SimpleVector<T> implements IVector<T> {
 
   public SimpleVector() {}
 
-  /** @see com.ibm.wala.util.intset.IntVector#get(int) */
+  /**
+   * @see com.ibm.wala.util.intset.IntVector#get(int)
+   */
   @Override
   @SuppressWarnings("unchecked")
   public T get(int x) {
@@ -41,9 +44,11 @@ public class SimpleVector<T> implements IVector<T> {
     }
   }
 
-  /** @see com.ibm.wala.util.intset.IntVector#set(int, int) */
+  /**
+   * @see com.ibm.wala.util.intset.IntVector#set(int, int)
+   */
   @Override
-  public void set(int x, T value) {
+  public void set(int x, @Nullable T value) {
     if (x < 0) {
       throw new IllegalArgumentException("illegal x value " + x);
     }
@@ -76,7 +81,9 @@ public class SimpleVector<T> implements IVector<T> {
     System.err.println(("occupancy:  " + computeOccupancy()));
   }
 
-  /** @return the percentage of entries in delegateStore that are non-null */
+  /**
+   * @return the percentage of entries in delegateStore that are non-null
+   */
   private double computeOccupancy() {
     int count = 0;
     for (Object element : store) {

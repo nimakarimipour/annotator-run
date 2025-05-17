@@ -23,7 +23,9 @@ import com.ibm.wala.util.graph.INodeWithNumber;
  * corresponds to an "equation" in dataflow parlance, or a "constraint" in constraint solvers.
  */
 public interface IFixedPointStatement<T extends IVariable<T>> extends INodeWithNumber {
-  /** @return the left-hand side of this statement. */
+  /**
+   * @return the left-hand side of this statement.
+   */
   public T getLHS();
 
   /** returns the list of free variables appearing in the right-hand side of the statement */

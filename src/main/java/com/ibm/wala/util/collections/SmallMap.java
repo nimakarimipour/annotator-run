@@ -19,6 +19,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
+import javax.annotation.Nullable;
 
 /**
  * A simple implementation of Map; intended for Maps with few elements. Optimized for space, not
@@ -115,6 +116,7 @@ public class SmallMap<K, V> implements Map<K, V> {
     return false;
   }
 
+  @Nullable
   @Override
   @SuppressWarnings("unchecked")
   public V get(Object key) {
@@ -149,6 +151,7 @@ public class SmallMap<K, V> implements Map<K, V> {
     }
   }
 
+  @Nullable
   @Override
   @SuppressWarnings({"unchecked", "unused"})
   public V put(Object key, Object value) {

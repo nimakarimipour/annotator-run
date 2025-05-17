@@ -19,6 +19,7 @@ import com.ibm.wala.util.graph.OrderedMultiGraph;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 /**
  * Inefficient implementation of OrderedMultiGraph.
@@ -66,7 +67,7 @@ public class BasicOrderedMultiGraph<T> implements OrderedMultiGraph<T> {
   }
 
   @Override
-  public boolean containsNode(T N) {
+  public boolean containsNode(@Nullable T N) {
     return delegate.containsNode(N);
   }
 

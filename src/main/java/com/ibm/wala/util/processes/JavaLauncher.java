@@ -12,12 +12,14 @@ package com.ibm.wala.util.processes;
 
 import com.ibm.wala.util.PlatformUtil;
 import com.ibm.wala.util.collections.Iterator2Iterable;
+import com.uber.nullaway.annotations.Initializer;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
+import javax.annotation.Nullable;
 
 /** A Java process launcher */
 public class JavaLauncher extends Launcher {
@@ -146,7 +148,9 @@ public class JavaLauncher extends Launcher {
         + ')';
   }
 
-  /** @return the string that identifies the java executable file */
+  /**
+   * @return the string that identifies the java executable file
+   */
   public static String defaultJavaExe() {
     String java =
         System.getProperty("java.home") + File.separatorChar + "bin" + File.separatorChar + "java";
@@ -154,6 +158,7 @@ public class JavaLauncher extends Launcher {
   }
 
   /** Launch the java process. */
+  @Initializer
   public Process start() throws IllegalArgumentException, IOException {
     String cp = makeClasspath();
 
@@ -206,6 +211,7 @@ public class JavaLauncher extends Launcher {
     return lastProcess;
   }
 
+  @Nullable
   private static String makeLibPath() {
     String libPath = System.getProperty("java.library.path");
     if (libPath == null) {

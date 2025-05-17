@@ -53,6 +53,7 @@ import com.ibm.wala.util.graph.EdgeManager;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 /**
  * An object which tracks labeled edges in a graph.
@@ -66,6 +67,7 @@ public interface LabeledEdgeManager<T, U> extends EdgeManager<T> {
    * Sets the default object used as label for operations where no specific edge label is provided.
    * This is due to compatibility with the EdgeManager interface
    */
+  @Nullable
   public U getDefaultLabel();
 
   /**
@@ -83,7 +85,9 @@ public interface LabeledEdgeManager<T, U> extends EdgeManager<T> {
         getPredNodes(N), (p) -> getEdgeLabels(p, N).stream().anyMatch(pred));
   }
 
-  /** @return the labels on edges whose destination is N */
+  /**
+   * @return the labels on edges whose destination is N
+   */
   public Iterator<? extends U> getPredLabels(T N);
 
   /**
@@ -104,7 +108,9 @@ public interface LabeledEdgeManager<T, U> extends EdgeManager<T> {
    */
   public Iterator<? extends T> getSuccNodes(T N, U label);
 
-  /** @return the labels on edges whose source is N */
+  /**
+   * @return the labels on edges whose source is N
+   */
   public Iterator<? extends U> getSuccLabels(T N);
 
   /**

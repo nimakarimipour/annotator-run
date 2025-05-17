@@ -16,16 +16,18 @@ import com.ibm.wala.util.intset.MutableMapping;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 /** An object which manages node numbers via a mapping. */
 public class SlowNumberedNodeManager<T> implements NumberedNodeManager<T>, Serializable {
 
   private static final long serialVersionUID = 8956107128389624337L;
+
   /** A bijection between integer &lt;-&gt; node */
   private final MutableMapping<T> map = MutableMapping.make();
 
   @Override
-  public int getNumber(T obj) {
+  public int getNumber(@Nullable T obj) {
     return map.getMappedIndex(obj);
   }
 
@@ -66,7 +68,9 @@ public class SlowNumberedNodeManager<T> implements NumberedNodeManager<T>, Seria
     map.add(n);
   }
 
-  /** @see com.ibm.wala.util.graph.NodeManager#removeNode(Object) */
+  /**
+   * @see com.ibm.wala.util.graph.NodeManager#removeNode(Object)
+   */
   @Override
   public void removeNode(T n) {
     map.deleteMappedObject(n);
@@ -83,9 +87,11 @@ public class SlowNumberedNodeManager<T> implements NumberedNodeManager<T>, Seria
     return result.toString();
   }
 
-  /** @see com.ibm.wala.util.graph.NodeManager#containsNode(Object) */
+  /**
+   * @see com.ibm.wala.util.graph.NodeManager#containsNode(Object)
+   */
   @Override
-  public boolean containsNode(T N) {
+  public boolean containsNode(@Nullable T N) {
     return getNumber(N) != -1;
   }
 

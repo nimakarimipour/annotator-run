@@ -15,6 +15,7 @@ import com.ibm.wala.util.math.Logs;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Vector;
+import javax.annotation.Nullable;
 
 /** An {@link IVector} implementation which delegates to pages of int vectors. */
 public class TwoLevelVector<T> implements IVector<T>, Serializable {
@@ -31,7 +32,10 @@ public class TwoLevelVector<T> implements IVector<T>, Serializable {
 
   private int maxPage = -1;
 
-  /** @see com.ibm.wala.util.intset.IntVector#get(int) */
+  /**
+   * @see com.ibm.wala.util.intset.IntVector#get(int)
+   */
+  @Nullable
   @Override
   public T get(int x) {
     if (x < 0) {
@@ -63,7 +67,7 @@ public class TwoLevelVector<T> implements IVector<T>, Serializable {
    * @see com.ibm.wala.util.intset.IntVector#set(int, int)
    */
   @Override
-  public void set(int x, T value) {
+  public void set(int x, @Nullable T value) {
     if (x < 0) {
       throw new IllegalArgumentException("illegal x: " + x);
     }
@@ -95,19 +99,23 @@ public class TwoLevelVector<T> implements IVector<T>, Serializable {
     }
   }
 
-  /** @see com.ibm.wala.util.debug.VerboseAction#performVerboseAction() */
+  /**
+   * @see com.ibm.wala.util.debug.VerboseAction#performVerboseAction()
+   */
   @Override
   public void performVerboseAction() {
     // do nothing;
   }
 
-  /** @see com.ibm.wala.util.intset.IntSet#intIterator() */
+  /**
+   * @see com.ibm.wala.util.intset.IntSet#intIterator()
+   */
   @Override
   public Iterator<T> iterator() {
     return new Iterator<T>() {
       final Iterator<SparseVector<T>> outer = data.iterator();
 
-      Iterator<T> inner;
+      @Nullable Iterator<T> inner;
 
       {
         while (outer.hasNext()) {

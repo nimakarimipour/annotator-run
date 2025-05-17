@@ -15,11 +15,12 @@ import com.ibm.wala.util.collections.Iterator2Collection;
 import com.ibm.wala.util.debug.Assertions;
 import java.util.Collection;
 import java.util.Iterator;
+import javax.annotation.Nullable;
 
 /** A Set backed by a set of integers. */
 public class OrdinalSet<T> implements Iterable<T> {
 
-  private final IntSet S;
+  @Nullable private final IntSet S;
 
   private final OrdinalSetMapping<T> mapping;
 
@@ -35,7 +36,7 @@ public class OrdinalSet<T> implements Iterable<T> {
     mapping = null;
   }
 
-  public OrdinalSet(IntSet S, OrdinalSetMapping<T> mapping) {
+  public OrdinalSet(@Nullable IntSet S, OrdinalSetMapping<T> mapping) {
     this.S = S;
     this.mapping = mapping;
   }
@@ -99,7 +100,9 @@ public class OrdinalSet<T> implements Iterable<T> {
     return new OrdinalSet<>(isect, A.mapping);
   }
 
-  /** @return true if the contents of two sets are equal */
+  /**
+   * @return true if the contents of two sets are equal
+   */
   public static <T> boolean equals(OrdinalSet<T> a, OrdinalSet<T> b) {
     if ((a == null && b == null) || a == b || (a.mapping == b.mapping && a.S == b.S)) {
       return true;
@@ -158,11 +161,14 @@ public class OrdinalSet<T> implements Iterable<T> {
   /**
    * Dangerous. Added for performance reasons. Use this only if you really know what you are doing.
    */
+  @Nullable
   public IntSet getBackingSet() {
     return S;
   }
 
-  /** @return true iff this set contains object */
+  /**
+   * @return true iff this set contains object
+   */
   public boolean contains(T object) {
     if (this == EMPTY || S == null || object == null) {
       return false;
@@ -175,7 +181,9 @@ public class OrdinalSet<T> implements Iterable<T> {
     return size() == 0;
   }
 
-  /** @throws NullPointerException if instances is null */
+  /**
+   * @throws NullPointerException if instances is null
+   */
   public static <T> Collection<T> toCollection(OrdinalSet<T> instances) {
     return Iterator2Collection.toSet(instances.iterator());
   }

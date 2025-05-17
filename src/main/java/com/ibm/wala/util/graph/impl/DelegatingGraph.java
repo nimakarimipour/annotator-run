@@ -13,6 +13,7 @@ package com.ibm.wala.util.graph.impl;
 import com.ibm.wala.util.graph.Graph;
 import java.util.Iterator;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 /** A utility class. */
 public class DelegatingGraph<T> implements Graph<T> {
@@ -37,7 +38,7 @@ public class DelegatingGraph<T> implements Graph<T> {
   }
 
   @Override
-  public boolean containsNode(T N) {
+  public boolean containsNode(@Nullable T N) {
     return delegate.containsNode(N);
   }
 

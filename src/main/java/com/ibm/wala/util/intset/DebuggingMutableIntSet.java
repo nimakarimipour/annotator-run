@@ -13,6 +13,7 @@ package com.ibm.wala.util.intset;
 import com.ibm.wala.util.collections.HashSetFactory;
 import com.ibm.wala.util.debug.Assertions;
 import java.util.Set;
+import javax.annotation.Nullable;
 
 /**
  * This class wraps two concrete {@link MutableIntSet}s behind the standard interface, carrying out
@@ -42,7 +43,9 @@ class DebuggingMutableIntSet implements MutableIntSet {
     secondaryImpl.clear();
   }
 
-  /** @return true iff this set contains integer i */
+  /**
+   * @return true iff this set contains integer i
+   */
   @Override
   public boolean contains(int i) {
     assert primaryImpl.contains(i) == secondaryImpl.contains(i);
@@ -130,7 +133,9 @@ class DebuggingMutableIntSet implements MutableIntSet {
     return result;
   }
 
-  /** @return true iff this set contains integer i */
+  /**
+   * @return true iff this set contains integer i
+   */
   @Override
   public boolean containsAny(IntSet set) {
     if (set instanceof DebuggingMutableIntSet) {
@@ -153,6 +158,7 @@ class DebuggingMutableIntSet implements MutableIntSet {
    *
    * @return a new IntSet which is the intersection of this and that
    */
+  @Nullable
   @Override
   public IntSet intersection(IntSet that) {
     if (that instanceof DebuggingMutableIntSet) {
@@ -169,7 +175,9 @@ class DebuggingMutableIntSet implements MutableIntSet {
     }
   }
 
-  /** @see com.ibm.wala.util.intset.IntSet#union(com.ibm.wala.util.intset.IntSet) */
+  /**
+   * @see com.ibm.wala.util.intset.IntSet#union(com.ibm.wala.util.intset.IntSet)
+   */
   @Override
   public IntSet union(IntSet that) {
     MutableSparseIntSet temp = new MutableSparseIntSet();
@@ -179,7 +187,9 @@ class DebuggingMutableIntSet implements MutableIntSet {
     return temp;
   }
 
-  /** @return true iff {@code this} has the same value as {@code that}. */
+  /**
+   * @return true iff {@code this} has the same value as {@code that}.
+   */
   @Override
   public boolean sameValue(IntSet that) {
     if (that instanceof DebuggingMutableIntSet) {
@@ -196,7 +206,9 @@ class DebuggingMutableIntSet implements MutableIntSet {
     }
   }
 
-  /** @return true iff {@code this} is a subset of {@code that}. */
+  /**
+   * @return true iff {@code this} is a subset of {@code that}.
+   */
   @Override
   public boolean isSubset(IntSet that) {
     if (that instanceof DebuggingMutableIntSet) {
@@ -303,7 +315,9 @@ class DebuggingMutableIntSet implements MutableIntSet {
     }
   }
 
-  /** @see com.ibm.wala.util.intset.IntSet#intIterator() */
+  /**
+   * @see com.ibm.wala.util.intset.IntSet#intIterator()
+   */
   @Override
   public IntIterator intIterator() {
     MutableSparseIntSet bits = MutableSparseIntSet.makeEmpty();

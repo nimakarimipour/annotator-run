@@ -27,6 +27,7 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 /** Utilities related to simple graph subset operations. */
 public class GraphSlicer {
@@ -94,7 +95,7 @@ public class GraphSlicer {
           }
 
           @Override
-          public boolean containsNode(T n) {
+          public boolean containsNode(@Nullable T n) {
             return p.test(n) && g.containsNode(n);
           }
         };
@@ -189,7 +190,7 @@ public class GraphSlicer {
           }
 
           @Override
-          public boolean containsNode(E N) {
+          public boolean containsNode(@Nullable E N) {
             return G.containsNode(N) && fmember.test(N);
           }
 

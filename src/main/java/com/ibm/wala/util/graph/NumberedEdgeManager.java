@@ -15,9 +15,13 @@ import com.ibm.wala.util.intset.IntSet;
 /** Additional functionality for edges in numbered graphs */
 public interface NumberedEdgeManager<T> extends EdgeManager<T> {
 
-  /** @return the numbers identifying the immediate successors of node */
+  /**
+   * @return the numbers identifying the immediate successors of node
+   */
   public IntSet getSuccNodeNumbers(T node);
 
-  /** @return the numbers identifying the immediate predecessors of node */
+  /**
+   * @return the numbers identifying the immediate predecessors of node
+   */
   public IntSet getPredNodeNumbers(T node);
 }

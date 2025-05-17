@@ -27,6 +27,7 @@ import com.ibm.wala.util.graph.INodeWithNumber;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javax.annotation.Nullable;
 
 /**
  * Represents a set of {@link IFixedPointStatement}s to be solved by a {@link IFixedPointSolver}
@@ -104,7 +105,9 @@ public abstract class AbstractFixedPointSolver<T extends IVariable<T>>
     firstSolve = false;
   }
 
-  /** @return true iff work list is empty */
+  /**
+   * @return true iff work list is empty
+   */
   public boolean emptyWorkList() {
     return workList.isEmpty();
   }
@@ -309,7 +312,7 @@ public abstract class AbstractFixedPointSolver<T extends IVariable<T>>
    * @throws IllegalArgumentException if operator is null
    */
   public boolean newStatement(
-      T lhs, UnaryOperator<T> operator, T rhs, boolean toWorkList, boolean eager) {
+      @Nullable T lhs, UnaryOperator<T> operator, T rhs, boolean toWorkList, boolean eager) {
     if (operator == null) {
       throw new IllegalArgumentException("operator is null");
     }

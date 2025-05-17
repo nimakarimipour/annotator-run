@@ -13,6 +13,7 @@ package com.ibm.wala.util.graph;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 /**
  * An object which tracks graph nodes.
@@ -24,16 +25,22 @@ import java.util.stream.Stream;
  */
 public interface NodeManager<T> extends Iterable<T> {
 
-  /** @return an {@link Iterator} of the nodes in this graph */
+  /**
+   * @return an {@link Iterator} of the nodes in this graph
+   */
   @Override
   default Iterator<T> iterator() {
     return stream().iterator();
   }
 
-  /** @return a {@link Stream} of the nodes in this graph */
+  /**
+   * @return a {@link Stream} of the nodes in this graph
+   */
   Stream<T> stream();
 
-  /** @return the number of nodes in this graph */
+  /**
+   * @return the number of nodes in this graph
+   */
   public int getNumberOfNodes();
 
   /** add a node to this graph */
@@ -42,6 +49,8 @@ public interface NodeManager<T> extends Iterable<T> {
   /** remove a node from this graph */
   public void removeNode(T n) throws UnsupportedOperationException;
 
-  /** @return true iff the graph contains the specified node */
-  public boolean containsNode(T n);
+  /**
+   * @return true iff the graph contains the specified node
+   */
+  public boolean containsNode(@Nullable T n);
 }

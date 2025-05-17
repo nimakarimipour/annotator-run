@@ -25,6 +25,7 @@ import com.ibm.wala.util.intset.MutableIntSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class ExtensionGraph<T> implements NumberedGraph<T> {
   private final NumberedGraph<T> original;
@@ -203,12 +204,12 @@ public class ExtensionGraph<T> implements NumberedGraph<T> {
   }
 
   @Override
-  public boolean containsNode(T n) {
+  public boolean containsNode(@Nullable T n) {
     return original.containsNode(n) || additionalNodes.containsNode(n);
   }
 
   @Override
-  public int getNumber(T N) {
+  public int getNumber(@Nullable T N) {
     if (original.containsNode(N)) {
       return original.getNumber(N);
     } else {

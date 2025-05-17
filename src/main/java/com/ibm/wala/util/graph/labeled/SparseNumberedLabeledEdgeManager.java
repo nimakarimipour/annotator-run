@@ -61,6 +61,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import javax.annotation.Nullable;
 
 /** */
 public class SparseNumberedLabeledEdgeManager<T, U>
@@ -70,7 +71,7 @@ public class SparseNumberedLabeledEdgeManager<T, U>
   private static final long serialVersionUID = 5298089288917726790L;
 
   /** the label to be attached to an edge when no label is specified */
-  private final U defaultLabel;
+  @Nullable private final U defaultLabel;
 
   private final NumberedNodeManager<T> nodeManager;
 
@@ -81,7 +82,7 @@ public class SparseNumberedLabeledEdgeManager<T, U>
 
   private final ArraySetMultiMap<T, U> nodeToSuccLabels = new ArraySetMultiMap<>();
 
-  private SparseNumberedEdgeManager<T> getManagerForLabel(U label) {
+  private SparseNumberedEdgeManager<T> getManagerForLabel(@Nullable U label) {
     SparseNumberedEdgeManager<T> ret = edgeLabelToManager.get(label);
     if (ret == null) {
       ret = new SparseNumberedEdgeManager<>(nodeManager);
@@ -90,39 +91,51 @@ public class SparseNumberedLabeledEdgeManager<T, U>
     return ret;
   }
 
-  /** @see LabeledEdgeManager#addEdge(java.lang.Object, java.lang.Object, java.lang.Object) */
+  /**
+   * @see LabeledEdgeManager#addEdge(java.lang.Object, java.lang.Object, java.lang.Object)
+   */
   @Override
-  public void addEdge(T src, T dst, U label) {
+  public void addEdge(T src, T dst, @Nullable U label) {
     nodeToSuccLabels.put(src, label);
     nodeToPredLabels.put(dst, label);
     getManagerForLabel(label).addEdge(src, dst);
   }
 
-  /** @see LabeledEdgeManager#getPredNodeCount(java.lang.Object, java.lang.Object) */
+  /**
+   * @see LabeledEdgeManager#getPredNodeCount(java.lang.Object, java.lang.Object)
+   */
   @Override
   public int getPredNodeCount(T N, U label) {
     return getManagerForLabel(label).getPredNodeCount(N);
   }
 
-  /** @see LabeledEdgeManager#getPredNodes(java.lang.Object, java.lang.Object) */
+  /**
+   * @see LabeledEdgeManager#getPredNodes(java.lang.Object, java.lang.Object)
+   */
   @Override
   public Iterator<T> getPredNodes(T N, U label) {
     return getManagerForLabel(label).getPredNodes(N);
   }
 
-  /** @see LabeledEdgeManager#getSuccNodeCount(java.lang.Object, java.lang.Object) */
+  /**
+   * @see LabeledEdgeManager#getSuccNodeCount(java.lang.Object, java.lang.Object)
+   */
   @Override
   public int getSuccNodeCount(T N, U label) {
     return getManagerForLabel(label).getSuccNodeCount(N);
   }
 
-  /** @see LabeledEdgeManager#getSuccNodes(java.lang.Object, java.lang.Object) */
+  /**
+   * @see LabeledEdgeManager#getSuccNodes(java.lang.Object, java.lang.Object)
+   */
   @Override
   public Iterator<? extends T> getSuccNodes(T N, U label) {
     return getManagerForLabel(label).getSuccNodes(N);
   }
 
-  /** @see LabeledEdgeManager#hasEdge(java.lang.Object, java.lang.Object, java.lang.Object) */
+  /**
+   * @see LabeledEdgeManager#hasEdge(java.lang.Object, java.lang.Object, java.lang.Object)
+   */
   @Override
   public boolean hasEdge(T src, T dst, U label) {
     return getManagerForLabel(label).hasEdge(src, dst);
@@ -139,13 +152,17 @@ public class SparseNumberedLabeledEdgeManager<T, U>
     removeOutgoingEdges(node);
   }
 
-  /** @see LabeledEdgeManager#removeEdge(java.lang.Object, java.lang.Object, java.lang.Object) */
+  /**
+   * @see LabeledEdgeManager#removeEdge(java.lang.Object, java.lang.Object, java.lang.Object)
+   */
   @Override
   public void removeEdge(T src, T dst, U label) throws IllegalArgumentException {
     getManagerForLabel(label).removeEdge(src, dst);
   }
 
-  /** @see LabeledEdgeManager#removeIncomingEdges(java.lang.Object) */
+  /**
+   * @see LabeledEdgeManager#removeIncomingEdges(java.lang.Object)
+   */
   @Override
   public void removeIncomingEdges(T node) throws IllegalArgumentException {
     for (U label : nodeToPredLabels.get(node)) {
@@ -153,7 +170,9 @@ public class SparseNumberedLabeledEdgeManager<T, U>
     }
   }
 
-  /** @see LabeledEdgeManager#removeOutgoingEdges(java.lang.Object) */
+  /**
+   * @see LabeledEdgeManager#removeOutgoingEdges(java.lang.Object)
+   */
   @Override
   public void removeOutgoingEdges(T node) throws IllegalArgumentException {
     for (U label : nodeToSuccLabels.get(node)) {
@@ -264,6 +283,7 @@ public class SparseNumberedLabeledEdgeManager<T, U>
     }
   }
 
+  @Nullable
   @Override
   public U getDefaultLabel() {
     return defaultLabel;
