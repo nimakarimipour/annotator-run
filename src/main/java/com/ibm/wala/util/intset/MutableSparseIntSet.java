@@ -215,24 +215,23 @@ public class MutableSparseIntSet extends SparseIntSet implements MutableIntSet {
     }
     SparseIntSet that = set;
     if (this.isEmpty()) {
+      size = 0;
+      elements = new int[0];
       return;
     } else if (that.isEmpty()) {
-      elements = null;
       size = 0;
+      elements = new int[0];
       return;
     } else if (this.equals(that)) {
       return;
     }
 
-    // some simple optimizations
     if (size == 1) {
-      if (that.contains(elements[0])) {
-        return;
-      } else {
-        elements = null;
+      if (!that.contains(elements[0])) {
         size = 0;
-        return;
+        elements = new int[0];
       }
+      return;
     }
     if (that.size == 1) {
       if (contains(that.elements[0])) {
@@ -243,8 +242,8 @@ public class MutableSparseIntSet extends SparseIntSet implements MutableIntSet {
         elements[0] = that.elements[0];
         return;
       } else {
-        elements = null;
         size = 0;
+        elements = new int[0];
         return;
       }
     }
@@ -255,20 +254,19 @@ public class MutableSparseIntSet extends SparseIntSet implements MutableIntSet {
     int[] br = that.elements;
     int bi = 0;
     int bl = that.size;
-    int[] cr = null; // allocate on demand
+    int[] cr = null;
     int ci = 0;
 
     while (ai < al && bi < bl) {
       int cmp = (ar[ai] - br[bi]);
 
-      // (accept element only on a match)
-      if (cmp > 0) { // a greater
+      if (cmp > 0) {
         bi++;
-      } else if (cmp < 0) { // b greater
+      } else if (cmp < 0) {
         ai++;
       } else {
         if (cr == null) {
-          cr = new int[al]; // allocate enough (i.e. too much)
+          cr = new int[al];
         }
         cr[ci++] = ar[ai];
         ai++;
@@ -276,9 +274,8 @@ public class MutableSparseIntSet extends SparseIntSet implements MutableIntSet {
       }
     }
 
-    // now compact cr to 'just enough'
     size = ci;
-    elements = cr;
+    elements = cr != null ? Arrays.copyOf(cr, ci) : new int[0];
     return;
   }
 
