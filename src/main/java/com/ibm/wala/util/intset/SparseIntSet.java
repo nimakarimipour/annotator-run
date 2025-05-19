@@ -94,9 +94,6 @@ public class SparseIntSet implements IntSet {
               elements[index++] = i;
             }
           });
-      if (elements.length != size) {
-        throw new IllegalStateException("Elements array size does not match IntSet size");
-      }
     }
   }
 
