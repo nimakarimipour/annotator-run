@@ -10,6 +10,8 @@
  */
 package com.ibm.wala.fixpoint;
 
+import javax.annotation.Nullable;
+
 /** Represents a single step, restricted to a unary operator. */
 public abstract class UnaryStatement<T extends IVariable<T>>
     extends AbstractStatement<T, UnaryOperator<T>> {
@@ -92,11 +94,8 @@ public abstract class UnaryStatement<T extends IVariable<T>>
    * @param lhs the lattice cell set by this equation
    * @param rhs the first operand on the rhs
    */
-  protected UnaryStatement(T lhs, T rhs) {
+  protected UnaryStatement(@Nullable T lhs, T rhs) {
     super();
-    if (lhs == null) {
-      throw new IllegalArgumentException("lhs cannot be null");
-    }
     this.lhs = lhs;
     this.rhs = rhs;
   }
