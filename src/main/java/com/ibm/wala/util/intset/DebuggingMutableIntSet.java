@@ -13,7 +13,6 @@ package com.ibm.wala.util.intset;
 import com.ibm.wala.util.collections.HashSetFactory;
 import com.ibm.wala.util.debug.Assertions;
 import java.util.Set;
-import javax.annotation.Nullable;
 
 /**
  * This class wraps two concrete {@link MutableIntSet}s behind the standard interface, carrying out
@@ -158,7 +157,6 @@ class DebuggingMutableIntSet implements MutableIntSet {
    *
    * @return a new IntSet which is the intersection of this and that
    */
-  @Nullable
   @Override
   public IntSet intersection(IntSet that) {
     if (that instanceof DebuggingMutableIntSet) {
@@ -168,10 +166,12 @@ class DebuggingMutableIntSet implements MutableIntSet {
 
       assert ppr.sameValue(ssr);
 
-      return ppr;
+      return ppr != null
+          ? ppr
+          : new EmptyIntSet(); // Assuming EmptyIntSet is a non-null implementation of IntSet
     } else {
       Assertions.UNREACHABLE();
-      return null;
+      return new EmptyIntSet(); // Assuming EmptyIntSet is a non-null implementation of IntSet
     }
   }
 
