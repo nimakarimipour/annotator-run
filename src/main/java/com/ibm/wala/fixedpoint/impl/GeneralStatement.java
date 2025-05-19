@@ -79,7 +79,7 @@ public abstract class GeneralStatement<T extends IVariable<T>>
     }
     this.operator = operator;
     this.lhs = lhs;
-    this.rhs = makeRHS(0); // Replace null with an empty array or collection
+    this.rhs = null;
     this.hashCode = makeHashCode();
   }
 
