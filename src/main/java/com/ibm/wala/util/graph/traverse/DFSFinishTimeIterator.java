@@ -44,7 +44,10 @@ public abstract class DFSFinishTimeIterator<T> extends ArrayList<T> implements I
   protected void init(Graph<T> G, Iterator<? extends T> nodes) {
     this.G = G;
     roots = nodes;
-    if (roots.hasNext()) theNextElement = roots.next();
+    theNextElement = null;
+    if (roots.hasNext()) {
+      theNextElement = roots.next();
+    }
   }
 
   private boolean empty() {
