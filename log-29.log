@@ -1,0 +1,122 @@
+====================
+Type='DEREFERENCE_NULLABLE', message='dereferenced expression p.get(column) is @Nullable'
+/home/nima/Developer/nullness-benchmarks/wala-util/src/main/java/com/ibm/wala/util/tables/Query.java:35
+      if (p.get(column).equals(value)) {
+Log:
+---NullAway.lambda$resolveRemainingErrors$17---
+==============================
+---NullAway.lambda$resolveRemainingErrors$17---
+TOP LEVEL CALL TO FIX ERROR: Type='DEREFERENCE_NULLABLE', message='dereferenced expression p.get(column) is @Nullable'
+/home/nima/Developer/nullness-benchmarks/wala-util/src/main/java/com/ibm/wala/util/tables/Query.java:35
+      if (p.get(column).equals(value)) {
+---ChatGPT.ask---
+Asking ChatGPT:
+I want to resolve a warning reported by NullAway.
+The error is of the type of "DEREFERENCE_NULLABLE" and the full error message is: "dereferenced expression p.get(column) is @Nullable".
+The line with the error is: "      if (p.get(column).equals(value)) {".
+
+The error is within "the method: selectStarWhereEquals(com.ibm.wala.util.tables.Table,java.lang.String,T)" and the code surrounding the error is:
+```java
+import java.util.Collection;
+import java.util.Map;
+import java.util.function.Predicate;
+
+/** Misc SQL-like support for queries on tables */
+public class Query {
+
+  /**
+   * SELECT * from t where column=value
+   *
+   * @throws IllegalArgumentException if t == null
+   */
+  public static <T> Collection<Map<String, T>> selectStarWhereEquals(
+      Table<T> t, String column, T value) throws IllegalArgumentException {
+    if (t == null) {
+      throw new IllegalArgumentException("t == null");
+    }
+    Collection<Map<String, T>> result = new ArrayList<>();
+    for (int i = 0; i < t.getNumberOfRows(); i++) {
+      Map<String, T> p = t.row2Map(i);
+      if (p.get(column).equals(value)) {
+        result.add(p);
+      }
+    }
+    return result;
+  }
+
+  /** SELECT attribute FROM t where column=value */
+  public static <T> Collection<T> selectWhereEquals(
+      Table<T> t, String attribute, String column, T value) {
+    Collection<Map<String, T>> rows = selectStarWhereEquals(t, column, value);
+    Collection<T> result = HashSetFactory.make();
+    for (Map<String, T> p : rows) {
+      result.add(p.get(attribute));
+    }
+    return result;
+  }
+
+  /** SELECT attribute FROM t where P(column) */
+  public static <T> Collection<Map<String, T>> selectStarWhere(
+```
+
+Give me the fixed code snippet (ONLY THE METHOD REWRITE OF "selectStarWhereEquals(com.ibm.wala.util.tables.Table,java.lang.String,T)") in XML format in <response> tag like the example below. I will apply the fix to my codebase.
+Do not import any additional libraries or classes or java comments.
+If you can provide the fixed code snippet, provide it in the following format and place the code snippet in the <code> tag within ```java block.
+<response>
+  <success>true</success>
+  <code><![CDATA[
+  ```java
+  Your fixed code snippet here
+  ```
+    ]]>
+  </code>
+</response>
+
+---ChatGPT.sendRequestToOpenAI---
+Retrieving response from cache
+---Response.<init>---
+Creating Response:
+Certainly! Below is the fixed code snippet in XML format:
+
+```xml
+<response>
+  <success>true</success>
+  <code><![CDATA[
+  ```java
+  public static <T> Collection<Map<String, T>> selectStarWhereEquals(
+      Table<T> t, String column, T value) throws IllegalArgumentException {
+    if (t == null) {
+      throw new IllegalArgumentException("t == null");
+    }
+    Collection<Map<String, T>> result = new ArrayList<>();
+    for (int i = 0; i < t.getNumberOfRows(); i++) {
+      Map<String, T> p = t.row2Map(i);
+      T columnValue = p.get(column);
+      if (columnValue != null && columnValue.equals(value)) {
+        result.add(p);
+      }
+    }
+    return result;
+  }
+  ```
+  ]]>
+  </code>
+</response>
+```
+---Response.<init>---
+Response created:
+public static <T> Collection<Map<String, T>> selectStarWhereEquals(
+      Table<T> t, String column, T value) throws IllegalArgumentException {
+    if (t == null) {
+      throw new IllegalArgumentException("t == null");
+    }
+    Collection<Map<String, T>> result = new ArrayList<>();
+    for (int i = 0; i < t.getNumberOfRows(); i++) {
+      Map<String, T> p = t.row2Map(i);
+      T columnValue = p.get(column);
+      if (columnValue != null && columnValue.equals(value)) {
+        result.add(p);
+      }
+    }
+    return result;
+  }

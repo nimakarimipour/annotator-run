@@ -32,7 +32,8 @@ public class Query {
     Collection<Map<String, T>> result = new ArrayList<>();
     for (int i = 0; i < t.getNumberOfRows(); i++) {
       Map<String, T> p = t.row2Map(i);
-      if (p.get(column).equals(value)) {
+      T columnValue = p.get(column);
+      if (columnValue != null && columnValue.equals(value)) {
         result.add(p);
       }
     }
