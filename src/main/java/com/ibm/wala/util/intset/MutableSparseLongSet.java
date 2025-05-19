@@ -77,7 +77,7 @@ public final class MutableSparseLongSet extends SparseLongSet implements Mutable
       }
       if (elements[remove] == value) {
         if (size == 1) {
-          elements = new long[0]; // Replace null with an empty array
+          elements = null;
           size = 0;
         } else {
           if (remove < size) {
