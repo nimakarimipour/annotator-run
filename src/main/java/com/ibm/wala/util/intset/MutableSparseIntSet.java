@@ -158,18 +158,20 @@ public class MutableSparseIntSet extends SparseIntSet implements MutableIntSet {
    */
   @Override
   @SuppressWarnings("unused")
-  public void copySet(IntSet that) throws IllegalArgumentException {
+  public void copySet(@Nullable IntSet that) throws IllegalArgumentException {
     if (that == null) {
       throw new IllegalArgumentException("that == null");
     }
     if (that instanceof SparseIntSet) {
       SparseIntSet set = (SparseIntSet) that;
       if (set.elements != null) {
+        // SJF: clone is performance problem. don't use it.
+        // elements = set.elements.clone();
         elements = new int[set.elements.length];
         System.arraycopy(set.elements, 0, elements, 0, set.size);
         size = set.size;
       } else {
-        elements = new int[0]; // Initialize with an empty array instead of null
+        elements = null;
         size = 0;
       }
     } else {
