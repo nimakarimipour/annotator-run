@@ -80,20 +80,26 @@ public class SparseLongSet implements LongSet {
     if (S == null) {
       throw new IllegalArgumentException("S == null");
     }
-    if (S instanceof SparseLongSet) {
-      cloneState((SparseLongSet) S);
-    } else {
-      elements = new long[S.size()];
-      size = S.size();
-      S.foreach(
-          new IntSetAction() {
-            private int index = 0;
+    try {
+      if (S instanceof SparseLongSet) {
+        cloneState((SparseLongSet) S);
+      } else {
+        elements = new long[S.size()];
+        size = S.size();
+        S.foreach(
+            new IntSetAction() {
+              private int index = 0;
 
-            @Override
-            public void act(int i) {
-              elements[index++] = i;
-            }
-          });
+              @Override
+              public void act(int i) {
+                elements[index++] = i;
+              }
+            });
+      }
+    } catch (Exception e) {
+      elements = new long[0]; // Ensure elements is initialized
+      size = 0;
+      throw e;
     }
   }
 
