@@ -12,6 +12,7 @@ package com.ibm.wala.util.intset;
 
 import com.ibm.wala.util.debug.Assertions;
 import com.ibm.wala.util.debug.UnimplementedError;
+import javax.annotation.Nullable;
 
 /**
  * An implementation of {@link MutableIntSet} that delegates to either a {@link MutableSparseIntSet}
@@ -153,20 +154,17 @@ public class BimodalMutableIntSet implements MutableIntSet {
   /**
    * @see com.ibm.wala.util.intset.IntSet#intersection(com.ibm.wala.util.intset.IntSet)
    */
+  @Nullable
   @Override
   public IntSet intersection(IntSet that) throws UnimplementedError {
     if (that instanceof BimodalMutableIntSet) {
       BimodalMutableIntSet b = (BimodalMutableIntSet) that;
       return impl.intersection(b.impl);
     } else if (that instanceof BitVectorIntSet) {
-      IntSet result = impl.intersection(that);
-      if (result == null) {
-        throw new IllegalStateException("intersection result is null");
-      }
-      return result;
+      return impl.intersection(that);
     } else {
       Assertions.UNREACHABLE("Unexpected: " + that);
-      throw new IllegalStateException("Unreachable code");
+      return null;
     }
   }
 
