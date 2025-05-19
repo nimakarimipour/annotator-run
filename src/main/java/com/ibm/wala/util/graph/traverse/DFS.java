@@ -125,14 +125,13 @@ public class DFS {
 
     @Override
     public int compare(T o1, T o2) {
+      // throws an exception if either argument is not a Node object
       if (o1 == o2) {
         return 0;
       }
       Integer t1 = order.get(o1);
       Integer t2 = order.get(o2);
-      if (t1 == null || t2 == null) {
-        throw new NullPointerException("One of the nodes has not been ordered");
-      }
+      // throws an exception if either node has not been ordered
       return (t1 - t2);
     }
   }
