@@ -1,0 +1,104 @@
+====================
+Type='ASSIGN_FIELD_NULLABLE', message='assigning @Nullable expression to @NonNull field'
+/home/nima/Developer/nullness-benchmarks/wala-util/src/main/java/com/ibm/wala/util/intset/OrdinalSet.java:36
+    mapping = null;
+Log:
+---NullAway.lambda$resolveRemainingErrors$17---
+==============================
+---NullAway.lambda$resolveRemainingErrors$17---
+TOP LEVEL CALL TO FIX ERROR: Type='ASSIGN_FIELD_NULLABLE', message='assigning @Nullable expression to @NonNull field'
+/home/nima/Developer/nullness-benchmarks/wala-util/src/main/java/com/ibm/wala/util/intset/OrdinalSet.java:36
+    mapping = null;
+---ChatGPT.ask---
+Asking ChatGPT:
+I want to resolve a warning reported by NullAway.
+The error is of the type of "ASSIGN_FIELD_NULLABLE" and the full error message is: "assigning @Nullable expression to @NonNull field".
+The line with the error is: "    mapping = null;".
+
+The error is within "the method: OrdinalSet()" and the code surrounding the error is:
+```java
+import java.util.Collection;
+import java.util.Iterator;
+import javax.annotation.Nullable;
+
+/** A Set backed by a set of integers. */
+public class OrdinalSet<T> implements Iterable<T> {
+
+  @Nullable private final IntSet S;
+
+  private final OrdinalSetMapping<T> mapping;
+
+  @SuppressWarnings("rawtypes")
+  private static final OrdinalSet EMPTY = new OrdinalSet();
+
+  public static <T> OrdinalSet<T> empty() {
+    return EMPTY;
+  }
+
+  private OrdinalSet() {
+    S = null;
+    mapping = null;
+  }
+
+  public OrdinalSet(@Nullable IntSet S, OrdinalSetMapping<T> mapping) {
+    this.S = S;
+    this.mapping = mapping;
+  }
+
+  public boolean containsAny(OrdinalSet<T> that) {
+    if (that == null) {
+      throw new IllegalArgumentException("null that");
+    }
+    if (S == null || that.S == null) {
+      return false;
+    }
+    return S.containsAny(that.S);
+  }
+
+  public int size() {
+    return (S == null) ? 0 : S.size();
+```
+
+Give me the fixed code snippet (ONLY THE METHOD REWRITE OF "OrdinalSet()") in XML format in <response> tag like the example below. I will apply the fix to my codebase.
+Do not import any additional libraries or classes or java comments.
+If you can provide the fixed code snippet, provide it in the following format and place the code snippet in the <code> tag within ```java block.
+<response>
+  <success>true</success>
+  <code><![CDATA[
+  ```java
+  Your fixed code snippet here
+  ```
+    ]]>
+  </code>
+</response>
+
+---ChatGPT.sendRequestToOpenAI---
+Sending request to OpenAI...
+---ChatGPT.sendRequestToOpenAI---
+Response received from OpenAI.
+---Response.<init>---
+Creating Response:
+```xml
+<response>
+  <success>true</success>
+  <code><![CDATA[
+  ```java
+  private OrdinalSet() {
+    S = null;
+    // Assuming that you want an empty OrdinalSet instance.
+    // You could instantiate a default OrdinalSetMapping if appropriate.
+    this.mapping = new OrdinalSetMapping<>();
+  }
+  ```
+    ]]>
+  </code>
+</response>
+```
+---Response.<init>---
+Response created:
+private OrdinalSet() {
+    S = null;
+    // Assuming that you want an empty OrdinalSet instance.
+    // You could instantiate a default OrdinalSetMapping if appropriate.
+    this.mapping = new OrdinalSetMapping<>();
+  }
