@@ -569,20 +569,20 @@ public class HeapTracer {
     }
 
     @Override
-    public String toString() {
-      StringBuilder result = new StringBuilder();
-      result.append("Totals: ").append(totalInstances).append(' ').append(totalSize).append('\n');
-      TreeSet<Object> sorted = new TreeSet<>(new SizeComparator());
-      sorted.addAll(instanceCount.keySet());
-      for (Object key : sorted) {
-        Integer I = instanceCount.get(key);
-        Integer bytes = sizeCount.get(key);
-        result.append("  ").append(I).append("   ").append(bytes).append("   ");
-        result.append(bytes / I).append("   ");
-        result.append(key);
-        result.append('\n');
-      }
-      return result.toString();
+        public String toString() {
+          StringBuilder result = new StringBuilder();
+          result.append("Totals: ").append(totalInstances).append(' ').append(totalSize).append('\n');
+          TreeSet<Object> sorted = new TreeSet<>(new SizeComparator());
+          sorted.addAll(instanceCount.keySet());
+          for (Object key : sorted) {
+            Integer I = instanceCount.get(key);
+            Integer bytes = sizeCount.get(key);
+            result.append("  ").append(I).append("   ").append(bytes).append("   ");
+            result.append(Nullability.castToNonnull(bytes) / I).append("   ");
+            result.append(key);
+            result.append('\n');
+          }
+          return result.toString();
     }
 
     /** compares two keys based on the total size of the heap traced from that key */
