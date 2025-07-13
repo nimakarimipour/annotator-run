@@ -83,25 +83,25 @@ public class SparseIntSet implements IntSet {
     }
 
   public SparseIntSet(IntSet S) throws IllegalArgumentException {
-    if (S == null) {
-      throw new IllegalArgumentException("S == null");
+      if (S == null) {
+        throw new IllegalArgumentException("S == null");
+      }
+      elements = new int[S.size()]; // Ensure elements is always initialized
+      if (S instanceof SparseIntSet) {
+        cloneState((SparseIntSet) S);
+      } else {
+        size = S.size();
+        S.foreach(
+            new IntSetAction() {
+              private int index = 0;
+  
+              @Override
+              public void act(int i) {
+                elements[index++] = i;
+              }
+            });
+      }
     }
-    if (S instanceof SparseIntSet) {
-      cloneState((SparseIntSet) S);
-    } else {
-      elements = new int[S.size()];
-      size = S.size();
-      S.foreach(
-          new IntSetAction() {
-            private int index = 0;
-
-            @Override
-            public void act(int i) {
-              elements[index++] = i;
-            }
-          });
-    }
-  }
 
   /** Does this set contain value x? */
   @Override
