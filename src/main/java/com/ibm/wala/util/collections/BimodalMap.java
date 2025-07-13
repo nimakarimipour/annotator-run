@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 import javax.annotation.Nullable;
+import edu.ucr.cs.riple.annotator.util.Nullability;
 
 /**
  * This implementation of {@link Map} chooses between one of two implementations, depending on the
@@ -88,10 +89,10 @@ public class BimodalMap<K, V> implements Map<K, V> {
 
   /** Switch backing implementation from a SmallMap to a HashMap */
   private void transferBackingStore() {
-    assert backingStore instanceof SmallMap;
-    SmallMap<K, V> S = (SmallMap<K, V>) backingStore;
-    backingStore = HashMapFactory.make(2 * S.size());
-    backingStore.putAll(S);
+      assert backingStore instanceof SmallMap;
+      SmallMap<K, V> S = (SmallMap<K, V>) backingStore;
+      backingStore = HashMapFactory.make(2 * Nullability.castToNonnull(S, "assumed to be nonnull").size());
+      backingStore.putAll(S);
   }
 
   /**
