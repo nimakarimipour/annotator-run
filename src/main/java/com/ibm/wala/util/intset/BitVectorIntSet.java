@@ -13,6 +13,7 @@ package com.ibm.wala.util.intset;
 import com.ibm.wala.util.debug.Assertions;
 import com.ibm.wala.util.debug.UnimplementedError;
 import javax.annotation.Nullable;
+import edu.ucr.cs.riple.annotator.util.Nullability;
 
 /**
  * A {@link BitVector} implementation of {@link MutableIntSet}.
@@ -378,21 +379,21 @@ public final class BitVectorIntSet implements MutableIntSet {
    * @see com.ibm.wala.util.intset.IntSet#isSubset(com.ibm.wala.util.intset.IntSet)
    */
   @Override
-  public boolean isSubset(@Nullable IntSet that) {
-    if (that instanceof BitVectorIntSet) {
-      return bitVector.isSubset(((BitVectorIntSet) that).bitVector);
-    } else if (that instanceof SparseIntSet) {
-      return isSubsetInternal((SparseIntSet) that);
-    } else {
-      // really slow. optimize as needed.
-      for (IntIterator it = intIterator(); it.hasNext(); ) {
-        int x = it.next();
-        if (!that.contains(x)) {
-          return false;
+    public boolean isSubset( @Nullable IntSet that) {
+      if (that instanceof BitVectorIntSet) {
+        return bitVector.isSubset(((BitVectorIntSet) that).bitVector);
+      } else if (that instanceof SparseIntSet) {
+        return isSubsetInternal((SparseIntSet) that);
+      } else {
+        // really slow. optimize as needed.
+        for (IntIterator it = intIterator(); it.hasNext(); ) {
+          int x = it.next();
+          if (!Nullability.castToNonnull(that).contains(x)) {
+            return false;
+          }
         }
+        return true;
       }
-      return true;
-    }
   }
 
   private boolean isSubsetInternal(SparseIntSet set) {
