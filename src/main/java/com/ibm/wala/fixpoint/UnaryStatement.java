@@ -95,10 +95,13 @@ public abstract class UnaryStatement<T extends IVariable<T>>
    * @param rhs the first operand on the rhs
    */
   protected UnaryStatement(@Nullable T lhs, T rhs) {
-    super();
-    this.lhs = lhs;
-    this.rhs = rhs;
-  }
+      super();
+      if (lhs == null) {
+        throw new IllegalArgumentException("lhs cannot be null");
+      }
+      this.lhs = lhs;
+      this.rhs = rhs;
+    }
 
   @Override
   public boolean equals(Object o) {
