@@ -13,6 +13,7 @@ package com.ibm.wala.util.intset;
 import com.ibm.wala.util.collections.EmptyIterator;
 import com.ibm.wala.util.collections.Iterator2Collection;
 import com.ibm.wala.util.debug.Assertions;
+import edu.ucr.cs.riple.annotator.util.Nullability;
 import java.util.Collection;
 import java.util.Iterator;
 import javax.annotation.Nullable;
@@ -22,7 +23,7 @@ public class OrdinalSet<T> implements Iterable<T> {
 
   @Nullable private final IntSet S;
 
-  private final OrdinalSetMapping<T> mapping;
+  @Nullable private final OrdinalSetMapping<T> mapping;
 
   @SuppressWarnings("rawtypes")
   private static final OrdinalSet EMPTY = new OrdinalSet();
@@ -36,7 +37,7 @@ public class OrdinalSet<T> implements Iterable<T> {
     mapping = null;
   }
 
-  public OrdinalSet(@Nullable IntSet S, OrdinalSetMapping<T> mapping) {
+  public OrdinalSet(@Nullable IntSet S, @Nullable OrdinalSetMapping<T> mapping) {
     this.S = S;
     this.mapping = mapping;
   }
@@ -71,7 +72,11 @@ public class OrdinalSet<T> implements Iterable<T> {
 
         @Override
         public T next() {
-          return mapping.getMappedObject(it.next());
+          if (mapping != null) {
+            return mapping.getMappedObject(it.next());
+          } else {
+            throw new NullPointerException("Mapping is null");
+          }
         }
 
         @Override
@@ -91,10 +96,10 @@ public class OrdinalSet<T> implements Iterable<T> {
       throw new IllegalArgumentException("A is null");
     }
     if (A.size() != 0 && B.size() != 0) {
-      assert A.mapping.equals(B.mapping);
+      assert A.mapping != null && A.mapping.equals(B.mapping);
     }
     if (A.S == null || B.S == null) {
-      return new OrdinalSet<>(null, A.mapping);
+      return new OrdinalSet<>(null, A.mapping != null ? A.mapping : B.mapping);
     }
     IntSet isect = A.S.intersection(B.S);
     return new OrdinalSet<>(isect, A.mapping);
@@ -135,15 +140,18 @@ public class OrdinalSet<T> implements Iterable<T> {
       throw new IllegalArgumentException("B is null");
     }
     if (A.size() != 0 && B.size() != 0) {
+      assert A.mapping != null && B.mapping != null;
       assert A.mapping.equals(B.mapping);
     }
 
     if (A.S == null) {
       return (B.S == null) ? OrdinalSet.<T>empty() : new OrdinalSet<>(B.S, B.mapping);
     } else if (B.S == null) {
+      // There's no need for assert A.mapping != null here; A.mapping will be checked later.
       return new OrdinalSet<>(A.S, A.mapping);
     }
 
+    assert A.mapping != null; // Ensure A.mapping is not null here.
     IntSet union = A.S.union(B.S);
     return new OrdinalSet<>(union, A.mapping);
   }
@@ -170,10 +178,10 @@ public class OrdinalSet<T> implements Iterable<T> {
    * @return true iff this set contains object
    */
   public boolean contains(T object) {
-    if (this == EMPTY || S == null || object == null) {
+    if (this == EMPTY || S == null || object == null || mapping == null) {
       return false;
     }
-    int index = mapping.getMappedIndex(object);
+    int index = Nullability.castToNonnull(mapping, "checked not null").getMappedIndex(object);
     return (index == -1) ? false : S.contains(index);
   }
 
@@ -210,6 +218,7 @@ public class OrdinalSet<T> implements Iterable<T> {
     return new OrdinalSet<>(s, m);
   }
 
+  @Nullable
   public OrdinalSetMapping<T> getMapping() {
     return mapping;
   }
