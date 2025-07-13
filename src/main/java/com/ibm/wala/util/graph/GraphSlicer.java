@@ -277,12 +277,12 @@ public class GraphSlicer {
           }
 
           @Override
-          public int getSuccNodeCount(E N) {
-            if (!succs.containsKey(N)) {
-              setSuccNodes(N);
+                    public int getSuccNodeCount(E N) {
+                      if (!succs.containsKey(N)) {
+                        setSuccNodes(N);
+                      }
+                      return Nullability.castToNonnull(succs.get(N), "never returns null set").size();
             }
-            return succs.get(N).size();
-          }
 
           @Override
                     public Iterator<E> getSuccNodes(E N) {
