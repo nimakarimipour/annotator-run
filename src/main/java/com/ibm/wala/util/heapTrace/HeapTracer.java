@@ -591,11 +591,13 @@ public class HeapTracer {
        * java.lang.Object)
        */
       @Override
-      public int compare(Object o1, Object o2) {
-        Integer i1 = sizeCount.get(o1);
-        Integer i2 = sizeCount.get(o2);
-        return i2 - i1;
-      }
+        public int compare(Object o1, Object o2) {
+          Integer i1 = sizeCount.get(o1);
+          Integer i2 = sizeCount.get(o2);
+          if (i1 == null) i1 = 0;
+          if (i2 == null) i2 = 0;
+          return i2 - i1;
+        }
     }
 
     /**
