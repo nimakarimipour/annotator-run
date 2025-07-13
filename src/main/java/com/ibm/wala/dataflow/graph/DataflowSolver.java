@@ -92,8 +92,12 @@ public abstract class DataflowSolver<T, V extends IVariable<V>> extends DefaultF
     }
 
   public V getIn(Object node) {
-    return node2In.get(node);
-  }
+      V v = node2In.get(node);
+      if (v == null) {
+        throw new IllegalStateException("no in set for " + node);
+      }
+      return v;
+    }
 
   @Nullable
   public V getEdge(Object key) {
