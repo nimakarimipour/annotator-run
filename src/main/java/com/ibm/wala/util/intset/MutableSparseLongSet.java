@@ -175,77 +175,74 @@ public final class MutableSparseLongSet extends SparseLongSet implements Mutable
   }
 
   public void intersectWith(SparseLongSet set) {
-    if (set == null) {
-      throw new IllegalArgumentException("null set");
-    }
-    SparseLongSet that = set;
-    if (this.isEmpty()) {
-      return;
-    } else if (that.isEmpty()) {
-      elements = null;
-      size = 0;
-      return;
-    } else if (this.equals(that)) {
-      return;
-    }
-
-    // some simple optimizations
-    if (size == 1) {
-      if (that.contains(elements[0])) {
+      if (set == null) {
+        throw new IllegalArgumentException("null set");
+      }
+      SparseLongSet that = set;
+      if (this.isEmpty()) {
         return;
-      } else {
-        elements = null;
+      } else if (that.isEmpty()) {
+        elements = new long[0];
         size = 0;
         return;
-      }
-    }
-    if (that.size == 1) {
-      if (contains(that.elements[0])) {
-        if (size > INITIAL_NONEMPTY_SIZE) {
-          elements = new long[INITIAL_NONEMPTY_SIZE];
-        }
-        size = 1;
-        elements[0] = that.elements[0];
-        return;
-      } else {
-        elements = null;
-        size = 0;
+      } else if (this.equals(that)) {
         return;
       }
-    }
-
-    long[] ar = this.elements;
-    int ai = 0;
-    int al = size;
-    long[] br = that.elements;
-    int bi = 0;
-    int bl = that.size;
-    long[] cr = null; // allocate on demand
-    int ci = 0;
-
-    while (ai < al && bi < bl) {
-      long cmp = (ar[ai] - br[bi]);
-
-      // (accept element only on a match)
-      if (cmp > 0) { // a greater
-        bi++;
-      } else if (cmp < 0) { // b greater
-        ai++;
-      } else {
-        if (cr == null) {
-          cr = new long[al]; // allocate enough (i.e. too much)
+  
+      if (size == 1) {
+        if (that.contains(elements[0])) {
+          return;
+        } else {
+          elements = new long[0];
+          size = 0;
+          return;
         }
-        cr[ci++] = ar[ai];
-        ai++;
-        bi++;
       }
+      if (that.size == 1) {
+        if (contains(that.elements[0])) {
+          if (size > INITIAL_NONEMPTY_SIZE) {
+            elements = new long[INITIAL_NONEMPTY_SIZE];
+          }
+          size = 1;
+          elements[0] = that.elements[0];
+          return;
+        } else {
+          elements = new long[0];
+          size = 0;
+          return;
+        }
+      }
+  
+      long[] ar = this.elements;
+      int ai = 0;
+      int al = size;
+      long[] br = that.elements;
+      int bi = 0;
+      int bl = that.size;
+      long[] cr = null; 
+      int ci = 0;
+  
+      while (ai < al && bi < bl) {
+        long cmp = (ar[ai] - br[bi]);
+  
+        if (cmp > 0) { 
+          bi++;
+        } else if (cmp < 0) { 
+          ai++;
+        } else {
+          if (cr == null) {
+            cr = new long[al];
+          }
+          cr[ci++] = ar[ai];
+          ai++;
+          bi++;
+        }
+      }
+  
+      size = ci;
+      elements = cr != null ? cr : new long[0];
+      return;
     }
-
-    // now compact cr to 'just enough'
-    size = ci;
-    elements = cr;
-    return;
-  }
 
   /**
    * Add all elements from another int set.
