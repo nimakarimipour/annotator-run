@@ -379,14 +379,12 @@ public final class BitVectorIntSet implements MutableIntSet {
    */
   @Override
   public boolean isSubset(@Nullable IntSet that) {
-    if (that == null) {
-      return false;
-    }
     if (that instanceof BitVectorIntSet) {
       return bitVector.isSubset(((BitVectorIntSet) that).bitVector);
     } else if (that instanceof SparseIntSet) {
       return isSubsetInternal((SparseIntSet) that);
     } else {
+      // really slow. optimize as needed.
       for (IntIterator it = intIterator(); it.hasNext(); ) {
         int x = it.next();
         if (!that.contains(x)) {
