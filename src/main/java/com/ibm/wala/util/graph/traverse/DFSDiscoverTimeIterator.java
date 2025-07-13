@@ -76,32 +76,37 @@ public abstract class DFSDiscoverTimeIterator<T> extends ArrayList<T> implements
       throw new NoSuchElementException();
     }
 
+    // we always return the top node on the stack.
     T toReturn = peek();
 
+    // compute the next node to return.
     assert getPendingChildren(toReturn) != null;
     do {
       T stackTop = peek();
       for (T child : Iterator2Iterable.make(getPendingChildren(stackTop))) {
         if (getPendingChildren(child) == null) {
+          // found a new child.
           visitEdge(stackTop, child);
           setPendingChildren(child, getConnected(child));
           push(child);
           return toReturn;
         }
       }
+      // the following saves space by allowing the original iterator to be GCed
       Iterator<T> empty = EmptyIterator.instance();
       setPendingChildren(stackTop, empty);
+      // didn't find any new children. pop the stack and try again.
       pop();
+
     } while (!empty());
 
-    if (roots != null) {
-      while (roots.hasNext()) {
-        T nextRoot = roots.next();
-        if (getPendingChildren(nextRoot) == null) {
-          push(nextRoot);
-          setPendingChildren(nextRoot, getConnected(nextRoot));
-          return toReturn;
-        }
+    // search for the next unvisited root.
+    while (roots.hasNext()) {
+      T nextRoot = roots.next();
+      if (getPendingChildren(nextRoot) == null) {
+        push(nextRoot);
+        setPendingChildren(nextRoot, getConnected(nextRoot));
+        return toReturn;
       }
     }
 
