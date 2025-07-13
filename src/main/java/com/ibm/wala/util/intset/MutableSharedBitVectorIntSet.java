@@ -15,6 +15,7 @@ import com.ibm.wala.util.collections.EmptyIntIterator;
 import com.ibm.wala.util.debug.Assertions;
 import com.ibm.wala.util.debug.UnimplementedError;
 import javax.annotation.Nullable;
+import edu.ucr.cs.riple.annotator.util.Nullability;
 
 /**
  * The shared bit vector implementation described by [Heintze 1999] TODO: much optimization
@@ -647,44 +648,44 @@ public class MutableSharedBitVectorIntSet implements MutableIntSet {
     return result;
   }
 
-  private boolean addAllInternal(@Nullable SparseIntSet set) {
-    if (privatePart == null) {
-      if (sharedPart == null) {
-        if (!set.isEmpty()) {
+  private boolean addAllInternal( @Nullable SparseIntSet set) {
+      if (privatePart == null) {
+        if (sharedPart == null) {
+          if (!Nullability.castToNonnull(set).isEmpty()) {
+            privatePart = MutableSparseIntSet.make(set);
+            sharedPart = null;
+            checkOverflow();
+            return true;
+          } else {
+            return false;
+          }
+        } else {
           privatePart = MutableSparseIntSet.make(set);
-          sharedPart = null;
-          checkOverflow();
-          return true;
-        } else {
-          return false;
+          privatePart.removeAll(sharedPart);
+          if (privatePart.isEmpty()) {
+            privatePart = null;
+            return false;
+          } else {
+            checkOverflow();
+            return true;
+          }
         }
       } else {
-        privatePart = MutableSparseIntSet.make(set);
-        privatePart.removeAll(sharedPart);
-        if (privatePart.isEmpty()) {
-          privatePart = null;
-          return false;
-        } else {
+        /* privatePart != null */
+        if (sharedPart == null) {
+          boolean result = privatePart.addAll(set);
           checkOverflow();
-          return true;
+          return result;
+        } else {
+          int oldSize = privatePart.size();
+          privatePart.addAll(set);
+          privatePart.removeAll(sharedPart);
+          boolean result = privatePart.size() > oldSize;
+          checkOverflow();
+          return result;
         }
-      }
-    } else {
-      /* privatePart != null */
-      if (sharedPart == null) {
-        boolean result = privatePart.addAll(set);
-        checkOverflow();
-        return result;
-      } else {
-        int oldSize = privatePart.size();
-        privatePart.addAll(set);
-        privatePart.removeAll(sharedPart);
-        boolean result = privatePart.size() > oldSize;
-        checkOverflow();
-        return result;
       }
     }
-  }
 
   private boolean addAll(MutableSharedBitVectorIntSet set) {
     if (set.isEmpty()) {
