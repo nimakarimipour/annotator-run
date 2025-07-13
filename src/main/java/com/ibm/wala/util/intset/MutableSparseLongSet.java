@@ -182,19 +182,18 @@ public final class MutableSparseLongSet extends SparseLongSet implements Mutable
     if (this.isEmpty()) {
       return;
     } else if (that.isEmpty()) {
-      elements = null;
+      elements = new long[0];
       size = 0;
       return;
     } else if (this.equals(that)) {
       return;
     }
 
-    // some simple optimizations
     if (size == 1) {
       if (that.contains(elements[0])) {
         return;
       } else {
-        elements = null;
+        elements = new long[0];
         size = 0;
         return;
       }
@@ -208,7 +207,7 @@ public final class MutableSparseLongSet extends SparseLongSet implements Mutable
         elements[0] = that.elements[0];
         return;
       } else {
-        elements = null;
+        elements = new long[0];
         size = 0;
         return;
       }
@@ -220,30 +219,25 @@ public final class MutableSparseLongSet extends SparseLongSet implements Mutable
     long[] br = that.elements;
     int bi = 0;
     int bl = that.size;
-    long[] cr = null; // allocate on demand
+    long[] cr = new long[al];
     int ci = 0;
 
     while (ai < al && bi < bl) {
       long cmp = (ar[ai] - br[bi]);
 
-      // (accept element only on a match)
-      if (cmp > 0) { // a greater
+      if (cmp > 0) {
         bi++;
-      } else if (cmp < 0) { // b greater
+      } else if (cmp < 0) {
         ai++;
       } else {
-        if (cr == null) {
-          cr = new long[al]; // allocate enough (i.e. too much)
-        }
         cr[ci++] = ar[ai];
         ai++;
         bi++;
       }
     }
 
-    // now compact cr to 'just enough'
     size = ci;
-    elements = cr;
+    elements = Arrays.copyOf(cr, ci);
     return;
   }
 
