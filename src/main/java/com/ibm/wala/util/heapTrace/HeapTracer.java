@@ -654,10 +654,8 @@ public class HeapTracer {
       int totalInstances = 0;
       int totalSize = 0;
       for (Demographics d : roots.values()) {
-        if (d != null) {
-          totalInstances += d.getTotalInstances();
-          totalSize += d.getTotalSize();
-        }
+        totalInstances += d.getTotalInstances();
+        totalSize += d.getTotalSize();
       }
       result.append("Total instances: ").append(totalInstances).append('\n');
       result.append("Total size(bytes): ").append(totalSize).append('\n');
@@ -667,11 +665,12 @@ public class HeapTracer {
       for (Field field : sortedDemo) {
         Object root = field;
         Demographics d = roots.get(root);
-        if (d != null && d.getTotalSize() > 10000) {
+        if (d.getTotalSize() > 10000) {
           result.append(" root: ").append(root).append('\n');
           result.append(d);
         }
       }
+
       return result.toString();
     }
 
