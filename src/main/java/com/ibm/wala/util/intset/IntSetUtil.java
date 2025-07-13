@@ -71,31 +71,30 @@ public class IntSetUtil {
    * @throws IllegalArgumentException if set == null
    */
   public static MutableIntSet makeMutableCopy(IntSet set)
-      throws IllegalArgumentException, UnimplementedError {
-    if (set == null) {
-      throw new IllegalArgumentException("set == null");
+        throws IllegalArgumentException, UnimplementedError {
+      if (set == null) {
+        throw new IllegalArgumentException("set == null");
+      }
+      if (set instanceof SparseIntSet) {
+        return MutableSparseIntSet.make(set);
+      } else if (set instanceof BitVectorIntSet) {
+        return new BitVectorIntSet(set);
+      } else if (set instanceof BimodalMutableIntSet) {
+        return BimodalMutableIntSet.makeCopy(set);
+      } else if (set instanceof MutableSharedBitVectorIntSet) {
+        return new MutableSharedBitVectorIntSet((MutableSharedBitVectorIntSet) set);
+      } else if (set instanceof SemiSparseMutableIntSet) {
+        return new SemiSparseMutableIntSet((SemiSparseMutableIntSet) set);
+      } else if (set instanceof DebuggingMutableIntSet) {
+        MutableIntSet pCopy = makeMutableCopy(((DebuggingMutableIntSet) set).primaryImpl);
+        MutableIntSet sCopy = makeMutableCopy(((DebuggingMutableIntSet) set).secondaryImpl);
+        return new DebuggingMutableIntSet(pCopy, sCopy);
+      } else if (set instanceof EmptyIntSet) {
+        return IntSetUtil.make();
+      } else {
+        throw new UnimplementedError("Set type not supported: " + set.getClass().toString());
+      }
     }
-    if (set instanceof SparseIntSet) {
-      return MutableSparseIntSet.make(set);
-    } else if (set instanceof BitVectorIntSet) {
-      return new BitVectorIntSet(set);
-    } else if (set instanceof BimodalMutableIntSet) {
-      return BimodalMutableIntSet.makeCopy(set);
-    } else if (set instanceof MutableSharedBitVectorIntSet) {
-      return new MutableSharedBitVectorIntSet((MutableSharedBitVectorIntSet) set);
-    } else if (set instanceof SemiSparseMutableIntSet) {
-      return new SemiSparseMutableIntSet((SemiSparseMutableIntSet) set);
-    } else if (set instanceof DebuggingMutableIntSet) {
-      MutableIntSet pCopy = makeMutableCopy(((DebuggingMutableIntSet) set).primaryImpl);
-      MutableIntSet sCopy = makeMutableCopy(((DebuggingMutableIntSet) set).secondaryImpl);
-      return new DebuggingMutableIntSet(pCopy, sCopy);
-    } else if (set instanceof EmptyIntSet) {
-      return IntSetUtil.make();
-    } else {
-      Assertions.UNREACHABLE(set.getClass().toString());
-      return null;
-    }
-  }
 
   /** Compute the asymmetric difference of two sets, a \ b. */
   public static IntSet diff(IntSet A, IntSet B) {
