@@ -114,8 +114,7 @@ public class GraphReachability<T, S> {
           @Override
           public UnaryOperator<BitVectorVariable> getEdgeTransferFunction(Object from, Object to) {
             Assertions.UNREACHABLE();
-            return UnaryOperator
-                .identity(); // or another non-null UnaryOperator<BitVectorVariable> as appropriate
+            return null;
           }
 
           /*
