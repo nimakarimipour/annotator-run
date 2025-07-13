@@ -339,16 +339,19 @@ public class SemiSparseMutableIntSet implements MutableIntSet {
       private int i = -1;
 
       @Override
-      public boolean hasNext() {
-        return densePart.nextSetBit(i + 1) != -1;
-      }
+        public boolean hasNext() {
+          return densePart != null && densePart.nextSetBit(i + 1) != -1;
+        }
 
       @Override
-      public int next() {
-        int next = densePart.nextSetBit(i + 1);
-        i = next;
-        return next;
-      }
+        public int next() {
+            if (densePart == null) {
+                throw new NullPointerException("densePart is null");
+            }
+            int next = densePart.nextSetBit(i + 1);
+            i = next;
+            return next;
+        }
     }
 
     if (sparsePart.isEmpty()) {
@@ -490,8 +493,11 @@ public class SemiSparseMutableIntSet implements MutableIntSet {
   }
 
   private boolean inDenseRange(int i) {
-    return densePart.getOffset() <= i && densePart.length() > i;
-  }
+          if (densePart == null) {
+              return false;
+          }
+          return densePart.getOffset() <= i && densePart.length() > i;
+      }
 
   /**
    * Add all members of set to this.
