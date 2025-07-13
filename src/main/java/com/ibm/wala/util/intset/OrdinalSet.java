@@ -33,7 +33,9 @@ public class OrdinalSet<T> implements Iterable<T> {
 
   private OrdinalSet() {
     S = null;
-    mapping = null;
+    // Assuming that you want an empty OrdinalSet instance.
+    // You could instantiate a default OrdinalSetMapping if appropriate.
+    this.mapping = new OrdinalSetMapping<>();
   }
 
   public OrdinalSet(@Nullable IntSet S, OrdinalSetMapping<T> mapping) {
