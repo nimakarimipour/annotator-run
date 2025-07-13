@@ -64,8 +64,14 @@ public class SparseIntSet implements IntSet {
     }
 
   protected SparseIntSet(SparseIntSet S) {
-    cloneState(S);
-  }
+      if (S.elements != null) {
+        elements = S.elements.clone();
+        this.size = S.size;
+      } else {
+        elements = new int[0];
+        this.size = 0;
+      }
+    }
 
   private void cloneState(SparseIntSet S) {
     if (S.elements != null) {
