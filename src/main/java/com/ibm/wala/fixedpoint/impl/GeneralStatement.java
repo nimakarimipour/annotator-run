@@ -13,6 +13,9 @@ package com.ibm.wala.fixedpoint.impl;
 import com.ibm.wala.fixpoint.AbstractOperator;
 import com.ibm.wala.fixpoint.AbstractStatement;
 import com.ibm.wala.fixpoint.IVariable;
+import edu.ucr.cs.riple.annotator.util.Nullability;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
 /** Represents a single step in an iterative solver */
 public abstract class GeneralStatement<T extends IVariable<T>>
@@ -20,7 +23,7 @@ public abstract class GeneralStatement<T extends IVariable<T>>
 
   protected final T lhs;
 
-  protected final T[] rhs;
+  @Nullable protected final T[] rhs;
 
   private final int hashCode;
 
@@ -33,6 +36,9 @@ public abstract class GeneralStatement<T extends IVariable<T>>
    */
   @Override
   public byte evaluate() {
+    if (rhs == null) {
+      throw new IllegalStateException("rhs is null");
+    }
     return operator.evaluate(lhs, rhs);
   }
 
@@ -59,6 +65,9 @@ public abstract class GeneralStatement<T extends IVariable<T>>
   public boolean hasVariable(T cell) {
     if (lhs == cell) {
       return true;
+    }
+    if (rhs == null) {
+      return false;
     }
     for (T rh : rhs) {
       if (rh == cell) return true;
@@ -155,9 +164,13 @@ public abstract class GeneralStatement<T extends IVariable<T>>
   private int makeHashCode() {
     int result = operator.hashCode();
     if (lhs != null) result += lhs.hashCode() * primes[0];
-    for (int i = 0; i < Math.min(rhs.length, 2); i++) {
-      if (rhs[i] != null) {
-        result += primes[i + 1] * rhs[i].hashCode();
+    if (rhs != null) {
+      for (int i = 0;
+          i < Math.min(Nullability.castToNonnull(rhs, "if check nonnull").length, 2);
+          i++) {
+        if (rhs[i] != null) {
+          result += primes[i + 1] * rhs[i].hashCode();
+        }
       }
     }
     return result;
@@ -178,24 +191,24 @@ public abstract class GeneralStatement<T extends IVariable<T>>
     if (getClass().equals(o.getClass())) {
       GeneralStatement<?> other = (GeneralStatement<?>) o;
       if (hashCode == other.hashCode) {
-        if (lhs == null || other.lhs == null) {
-          if (other.lhs != lhs) {
-            return false;
-          }
-        } else if (!lhs.equals(other.lhs)) {
+        if (!Objects.equals(lhs, other.lhs)) {
           return false;
         }
-        if (operator.equals(other.operator) && rhs.length == other.rhs.length) {
-          for (int i = 0; i < rhs.length; i++) {
-            if (rhs[i] == null || other.rhs[i] == null) {
-              if (other.rhs[i] != rhs[i]) {
+        if (Objects.equals(operator, other.operator)) {
+          if ((rhs == null && other.rhs != null) || (rhs != null && other.rhs == null)) {
+            return false;
+          }
+          if (rhs == null && other.rhs == null) {
+            return true;
+          }
+          if (rhs.length == other.rhs.length) {
+            for (int i = 0; i < rhs.length; i++) {
+              if (!Objects.equals(rhs[i], other.rhs[i])) {
                 return false;
               }
-            } else if (!rhs[i].equals(other.rhs[i])) {
-              return false;
             }
+            return true;
           }
-          return true;
         }
       }
     }
@@ -207,6 +220,7 @@ public abstract class GeneralStatement<T extends IVariable<T>>
     return operator;
   }
 
+  @Nullable
   @Override
   public T[] getRHS() {
     return rhs;
