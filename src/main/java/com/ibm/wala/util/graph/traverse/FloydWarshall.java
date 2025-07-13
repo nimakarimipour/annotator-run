@@ -14,7 +14,6 @@ import com.ibm.wala.util.graph.NumberedGraph;
 import com.ibm.wala.util.intset.IntSet;
 import com.ibm.wala.util.intset.IntSetUtil;
 import com.ibm.wala.util.intset.MutableIntSet;
-import edu.ucr.cs.riple.annotator.util.Nullability;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -62,10 +61,7 @@ public class FloydWarshall<T> {
     for (T from : G) {
       final int fn = G.getNumber(from);
       IntSet tos = G.getSuccNodeNumbers(from);
-      if (tos != null) {
-        Nullability.castToNonnull(tos, "checked nonnull previously")
-            .foreach(x -> result[fn][x] = edgeCost());
-      }
+      tos.foreach(x -> result[fn][x] = edgeCost());
     }
 
     for (T kn : G) {

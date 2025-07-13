@@ -166,9 +166,8 @@ public class Acyclic {
       if (first == G.getNumber(src)) {
         result.add(p);
       } else {
-        IntSet predNodeNumbers = acyclic.getPredNodeNumbers(acyclic.getNode(first));
-        assert predNodeNumbers != null; // Ensure it's not null before usage
-        for (IntIterator it = predNodeNumbers.intIterator(); it.hasNext(); ) {
+        for (IntIterator it = acyclic.getPredNodeNumbers(acyclic.getNode(first)).intIterator();
+            it.hasNext(); ) {
           worklist.add(Path.prepend(it.next(), p));
         }
       }
