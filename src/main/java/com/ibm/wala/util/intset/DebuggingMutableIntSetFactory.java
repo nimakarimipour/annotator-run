@@ -71,7 +71,7 @@ public class DebuggingMutableIntSetFactory implements MutableIntSetFactory<Debug
       return new DebuggingMutableIntSet(pr, sr);
     } else {
       Assertions.UNREACHABLE();
-      throw new IllegalStateException("Unreachable code reached");
+      return null;
     }
   }
 
