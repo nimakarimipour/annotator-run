@@ -142,12 +142,13 @@ public final class SparseNumberedEdgeManager<T> implements NumberedEdgeManager<T
   }
 
   @Override
-  public IntSet getPredNodeNumbers(T node) throws IllegalArgumentException {
-    if (nodeManager.getNumber(node) < 0) {
-      throw new IllegalArgumentException("Node not in graph " + node);
+    public IntSet getPredNodeNumbers(T node) throws IllegalArgumentException {
+      if (nodeManager.getNumber(node) < 0) {
+        throw new IllegalArgumentException("Node not in graph " + node);
+      }
+      IntSet result = predecessors.getRelated(nodeManager.getNumber(node));
+      return (result == null) ? EmptyIntSet.instance : result;
     }
-    return predecessors.getRelated(nodeManager.getNumber(node));
-  }
 
   /**
    * @see com.ibm.wala.util.graph.EdgeManager#getSuccNodeCount(java.lang.Object)
