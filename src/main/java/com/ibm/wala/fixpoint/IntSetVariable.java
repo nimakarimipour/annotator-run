@@ -29,13 +29,7 @@ public abstract class IntSetVariable<T extends IntSetVariable<T>> extends Abstra
   public void copyState(T other) {
     if (V == null) {
       if (other.V != null) {
-        MutableIntSetFactory<?> factory = IntSetUtil.getDefaultIntSetFactory();
-        if (factory != null) {
-          V = factory.makeCopy(other.V);
-        } else {
-          // handle the case where factory is null, if necessary
-          return;
-        }
+        V = IntSetUtil.getDefaultIntSetFactory().makeCopy(other.V);
       }
       return;
     } else {
@@ -52,13 +46,7 @@ public abstract class IntSetVariable<T extends IntSetVariable<T>> extends Abstra
    */
   public boolean addAll(IntSet B) {
     if (V == null) {
-      MutableIntSetFactory<?> factory = IntSetUtil.getDefaultIntSetFactory();
-      if (factory != null) {
-        V = factory.makeCopy(B);
-      } else {
-        // handle the case where factory is null, if necessary
-        return false;
-      }
+      V = IntSetUtil.getDefaultIntSetFactory().makeCopy(B);
       return (B.size() > 0);
     } else {
       boolean result = V.addAll(B);
@@ -112,13 +100,7 @@ public abstract class IntSetVariable<T extends IntSetVariable<T>> extends Abstra
    */
   public boolean add(int b) {
     if (V == null) {
-      MutableIntSetFactory<?> factory = IntSetUtil.getDefaultIntSetFactory();
-      if (factory != null) {
-        V = factory.make();
-      } else {
-        // handle the case where factory is null, if necessary
-        return false;
-      }
+      V = IntSetUtil.getDefaultIntSetFactory().make();
     }
     return V.add(b);
   }
@@ -183,18 +165,12 @@ public abstract class IntSetVariable<T extends IntSetVariable<T>> extends Abstra
 
   public boolean addAllInIntersection(IntSet other, IntSet filter) {
     if (V == null) {
-      MutableIntSetFactory<?> factory = IntSetUtil.getDefaultIntSetFactory();
-      if (factory != null) {
-        V = factory.makeCopy(other);
-        V.intersectWith(filter);
-        if (V.isEmpty()) {
-          V = null;
-        }
-        return (V != null);
-      } else {
-        // handle the case where factory is null, if necessary
-        return false;
+      V = IntSetUtil.getDefaultIntSetFactory().makeCopy(other);
+      V.intersectWith(filter);
+      if (V.isEmpty()) {
+        V = null;
       }
+      return (V != null);
     } else {
       boolean result = V.addAllInIntersection(other, filter);
       return result;
