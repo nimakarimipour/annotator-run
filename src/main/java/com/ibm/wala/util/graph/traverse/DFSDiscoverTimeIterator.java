@@ -97,10 +97,10 @@ public abstract class DFSDiscoverTimeIterator<T> extends ArrayList<T> implements
       setPendingChildren(stackTop, empty);
       // didn't find any new children. pop the stack and try again.
       pop();
+
     } while (!empty());
 
     // search for the next unvisited root.
-    assert roots != null; // ensure roots is non-null
     while (roots.hasNext()) {
       T nextRoot = roots.next();
       if (getPendingChildren(nextRoot) == null) {
