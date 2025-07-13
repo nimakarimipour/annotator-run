@@ -59,9 +59,9 @@ public class SparseIntSet implements IntSet {
 
   /** Subclasses should use this with extreme care. */
   public SparseIntSet() {
-    elements = null;
-    this.size = 0;
-  }
+      elements = new int[0];
+      this.size = 0;
+    }
 
   protected SparseIntSet(SparseIntSet S) {
     cloneState(S);
