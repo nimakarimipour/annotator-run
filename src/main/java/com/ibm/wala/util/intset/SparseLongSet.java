@@ -63,9 +63,9 @@ public class SparseLongSet implements LongSet {
 
   /** Subclasses should use this with extreme care. */
   public SparseLongSet() {
-    elements = null;
-    this.size = 0;
-  }
+      elements = new long[0];
+      this.size = 0;
+    }
 
   protected SparseLongSet(SparseLongSet S) {
     cloneState(S);
