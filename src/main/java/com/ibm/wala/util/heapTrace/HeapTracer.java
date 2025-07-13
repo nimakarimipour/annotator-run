@@ -648,31 +648,30 @@ public class HeapTracer {
     }
 
     @Override
-    public String toString() {
-      StringBuilder result = new StringBuilder();
-      result.append("Assuming " + BYTES_IN_HEADER + " header bytes per object\n");
-      int totalInstances = 0;
-      int totalSize = 0;
-      for (Demographics d : roots.values()) {
-        totalInstances += d.getTotalInstances();
-        totalSize += d.getTotalSize();
-      }
-      result.append("Total instances: ").append(totalInstances).append('\n');
-      result.append("Total size(bytes): ").append(totalSize).append('\n');
-
-      TreeSet<Field> sortedDemo = new TreeSet<>(new SizeComparator());
-      sortedDemo.addAll(roots.keySet());
-      for (Field field : sortedDemo) {
-        Object root = field;
-        Demographics d = roots.get(root);
-        if (d.getTotalSize() > 10000) {
-          result.append(" root: ").append(root).append('\n');
-          result.append(d);
+      public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append("Assuming " + BYTES_IN_HEADER + " header bytes per object\n");
+        int totalInstances = 0;
+        int totalSize = 0;
+        for (Demographics d : roots.values()) {
+          totalInstances += d.getTotalInstances();
+          totalSize += d.getTotalSize();
         }
+        result.append("Total instances: ").append(totalInstances).append('\n');
+        result.append("Total size(bytes): ").append(totalSize).append('\n');
+    
+        TreeSet<Field> sortedDemo = new TreeSet<>(new SizeComparator());
+        sortedDemo.addAll(roots.keySet());
+        for (Field field : sortedDemo) {
+          Object root = field;
+          Demographics d = roots.get(root);
+          if (d != null && d.getTotalSize() > 10000) {
+            result.append(" root: ").append(root).append('\n');
+            result.append(d == null ? "null" : d.toString());
+          }
+        }
+        return result.toString();
       }
-
-      return result.toString();
-    }
 
     /** compares two keys based on the total size of the heap traced from that key */
     private class SizeComparator implements Comparator<Field> {
