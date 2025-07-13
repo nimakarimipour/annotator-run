@@ -32,7 +32,7 @@ public class SimpleVector<T> implements IVector<T> {
    * @see com.ibm.wala.util.intset.IntVector#get(int)
    */
   @Override
-  @SuppressWarnings({"unchecked", "NullAway"})
+  @SuppressWarnings("unchecked")
   public T get(int x) {
     if (x < 0) {
       throw new IllegalArgumentException("illegal x: " + x);
