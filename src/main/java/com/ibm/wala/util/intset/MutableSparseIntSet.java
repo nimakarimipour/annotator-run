@@ -65,32 +65,32 @@ public class MutableSparseIntSet extends SparseIntSet implements MutableIntSet {
 
   /** */
   @Override
-  public boolean remove(int value) {
-    if (elements != null) {
-      int remove;
-      for (remove = 0; remove < size; remove++) {
-        if (elements[remove] >= value) {
-          break;
-        }
-      }
-      if (remove == size) {
-        return false;
-      }
-      if (elements[remove] == value) {
-        if (size == 1) {
-          elements = null;
-          size = 0;
-        } else {
-          if (remove < size) {
-            System.arraycopy(elements, remove + 1, elements, remove, size - remove - 1);
+    public boolean remove(int value) {
+      if (elements != null && size > 0) {
+        int removeIndex;
+        for (removeIndex = 0; removeIndex < size; removeIndex++) {
+          if (elements[removeIndex] >= value) {
+            break;
           }
-          size--;
         }
-        return true;
+        if (removeIndex == size) {
+          return false;
+        }
+        if (elements[removeIndex] == value) {
+          if (size == 1) {
+            elements = new int[0]; // set to empty array instead of null
+            size = 0;
+          } else {
+            if (removeIndex < size) {
+              System.arraycopy(elements, removeIndex + 1, elements, removeIndex, size - removeIndex - 1);
+            }
+            size--;
+          }
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
 
   /** */
   public int getInitialNonEmptySize() {
