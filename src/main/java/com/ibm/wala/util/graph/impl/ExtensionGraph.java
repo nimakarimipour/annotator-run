@@ -26,6 +26,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import edu.ucr.cs.riple.annotator.util.Nullability;
 
 public class ExtensionGraph<T> implements NumberedGraph<T> {
   private final NumberedGraph<T> original;
@@ -101,13 +102,13 @@ public class ExtensionGraph<T> implements NumberedGraph<T> {
         }
 
         @Override
-        public void removeEdge(T src, T dst) throws UnsupportedOperationException {
-          assert hasEdge(src, dst);
-          assert !original.hasEdge(src, dst);
-          assert containsNode(src) && containsNode(dst);
-          inEdges.get(dst).remove(getNumber(src));
-          outEdges.get(src).remove(getNumber(dst));
-        }
+                public void removeEdge(T src, T dst) throws UnsupportedOperationException {
+                  assert hasEdge(src, dst);
+                  assert !original.hasEdge(src, dst);
+                  assert containsNode(src) && containsNode(dst);
+                  inEdges.get(dst).remove(getNumber(src));
+                  Nullability.castToNonnull(outEdges.get(src), "asserts nodes in graph").remove(getNumber(dst));
+          }
 
         @Override
         public void removeAllIncidentEdges(T node) throws UnsupportedOperationException {
