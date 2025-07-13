@@ -25,19 +25,20 @@ public class Query {
    * @throws IllegalArgumentException if t == null
    */
   public static <T> Collection<Map<String, T>> selectStarWhereEquals(
-      Table<T> t, String column, T value) throws IllegalArgumentException {
-    if (t == null) {
-      throw new IllegalArgumentException("t == null");
-    }
-    Collection<Map<String, T>> result = new ArrayList<>();
-    for (int i = 0; i < t.getNumberOfRows(); i++) {
-      Map<String, T> p = t.row2Map(i);
-      if (p.get(column).equals(value)) {
-        result.add(p);
+        Table<T> t, String column, T value) throws IllegalArgumentException {
+      if (t == null) {
+        throw new IllegalArgumentException("t == null");
       }
+      Collection<Map<String, T>> result = new ArrayList<>();
+      for (int i = 0; i < t.getNumberOfRows(); i++) {
+        Map<String, T> p = t.row2Map(i);
+        T columnValue = p.get(column);
+        if (columnValue != null && columnValue.equals(value)) {
+          result.add(p);
+        }
+      }
+      return result;
     }
-    return result;
-  }
 
   /** SELECT attribute FROM t where column=value */
   public static <T> Collection<T> selectWhereEquals(
