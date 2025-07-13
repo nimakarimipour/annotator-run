@@ -101,13 +101,17 @@ public class ExtensionGraph<T> implements NumberedGraph<T> {
         }
 
         @Override
-        public void removeEdge(T src, T dst) throws UnsupportedOperationException {
-          assert hasEdge(src, dst);
-          assert !original.hasEdge(src, dst);
-          assert containsNode(src) && containsNode(dst);
-          inEdges.get(dst).remove(getNumber(src));
-          outEdges.get(src).remove(getNumber(dst));
-        }
+          public void removeEdge(T src, T dst) throws UnsupportedOperationException {
+            assert hasEdge(src, dst);
+            assert !original.hasEdge(src, dst);
+            assert containsNode(src) && containsNode(dst);
+            if (inEdges.containsKey(dst)) {
+              inEdges.get(dst).remove(getNumber(src));
+            }
+            if (outEdges.containsKey(src)) {
+              outEdges.get(src).remove(getNumber(dst));
+            }
+          }
 
         @Override
         public void removeAllIncidentEdges(T node) throws UnsupportedOperationException {
