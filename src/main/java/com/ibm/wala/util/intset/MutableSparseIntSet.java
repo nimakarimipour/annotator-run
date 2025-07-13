@@ -217,18 +217,19 @@ public class MutableSparseIntSet extends SparseIntSet implements MutableIntSet {
     if (this.isEmpty()) {
       return;
     } else if (that.isEmpty()) {
-      elements = new int[0]; // Assign an empty array instead of null
+      elements = null;
       size = 0;
       return;
     } else if (this.equals(that)) {
       return;
     }
 
+    // some simple optimizations
     if (size == 1) {
       if (that.contains(elements[0])) {
         return;
       } else {
-        elements = new int[0]; // Assign an empty array instead of null
+        elements = null;
         size = 0;
         return;
       }
@@ -242,7 +243,7 @@ public class MutableSparseIntSet extends SparseIntSet implements MutableIntSet {
         elements[0] = that.elements[0];
         return;
       } else {
-        elements = new int[0]; // Assign an empty array instead of null
+        elements = null;
         size = 0;
         return;
       }
@@ -254,19 +255,20 @@ public class MutableSparseIntSet extends SparseIntSet implements MutableIntSet {
     int[] br = that.elements;
     int bi = 0;
     int bl = that.size;
-    int[] cr = null;
+    int[] cr = null; // allocate on demand
     int ci = 0;
 
     while (ai < al && bi < bl) {
       int cmp = (ar[ai] - br[bi]);
 
-      if (cmp > 0) {
+      // (accept element only on a match)
+      if (cmp > 0) { // a greater
         bi++;
-      } else if (cmp < 0) {
+      } else if (cmp < 0) { // b greater
         ai++;
       } else {
         if (cr == null) {
-          cr = new int[al];
+          cr = new int[al]; // allocate enough (i.e. too much)
         }
         cr[ci++] = ar[ai];
         ai++;
@@ -274,8 +276,9 @@ public class MutableSparseIntSet extends SparseIntSet implements MutableIntSet {
       }
     }
 
+    // now compact cr to 'just enough'
     size = ci;
-    elements = cr == null ? new int[0] : cr;
+    elements = cr;
     return;
   }
 
