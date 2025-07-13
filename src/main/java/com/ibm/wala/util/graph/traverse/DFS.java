@@ -125,14 +125,14 @@ public class DFS {
     }
 
     @Override
-        public int compare(T o1, T o2) {
-          if (o1 == o2) {
-            return 0;
-          }
-          Integer t1 = order.get(o1);
-          Integer t2 = order.get(o2);
-          return (t1 - Nullability.castToNonnull(t2));
-        }
+            public int compare(T o1, T o2) {
+              if (o1 == o2) {
+                return 0;
+              }
+              Integer t1 = order.get(o1);
+              Integer t2 = order.get(o2);
+              return (Nullability.castToNonnull(t1) - Nullability.castToNonnull(t2));
+    }
   }
 
   /**
