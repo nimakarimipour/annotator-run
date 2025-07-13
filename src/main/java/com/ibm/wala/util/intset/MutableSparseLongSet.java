@@ -144,20 +144,20 @@ public final class MutableSparseLongSet extends SparseLongSet implements Mutable
    * @throws UnimplementedError if not ( that instanceof com.ibm.wala.util.intset.SparseLongSet )
    */
   @Override
-  public void copySet(LongSet that) throws UnimplementedError {
-    if (that instanceof SparseLongSet) {
-      SparseLongSet set = (SparseLongSet) that;
-      if (set.elements != null) {
-        elements = set.elements.clone();
-        size = set.size;
+    public void copySet(LongSet that) throws UnimplementedError {
+      if (that instanceof SparseLongSet) {
+        SparseLongSet set = (SparseLongSet) that;
+        if (set.elements != null) {
+          elements = set.elements.clone();
+          size = set.size;
+        } else {
+          elements = new long[0]; // Initialize elements to an empty array instead of null
+          size = 0;
+        }
       } else {
-        elements = null;
-        size = 0;
+        Assertions.UNREACHABLE();
       }
-    } else {
-      Assertions.UNREACHABLE();
     }
-  }
 
   @Override
   public void intersectWith(LongSet set) {
