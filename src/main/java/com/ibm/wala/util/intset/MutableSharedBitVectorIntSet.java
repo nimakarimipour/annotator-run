@@ -648,43 +648,45 @@ public class MutableSharedBitVectorIntSet implements MutableIntSet {
   }
 
   private boolean addAllInternal(@Nullable SparseIntSet set) {
-    if (privatePart == null) {
-      if (sharedPart == null) {
-        if (!set.isEmpty()) {
-          privatePart = MutableSparseIntSet.make(set);
-          sharedPart = null;
-          checkOverflow();
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        privatePart = MutableSparseIntSet.make(set);
-        privatePart.removeAll(sharedPart);
-        if (privatePart.isEmpty()) {
-          privatePart = null;
-          return false;
-        } else {
-          checkOverflow();
-          return true;
-        }
+      if (set == null) {
+        throw new IllegalArgumentException("Parameter 'set' cannot be null");
       }
-    } else {
-      /* privatePart != null */
-      if (sharedPart == null) {
-        boolean result = privatePart.addAll(set);
-        checkOverflow();
-        return result;
+      if (privatePart == null) {
+        if (sharedPart == null) {
+          if (!set.isEmpty()) {
+            privatePart = MutableSparseIntSet.make(set);
+            sharedPart = null;
+            checkOverflow();
+            return true;
+          } else {
+            return false;
+          }
+        } else {
+          privatePart = MutableSparseIntSet.make(set);
+          privatePart.removeAll(sharedPart);
+          if (privatePart.isEmpty()) {
+            privatePart = null;
+            return false;
+          } else {
+            checkOverflow();
+            return true;
+          }
+        }
       } else {
-        int oldSize = privatePart.size();
-        privatePart.addAll(set);
-        privatePart.removeAll(sharedPart);
-        boolean result = privatePart.size() > oldSize;
-        checkOverflow();
-        return result;
+        if (sharedPart == null) {
+          boolean result = privatePart.addAll(set);
+          checkOverflow();
+          return result;
+        } else {
+          int oldSize = privatePart.size();
+          privatePart.addAll(set);
+          privatePart.removeAll(sharedPart);
+          boolean result = privatePart.size() > oldSize;
+          checkOverflow();
+          return result;
+        }
       }
     }
-  }
 
   private boolean addAll(MutableSharedBitVectorIntSet set) {
     if (set.isEmpty()) {
