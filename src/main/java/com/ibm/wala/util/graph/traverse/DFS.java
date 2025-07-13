@@ -124,16 +124,21 @@ public class DFS {
     }
 
     @Override
-    public int compare(T o1, T o2) {
-      // throws an exception if either argument is not a Node object
-      if (o1 == o2) {
-        return 0;
+      public int compare(T o1, T o2) {
+        // throws an exception if either argument is not a Node object
+        if (o1 == o2) {
+          return 0;
+        }
+        Integer t1 = order.get(o1);
+        Integer t2 = order.get(o2);
+    
+        // Ensure that neither t1 nor t2 is null before unboxing
+        if (t1 == null || t2 == null) {
+          throw new IllegalArgumentException("Both nodes must be ordered");
+        }
+    
+        return (t1 - t2);
       }
-      Integer t1 = order.get(o1);
-      Integer t2 = order.get(o2);
-      // throws an exception if either node has not been ordered
-      return (t1 - t2);
-    }
   }
 
   /**
