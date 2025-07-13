@@ -688,11 +688,13 @@ public class HeapTracer {
        * java.lang.Object)
        */
       @Override
-      public int compare(Field o1, Field o2) {
-        Demographics d1 = roots.get(o1);
-        Demographics d2 = roots.get(o2);
-        return d2.getTotalSize() - d1.getTotalSize();
-      }
+        public int compare(Field o1, Field o2) {
+          Demographics d1 = roots.get(o1);
+          Demographics d2 = roots.get(o2);
+          int size1 = d1 != null ? d1.getTotalSize() : 0;
+          int size2 = d2 != null ? d2.getTotalSize() : 0;
+          return size2 - size1;
+        }
     }
   }
 }
