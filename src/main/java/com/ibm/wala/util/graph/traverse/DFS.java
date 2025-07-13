@@ -27,6 +27,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
+import edu.ucr.cs.riple.annotator.util.Nullability;
 
 /** utilities related to depth-first search. */
 public class DFS {
@@ -124,16 +125,14 @@ public class DFS {
     }
 
     @Override
-    public int compare(T o1, T o2) {
-      // throws an exception if either argument is not a Node object
-      if (o1 == o2) {
-        return 0;
-      }
-      Integer t1 = order.get(o1);
-      Integer t2 = order.get(o2);
-      // throws an exception if either node has not been ordered
-      return (t1 - t2);
-    }
+        public int compare(T o1, T o2) {
+          if (o1 == o2) {
+            return 0;
+          }
+          Integer t1 = order.get(o1);
+          Integer t2 = order.get(o2);
+          return (t1 - Nullability.castToNonnull(t2));
+        }
   }
 
   /**
