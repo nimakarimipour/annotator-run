@@ -186,9 +186,7 @@ public class SmallMap<K, V> implements Map<K, V> {
 
   @Override
   public void clear() {
-    if (keysAndValues != null) {
-      Arrays.fill(keysAndValues, null);
-    }
+    keysAndValues = null;
   }
 
   @Override
