@@ -50,10 +50,6 @@ public class RtJar {
                   }
                 }));
 
-    if (rt != null) {
-      System.err.println(rt.getName());
-    } else {
-      System.err.println("No suitable JarFile found.");
-    }
+    System.err.println(rt.getName());
   }
 }
