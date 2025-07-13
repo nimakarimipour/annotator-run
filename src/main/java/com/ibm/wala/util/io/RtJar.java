@@ -33,23 +33,27 @@ public class RtJar {
   }
 
   public static void main(String[] args) {
-    @SuppressWarnings("resource")
-    JarFile rt =
-        getRtJar(
-            new MapIterator<>(
-                new FilterIterator<>(
-                    new ArrayIterator<>(
-                        System.getProperty("sun.boot.class.path").split(File.pathSeparator)),
-                    t -> t.endsWith(".jar")),
-                object -> {
-                  try {
-                    return new JarFile(object);
-                  } catch (IOException e) {
-                    assert false : e.toString();
-                    return null;
-                  }
-                }));
-
-    System.err.println(rt.getName());
-  }
+      @SuppressWarnings("resource")
+      JarFile rt =
+          getRtJar(
+              new MapIterator<>(
+                  new FilterIterator<>(
+                      new ArrayIterator<>(
+                          System.getProperty("sun.boot.class.path").split(File.pathSeparator)),
+                      t -> t.endsWith(".jar")),
+                  object -> {
+                    try {
+                      return new JarFile(object);
+                    } catch (IOException e) {
+                      assert false : e.toString();
+                      return null;
+                    }
+                  }));
+  
+      if (rt != null) {
+        System.err.println(rt.getName());
+      } else {
+        System.err.println("RtJar is null");
+      }
+    }
 }
