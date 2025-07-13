@@ -74,13 +74,13 @@ public class SparseIntSet implements IntSet {
     }
 
   private void cloneState(SparseIntSet S) {
-    if (S.elements != null) {
-      elements = S.elements.clone();
-    } else {
-      elements = null;
+      if (S.elements != null) {
+        elements = S.elements.clone();
+      } else {
+        elements = new int[0];
+      }
+      this.size = S.size;
     }
-    this.size = S.size;
-  }
 
   public SparseIntSet(IntSet S) throws IllegalArgumentException {
     if (S == null) {
