@@ -13,8 +13,8 @@ import javax.annotation.Nullable;
 
 public class RtJar {
 
-  @Nullable
-  public static JarFile getRtJar(Iterator<JarFile> x) {
+  
+  @Nullable public static JarFile getRtJar(Iterator<JarFile> x) {
     while (x.hasNext()) {
       JarFile JF = x.next();
       switch (Paths.get(JF.getName()).getFileName().toString()) {
@@ -33,23 +33,27 @@ public class RtJar {
   }
 
   public static void main(String[] args) {
-    @SuppressWarnings("resource")
-    JarFile rt =
-        getRtJar(
-            new MapIterator<>(
-                new FilterIterator<>(
-                    new ArrayIterator<>(
-                        System.getProperty("sun.boot.class.path").split(File.pathSeparator)),
-                    t -> t.endsWith(".jar")),
-                object -> {
-                  try {
-                    return new JarFile(object);
-                  } catch (IOException e) {
-                    assert false : e.toString();
-                    return null;
-                  }
-                }));
-
-    System.err.println(rt.getName());
-  }
+        @SuppressWarnings("resource")
+        JarFile rt =
+            getRtJar(
+                new MapIterator<>(
+                    new FilterIterator<>(
+                        new ArrayIterator<>(
+                            System.getProperty("sun.boot.class.path").split(File.pathSeparator)),
+                        t -> t.endsWith(".jar")),
+                    object -> {
+                      try {
+                        return new JarFile(object);
+                      } catch (IOException e) {
+                        assert false : e.toString();
+                        return null;
+                      }
+                    }));
+    
+        if (rt != null) {
+            System.err.println(rt.getName());
+        } else {
+            System.err.println("No suitable JarFile found.");
+        }
+    }
 }
