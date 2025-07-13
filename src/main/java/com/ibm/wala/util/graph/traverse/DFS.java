@@ -131,7 +131,12 @@ public class DFS {
       }
       Integer t1 = order.get(o1);
       Integer t2 = order.get(o2);
-      // throws an exception if either node has not been ordered
+
+      // Ensure that neither t1 nor t2 is null before unboxing
+      if (t1 == null || t2 == null) {
+        throw new IllegalArgumentException("Both nodes must be ordered");
+      }
+
       return (t1 - t2);
     }
   }
