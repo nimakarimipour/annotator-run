@@ -12,6 +12,7 @@ package com.ibm.wala.util.intset;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import javax.annotation.Nullable;
 
 /** Abstract base class for implementations of bitvectors */
 @SuppressWarnings("rawtypes")
@@ -29,7 +30,7 @@ public abstract class BitVectorBase<T extends BitVectorBase> implements Cloneabl
 
   protected static final int LOW_MASK = 0x1f;
 
-  protected int bits[];
+  protected int bits[] = new int[0];
 
   public abstract void set(int bit);
 

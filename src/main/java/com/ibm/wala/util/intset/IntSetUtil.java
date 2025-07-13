@@ -13,6 +13,7 @@ package com.ibm.wala.util.intset;
 import com.ibm.wala.util.debug.Assertions;
 import com.ibm.wala.util.debug.UnimplementedError;
 import java.util.Set;
+import javax.annotation.Nullable;
 
 /** Utilities for dealing with {@link IntSet}s */
 public class IntSetUtil {

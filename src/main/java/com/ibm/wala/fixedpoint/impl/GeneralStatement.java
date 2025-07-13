@@ -13,6 +13,7 @@ package com.ibm.wala.fixedpoint.impl;
 import com.ibm.wala.fixpoint.AbstractOperator;
 import com.ibm.wala.fixpoint.AbstractStatement;
 import com.ibm.wala.fixpoint.IVariable;
+import javax.annotation.Nullable;
 
 /** Represents a single step in an iterative solver */
 public abstract class GeneralStatement<T extends IVariable<T>>
