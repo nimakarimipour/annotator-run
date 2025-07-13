@@ -158,12 +158,11 @@ public final class BasicNaturalRelation implements IBinaryNaturalRelation, Seria
             vv.set(x, DELEGATE_CODE);
           }
           s.add(y);
-        } else {
+        } else if (v != null) {
           v.set(x, y);
         }
         return true;
       } else {
-        // smallStore[0].get(x) == EMPTY_CODE : just add
         smallStore0.set(x, y);
         return true;
       }
