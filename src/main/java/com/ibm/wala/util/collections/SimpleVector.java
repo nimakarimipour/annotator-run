@@ -31,14 +31,16 @@ public class SimpleVector<T> implements IVector<T> {
   /**
    * @see com.ibm.wala.util.intset.IntVector#get(int)
    */
+  @Override
+  @SuppressWarnings("unchecked")
   public T get(int x) {
     if (x < 0) {
       throw new IllegalArgumentException("illegal x: " + x);
     }
-    if (x < store.length && store[x] != null) {
+    if (x < store.length) {
       return (T) store[x];
     } else {
-      throw new IllegalStateException("No non-null element at index: " + x);
+      return null;
     }
   }
 
