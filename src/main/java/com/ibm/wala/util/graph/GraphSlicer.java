@@ -28,6 +28,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import edu.ucr.cs.riple.annotator.util.Nullability;
 
 /** Utilities related to simple graph subset operations. */
 public class GraphSlicer {
@@ -260,12 +261,12 @@ public class GraphSlicer {
           }
 
           @Override
-          public int getPredNodeCount(E N) {
-            if (!preds.containsKey(N)) {
-              setPredNodes(N);
+                    public int getPredNodeCount(E N) {
+                      if (!preds.containsKey(N)) {
+                        setPredNodes(N);
+                      }
+                      return Nullability.castToNonnull(preds.get(N)).size();
             }
-            return preds.get(N).size();
-          }
 
           @Override
           public Iterator<E> getPredNodes(E N) {
