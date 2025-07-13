@@ -44,11 +44,6 @@ public class SemiSparseMutableIntSet implements MutableIntSet {
     if (set == null) {
       throw new IllegalArgumentException("set == null");
     }
-    this.sparsePart =
-        set.sparsePart != null
-            ? MutableSparseIntSet.copyOf(set.sparsePart)
-            : MutableSparseIntSet.makeEmpty();
-    this.densePart = set.densePart != null ? new OffsetBitVector(set.densePart) : null;
     copySet(set);
   }
 
