@@ -285,12 +285,12 @@ public class GraphSlicer {
           }
 
           @Override
-          public Iterator<E> getSuccNodes(E N) {
-            if (!succs.containsKey(N)) {
-              setSuccNodes(N);
+                    public Iterator<E> getSuccNodes(E N) {
+                      if (!succs.containsKey(N)) {
+                        setSuccNodes(N);
+                      }
+                      return Nullability.castToNonnull(succs.get(N)).iterator();
             }
-            return succs.get(N).iterator();
-          }
 
           @Override
                     public boolean hasEdge(E src, E dst) {
