@@ -29,6 +29,7 @@ import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.TreeSet;
 import javax.annotation.Nullable;
+import edu.ucr.cs.riple.annotator.util.Nullability;
 
 /** Simple utility that uses reflection to trace memory */
 public class HeapTracer {
@@ -591,11 +592,11 @@ public class HeapTracer {
        * java.lang.Object)
        */
       @Override
-      public int compare(Object o1, Object o2) {
-        Integer i1 = sizeCount.get(o1);
-        Integer i2 = sizeCount.get(o2);
-        return i2 - i1;
-      }
+            public int compare(Object o1, Object o2) {
+              Integer i1 = sizeCount.get(o1);
+              Integer i2 = sizeCount.get(o2);
+              return i2 - Nullability.castToNonnull(i1);
+        }
     }
 
     /**
