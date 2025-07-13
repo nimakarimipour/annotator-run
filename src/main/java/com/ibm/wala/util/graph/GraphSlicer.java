@@ -293,11 +293,11 @@ public class GraphSlicer {
           }
 
           @Override
-          public boolean hasEdge(E src, E dst) {
-            if (!preds.containsKey(dst)) {
-              setPredNodes(dst);
-            }
-            return preds.get(dst).contains(src);
+                    public boolean hasEdge(E src, E dst) {
+                      if (!preds.containsKey(dst)) {
+                        setPredNodes(dst);
+                      }
+                      return Nullability.castToNonnull(preds.get(dst)).contains(src);
           }
 
           @Override
