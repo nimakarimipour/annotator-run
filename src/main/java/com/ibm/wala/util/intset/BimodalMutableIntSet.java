@@ -161,14 +161,10 @@ public class BimodalMutableIntSet implements MutableIntSet {
       BimodalMutableIntSet b = (BimodalMutableIntSet) that;
       return impl.intersection(b.impl);
     } else if (that instanceof BitVectorIntSet) {
-      IntSet result = impl.intersection(that);
-      if (result == null) {
-        throw new IllegalStateException("intersection result is null");
-      }
-      return result;
+      return impl.intersection(that);
     } else {
       Assertions.UNREACHABLE("Unexpected: " + that);
-      throw new IllegalStateException("Unreachable code");
+      return null;
     }
   }
 
