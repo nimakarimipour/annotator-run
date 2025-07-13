@@ -17,6 +17,7 @@ import com.ibm.wala.util.debug.Assertions;
 import java.io.Serializable;
 import java.util.Iterator;
 import javax.annotation.Nullable;
+import edu.ucr.cs.riple.annotator.util.Nullability;
 
 /**
  * A relation between non-negative integers
@@ -124,51 +125,50 @@ public final class BasicNaturalRelation implements IBinaryNaturalRelation, Seria
    * @return true iff the relation changes as a result of this call.
    */
   @Override
-  public boolean add(int x, int y) throws IllegalArgumentException {
-    if (x < 0) {
-      throw new IllegalArgumentException("illegal x: " + x);
-    }
-    if (y < 0) {
-      throw new IllegalArgumentException("illegal y: " + y);
-    }
-    maxX = Math.max(maxX, x);
-    MutableIntSet delegated = (MutableIntSet) delegateStore.get(x);
-    if (delegated != null) {
-      return delegated.add(y);
-    } else {
-      IntVector smallStore0 = smallStore[0];
-      if (smallStore0.get(x) != EMPTY_CODE) {
-        int i = 0;
-        IntVector v = null;
-        int ssLength = smallStore.length;
-        for (; i < ssLength; i++) {
-          v = smallStore[i];
-          int val = v.get(x);
-          if (val == y) {
-            return false;
-          } else if (val == EMPTY_CODE) {
-            break;
-          }
-        }
-        if (i == ssLength) {
-          MutableIntSet s = new BimodalMutableIntSet(ssLength + 1, 1.1f);
-          delegateStore.set(x, s);
-          for (IntVector vv : smallStore) {
-            s.add(vv.get(x));
-            vv.set(x, DELEGATE_CODE);
-          }
-          s.add(y);
-        } else {
-          v.set(x, y);
-        }
-        return true;
+    public boolean add(int x, int y) throws IllegalArgumentException {
+      if (x < 0) {
+        throw new IllegalArgumentException("illegal x: " + x);
+      }
+      if (y < 0) {
+        throw new IllegalArgumentException("illegal y: " + y);
+      }
+      maxX = Math.max(maxX, x);
+      MutableIntSet delegated = (MutableIntSet) delegateStore.get(x);
+      if (delegated != null) {
+        return delegated.add(y);
       } else {
-        // smallStore[0].get(x) == EMPTY_CODE : just add
-        smallStore0.set(x, y);
-        return true;
+        IntVector smallStore0 = smallStore[0];
+        if (smallStore0.get(x) != EMPTY_CODE) {
+          int i = 0;
+          IntVector v = null;
+          int ssLength = smallStore.length;
+          for (; i < ssLength; i++) {
+            v = smallStore[i];
+            int val = v.get(x);
+            if (val == y) {
+              return false;
+            } else if (val == EMPTY_CODE) {
+              break;
+            }
+          }
+          if (i == ssLength) {
+            MutableIntSet s = new BimodalMutableIntSet(ssLength + 1, 1.1f);
+            delegateStore.set(x, s);
+            for (IntVector vv : smallStore) {
+              s.add(vv.get(x));
+              vv.set(x, DELEGATE_CODE);
+            }
+            s.add(y);
+          } else {
+            Nullability.castToNonnull(v, "assigned within loop").set(x, y);
+          }
+          return true;
+        } else {
+          smallStore0.set(x, y);
+          return true;
+        }
       }
     }
-  }
 
   private boolean usingDelegate(int x) {
     return smallStore[0].get(x) == DELEGATE_CODE;
