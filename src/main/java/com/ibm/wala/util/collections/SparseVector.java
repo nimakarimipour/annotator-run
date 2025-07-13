@@ -56,7 +56,7 @@ public class SparseVector<T> implements IVector<T>, Serializable {
   public T get(int x) {
     int index = indices.getIndex(x);
     if (index == -1) {
-      throw new IllegalStateException("No element found at specified index");
+      return null;
     } else {
       return (T) data[index];
     }
