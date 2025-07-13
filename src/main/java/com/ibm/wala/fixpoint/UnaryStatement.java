@@ -96,9 +96,6 @@ public abstract class UnaryStatement<T extends IVariable<T>>
    */
   protected UnaryStatement(@Nullable T lhs, T rhs) {
     super();
-    if (lhs == null) {
-      throw new IllegalArgumentException("lhs cannot be null");
-    }
     this.lhs = lhs;
     this.rhs = rhs;
   }
