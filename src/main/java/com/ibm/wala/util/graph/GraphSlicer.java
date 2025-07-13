@@ -269,11 +269,11 @@ public class GraphSlicer {
             }
 
           @Override
-          public Iterator<E> getPredNodes(E N) {
-            if (!preds.containsKey(N)) {
-              setPredNodes(N);
-            }
-            return preds.get(N).iterator();
+                    public Iterator<E> getPredNodes(E N) {
+                      if (!preds.containsKey(N)) {
+                        setPredNodes(N);
+                      }
+                      return Nullability.castToNonnull(preds.get(N)).iterator();
           }
 
           @Override
