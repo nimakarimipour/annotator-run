@@ -168,10 +168,12 @@ class DebuggingMutableIntSet implements MutableIntSet {
 
       assert ppr.sameValue(ssr);
 
-      return ppr;
+      return ppr != null
+          ? ppr
+          : new EmptyIntSet(); // Assuming EmptyIntSet is a non-null implementation of IntSet
     } else {
       Assertions.UNREACHABLE();
-      return null;
+      return new EmptyIntSet(); // Assuming EmptyIntSet is a non-null implementation of IntSet
     }
   }
 
