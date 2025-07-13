@@ -253,8 +253,11 @@ public abstract class Launcher {
     }
 
     public ByteArrayOutputStream getCapture() {
-      return capture;
-    }
+          if (capture == null) {
+              throw new IllegalStateException("Capture is not initialized");
+          }
+          return capture;
+      }
 
     public void setCapture(ByteArrayOutputStream capture) {
       this.capture = capture;
