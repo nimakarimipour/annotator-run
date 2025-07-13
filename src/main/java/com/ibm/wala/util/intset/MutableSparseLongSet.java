@@ -64,30 +64,30 @@ public final class MutableSparseLongSet extends SparseLongSet implements Mutable
 
   /** */
   @Override
-  public void remove(long value) {
-    if (elements != null) {
-      int remove;
-      for (remove = 0; remove < size; remove++) {
-        if (elements[remove] >= value) {
-          break;
-        }
-      }
-      if (remove == size) {
-        return;
-      }
-      if (elements[remove] == value) {
-        if (size == 1) {
-          elements = null;
-          size = 0;
-        } else {
-          if (remove < size) {
-            System.arraycopy(elements, remove + 1, elements, remove, size - remove - 1);
+    public void remove(long value) {
+      if (elements != null) {
+        int remove;
+        for (remove = 0; remove < size; remove++) {
+          if (elements[remove] >= value) {
+            break;
           }
-          size--;
+        }
+        if (remove == size) {
+          return;
+        }
+        if (elements[remove] == value) {
+          if (size == 1) {
+            elements = new long[0]; // Replace null with an empty array
+            size = 0;
+          } else {
+            if (remove < size) {
+              System.arraycopy(elements, remove + 1, elements, remove, size - remove - 1);
+            }
+            size--;
+          }
         }
       }
     }
-  }
 
   /**
    * @return true iff this value changes
