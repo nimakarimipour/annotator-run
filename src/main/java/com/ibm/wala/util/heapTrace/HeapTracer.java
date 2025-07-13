@@ -568,21 +568,25 @@ public class HeapTracer {
     }
 
     @Override
-    public String toString() {
-      StringBuilder result = new StringBuilder();
-      result.append("Totals: ").append(totalInstances).append(' ').append(totalSize).append('\n');
-      TreeSet<Object> sorted = new TreeSet<>(new SizeComparator());
-      sorted.addAll(instanceCount.keySet());
-      for (Object key : sorted) {
-        Integer I = instanceCount.get(key);
-        Integer bytes = sizeCount.get(key);
-        result.append("  ").append(I).append("   ").append(bytes).append("   ");
-        result.append(bytes / I).append("   ");
-        result.append(key);
-        result.append('\n');
+      public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append("Totals: ").append(totalInstances).append(' ').append(totalSize).append('\n');
+        TreeSet<Object> sorted = new TreeSet<>(new SizeComparator());
+        sorted.addAll(instanceCount.keySet());
+        for (Object key : sorted) {
+          Integer I = instanceCount.get(key);
+          Integer bytes = sizeCount.get(key);
+          if (I != null && bytes != null && I != 0) {
+            result.append("  ").append(I).append("   ").append(bytes).append("   ");
+            result.append(bytes / I).append("   ");
+          } else {
+            result.append("  ").append(I).append("   ").append(bytes).append("   N/A   ");
+          }
+          result.append(key);
+          result.append('\n');
+        }
+        return result.toString();
       }
-      return result.toString();
-    }
 
     /** compares two keys based on the total size of the heap traced from that key */
     private class SizeComparator implements Comparator<Object> {
