@@ -13,6 +13,7 @@ package com.ibm.wala.util.processes;
 import com.ibm.wala.util.PlatformUtil;
 import com.ibm.wala.util.collections.Iterator2Iterable;
 import com.uber.nullaway.annotations.Initializer;
+import edu.ucr.cs.riple.annotator.util.Nullability;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -239,11 +240,17 @@ public class JavaLauncher extends Launcher {
     }
     if (isCaptureErr()) {
       Drainer d = (Drainer) stdErrDrain;
-      setStdErr(d.getCapture().toByteArray());
+      ByteArrayOutputStream capture = d.getCapture();
+      if (capture != null) {
+        setStdErr(capture.toByteArray());
+      }
     }
     if (isCaptureOutput()) {
       Drainer d = (Drainer) stdOutDrain;
-      setStdOut(d.getCapture().toByteArray());
+      ByteArrayOutputStream capture = d.getCapture();
+      if (capture != null) {
+        setStdOut(Nullability.castToNonnull(d.getCapture(), "checked if not null").toByteArray());
+      }
     }
   }
 
