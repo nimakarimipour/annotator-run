@@ -288,8 +288,7 @@ public class GraphSlicer {
             if (!succs.containsKey(N)) {
               setSuccNodes(N);
             }
-            Set<E> successors = succs.get(N);
-            return successors != null ? successors.iterator() : Collections.emptyIterator();
+            return succs.get(N).iterator();
           }
 
           @Override
