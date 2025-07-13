@@ -12,7 +12,6 @@ package com.ibm.wala.util.collections;
 
 import com.ibm.wala.util.debug.Assertions;
 import com.ibm.wala.util.math.Logs;
-import edu.ucr.cs.riple.annotator.util.Nullability;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Vector;
@@ -138,7 +137,7 @@ public class TwoLevelVector<T> implements IVector<T>, Serializable {
 
       @Override
       public T next() {
-        T result = Nullability.castToNonnull(inner.next(), "iterator not initially null");
+        T result = inner.next();
         if (!inner.hasNext()) {
           inner = null;
           while (outer.hasNext()) {
