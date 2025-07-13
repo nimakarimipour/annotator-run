@@ -19,6 +19,7 @@ import com.ibm.wala.util.collections.ObjectArrayMapping;
 import com.ibm.wala.util.collections.Pair;
 import com.ibm.wala.util.graph.Graph;
 import com.ibm.wala.util.intset.IntegerUnionFind;
+import edu.ucr.cs.riple.annotator.util.Nullability;
 import java.util.Map;
 import javax.annotation.Nullable;
 
@@ -89,6 +90,7 @@ public abstract class DataflowSolver<T, V extends IVariable<V>> extends DefaultF
     return v;
   }
 
+  @Nullable
   public V getIn(Object node) {
     return node2In.get(node);
   }
@@ -193,7 +195,7 @@ public abstract class DataflowSolver<T, V extends IVariable<V>> extends DefaultF
         for (Object o : Iterator2Iterable.make(G.getPredNodes(node))) {
           rhs[i++] = functions.hasEdgeTransferFunctions() ? getEdge(o, node) : getOut(o);
         }
-        newStatement(getIn(node), meet, rhs, toWorkList, eager);
+        newStatement(Nullability.castToNonnull(getIn(node)), meet, rhs, toWorkList, eager);
       }
     }
 
