@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import javax.annotation.Nullable;
+import edu.ucr.cs.riple.annotator.util.Nullability;
 
 /**
  * A simple implementation of Map; intended for Maps with few elements. Optimized for space, not
@@ -34,7 +35,7 @@ public class SmallMap<K, V> implements Map<K, V> {
   // this Map contains keysAndValues.length / 2 entries.
   // in the following array, entries 0 ... keysAndValues.length/2 - 1 are keys.
   // entries keysAndValues.length/2 .. keysAndValues.length are values.
-  private Object[] keysAndValues;
+  @Nullable private Object[] keysAndValues;
 
   /*
    */
@@ -87,14 +88,17 @@ public class SmallMap<K, V> implements Map<K, V> {
   }
 
   @Override
-  public boolean containsKey(Object key) {
-    for (int i = 0; i < size(); i++) {
-      if (keysAndValues[i].equals(key)) {
-        return true;
+    public boolean containsKey(Object key) {
+      if (keysAndValues == null) {
+        return false;
       }
+      for (int i = 0; i < size(); i++) {
+        if (keysAndValues[i].equals(key)) {
+          return true;
+        }
+      }
+      return false;
     }
-    return false;
-  }
 
   @Override
   public boolean containsValue(Object value) {
@@ -116,18 +120,22 @@ public class SmallMap<K, V> implements Map<K, V> {
     return false;
   }
 
-  @Nullable
-  @Override
+  @Nullable @Override
   @SuppressWarnings("unchecked")
   public V get(Object key) {
-
+  
+    if (keysAndValues == null) {
+      throw new IllegalStateException("get on empty map");
+    }
+  
     if (key != null)
       for (int i = 0; i < size(); i++) {
-        if (keysAndValues[i] != null && keysAndValues[i].equals(key)) {
-          return (V) keysAndValues[size() + i];
+        if (Nullability.castToNonnull(keysAndValues, "throws if null")[i] != null && 
+            Nullability.castToNonnull(keysAndValues, "throws if null")[i].equals(key)) {
+          return (V) Nullability.castToNonnull(keysAndValues, "throws if null")[size() + i];
         }
       }
-
+  
     return null;
   }
 
@@ -151,28 +159,32 @@ public class SmallMap<K, V> implements Map<K, V> {
     }
   }
 
-  @Nullable
-  @Override
-  @SuppressWarnings({"unchecked", "unused"})
-  public V put(Object key, Object value) {
-    if (key == null) {
-      throw new IllegalArgumentException("null key");
-    }
-    for (int i = 0; i < size(); i++) {
-      if (keysAndValues[i] != null && keysAndValues[i].equals(key)) {
-        V result = (V) keysAndValues[size() + i];
-        keysAndValues[size() + i] = value;
-        return result;
+  @Nullable @Override
+      @SuppressWarnings({"unchecked", "unused"})
+      public V put(Object key, Object value) {
+        if (key == null) {
+          throw new IllegalArgumentException("null key");
+        }
+        if (keysAndValues == null) {
+          growByOne();
+        }
+        for (int i = 0; i < size(); i++) {
+          if (Nullability.castToNonnull(keysAndValues, "guarded by checks")[i] != null && keysAndValues[i].equals(key)) {
+            V result = (V) keysAndValues[size() + i];
+            keysAndValues[size() + i] = value;
+            return result;
+          }
+        }
+        if (DEBUG_USAGE && size() >= DEBUG_MAX_SIZE) {
+          Assertions.UNREACHABLE("too many elements in a SmallMap");
+        }
+        growByOne();
+        if (keysAndValues != null) {
+          Nullability.castToNonnull(keysAndValues, "initialized if null")[size() - 1] = key;
+          keysAndValues[keysAndValues.length - 1] = value;
+        }
+        return null;
       }
-    }
-    if (DEBUG_USAGE && size() >= DEBUG_MAX_SIZE) {
-      Assertions.UNREACHABLE("too many elements in a SmallMap");
-    }
-    growByOne();
-    keysAndValues[size() - 1] = key;
-    keysAndValues[keysAndValues.length - 1] = value;
-    return null;
-  }
 
   @Override
   public V remove(Object key) throws UnsupportedOperationException {
