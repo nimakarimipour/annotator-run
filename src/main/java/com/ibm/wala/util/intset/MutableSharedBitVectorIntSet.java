@@ -648,6 +648,9 @@ public class MutableSharedBitVectorIntSet implements MutableIntSet {
   }
 
   private boolean addAllInternal(@Nullable SparseIntSet set) {
+    if (set == null) {
+      throw new IllegalArgumentException("Parameter 'set' cannot be null");
+    }
     if (privatePart == null) {
       if (sharedPart == null) {
         if (!set.isEmpty()) {
@@ -670,7 +673,6 @@ public class MutableSharedBitVectorIntSet implements MutableIntSet {
         }
       }
     } else {
-      /* privatePart != null */
       if (sharedPart == null) {
         boolean result = privatePart.addAll(set);
         checkOverflow();
