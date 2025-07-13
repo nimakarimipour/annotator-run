@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.function.Predicate;
+import edu.ucr.cs.riple.annotator.util.Nullability;
 
 /** Misc SQL-like support for queries on tables */
 public class Query {
@@ -25,18 +26,18 @@ public class Query {
    * @throws IllegalArgumentException if t == null
    */
   public static <T> Collection<Map<String, T>> selectStarWhereEquals(
-      Table<T> t, String column, T value) throws IllegalArgumentException {
-    if (t == null) {
-      throw new IllegalArgumentException("t == null");
-    }
-    Collection<Map<String, T>> result = new ArrayList<>();
-    for (int i = 0; i < t.getNumberOfRows(); i++) {
-      Map<String, T> p = t.row2Map(i);
-      if (p.get(column).equals(value)) {
-        result.add(p);
+        Table<T> t, String column, T value) throws IllegalArgumentException {
+      if (t == null) {
+        throw new IllegalArgumentException("t == null");
       }
-    }
-    return result;
+      Collection<Map<String, T>> result = new ArrayList<>();
+      for (int i = 0; i < t.getNumberOfRows(); i++) {
+        Map<String, T> p = t.row2Map(i);
+        if (Nullability.castToNonnull(p.get(column)).equals(value)) {
+          result.add(p);
+        }
+      }
+      return result;
   }
 
   /** SELECT attribute FROM t where column=value */
